@@ -122,17 +122,17 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 <details>
 <summary><b>📅 Milestone 1: Foundation & Baselines (Due: Mar 15, 2026)</b></summary>
 
-- [ ] All benchmark datasets downloaded and verified
+- [x] All benchmark datasets downloaded and verified
 - [ ] Unified data loader working for all 3 benchmarks
 - [ ] Evaluation pipeline computing accuracy, F1, category breakdown
 - [ ] Zero-shot baselines for all 3 SLMs on all benchmarks
 - [ ] Few-shot baselines for all 3 SLMs
 - [ ] GPT-4 baseline on sample (upper bound reference)
 - [ ] Baseline analysis report with performance tables
-- [ ] HeidelTime installed and tested
+- [x] HeidelTime installed and tested
 - [ ] CNN/DailyMail corpus downloaded
 - [ ] Sentence-BERT embeddings tested on sample articles
-- [ ] Git repository with all code so far
+- [x] Git repository with all code so far
 </details>
 
 <details>
