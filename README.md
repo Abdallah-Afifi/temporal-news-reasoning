@@ -130,7 +130,7 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 - [ ] GPT-4 baseline on sample (upper bound reference)
 - [ ] Baseline analysis report with performance tables
 - [x] HeidelTime installed and tested
-- [ ] CNN/DailyMail corpus downloaded
+- [x] CNN/DailyMail corpus downloaded
 - [ ] Sentence-BERT embeddings tested on sample articles
 - [x] Git repository with all code so far
 </details>
