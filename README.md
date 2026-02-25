@@ -117,7 +117,7 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 
 ## Team
 
-- **Supervisor:** Dr. Alia El Bolock
+- **Supervisor:** Dr. Nouri Sakr, Dr. Alia El Bolock
 - **Sponsor:** Microsoft (Dr. Ahmed Tawfik)
 
 ## License
