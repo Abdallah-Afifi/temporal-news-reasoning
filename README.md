@@ -117,10 +117,9 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 
 ## 🗺️ Project Roadmap & Milestones
 
-> **Note:** Click on each milestone to view the detailed task checklist.
 
-<details>
-<summary><b>📅 Milestone 1: Foundation & Baselines (Due: Mar 15, 2026)</b></summary>
+
+📅 Milestone 1: Foundation & Baselines (Due: Mar 15, 2026)
 
 - [x] All benchmark datasets downloaded and verified
 - [ ] Unified data loader working for all 3 benchmarks
@@ -133,10 +132,8 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 - [ ] CNN/DailyMail corpus downloaded
 - [ ] Sentence-BERT embeddings tested on sample articles
 - [x] Git repository with all code so far
-</details>
 
-<details>
-<summary><b>📅 Milestone 2: Core Development (Due: Apr 15, 2026)</b></summary>
+📅 Milestone 2: Core Development (Due: Apr 15, 2026)
 
 - [ ] Combined training dataset ready (50K examples)
 - [ ] 10K synthetic examples generated and quality-checked
@@ -147,10 +144,9 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 - [ ] First LoRA model (Qwen2.5-3B) fully trained (6 epochs curriculum)
 - [ ] Temporal prompting templates designed
 - [ ] All code committed and documented
-</details>
 
-<details>
-<summary><b>📅 Milestone 3: Advanced Development (Due: May 10, 2026)</b></summary>
+
+📅 Milestone 3: Advanced Development (Due: May 10, 2026)</b>
 
 - [ ] All 3 LoRA models trained and checkpoints saved
 - [ ] RAG system complete: semantic search → temporal filtering → re-ranking
@@ -159,10 +155,10 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 - [ ] Fine-tuned Qwen evaluated on all benchmarks with improvement metrics
 - [ ] Model comparison report (Qwen vs Phi vs LLaMA)
 - [ ] RAG integrated with SLM inference pipeline
-</details>
 
-<details>
-<summary><b>📅 Milestone 4: Integration & Mid-Report (Due: Jun 7, 2026)</b></summary>
+
+
+<b>📅 Milestone 4: Integration & Mid-Report (Due: Jun 7, 2026)</b>
 
 - [ ] End-to-end pipeline working on example queries
 - [ ] Integration tests passing
@@ -171,45 +167,40 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 - [ ] Mid-project report submitted (~20 pages)
 - [ ] Demo presented to supervisor and sponsor
 - [ ] All code committed, documented, and reviewed
-</details>
 
-<details>
-<summary><b>📅 Milestone 5: Comprehensive Evaluation (Due: Sep 28, 2026)</b></summary>
+<b>📅 Milestone 5: Comprehensive Evaluation (Due: Sep 28, 2026)</b>
 
 - [ ] All benchmark results collected across all configs and models
 - [ ] RAG component independently evaluated
 - [ ] Statistical significance computed
 - [ ] Result tables formatted for thesis
-</details>
 
-<details>
-<summary><b>📅 Milestone 6: Analysis & Refinement (Due: Oct 26, 2026)</b></summary>
+
+
+<summary><b>📅 Milestone 6: Analysis & Refinement (Due: Oct 26, 2026)</b>
 
 - [ ] Detailed error taxonomy with frequencies and examples
 - [ ] System refinements based on error analysis
 - [ ] Cost-efficiency report
 - [ ] Gradio demo deployed and accessible
 - [ ] Refined system v2 with improved performance
-</details>
 
-<details>
-<summary><b>📅 Milestone 7: Thesis Writing (Due: Nov 23, 2026)</b></summary>
+
+<b>📅 Milestone 7: Thesis Writing (Due: Nov 23, 2026)</b>
 
 - [ ] All chapters written by assigned authors
 - [ ] Cross-review completed for every chapter
 - [ ] Supervisor has reviewed and provided feedback
 - [ ] Complete thesis draft ready (~80-110 pages)
-</details>
 
-<details>
-<summary><b>📅 Milestone 8: Finalization & Defense (Due: Dec 15, 2026)</b></summary>
+<b>📅 Milestone 8: Finalization & Defense (Due: Dec 15, 2026)</b>
 
 - [ ] Final thesis submitted
 - [ ] Defense completed
 - [ ] Code open-sourced on GitHub
 - [ ] Model checkpoints on Hugging Face
 - [ ] Demo accessible online
-</details>
+
 
 ## Team
 
