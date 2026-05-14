@@ -1,0 +1,1 @@
+source /home/g2/temporal-news-reasoning/.venv/bin/activate && uv pip install -r requirements.txt && python -m spacy download en_core_web_sm && python -m spacy download en_core_web_lg && python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('stopwords'); nltk.download('wordnet')" && uv pip install -e . && echo "ALL DONE"

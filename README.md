@@ -38,6 +38,8 @@ temporal-news-reasoning/
 │   └── demo/             # Gradio web demo
 ├── scripts/              # Utility & setup scripts
 ├── notebooks/            # Jupyter notebooks for exploration
+├── experiments/          # Experimental training/eval pipelines
+│   └── finetuning/        # LoRA finetuning runs and utilities
 ├── results/              # Experiment results
 ├── checkpoints/          # Model checkpoints (gitignored)
 ├── docs/                 # Documentation & meeting notes

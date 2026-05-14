@@ -63,6 +63,11 @@ logs/
 *.log
 wandb/
 
+# ----- Fine-tuning outputs -----
+experiments/finetuning/**/Progress/
+experiments/finetuning/**/results/
+experiments/finetuning/**/logs/
+
 # ----- Docker -----
 *.tar
 *.tar.gz
