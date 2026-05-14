@@ -1,0 +1,81 @@
+# Mistral-7B-Instruct-v0.3 LoRA Fine-Tuning Configuration
+# ========================================================
+# Flat training on combined_80_20_split (same dataset as LLaMA).
+# Optimized for RTX 3090 24GB — 4-bit QLoRA required for 7B model.
+#
+# Architecture notes:
+#   Mistral-7B uses Grouped-Query Attention (8 KV heads, 32 query heads),
+#   Sliding Window Attention (SWA, window=4096), and SwiGLU MLP.
+#   At ~14 GB for bf16 weights alone, 4-bit QLoRA is essential for 24GB GPU.
+#
+# Memory budget (RTX 3090 24GB):
+#   - 4-bit model weights:  ~4.5 GB
+#   - LoRA adapters (r=16): ~0.3 GB
+#   - Activations + optimizer: ~10–14 GB (with grad checkpointing)
+#   - Total: ~16–19 GB → fits comfortably with batch=2
+
+# ── Model ──────────────────────────────────────────────
+model_path: models/Mistral-7B-Instruct-v0.3
+seed: 42
+dtype: bfloat16
+
+# ── Data ───────────────────────────────────────────────
+train_data: data/combined_80_20_split/train.jsonl
+val_data: data/combined_80_20_split/val.jsonl
+max_seq_length: 2048
+
+# ── Training ──────────────────────────────────────────
+learning_rate: 2.0e-4
+num_train_epochs: 3
+warmup_ratio: 0.1
+weight_decay: 0.01
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+
+# ── Speed / memory optimizations (RTX 3090 24GB) ──────
+# Gradient checkpointing ON = essential for 7B, saves ~30% activation VRAM
+gradient_checkpointing: true
+# Small batch (7B model) + accumulation = effective batch 16
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8    # effective batch = 2 × 8 = 16
+# Fast data loading
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+# Ampere TF32 fast math
+tf32: true
+
+# ── Logging & Checkpointing ──────────────────────────
+logging_steps: 10
+eval_strategy: epoch
+save_strategy: epoch
+save_total_limit: 3
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+early_stopping_patience: 2
+
+# ── LoRA ─────────────────────────────────────────────
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# ── Quantization (4-bit QLoRA) ───────────────────────
+# Set to false to use pure bfloat16 (uses ~20GB VRAM, much faster)
+load_in_4bit: false
+
+# ── Output ───────────────────────────────────────────
+output_dir: checkpoints/mistral
+progress_dir: experiments/finetuning/Mistral/Progress
+
+# ── Reporting ────────────────────────────────────────
+report_to: []
