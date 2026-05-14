@@ -1,0 +1,43 @@
+# ============================================================
+# RAG Pipeline Configuration
+# ============================================================
+
+embedding:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  local_path: "./models/all-MiniLM-L6-v2"
+  dimension: 384
+  batch_size: 64
+  normalize: true
+
+index:
+  type: "faiss"
+  index_path: "./data/index/news_index.faiss"
+  metadata_path: "./data/index/news_metadata.pkl"
+  nprobe: 10
+
+retrieval:
+  top_k_semantic: 50
+  top_k_temporal: 20
+  top_k_final: 5
+
+  # Temporal filtering
+  temporal_filter:
+    enabled: true
+    recency_window_days: 30
+    decay_factor: 0.95
+
+  # Re-ranking weights
+  reranker:
+    semantic_weight: 0.4
+    temporal_weight: 0.4
+    recency_weight: 0.2
+
+temporal:
+  heideltime_path: "/opt/heideltime"
+  default_language: "english"
+  document_type: "NEWS"
+
+timeline:
+  max_events: 20
+  min_confidence: 0.5
+  merge_similar_threshold: 0.8

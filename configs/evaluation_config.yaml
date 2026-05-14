@@ -1,0 +1,73 @@
+# ============================================================
+# Evaluation Configuration
+# ============================================================
+
+benchmarks:
+  time:
+    path: "./data/benchmarks/time"
+    tasks:
+      - "temporal_qa"
+      - "timeline_construction"
+      - "temporal_nli"
+    split: "test"
+
+  timebench:
+    path: "./data/benchmarks/timebench"
+    tasks:
+      - "temporal_expression_processing"
+      - "temporal_commonsense"
+      - "event_relation"
+      - "event_forecasting"
+      - "temporal_qa"
+    split: "test"
+
+  tram:
+    path: "./data/benchmarks/tram"
+    tasks:
+      - "temporal_reasoning"
+    split: "test"
+
+metrics:
+  - "accuracy"
+  - "f1"
+  - "exact_match"
+  - "temporal_f1"
+  - "timeline_order_accuracy"
+
+evaluation:
+  batch_size: 8
+  max_new_tokens: 256
+  temperature: 0.0
+  num_samples: null  # null = all, set integer for subset
+
+baselines:
+  zero_shot:
+    enabled: true
+    models: ["qwen", "phi", "llama"]
+
+  few_shot:
+    enabled: true
+    models: ["qwen", "phi", "llama"]
+    num_examples: [1, 3, 5]
+
+  gpt4:
+    enabled: false  # Set to true when running GPT-4 baseline
+    model: "gpt-4-turbo-preview"
+    max_samples: 200  # Cost control
+
+ablation:
+  components:
+    - "base_only"
+    - "base_lora"
+    - "base_rag"
+    - "base_prompting"
+    - "base_lora_rag"
+    - "base_lora_prompting"
+    - "base_rag_prompting"
+    - "full_system"
+
+output:
+  results_dir: "./results"
+  save_predictions: true
+  save_metrics: true
+  wandb_logging: true
