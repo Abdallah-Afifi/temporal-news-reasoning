@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLOCK DIAGRAM RAG - High-Level Architecture</title>
+<style>
+/* Robust System Fonts */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+  padding: 40px 0;
+}
+
+.canvas {
+  width: 1100px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 30px;
+}
+
+h1 { font-size: 22px; font-weight: 700; margin-bottom: 8px; text-align: center; color: #0f172a; text-transform: uppercase; }
+p.subtitle { font-size: 14px; color: #64748b; text-align: center; margin-bottom: 30px; }
+
+.arch-svg {
+  display: block;
+  width: 100%;
+  max-width: 1060px;
+  height: auto;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* SVG text classes */
+.label     { font-size: 14px; font-weight: 800; fill: #0f172a; font-family: sans-serif; }
+.sub-label { font-size: 11.5px; font-weight: 600; fill: #334155; font-family: monospace; }
+.math      { font-size: 12px; fill: #1d4ed8; font-weight: bold; font-family: monospace; }
+.header    { font-size: 16px; font-weight: 800; fill: #1e293b; text-transform: uppercase; letter-spacing: 1px; font-family: sans-serif; }
+
+</style>
+</head>
+<body>
+<div class="canvas">
+  <h1>BLOCK DIAGRAM RAG</h1>
+  <p class="subtitle">High-Level Macro Architecture of the Temporal Tri-Store System</p>
+
+  <svg viewBox="0 0 1060 840" width="100%" height="840" class="arch-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+        <polygon points="0 0, 11 4, 0 8" fill="#64748b"/>
+      </marker>
+      <marker id="arr-sem" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+        <polygon points="0 0, 11 4, 0 8" fill="#8b5cf6"/>
+      </marker>
+      <marker id="arr-sql" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+        <polygon points="0 0, 11 4, 0 8" fill="#10b981"/>
+      </marker>
+      <marker id="arr-ext" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+        <polygon points="0 0, 11 4, 0 8" fill="#ea580c"/>
+      </marker>
+      
+      <linearGradient id="boxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#ffffff"/>
+        <stop offset="100%" style="stop-color:#f8fafc"/>
+      </linearGradient>
+      <linearGradient id="semGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#f5f3ff"/>
+        <stop offset="100%" style="stop-color:#ede9fe"/>
+      </linearGradient>
+      <linearGradient id="extGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#fff7ed"/>
+        <stop offset="100%" style="stop-color:#ffedd5"/>
+      </linearGradient>
+    </defs>
+
+    <rect x="18" y="55" width="410" height="760" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="223" y="44" text-anchor="middle" class="header">1. Ingestion Pipeline (Offline)</text>
+
+    <rect x="84" y="90" width="288" height="80" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="2"/>
+    <text x="228" y="125" text-anchor="middle" class="label">Document Preprocessing</text>
+    <text x="228" y="145" text-anchor="middle" class="sub-label">Corpus Loading → Coref Resolution → Chunking</text>
+    
+    <path d="M228,170 L228,210 L136,210 L136,230" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arr)"/>
+    <path d="M228,170 L228,210 L312,210 L312,230" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arr)"/>
+
+    <rect x="56" y="230" width="160" height="100" rx="8" fill="url(#semGrad)" stroke="#8b5cf6" stroke-width="2.5"/>
+    <text x="136" y="265" text-anchor="middle" class="label" fill="#4c1d95">Semantic Pipeline</text>
+    <text x="136" y="285" text-anchor="middle" font-size="11" font-weight="700" fill="#6d28d9" font-family="monospace">Entity Augmentation</text>
+    <text x="136" y="305" text-anchor="middle" font-size="11" font-weight="700" fill="#6d28d9" font-family="monospace">& Dense Vectorization</text>
+    
+    <rect x="232" y="230" width="160" height="100" rx="8" fill="url(#extGrad)" stroke="#ea580c" stroke-width="2.5"/>
+    <text x="312" y="265" text-anchor="middle" class="label" fill="#9a3412">Extraction Pipeline</text>
+    <text x="312" y="285" text-anchor="middle" font-size="11" font-weight="700" fill="#c2410c" font-family="monospace">Neural Span NER,</text>
+    <text x="312" y="305" text-anchor="middle" font-size="11" font-weight="700" fill="#c2410c" font-family="monospace">Normalizing & Graph IE</text>
+
+    <path d="M136,330 L136,460" fill="none" stroke="#8b5cf6" stroke-dasharray="6,5" stroke-width="3" marker-end="url(#arr-sem)"/>
+    <path d="M312,330 L312,460" fill="none" stroke="#ea580c" stroke-dasharray="6,5" stroke-width="3" marker-end="url(#arr-ext)"/>
+    
+    <path d="M312,330 L312,380 L240,380 L240,460" fill="none" stroke="#10b981" stroke-dasharray="6,5" stroke-width="3" marker-end="url(#arr-sql)"/>
+    
+    <rect x="84" y="460" width="288" height="200" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="2"/>
+    <text x="228" y="485" text-anchor="middle" class="label" font-size="15px">Hybrid Tri-Store Database</text>
+
+    <rect x="94" y="500" width="85" height="145" rx="5" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="136" y="535" text-anchor="middle" class="label" fill="#1d4ed8">FAISS</text>
+    <text x="136" y="565" text-anchor="middle" class="sub-label">Semantic</text>
+    <text x="136" y="585" text-anchor="middle" class="sub-label">Vectors</text>
+
+    <rect x="185" y="500" width="85" height="145" rx="5" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="227" y="535" text-anchor="middle" class="label" fill="#047857">SQL</text>
+    <text x="227" y="565" text-anchor="middle" class="sub-label">Temporal</text>
+    <text x="227" y="585" text-anchor="middle" class="sub-label">Filters</text>
+
+    <rect x="276" y="500" width="85" height="145" rx="5" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+    <text x="318" y="535" text-anchor="middle" class="label" fill="#075985">Graph</text>
+    <text x="318" y="565" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0369a1" font-family="monospace">Neo4j</text>
+    <text x="318" y="585" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0369a1" font-family="monospace">Facts</text>
+
+    <rect x="448" y="55" width="592" height="760" rx="10" fill="#ffffff" stroke="#6366f1" stroke-width="2.5"/>
+    <text x="744" y="44" text-anchor="middle" class="header" fill="#6366f1">2. Retrieval Path (Online)</text>
+
+
+    <rect x="910" y="65" width="120" height="65" rx="5" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="970" y="83" font-size="10px" font-weight="800" fill="#64748b" font-family="sans-serif" text-anchor="middle">MACRO DATA FLOW</text>
+    <circle cx="895" cy="100" r="5" fill="#8b5cf6"/>
+    <text x="930" y="104" font-size="11.5" font-weight="700" fill="#4c1d95" font-family="sans-serif">Semantic Scope</text>
+    <circle cx="895" cy="118" r="5" fill="#ea580c"/>
+    <text x="930" y="122" font-size="11.5" font-weight="700" fill="#9a3412" font-family="sans-serif">Extraction Scope</text>
+
+
+    <path d="M580,80 L886,80 L908,105 L886,130 L580,130 Z" fill="#6366f1"/>
+    <text x="744" y="110" text-anchor="middle" class="label" fill="#fff" font-size="16px">USER QUERY</text>
+    <line x1="744" y1="130" x2="744" y2="170" stroke="#64748b" stroke-width="2.5" marker-end="url(#arr)"/>
+
+    <rect x="580" y="170" width="318" height="70" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+    <text x="739" y="195" text-anchor="middle" class="label" fill="#075985" font-size="14px">Query Temporal Parser</text>
+    <text x="739" y="215" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0369a1" font-family="monospace">Normalizes Intent & Time Constraints</text>
+    <line x1="744" y1="240" x2="744" y2="300" stroke="#64748b" stroke-width="2.5" marker-end="url(#arr)"/>
+
+    <rect x="568" y="300" width="346" height="80" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2.5"/>
+    <text x="741" y="335" text-anchor="middle" class="label" fill="#1d4ed8" font-size="15px">Stage 1: Multi-Vector Hybrid Retrieval</text>
+    <text x="741" y="360" text-anchor="middle" font-size="12" font-weight="600" fill="#1e40af" font-family="monospace">Fetches Semantic matches & applies SQL gates</text>
+    <line x1="744" y1="380" x2="744" y2="450" stroke="#64748b" stroke-width="2.5" marker-end="url(#arr)"/>
+
+    <rect x="568" y="450" width="346" height="80" rx="8" fill="#f8fafc" stroke="#6366f1" stroke-width="2.5"/>
+    <text x="741" y="485" text-anchor="middle" class="label" fill="#4338ca" font-size="15px">Stage 2: Ranking & Fact Verification</text>
+    <text x="741" y="510" text-anchor="middle" font-size="12" font-weight="600" fill="#3730a3" font-family="monospace">Re-ranks context & validates paths via Neo4j</text>
+    <line x1="744" y1="530" x2="744" y2="600" stroke="#64748b" stroke-width="2.5" marker-end="url(#arr)"/>
+
+    <rect x="568" y="600" width="346" height="80" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="3"/>
+    <text x="741" y="635" text-anchor="middle" class="label" fill="#166534" font-size="15px">Generative SLM Engine</text>
+    <text x="741" y="660" text-anchor="middle" font-size="12" font-weight="600" fill="#14532d" font-family="monospace">Synthesizes answer from verified context</text>
+
+    <path d="M136,645 L136,770 L480,770 L480,325 L558,325" fill="none" stroke="#8b5cf6" stroke-dasharray="8,6" stroke-width="3" marker-end="url(#arr-sem)"/>
+    <text x="500" y="330" transform="rotate(-90 510,370)" text-anchor="end" font-size="11px" font-weight="800" fill="#6d28d9">Semantic Vectors</text>
+
+    <path d="M227,645 L227,790 L500,790 L500,355 L558,355" fill="none" stroke="#10b981" stroke-dasharray="8,6" stroke-width="3" marker-end="url(#arr-sql)"/>
+    <text x="380" y="355" transform="rotate(-90 510,370)" text-anchor="end" font-size="11px" font-weight="800" fill="#047857">Date Metadata</text>
+
+    <path d="M318,645 L318,750 L520,750 L520,490 L558,490" fill="none" stroke="#ea580c" stroke-dasharray="8,6" stroke-width="3" marker-end="url(#arr-ext)"/>
+    <text x="280" y="375" transform="rotate(-90 510,370)" text-anchor="end" font-size="11px" font-weight="800" fill="#c2410c">Graph Rules</text>
+
+  </svg>
+</div>
+</body>
+</html>
