@@ -1,0 +1,66 @@
+# Qwen3.5-9B-Instruct LoRA Fine-Tuning Configuration
+# ===================================================
+# Flat training on combined_80_20_split (same dataset as LLaMA/Mistral).
+# Hyperparameters from the Qwen3.5-9B Optuna search.
+
+# ── Model ──────────────────────────────────────────────
+model_path: models/qwen3.5-9b-model
+seed: 42
+dtype: bfloat16
+attn_implementation: sdpa
+
+# ── Data ───────────────────────────────────────────────
+train_data: data/combined_80_20_split/train.jsonl
+val_data: data/combined_80_20_split/val.jsonl
+max_seq_length: 2048
+
+# ── Training (Qwen-optimized) ─────────────────────────
+learning_rate: 3.0e-4
+num_train_epochs: 3
+warmup_ratio: 0.15
+weight_decay: 0.02
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+
+# ── Speed / memory optimizations ──────────────────────
+gradient_checkpointing: true
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 4
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+tf32: true
+
+# ── Logging & Checkpointing ──────────────────────────
+logging_steps: 10
+eval_strategy: epoch
+save_strategy: epoch
+save_total_limit: 3
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+early_stopping_patience: 2
+
+# ── LoRA ─────────────────────────────────────────────
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# ── Quantization ─────────────────────────────────────
+load_in_4bit: false
+
+# ── Output ───────────────────────────────────────────
+output_dir: checkpoints/qwen3.5-9b-model
+progress_dir: experiments/finetuning/qwen3.5-9b-model/Progress
+
+# ── Reporting ────────────────────────────────────────
+report_to: []

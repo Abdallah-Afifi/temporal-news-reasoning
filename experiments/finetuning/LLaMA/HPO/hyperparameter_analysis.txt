@@ -1,0 +1,97 @@
+================================================================================
+LLAMA-3.2-3B HYPERPARAMETER SEARCH ANALYSIS
+Dataset: combined_80_20_split
+================================================================================
+
+Search Date: 2026-05-08T21:01:36.485238
+Total Trials: 8
+Best Loss: 1.0012
+
+LOSS STATISTICS
+--------------------------------------------------------------------------------
+Mean:     1.6673
+Median:   1.5061
+Std Dev:  0.6385
+Min:      1.0012
+Max:      2.5885
+
+TOP 10 CONFIGURATIONS
+--------------------------------------------------------------------------------
+
+1. Loss: 1.0012
+   Learning Rate: 4.62e-04
+   Batch Size: 4
+   Warmup Ratio: 0.082
+   Weight Decay: 0.0109
+   LoRA r: 16
+
+2. Loss: 1.0413
+   Learning Rate: 2.61e-04
+   Batch Size: 4
+   Warmup Ratio: 0.053
+   Weight Decay: 0.0582
+   LoRA r: 16
+
+3. Loss: 1.1096
+   Learning Rate: 1.58e-04
+   Batch Size: 4
+   Warmup Ratio: 0.073
+   Weight Decay: 0.0094
+   LoRA r: 16
+
+4. Loss: 1.4319
+   Learning Rate: 7.31e-05
+   Batch Size: 4
+   Warmup Ratio: 0.094
+   Weight Decay: 0.0367
+   LoRA r: 16
+
+5. Loss: 1.5802
+   Learning Rate: 5.61e-05
+   Batch Size: 4
+   Warmup Ratio: 0.193
+   Weight Decay: 0.0439
+   LoRA r: 16
+
+6. Loss: 2.2100
+   Learning Rate: 2.33e-05
+   Batch Size: 4
+   Warmup Ratio: 0.096
+   Weight Decay: 0.0315
+   LoRA r: 16
+
+7. Loss: 2.3755
+   Learning Rate: 1.90e-05
+   Batch Size: 4
+   Warmup Ratio: 0.094
+   Weight Decay: 0.0220
+   LoRA r: 16
+
+8. Loss: 2.5885
+   Learning Rate: 1.31e-05
+   Batch Size: 4
+   Warmup Ratio: 0.180
+   Weight Decay: 0.0361
+   LoRA r: 16
+
+================================================================================
+PARAMETER IMPORTANCE
+================================================================================
+
+Learning Rate Impact:
+                      count      mean       std       min
+learning_rate                                            
+(1.26e-05, 0.000103]      5  2.037229  0.505825  1.431916
+(0.000103, 0.000193]      1  1.109634       NaN  1.109634
+(0.000193, 0.000283]      1  1.041319       NaN  1.041319
+(0.000372, 0.000462]      1  1.001248       NaN  1.001248
+
+Batch Size Impact:
+            count      mean       std       min
+batch_size                                     
+4               8  1.667293  0.638541  1.001248
+
+LoRA Rank Impact:
+        count      mean       std       min
+lora_r                                     
+16          8  1.667293  0.638541  1.001248
