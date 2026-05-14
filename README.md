@@ -6,6 +6,8 @@
 
 This project investigates whether combining **LoRA fine-tuning**, **temporal-aware RAG**, and **specialized prompting** can enable small language models (Qwen2.5-3B, Phi-3-mini, LLaMA-3.2-3B) to perform temporal reasoning on news articles — approaching large model performance at a fraction of the cost.
 
+**Latest Update:** The comprehensive Retrieval-Augmented Generation (RAG) system from the `Retrieval-augmented-generation` branch has been successfully merged into main, bringing production-ready RAG capabilities including FAISS semantic search, temporal filtering, knowledge graph support, and an interactive web UI.
+
 ### Key Components
 
 | Module | Description |
@@ -16,6 +18,19 @@ This project investigates whether combining **LoRA fine-tuning**, **temporal-awa
 | **LoRA Fine-Tuned SLMs** | Parameter-efficient fine-tuning on temporal reasoning tasks |
 | **Temporal Prompting** | Timeline-based Chain-of-Thought + temporal context injection |
 | **Consistency Checking** | Cross-references temporal facts and detects contradictions |
+
+### ✅ RAG System Components (Now in Main)
+
+The `temporal_rag/` directory contains a complete, production-ready RAG system featuring:
+
+- **Indexing**: FAISS-based semantic indexing with multiple chunking strategies (recursive & character-based)
+- **Embedding**: Advanced encoder supporting various embedding models and preprocessing
+- **Retrieval**: Multi-stage retrieval with semantic search and temporal filtering
+- **Knowledge Graphs**: Neo4j-compatible temporal knowledge graph storage
+- **Entity Extraction**: GLiNER-based named entity recognition for temporal relations
+- **Coreference Resolution**: Entity linking and pronoun resolution
+- **Interactive Query Engine**: Full-stack query processing pipeline
+- **Web UI**: Gradio-based interface for interactive RAG exploration
 
 ## Repository Structure
 
@@ -36,6 +51,21 @@ temporal-news-reasoning/
 │   ├── evaluation/       # Metrics & evaluation harness
 │   ├── pipeline/         # End-to-end pipeline
 │   └── demo/             # Gradio web demo
+├── temporal_rag/         # Comprehensive RAG system (merged from Retrieval-augmented-generation branch)
+│   ├── bbc_to_json.py    # BBC dataset processing
+│   ├── build_faiss_database.py  # FAISS index builder
+│   ├── embed.py          # Embedding pipeline
+│   ├── encoder.py        # Advanced encoder with chunking
+│   ├── chunk_splitter.py # Text chunking strategies
+│   ├── recursive_splitter.py  # Recursive document splitting
+│   ├── temporal_ie.py    # Temporal information extraction
+│   ├── kg_store.py       # Knowledge graph storage
+│   ├── sql_store.py      # SQL database backend
+│   ├── interactive_query.py    # Interactive query interface
+│   ├── query_faiss.py    # FAISS query engine
+│   ├── query_full_stack.py     # Full RAG pipeline
+│   ├── temporal_rag_gui.py     # Web UI for RAG system
+│   └── utils/            # Utility modules (HeidelTime wrapper, etc.)
 ├── scripts/              # Utility & setup scripts
 ├── notebooks/            # Jupyter notebooks for exploration
 ├── experiments/          # Experimental training/eval pipelines
@@ -106,112 +136,20 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 
 ## Branch Strategy
 
-| Branch | Purpose |
-|--------|---------|
-| `main` | Stable, tested code only |
-| `develop` | Integration branch for feature merging |
-| `feature/data-pipeline` | Data loading & preprocessing (Team A) |
-| `feature/temporal-rag` | RAG system development (Team B) |
-| `feature/model-finetuning` | LoRA fine-tuning & prompting (Team C) |
-| `feature/evaluation` | Evaluation harness & metrics |
-| `experiment/*` | Individual experiment branches |
-| `docs/*` | Documentation updates |
+| Branch | Purpose | Status |
+|--------|---------|--------|
+| `main` | Stable, tested code with integrated RAG system | ✅ Active |
+| `develop` | Integration branch for feature merging | Active |
+| `feature/data-pipeline` | Data loading & preprocessing (Team A) | Feature |
+| `feature/temporal-rag` | RAG system development (Team B) | Feature |
+| `feature/model-finetuning` | LoRA fine-tuning & prompting (Team C) | Feature |
+| `feature/evaluation` | Evaluation harness & metrics | Feature |
+| `Retrieval-augmented-generation` | ⭐ Complete RAG system (now merged to main) | ✅ Merged |
+| `experiment/*` | Individual experiment branches | Experimental |
+| `docs/*` | Documentation updates | Documentation |
 
-## 🗺️ Project Roadmap & Milestones
+**Recent Changes:** The `Retrieval-augmented-generation` branch has been successfully merged into `main` (commit 176bb44), bringing the complete RAG system including FAISS indexing, temporal filtering, knowledge graphs, and web UI into the main production branch.
 
-> **Note:** Click on each milestone to view the detailed task checklist.
-
-<details>
-<summary><b>📅 Milestone 1: Foundation & Baselines (Due: Mar 15, 2026)</b></summary>
-
-- [x] All benchmark datasets downloaded and verified
-- [x] Unified data loader working for all 3 benchmarks
-- [ ] Evaluation pipeline computing accuracy, F1, category breakdown
-- [ ] Zero-shot baselines for all 3 SLMs on all benchmarks
-- [ ] Few-shot baselines for all 3 SLMs
-- [ ] GPT-4 baseline on sample (upper bound reference)
-- [ ] Baseline analysis report with performance tables
-- [x] HeidelTime installed and tested
-- [x] CNN/DailyMail corpus downloaded
-- [ ] Sentence-BERT embeddings tested on sample articles
-- [x] Git repository with all code so far
-</details>
-
-<details>
-<summary><b>📅 Milestone 2: Core Development (Due: Apr 15, 2026)</b></summary>
-
-- [ ] Combined training dataset ready (50K examples)
-- [ ] 10K synthetic examples generated and quality-checked
-- [ ] FAISS index built with 313K CNN/DM articles
-- [ ] Semantic retrieval (Stage 1) working
-- [ ] Temporal filtering (Stage 2) working
-- [ ] Temporal intent detector classifying queries correctly
-- [ ] First LoRA model (Qwen2.5-3B) fully trained (6 epochs curriculum)
-- [ ] Temporal prompting templates designed
-- [ ] All code committed and documented
-</details>
-
-<details>
-<summary><b>📅 Milestone 3: Advanced Development (Due: May 10, 2026)</b></summary>
-
-- [ ] All 3 LoRA models trained and checkpoints saved
-- [ ] RAG system complete: semantic search → temporal filtering → re-ranking
-- [ ] Timeline construction module working
-- [ ] Self-consistency with temporal verification implemented
-- [ ] Fine-tuned Qwen evaluated on all benchmarks with improvement metrics
-- [ ] Model comparison report (Qwen vs Phi vs LLaMA)
-- [ ] RAG integrated with SLM inference pipeline
-</details>
-
-<details>
-<summary><b>📅 Milestone 4: Integration & Mid-Report (Due: Jun 7, 2026)</b></summary>
-
-- [ ] End-to-end pipeline working on example queries
-- [ ] Integration tests passing
-- [ ] Initial ablation results (6 configurations)
-- [ ] Gradio demo prototype functional
-- [ ] Mid-project report submitted (~20 pages)
-- [ ] Demo presented to supervisor and sponsor
-- [ ] All code committed, documented, and reviewed
-</details>
-
-<details>
-<summary><b>📅 Milestone 5: Comprehensive Evaluation (Due: Sep 28, 2026)</b></summary>
-
-- [ ] All benchmark results collected across all configs and models
-- [ ] RAG component independently evaluated
-- [ ] Statistical significance computed
-- [ ] Result tables formatted for thesis
-</details>
-
-<details>
-<summary><b>📅 Milestone 6: Analysis & Refinement (Due: Oct 26, 2026)</b></summary>
-
-- [ ] Detailed error taxonomy with frequencies and examples
-- [ ] System refinements based on error analysis
-- [ ] Cost-efficiency report
-- [ ] Gradio demo deployed and accessible
-- [ ] Refined system v2 with improved performance
-</details>
-
-<details>
-<summary><b>📅 Milestone 7: Thesis Writing (Due: Nov 23, 2026)</b></summary>
-
-- [ ] All chapters written by assigned authors
-- [ ] Cross-review completed for every chapter
-- [ ] Supervisor has reviewed and provided feedback
-- [ ] Complete thesis draft ready (~80-110 pages)
-</details>
-
-<details>
-<summary><b>📅 Milestone 8: Finalization & Defense (Due: Dec 15, 2026)</b></summary>
-
-- [ ] Final thesis submitted
-- [ ] Defense completed
-- [ ] Code open-sourced on GitHub
-- [ ] Model checkpoints on Hugging Face
-- [ ] Demo accessible online
-</details>
 
 ## Team
 
