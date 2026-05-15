@@ -1,0 +1,31 @@
+{
+  "benchmark": "time/zero_shot",
+  "model": "qwen3.5",
+  "configuration": "fine_tuned",
+  "timestamp": "2026-05-12T13:04:22.002512",
+  "num_examples": 15964,
+  "overall_accuracy": 0.3524179403658231,
+  "overall_f1": 0.13202544462783608,
+  "exact_match": 0.3524179403658231,
+  "temporal_f1": 0.8541257542864776,
+  "by_category": {
+    "temporal_qa": {
+      "accuracy": 0.3524179403658231,
+      "correct": 5626,
+      "total": 15964
+    }
+  },
+  "error_analysis": {
+    "temporal_extraction": 2537,
+    "hallucination": 83,
+    "other": 7718
+  },
+  "metadata": {
+    "model": "qwen3.5",
+    "task": "zero_shot",
+    "adapter_dir": "checkpoints/qwen3.5-9b-model/final",
+    "prompt_type": "zero_shot",
+    "max_new_tokens": 128,
+    "temperature": 0.0
+  }
+}
