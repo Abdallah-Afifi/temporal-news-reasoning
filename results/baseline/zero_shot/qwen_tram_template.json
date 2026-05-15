@@ -1,0 +1,35 @@
+{
+  "benchmark": "tram/temporal_reasoning",
+  "model": "qwen2.5-3b-instruct",
+  "configuration": "zero_shot",
+  "timestamp": null,
+  "num_examples": 0,
+  "overall_accuracy": null,
+  "overall_f1": null,
+  "exact_match": null,
+  "temporal_f1": null,
+  "by_category": {
+    "temporal_ambiguity_resolution": {
+      "accuracy": null,
+      "correct": 0,
+      "total": 0
+    },
+    "timeline_construction": {
+      "accuracy": null,
+      "correct": 0,
+      "total": 0
+    }
+  },
+  "error_analysis": {
+    "temporal_extraction": 0,
+    "hallucination": 0,
+    "other": 0
+  },
+  "metadata": {
+    "model": "qwen2.5-3b-instruct",
+    "prompt_type": "zero_shot",
+    "max_new_tokens": 256,
+    "temperature": 0.0,
+    "notes": "Template — populate after running baseline evaluation"
+  }
+}

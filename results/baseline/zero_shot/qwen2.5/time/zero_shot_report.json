@@ -1,0 +1,61 @@
+{
+  "benchmark": "time/zero_shot",
+  "timestamp": "2026-03-13T03:04:42.254280",
+  "num_examples": 106500,
+  "overall_accuracy": 0.37338028169014087,
+  "overall_f1": 0.1819674888045194,
+  "exact_match": 0.37338028169014087,
+  "temporal_f1": 0.8584441727807924,
+  "by_category": {
+    "temporal_simultaneous": {
+      "accuracy": 0.814633189486073,
+      "correct": 4153,
+      "total": 5098
+    },
+    "news_temporal_mcq": {
+      "accuracy": 0.34663036835379746,
+      "correct": 18717,
+      "total": 53997
+    },
+    "temporal_context": {
+      "accuracy": 0.4348372897343185,
+      "correct": 2766,
+      "total": 6361
+    },
+    "temporal_qa": {
+      "accuracy": 0.31834126785266853,
+      "correct": 5082,
+      "total": 15964
+    },
+    "arithmetic": {
+      "accuracy": 0.013657957244655582,
+      "correct": 23,
+      "total": 1684
+    },
+    "duration": {
+      "accuracy": 0.0404244567963618,
+      "correct": 80,
+      "total": 1979
+    },
+    "temporal_ordering": {
+      "accuracy": 0.41828674140296107,
+      "correct": 8843,
+      "total": 21141
+    },
+    "temporal_recency": {
+      "accuracy": 0.36594202898550726,
+      "correct": 101,
+      "total": 276
+    }
+  },
+  "error_analysis": {
+    "temporal_extraction": 3911,
+    "hallucination": 7574,
+    "other": 55250
+  },
+  "metadata": {
+    "model": "qwen2.5",
+    "task": "zero_shot"
+  },
+  "eval_wall_time_seconds": 21.89
+}

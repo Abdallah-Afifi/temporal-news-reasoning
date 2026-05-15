@@ -1,0 +1,71 @@
+{
+  "benchmark": "tram/zero_shot",
+  "timestamp": "2026-03-27T16:32:25.338620",
+  "num_examples": 980918,
+  "overall_accuracy": 0.2420548914384281,
+  "overall_f1": 0.25136722300074904,
+  "exact_match": 0.2420548914384281,
+  "temporal_f1": 0.958887821213928,
+  "by_category": {
+    "ambiguity": {
+      "accuracy": 0.434878587196468,
+      "correct": 1576,
+      "total": 3624
+    },
+    "arithmetic": {
+      "accuracy": 0.12512833675564683,
+      "correct": 3900,
+      "total": 31168
+    },
+    "causality": {
+      "accuracy": 0.5588235294117647,
+      "correct": 665,
+      "total": 1190
+    },
+    "duration": {
+      "accuracy": 0.39822148117271083,
+      "correct": 5732,
+      "total": 14394
+    },
+    "frequency": {
+      "accuracy": 0.19922212618841834,
+      "correct": 1844,
+      "total": 9256
+    },
+    "temporal_nli": {
+      "accuracy": 0.18343765728341851,
+      "correct": 103508,
+      "total": 564268
+    },
+    "temporal_ordering": {
+      "accuracy": 0.17290846122504414,
+      "correct": 10185,
+      "total": 58904
+    },
+    "temporal_relation": {
+      "accuracy": 0.2491386630488888,
+      "correct": 51052,
+      "total": 204914
+    },
+    "storytelling": {
+      "accuracy": 0.6888726861496339,
+      "correct": 46295,
+      "total": 67204
+    },
+    "typical_time": {
+      "accuracy": 0.48772888136636405,
+      "correct": 12679,
+      "total": 25996
+    }
+  },
+  "error_analysis": {
+    "temporal_extraction": 10831,
+    "hallucination": 29673,
+    "other": 702978
+  },
+  "metadata": {
+    "model": "llama",
+    "task": "zero_shot"
+  },
+  "eval_wall_time_seconds": 55.39
+}

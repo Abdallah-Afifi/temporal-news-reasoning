@@ -1,0 +1,61 @@
+{
+  "benchmark": "timebench/zero_shot",
+  "timestamp": "2026-03-13T04:22:00.292544",
+  "num_examples": 21188,
+  "overall_accuracy": 0.13913535963753068,
+  "overall_f1": 0.09473349361475386,
+  "exact_match": 0.13913535963753068,
+  "temporal_f1": 0.8369312818576552,
+  "by_category": {
+    "duration": {
+      "accuracy": 0.39986996098829647,
+      "correct": 615,
+      "total": 1538
+    },
+    "situated_generation": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 115
+    },
+    "temporal_dialogue": {
+      "accuracy": 0.7268326417704011,
+      "correct": 1051,
+      "total": 1446
+    },
+    "temporal_reasoning": {
+      "accuracy": 0.42590618336886993,
+      "correct": 799,
+      "total": 1876
+    },
+    "temporal_qa": {
+      "accuracy": 0.35,
+      "correct": 350,
+      "total": 1000
+    },
+    "temporal_ordering": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 4248
+    },
+    "arithmetic": {
+      "accuracy": 0.03325,
+      "correct": 133,
+      "total": 4000
+    },
+    "temporal_nli": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 6965
+    }
+  },
+  "error_analysis": {
+    "temporal_extraction": 270,
+    "hallucination": 3244,
+    "other": 14726
+  },
+  "metadata": {
+    "model": "qwen2.5",
+    "task": "zero_shot"
+  },
+  "eval_wall_time_seconds": 1.17
+}

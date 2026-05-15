@@ -1,0 +1,76 @@
+{
+  "benchmark": "tram/zero_shot",
+  "model": "qwen3.5",
+  "configuration": "zero_shot",
+  "timestamp": "2026-04-10T05:17:09.756272",
+  "num_examples": 980918,
+  "overall_accuracy": 0.23909439932797644,
+  "overall_f1": 0.16236020660910505,
+  "exact_match": 0.23909439932797644,
+  "temporal_f1": 0.9550690951401306,
+  "by_category": {
+    "ambiguity": {
+      "accuracy": 0.46799116997792495,
+      "correct": 1696,
+      "total": 3624
+    },
+    "arithmetic": {
+      "accuracy": 0.13324563655030802,
+      "correct": 4153,
+      "total": 31168
+    },
+    "causality": {
+      "accuracy": 0.5773109243697478,
+      "correct": 687,
+      "total": 1190
+    },
+    "duration": {
+      "accuracy": 0.4319160761428373,
+      "correct": 6217,
+      "total": 14394
+    },
+    "frequency": {
+      "accuracy": 0.17448141745894555,
+      "correct": 1615,
+      "total": 9256
+    },
+    "temporal_nli": {
+      "accuracy": 0.18338449105744078,
+      "correct": 103478,
+      "total": 564268
+    },
+    "temporal_ordering": {
+      "accuracy": 0.1362386255602336,
+      "correct": 8025,
+      "total": 58904
+    },
+    "temporal_relation": {
+      "accuracy": 0.3028294796841602,
+      "correct": 62054,
+      "total": 204914
+    },
+    "storytelling": {
+      "accuracy": 0.5228557823939052,
+      "correct": 35138,
+      "total": 67204
+    },
+    "typical_time": {
+      "accuracy": 0.4411832589629174,
+      "correct": 11469,
+      "total": 25996
+    }
+  },
+  "error_analysis": {
+    "temporal_extraction": 10713,
+    "hallucination": 33481,
+    "other": 702192
+  },
+  "metadata": {
+    "model": "qwen3.5",
+    "prompt_type": "zero_shot",
+    "max_new_tokens": 128,
+    "temperature": 0.0,
+    "notes": "Template \u2014 populate after running baseline evaluation",
+    "task": "zero_shot"
+  }
+}

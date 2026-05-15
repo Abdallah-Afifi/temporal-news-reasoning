@@ -1,0 +1,66 @@
+{
+  "benchmark": "timebench/zero_shot",
+  "model": "mistral",
+  "configuration": "zero_shot",
+  "timestamp": "2026-03-30T08:09:15.368835",
+  "num_examples": 21188,
+  "overall_accuracy": 0.11095903341514064,
+  "overall_f1": 0.0661773155916372,
+  "exact_match": 0.11095903341514064,
+  "temporal_f1": 0.9052907306022276,
+  "by_category": {
+    "duration": {
+      "accuracy": 0.3855656697009103,
+      "correct": 593,
+      "total": 1538
+    },
+    "situated_generation": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 115
+    },
+    "temporal_dialogue": {
+      "accuracy": 0.5096818810511756,
+      "correct": 737,
+      "total": 1446
+    },
+    "temporal_reasoning": {
+      "accuracy": 0.23720682302771856,
+      "correct": 445,
+      "total": 1876
+    },
+    "temporal_qa": {
+      "accuracy": 0.243,
+      "correct": 243,
+      "total": 1000
+    },
+    "temporal_ordering": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 4248
+    },
+    "arithmetic": {
+      "accuracy": 0.08325,
+      "correct": 333,
+      "total": 4000
+    },
+    "temporal_nli": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 6965
+    }
+  },
+  "error_analysis": {
+    "temporal_extraction": 231,
+    "hallucination": 1242,
+    "other": 17364
+  },
+  "metadata": {
+    "model": "mistral",
+    "prompt_type": "zero_shot",
+    "max_new_tokens": 128,
+    "temperature": 0.0,
+    "notes": "Template \u2014 populate after running baseline evaluation",
+    "task": "zero_shot"
+  }
+}
