@@ -1,8 +1,19 @@
 #!/bin/bash
 # run_full_finetuned_eval.sh
+#
+# Evaluates the fine-tuned LLaMA LoRA adapter on TIME / TimeBench.
+# Requires benchmark data:  python scripts/download_datasets.py time timebench
+#
+# NOTE: with --adapter-dir set, the runner now injects the TRAINING system
+# prompt (matching the fine-tuned chat format), and reports
+# prompt_type="training_format_chat" in the metadata.
 
-# Activate the python virtual environment
-source venv/bin/activate
+set -e
+
+# Activate a virtual environment if one exists (conda users: activate manually)
+if [ -f venv/bin/activate ]; then
+    source venv/bin/activate
+fi
 
 echo "================================================================="
 echo "Starting Fine-Tuned Evaluation for LLaMA-3.2-3B on TIME Benchmark"
