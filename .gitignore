@@ -61,6 +61,7 @@ data/rehearsal/
 data/combined_80_20_v*/
 data/letter_format/
 data/manual_aug/
+data/synthetic/*_v*.jsonl
 
 # ----- Model Weights (local copies from the training repo) -----
 models/
@@ -77,6 +78,7 @@ checkpoints/
 results/**/*.json
 results/**/*.csv
 results/**/*.jsonl
+results/**/report_tables.md
 results_rerun/
 !results/**/.gitkeep
 
@@ -108,6 +110,7 @@ data/cot/
 docs/session_handoff.md
 docs/session_state.md
 scripts/write_manual_cot_batch*.py
+prompts/glm_news_temporal_items.md
 
 # ----- Machine-specific operational notes (local only) -----
 TRANSFER_README.md
