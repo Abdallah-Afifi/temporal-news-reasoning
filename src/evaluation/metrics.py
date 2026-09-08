@@ -21,7 +21,7 @@ from typing import Any, Sequence
 
 import numpy as np
 from scipy.stats import kendalltau
-from sklearn.metrics import accuracy_score, f1_score as sklearn_f1
+from sklearn.metrics import f1_score as sklearn_f1
 
 # ---------------------------------------------------------------------------
 # Temporal-expression extraction helpers
@@ -82,14 +82,35 @@ def extract_temporal_expressions(text: Any) -> list[str]:
 
 
 def _normalize_answer(text: Any) -> str:
-    """Lowercase, strip whitespace/punctuation for comparison."""
-    text = _coerce_text(text)
-    text = text.lower().strip()
-    # Remove trailing punctuation
-    text = re.sub(r"[.!?,;:]+$", "", text)
-    # Collapse whitespace
-    text = re.sub(r"\s+", " ", text)
-    return text
+    """SQuAD-style answer normalization: lowercase, drop articles, strip ALL
+    punctuation (incl. internal commas), collapse whitespace.
+
+    Fixed in the Sep-3-2026 audit: the previous version kept internal
+    punctuation, so golds like ``Tuesday , 25th September , 2001`` never
+    matched predictions like ``Tuesday, 25th September, 2001`` — an
+    arm-dependent bias that inflated the v2/v3 TIME degradation.
+    """
+    text = _coerce_text(text).lower()
+    # Letter-sequence golds (MCQ: "B,C,A") must NOT have article removal —
+    # the letter "a" would be eaten and distinct sequences would collide.
+    if re.fullmatch(r"[a-d][\s,;.\-]*(?:[a-d][\s,;.\-]*)*", text.strip()):
+        text = re.sub(r"[^a-d]+", "", text)
+        return " ".join(text)
+    text = re.sub(r"\b(a|an|the)\b", " ", text)
+    text = re.sub(r"[^a-z0-9]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _normalize_references(reference: Any) -> list[str]:
+    """Normalize a gold reference into a list of acceptable answer strings.
+
+    Accepts either a single string/None or a list of alternative golds.
+    A prediction matching ANY entry counts as correct.
+    """
+    if isinstance(reference, (list, tuple)):
+        norms = [_normalize_answer(r) for r in reference if _coerce_text(r).strip()]
+        return norms if norms else [""]
+    return [_normalize_answer(reference)]
 
 
 # ---------------------------------------------------------------------------
@@ -112,19 +133,24 @@ def accuracy(predictions: Sequence[str], references: Sequence[str]) -> float:
     if len(predictions) == 0:
         return 0.0
     preds_norm = [_normalize_answer(p) for p in predictions]
-    refs_norm = [_normalize_answer(r) for r in references]
-    return accuracy_score(refs_norm, preds_norm)
+    correct = sum(
+        1 for p, r in zip(preds_norm, references) if p in _normalize_references(r)
+    )
+    return correct / len(preds_norm)
 
 
 def f1_score(predictions: Sequence[str], references: Sequence[str]) -> float:
     """Compute macro-averaged F1 score.
 
     Treats each unique answer string as a class label and computes
-    sklearn macro F1 across all classes.
+    sklearn macro F1 across all classes. References may be single strings
+    or lists of alternative golds; for multi-gold examples the *effective*
+    reference is the gold that matches the prediction (if any), else the
+    first gold — so a correct alternative is never penalized.
 
     Args:
         predictions: Model predictions.
-        references: Gold-standard answers.
+        references: Gold-standard answers (str or list[str] per example).
 
     Returns:
         Macro F1 in [0, 1].
@@ -134,10 +160,13 @@ def f1_score(predictions: Sequence[str], references: Sequence[str]) -> float:
     if len(predictions) == 0:
         return 0.0
     preds_norm = [_normalize_answer(p) for p in predictions]
-    refs_norm = [_normalize_answer(r) for r in references]
-    labels = sorted(set(refs_norm) | set(preds_norm))
+    effective_refs: list[str] = []
+    for p, r in zip(preds_norm, references):
+        refs_norm = _normalize_references(r)
+        effective_refs.append(p if p in refs_norm else refs_norm[0])
+    labels = sorted(set(effective_refs) | set(preds_norm))
     return float(
-        sklearn_f1(refs_norm, preds_norm, labels=labels, average="macro", zero_division=0)
+        sklearn_f1(effective_refs, preds_norm, labels=labels, average="macro", zero_division=0)
     )
 
 
@@ -176,20 +205,27 @@ def temporal_f1(
     f1_scores: list[float] = []
     for pred, ref in zip(predictions, references):
         pred_dates = set(d.lower() for d in extract_temporal_expressions(pred))
-        ref_dates = set(d.lower() for d in extract_temporal_expressions(ref))
-        if not ref_dates and not pred_dates:
-            f1_scores.append(1.0)  # Neither has dates → agree
-            continue
-        if not ref_dates or not pred_dates:
-            f1_scores.append(0.0)
-            continue
-        tp = len(pred_dates & ref_dates)
-        precision = tp / len(pred_dates) if pred_dates else 0.0
-        recall = tp / len(ref_dates) if ref_dates else 0.0
-        if precision + recall == 0:
-            f1_scores.append(0.0)
-        else:
-            f1_scores.append(2 * precision * recall / (precision + recall))
+        per_ref: list[float] = []
+        for ref_option in _normalize_references(ref):
+            # Re-extract from the ORIGINAL reference strings where possible
+            # (normalized refs still contain the date text).
+            ref_dates = set(
+                d.lower() for d in extract_temporal_expressions(ref_option)
+            )
+            if not ref_dates and not pred_dates:
+                per_ref.append(1.0)  # Neither has dates → agree
+                continue
+            if not ref_dates or not pred_dates:
+                per_ref.append(0.0)
+                continue
+            tp = len(pred_dates & ref_dates)
+            precision = tp / len(pred_dates)
+            recall = tp / len(ref_dates)
+            if precision + recall == 0:
+                per_ref.append(0.0)
+            else:
+                per_ref.append(2 * precision * recall / (precision + recall))
+        f1_scores.append(max(per_ref) if per_ref else 0.0)
     return float(np.mean(f1_scores))
 
 
@@ -288,7 +324,7 @@ class TemporalEvaluator:
         for pred, gold, cat in zip(predictions, gold_labels, categories):
             cat = _coerce_text(cat) or "unknown"
             cat_results[cat]["total"] += 1
-            if _normalize_answer(pred) == _normalize_answer(gold):
+            if _normalize_answer(pred) in _normalize_references(gold):
                 cat_results[cat]["correct"] += 1
         return {
             cat: {
@@ -398,11 +434,15 @@ class TemporalEvaluator:
         }
 
         for i, (pred, gold) in enumerate(zip(predictions, gold_labels)):
-            if _normalize_answer(pred) == _normalize_answer(gold):
+            if _normalize_answer(pred) in _normalize_references(gold):
                 continue  # correct — skip
 
             pred_dates = set(d.lower() for d in extract_temporal_expressions(pred))
-            gold_dates = set(d.lower() for d in extract_temporal_expressions(gold))
+            gold_dates: set[str] = set()
+            for gold_option in _normalize_references(gold):
+                gold_dates.update(
+                    d.lower() for d in extract_temporal_expressions(gold_option)
+                )
 
             # Temporal extraction error: missed gold dates
             if gold_dates and not gold_dates.issubset(pred_dates):

@@ -41,7 +41,7 @@ def _read_jsonl(path: str | Path) -> list[dict[str, Any]]:
 
 
 def _messages_to_text(messages: list[dict[str, Any]]) -> str:
-    chunks: list[str] = [  target_modules: [q_proj, k_proj, v_proj, o_proj]]
+    chunks: list[str] = []
     for msg in messages:
         role = str(msg.get("role", "user")).upper()
         content = str(msg.get("content", "")).strip()
