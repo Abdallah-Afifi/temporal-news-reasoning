@@ -20,7 +20,7 @@ from typing import Optional
 
 import torch
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -289,7 +289,7 @@ class LiveProgressCallback(TrainerCallback):
 
 def train(
     config_path: str | Path,
-    load_in_4bit_cli: bool = False,
+    load_in_4bit_cli: bool | None = None,
     dry_run: bool = False,
 ) -> None:
     config = load_yaml(config_path)
@@ -300,9 +300,14 @@ def train(
     train_data = str((_REPO_ROOT / config["train_data"]).resolve())
     val_data = str((_REPO_ROOT / config["val_data"]).resolve())
     output_dir = (_REPO_ROOT / config.get("output_dir", "checkpoints/qwen3.5-9b-model")).resolve()
+    if dry_run:
+        # Never clobber real adapters with 5-step verification runs.
+        output_dir = output_dir.with_name(output_dir.name + "_dry_run")
     progress_dir = (_REPO_ROOT / config.get("progress_dir", "experiments/finetuning/qwen3.5-9b-model/Progress")).resolve()
 
-    use_4bit = load_in_4bit_cli or config.get("load_in_4bit", False)
+    # CLI flag (if given) overrides the config; otherwise defer to config.
+    config_4bit = bool(config.get("load_in_4bit", False))
+    use_4bit = config_4bit if load_in_4bit_cli is None else load_in_4bit_cli
     preflight_check(
         data_paths=[Path(train_data), Path(val_data)],
         output_dir=output_dir,
@@ -312,7 +317,12 @@ def train(
 
     run_dir = init_progress_dir(progress_dir, config)
 
-    model_source = model_path if (Path(model_path) / "config.json").exists() else model_path
+    model_source = model_path
+    if not (Path(model_source) / "config.json").exists():
+        raise FileNotFoundError(
+            f"Qwen base model not found at '{model_source}'. "
+            f"Set a valid 'model_path' in the config."
+        )
     tokenizer = load_tokenizer(model_source)
     model = load_model(
         model_source,
@@ -323,6 +333,9 @@ def train(
 
     peft_config = build_lora_config(config)
     model = get_peft_model(model, peft_config)
+    # Frozen base embeddings + gradient checkpointing (reentrant) silently
+    # drop gradients ("element 0 of tensors does not require grad").
+    model.enable_input_require_grads()
     model.print_trainable_parameters()
 
     max_length = int(config.get("max_seq_length", 2048))
@@ -360,6 +373,7 @@ def train(
         bf16=bool(config.get("bf16", True)),
         tf32=bool(config.get("tf32", True)),
         gradient_checkpointing=bool(config.get("gradient_checkpointing", True)),
+        gradient_checkpointing_kwargs={"use_reentrant": False},
         dataloader_num_workers=int(config.get("dataloader_num_workers", 4)),
         dataloader_pin_memory=bool(config.get("dataloader_pin_memory", True)),
         report_to=config.get("report_to", []),
@@ -431,8 +445,9 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--load-in-4bit",
-        action="store_true",
-        help="Enable 4-bit QLoRA quantization (reduces VRAM).",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Force 4-bit QLoRA on/off (default: use config.yaml value).",
     )
     p.add_argument(
         "--dry-run",

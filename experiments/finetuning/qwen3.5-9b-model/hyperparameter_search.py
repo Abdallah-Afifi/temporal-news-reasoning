@@ -19,9 +19,10 @@ import os
 import json
 import argparse
 import logging
+import random
+import sys
 from pathlib import Path
 from typing import Dict, Any, Optional
-import csv
 from datetime import datetime
 
 import torch
@@ -30,13 +31,25 @@ from optuna.samplers import TPESampler
 from optuna.pruners import MedianPruner
 from transformers import (
     AutoModelForCausalLM,
-    AutoTokenizer,
     TrainingArguments,
     Trainer,
-    TrainerCallback,
+    DataCollatorForSeq2Seq,
 )
 from peft import get_peft_model, LoraConfig, TaskType
 import pandas as pd
+
+_REPO_ROOT = Path(__file__).resolve().parents[3]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+# NOTE: this directory name contains dots/dashes so it is NOT importable as a
+# package — the HPO script must be run as a file from the repo root. We reuse
+# the LLaMA data pipeline (same one qwen train.py uses) for formatting.
+from experiments.finetuning.LLaMA.data_loader import (
+    load_tokenizer as load_train_tokenizer,
+    normalize_and_tokenize,
+)
+from experiments.finetuning.shared.utils import read_jsonl
 
 # Configure logging
 logging.basicConfig(
@@ -69,94 +82,59 @@ class HyperparameterSearcher:
         self.dtype = dtype
         
         self.tokenizer = None
+        self._train_records = None
+        self._val_records = None
         self.train_dataset = None
         self.val_dataset = None
         self.trial_results = []
-        
+
         logger.info(f"Model: {model_path}")
         logger.info(f"Data: {Path(data_root) / 'data/combined_80_20_split'}")
         logger.info(f"Results directory: {self.results_dir}")
         logger.info(f"Number of trials: {n_trials}")
-    
+
     def load_datasets(self):
-        """Load QA datasets from combined_80_20_split."""
+        """Load + subsample raw QA records from combined_80_20_split."""
         if self.train_dataset is not None:
             return  # Already loaded
-        
-        import jsonlines
-        
+
         train_path = Path(self.data_root) / "data/combined_80_20_split/train.jsonl"
         val_path = Path(self.data_root) / "data/combined_80_20_split/val.jsonl"
-        
+
         if not train_path.exists() or not val_path.exists():
             raise FileNotFoundError(f"Dataset not found at {train_path} or {val_path}")
-        
-        # Load training data
-        train_examples = []
-        with jsonlines.open(train_path) as reader:
-            for obj in reader:
-                train_examples.append(obj)
-        
-        # Load validation data
-        val_examples = []
-        with jsonlines.open(val_path) as reader:
-            for obj in reader:
-                val_examples.append(obj)
-        
-        logger.info(f"Loaded {len(train_examples)} training examples")
-        logger.info(f"Loaded {len(val_examples)} validation examples")
-        
-        # Format datasets
-        self.train_dataset = self._format_examples(train_examples)
-        self.val_dataset = self._format_examples(val_examples)
-    
-    def _format_examples(self, examples):
-        """Format QA examples to training text."""
-        formatted = []
-        for ex in examples:
-            question = ex.get('question', '')
-            answers = ex.get('answers', [])
-            subject = ex.get('subject', '')
-            
-            # Format as QA pairs
-            answers_text = "\n".join([f"  - {ans}" for ans in answers])
-            
-            text = f"""Question: {question}
-Subject: {subject}
-Answers:
-{answers_text}"""
-            
-            formatted.append(text)
-        
-        return formatted
-    
+
+        train_records = read_jsonl(train_path)
+        val_records = read_jsonl(val_path)
+
+        if len(train_records) > 2000:
+            train_records = random.Random(self.seed).sample(train_records, 2000)
+        if len(val_records) > 500:
+            val_records = random.Random(self.seed + 1).sample(val_records, 500)
+
+        logger.info(f"Loaded {len(train_records)} training records")
+        logger.info(f"Loaded {len(val_records)} validation records")
+
+        self._train_records = train_records
+        self._val_records = val_records
+
     def tokenize_datasets(self, max_seq_length: int = 2048):
-        """Tokenize datasets."""
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            self.model_path,
-            trust_remote_code=True,
+        """Tokenize with the REAL training pipeline (chat template + label
+        masking + all data schemas), identical to qwen train.py.
+
+        Note: the previous implementation returned token tensors that were
+        discarded, and trained on raw strings — it could not work.
+        """
+        self.tokenizer = load_train_tokenizer(self.model_path)
+
+        self.train_dataset = normalize_and_tokenize(
+            self._train_records, self.tokenizer, max_seq_length,
         )
-        
-        # Tokenize
-        train_tokens = [
-            self.tokenizer.encode(
-                text,
-                max_length=max_seq_length,
-                truncation=True,
-                return_tensors="pt"
-            ) for text in self.train_dataset
-        ]
-        
-        val_tokens = [
-            self.tokenizer.encode(
-                text,
-                max_length=max_seq_length,
-                truncation=True,
-                return_tensors="pt"
-            ) for text in self.val_dataset
-        ]
-        
-        return train_tokens, val_tokens
+        self.val_dataset = normalize_and_tokenize(
+            self._val_records, self.tokenizer, max_seq_length,
+        )
+        logger.info(f"Tokenized: train={len(self.train_dataset)}, val={len(self.val_dataset)} examples")
+        return self.train_dataset, self.val_dataset
     
     def create_model(self, lora_r: int = 16):
         """Create Qwen3.5-9B model with LoRA."""
@@ -310,12 +288,18 @@ Answers:
                 report_to=[],
             )
             
-            # Create trainer
+            # Create trainer — collator pads pre-tokenized input_ids/labels
+            data_collator = DataCollatorForSeq2Seq(
+                tokenizer=self.tokenizer,
+                padding=True,
+            )
+
             trainer = Trainer(
                 model=model,
                 args=training_args,
                 train_dataset=self.train_dataset,
                 eval_dataset=self.val_dataset,
+                data_collator=data_collator,
             )
             
             # Train
