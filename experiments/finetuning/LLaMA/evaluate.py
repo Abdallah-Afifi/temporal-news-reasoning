@@ -3,43 +3,42 @@ experiments/finetuning/LLaMA/evaluate.py
 ================================
 Evaluation script for the fine-tuned LLaMA-3.2-3B LoRA adapter.
 
-Runs the model on benchmark datasets (TIME / TIMEBENCH / TRAM) and computes:
-  - Exact-match accuracy
-  - Macro-averaged token-F1
-  - Per-category accuracy breakdown
-  - Per-difficulty breakdown
-  - Temporal consistency score (for self-consistency experiments)
+Two evaluation modes:
+
+1. **JSONL mode (default, recommended)** — evaluate on a data split in the
+   combined_80_20_split format (TLQA / TimeQA schemas). Prompts are built
+   with the SAME chat template used during training, so eval-time inputs
+   are in-distribution.
+2. **Benchmark mode** — TIME / TIMEBENCH / TRAM via BenchmarkLoader.
+   NOTE: the benchmark loaders are not implemented yet and the benchmark
+   files are not in the repo, so this mode will raise a clear error.
 
 Usage
 -----
 From the repo root::
 
-    # Evaluate final adapter on TIME benchmark
-    python experiments/finetuning/LLaMA/evaluate.py --stage final --benchmark time
+    # Evaluate on the held-out combined validation split (default)
+    python experiments/finetuning/LLaMA/evaluate.py
 
-    # Evaluate a specific stage checkpoint on TIMEBENCH
-    python experiments/finetuning/LLaMA/evaluate.py --stage stage3_complex --benchmark timebench
+    # Custom data file / cap examples / custom output
+    python experiments/finetuning/LLaMA/evaluate.py \\
+        --data data/combined_80_20_split/val.jsonl --max-examples 100 \\
+        --output results/my_llama_eval.json
 
-    # Limit examples for quick testing
-    python experiments/finetuning/LLaMA/evaluate.py --max-examples 100
-
-    # Save results to a custom path
-    python experiments/finetuning/LLaMA/evaluate.py --output results/my_llama_eval.json
+    # Benchmark mode (requires implemented loader + downloaded data)
+    python experiments/finetuning/LLaMA/evaluate.py --benchmark time
 """
 
 from __future__ import annotations
 
 import argparse
 import sys
-import time
-from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 
 import torch
-from tqdm import tqdm
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -47,20 +46,23 @@ from peft import PeftModel
 from transformers import AutoModelForCausalLM
 
 from experiments.finetuning.LLaMA.data_loader import load_tokenizer, HF_MODEL_NAME, MODEL_KEY
-from experiments.finetuning.shared.evaluate_utils import TemporalEvaluator
-from experiments.finetuning.shared.prompt_templates import build_temporal_cot_prompt
-from experiments.finetuning.shared.utils import load_yaml, setup_logger, save_json
+from experiments.finetuning.shared.eval_runner import (
+    load_eval_examples_from_jsonl,
+    run_evaluation,
+)
+from experiments.finetuning.shared.utils import setup_logger
 
 # ---------------------------------------------------------------------------
 log = setup_logger("llama.evaluate")
 
 DEFAULT_CHECKPOINT = str(_REPO_ROOT / "checkpoints" / "llama" / "final")
+DEFAULT_VAL_DATA   = str(_REPO_ROOT / "data" / "combined_80_20_split" / "val.jsonl")
 DEFAULT_CONFIG     = str(Path(__file__).parent / "config.yaml")
 RESULTS_DIR        = Path(__file__).parent / "results"
 
 
 # ---------------------------------------------------------------------------
-# Inference helper
+# Model loading
 # ---------------------------------------------------------------------------
 
 def load_finetuned_model(
@@ -70,14 +72,8 @@ def load_finetuned_model(
 ) -> tuple:
     """Load the base LLaMA model and attach the LoRA adapter.
 
-    We load the adapter with ``is_trainable=False`` so weight merging and
-    inference optimisations can be applied without accidentally continuing
-    training.
-
-    Args:
-        base_model_name: HuggingFace ID or local path to the base model.
-        adapter_path:    Path to the saved LoRA adapter directory.
-        load_in_4bit:    Enable bitsandbytes 4-bit inference.
+    The adapter is loaded with ``is_trainable=False`` so inference
+    optimisations can be applied without accidentally continuing training.
 
     Returns:
         Tuple of (model, tokenizer).
@@ -105,39 +101,8 @@ def load_finetuned_model(
     return model, tokenizer
 
 
-@torch.no_grad()
-def generate_answer_batch(
-    model,
-    tokenizer,
-    prompts: list[str],
-    max_new_tokens: int = 256,
-    temperature: float = 0.1,
-    do_sample: bool = False,
-) -> list[str]:
-    original_padding_side = tokenizer.padding_side
-    tokenizer.padding_side = "left"
-    
-    inputs = tokenizer(prompts, return_tensors="pt", padding=True, truncation=True, max_length=4096).to(model.device)
-
-    gen_kwargs: dict = {
-        "max_new_tokens": max_new_tokens,
-        "do_sample": do_sample,
-        "pad_token_id": tokenizer.eos_token_id,
-        "eos_token_id": tokenizer.eos_token_id,
-    }
-    if do_sample:
-        gen_kwargs["temperature"] = temperature
-        gen_kwargs["top_p"] = 0.95
-
-    outputs = model.generate(**inputs, **gen_kwargs)
-
-    new_tokens = outputs[:, inputs["input_ids"].shape[1]:]
-    tokenizer.padding_side = original_padding_side
-    return [tokenizer.decode(t, skip_special_tokens=True).strip() for t in new_tokens]
-
-
 # ---------------------------------------------------------------------------
-# Benchmark loading helper
+# Benchmark loading (stub-aware)
 # ---------------------------------------------------------------------------
 
 def load_benchmark_examples(
@@ -145,19 +110,22 @@ def load_benchmark_examples(
     task: Optional[str] = None,
     max_examples: Optional[int] = None,
 ) -> list:
-    """Load benchmark examples using the project's BenchmarkLoader.
+    """Load benchmark examples via the project's BenchmarkLoader.
 
-    Args:
-        benchmark:    One of ``"time"``, ``"timebench"``, ``"tram"``.
-        task:         Optional sub-task filter.
-        max_examples: Cap the number of examples (useful for quick tests).
-
-    Returns:
-        List of :class:`src.data.data_loader.TemporalExample` objects.
+    Raises a clear error until the benchmark loaders are implemented and
+    the benchmark data has been downloaded.
     """
     from src.data.data_loader import BenchmarkLoader
     loader = BenchmarkLoader(str(_REPO_ROOT / "data" / "benchmarks"))
-    examples = loader.load(benchmark, task=task)
+    try:
+        examples = loader.load(benchmark, task=task)
+    except (NotImplementedError, FileNotFoundError) as exc:
+        raise NotImplementedError(
+            f"Benchmark '{benchmark}' cannot be evaluated yet: the "
+            f"BenchmarkLoader is a stub and/or the benchmark data is not "
+            f"downloaded. Use JSONL mode instead: "
+            f"python experiments/finetuning/LLaMA/evaluate.py --data {DEFAULT_VAL_DATA}"
+        ) from exc
     if max_examples:
         examples = examples[:max_examples]
     log.info("Benchmark '%s': loaded %d examples.", benchmark, len(examples))
@@ -165,124 +133,87 @@ def load_benchmark_examples(
 
 
 # ---------------------------------------------------------------------------
-# Main evaluation loop
+# Main evaluation entrypoint
 # ---------------------------------------------------------------------------
 
 def evaluate(
     adapter_path: str,
     base_model_name: str = HF_MODEL_NAME,
-    benchmark: str = "time",
+    benchmark: Optional[str] = None,
+    data_path: str = DEFAULT_VAL_DATA,
     task: Optional[str] = None,
     stage_name: str = "final",
     max_examples: Optional[int] = None,
     output_path: Optional[str] = None,
     load_in_4bit: bool = False,
     max_new_tokens: int = 256,
+    batch_size: int = 4,
 ) -> None:
-    """Run full evaluation of the fine-tuned LLaMA adapter.
+    """Run evaluation of the fine-tuned LLaMA adapter.
 
     Args:
         adapter_path:    Path to the LoRA adapter checkpoint directory.
         base_model_name: HuggingFace ID or local path of the base model.
-        benchmark:       Benchmark to evaluate on (time|timebench|tram).
-        task:            Optional sub-task filter.
+        benchmark:       If set, benchmark mode (time|timebench|tram).
+        data_path:       JSONL mode input (combined_80_20_split format).
+        task:            Optional benchmark sub-task filter.
         stage_name:      Stage label for the evaluation report.
         max_examples:    Cap examples for quick testing.
         output_path:     Where to save the JSON report.
         load_in_4bit:    Enable 4-bit inference quantization.
         max_new_tokens:  Token budget for each generated answer.
+        batch_size:      Examples per generation call.
     """
     model, tokenizer = load_finetuned_model(base_model_name, adapter_path, load_in_4bit)
 
-    examples = load_benchmark_examples(benchmark, task, max_examples)
-
-    predictions: list[str] = []
-    gold_labels: list[str] = []
-    categories:  list[str] = []
-    difficulties: list[Optional[str]] = []
-
-    # Save report
-    if output_path is None:
-        benchmark_lower = benchmark.lower()
-        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-        benchmark_dir = RESULTS_DIR / benchmark_lower
-        benchmark_dir.mkdir(parents=True, exist_ok=True)
-        
-        output_path = str(benchmark_dir / f"llama_report.json")
-        md_path = str(benchmark_dir / "report_table.md")
-        progress_path = benchmark_dir / "llama_live_progress.log"
+    if benchmark is not None:
+        benchmark_examples = load_benchmark_examples(benchmark, task, max_examples)
+        # Convert benchmark examples to the shared eval format.
+        examples = [
+            {
+                "question": ex.question,
+                "context": ex.context or "",
+                "golds": (
+                    [str(a) for a in ex.answer]
+                    if isinstance(ex.answer, list) else [str(ex.answer)]
+                ),
+                "source": ex.temporal_type or benchmark,
+            }
+            for ex in benchmark_examples
+        ]
+        benchmark_label = benchmark.lower()
     else:
-        # If custom path is provided, try to make a corresponding md path
+        examples = load_eval_examples_from_jsonl(data_path, max_examples)
+        benchmark_label = "combined_val"
+        log.info("Loaded %d eval examples from %s", len(examples), data_path)
+
+    # Resolve output paths
+    if output_path is None:
+        out_dir = RESULTS_DIR / benchmark_label
+        out_dir.mkdir(parents=True, exist_ok=True)
+        output_path = str(out_dir / "llama_report.json")
+        md_path = str(out_dir / "report_table.md")
+        progress_path = out_dir / "llama_live_progress.log"
+    else:
         output_path_obj = Path(output_path)
         output_path_obj.parent.mkdir(parents=True, exist_ok=True)
         md_path = str(output_path_obj.parent / "report_table.md")
         progress_path = output_path_obj.parent / "llama_live_progress.log"
 
-    log.info("Running inference on %d examples…", len(examples))
-    
-    batch_size = 4
-    def log_eval_progress(prog_file, current: int, total: int, start_t: float):
-        now = datetime.now()
-        elapsed_sec = time.time() - start_t
-        if elapsed_sec == 0: elapsed_sec = 0.001
-        rate = current / elapsed_sec
-        eta_sec = (total - current) / rate if rate > 0 else 0
-        pct = (current / total) * 100
-        
-        msg = f"{now.strftime('%Y-%m-%d %H:%M:%S')} | progress={current}/{total} ({pct:6.3f}%) | run={current}/{total} ({pct:6.3f}%) | rate={rate:6.2f} ex/s | elapsed={timedelta(seconds=int(elapsed_sec))} | eta={timedelta(seconds=int(eta_sec))}\n"
-        with open(prog_file, "a") as f:
-            f.write(msg)
-
-    with open(progress_path, "w") as f:
-        f.write(f"Starting evaluation on {len(examples)} examples (Batch size = {batch_size})...\n")
-
-    start_time = time.time()
-    for i in range(0, len(examples), batch_size):
-        batch_ex = examples[i : i + batch_size]
-        
-        prompts = [
-            build_temporal_cot_prompt(
-                model_key=MODEL_KEY,
-                question=ex.question,
-                context=ex.context or "",
-            )
-            for ex in batch_ex
-        ]
-        
-        batch_preds = generate_answer_batch(model, tokenizer, prompts, max_new_tokens=max_new_tokens)
-        predictions.extend(batch_preds)
-
-        for ex in batch_ex:
-            gold = ex.answer[0] if isinstance(ex.answer, list) else ex.answer
-            gold_labels.append(str(gold))
-            categories.append(ex.temporal_type or "unknown")
-            difficulties.append(ex.difficulty)
-            
-        current_idx = i + len(batch_ex)
-        if (i % (batch_size * 5) == 0) or (current_idx >= len(examples)):
-            log_eval_progress(progress_path, current_idx, len(examples), start_time)
-
-    # Compute metrics
-    evaluator = TemporalEvaluator(
+    run_evaluation(
+        model=model,
+        tokenizer=tokenizer,
         model_key=MODEL_KEY,
-        stage=stage_name,
-        benchmark=benchmark,
+        examples=examples,
+        stage_name=stage_name,
+        benchmark_label=benchmark_label,
+        output_path=output_path,
+        md_path=md_path,
+        progress_path=progress_path,
+        batch_size=batch_size,
+        max_new_tokens=max_new_tokens,
+        logger=log,
     )
-    result = evaluator.evaluate(predictions, gold_labels, categories, difficulties)
-    evaluator.print_report(result)
-
-    # Save report
-    evaluator.save(result, output_path)
-    evaluator.save_markdown(result, md_path)
-
-    # Also save raw predictions alongside the report for error analysis.
-    raw_preds_path = Path(output_path).with_name("predictions.json")
-    save_json(
-        [{"question": ex.question, "prediction": p, "gold": g, "category": c}
-         for ex, p, g, c in zip(examples, predictions, gold_labels, categories)],
-        raw_preds_path,
-    )
-    log.info("Raw predictions saved: %s", raw_preds_path)
 
 
 # ---------------------------------------------------------------------------
@@ -295,11 +226,14 @@ def _build_parser() -> argparse.ArgumentParser:
                    help="Path to the LoRA adapter directory.")
     p.add_argument("--base-model", default=HF_MODEL_NAME,
                    help="Base model name or local path.")
-    p.add_argument("--benchmark", default="time",
-                   choices=["time", "timebench", "tram"],
-                   help="Benchmark to evaluate on.")
+    mode = p.add_mutually_exclusive_group()
+    mode.add_argument("--benchmark", default=None,
+                      choices=["time", "timebench", "tram"],
+                      help="Benchmark to evaluate on (requires loader + data).")
+    mode.add_argument("--data", default=DEFAULT_VAL_DATA,
+                      help="JSONL eval data in combined_80_20_split format (default mode).")
     p.add_argument("--task", default=None,
-                   help="Sub-task filter (e.g. 'TimeQA' for TIMEBENCH).")
+                   help="Sub-task filter (benchmark mode only).")
     p.add_argument("--stage", default="final",
                    help="Stage label for the report (e.g. 'stage3_complex').")
     p.add_argument("--max-examples", type=int, default=None,
@@ -310,6 +244,8 @@ def _build_parser() -> argparse.ArgumentParser:
                    help="Enable 4-bit inference (reduces VRAM).")
     p.add_argument("--max-new-tokens", type=int, default=256,
                    help="Max tokens per generation call.")
+    p.add_argument("--batch-size", type=int, default=4,
+                   help="Examples per generation batch.")
     return p
 
 
@@ -319,10 +255,12 @@ if __name__ == "__main__":
         adapter_path=args.adapter_path,
         base_model_name=args.base_model,
         benchmark=args.benchmark,
+        data_path=args.data,
         task=args.task,
         stage_name=args.stage,
         max_examples=args.max_examples,
         output_path=args.output,
         load_in_4bit=args.load_in_4bit,
         max_new_tokens=args.max_new_tokens,
+        batch_size=args.batch_size,
     )

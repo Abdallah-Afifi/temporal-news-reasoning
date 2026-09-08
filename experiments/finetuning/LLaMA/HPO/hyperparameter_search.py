@@ -20,6 +20,7 @@ import json
 import argparse
 import logging
 import random
+import sys
 from pathlib import Path
 from typing import Dict, Any, Optional
 from datetime import datetime
@@ -30,15 +31,22 @@ from optuna.samplers import TPESampler
 from optuna.pruners import MedianPruner
 from transformers import (
     AutoModelForCausalLM,
-    AutoTokenizer,
     TrainingArguments,
     Trainer,
+    DataCollatorForSeq2Seq,
 )
 from peft import get_peft_model, LoraConfig, TaskType
-from datasets import Dataset
-from transformers import DataCollatorForLanguageModeling
 import pandas as pd
-import jsonlines
+
+_REPO_ROOT = Path(__file__).resolve().parents[3]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from experiments.finetuning.LLaMA.data_loader import (
+    load_tokenizer as load_llama_tokenizer,
+    normalize_and_tokenize,
+)
+from experiments.finetuning.shared.utils import read_jsonl
 
 # Configure logging
 logging.basicConfig(
@@ -82,6 +90,8 @@ class LLaMAHyperparameterSearcher:
         self.live_report_path = self.results_dir / "live_report.md"
         
         self.tokenizer = None
+        self._train_records = None
+        self._val_records = None
         self.train_dataset = None
         self.val_dataset = None
         self.trial_results = []
@@ -97,88 +107,51 @@ class LLaMAHyperparameterSearcher:
         logger.info(f"Fixed LoRA rank: {lora_r}")
     
     def load_datasets(self):
-        """Load QA datasets from combined_80_20_split."""
+        """Load + subsample raw QA records from combined_80_20_split.
+
+        Keeps the records in RAW form here; ``tokenize_datasets`` applies the
+        SAME normalization + chat-template formatting + label masking as the
+        real training pipeline, so the HPO objective matches training.
+        """
         if self.train_dataset is not None:
             return  # Already loaded
-        
+
         train_path = Path(self.data_root) / "data/combined_80_20_split/train.jsonl"
         val_path = Path(self.data_root) / "data/combined_80_20_split/val.jsonl"
-        
+
         if not train_path.exists() or not val_path.exists():
             raise FileNotFoundError(f"Dataset not found at {train_path} or {val_path}")
-        
-        # Load training data
-        train_examples = []
-        with jsonlines.open(train_path) as reader:
-            for obj in reader:
-                train_examples.append(obj)
-        
-        # Load validation data
-        val_examples = []
-        with jsonlines.open(val_path) as reader:
-            for obj in reader:
-                val_examples.append(obj)
 
-        if len(train_examples) > self.max_train_examples:
-            train_examples = random.Random(self.seed).sample(train_examples, self.max_train_examples)
-        if len(val_examples) > self.max_val_examples:
-            val_examples = random.Random(self.seed + 1).sample(val_examples, self.max_val_examples)
-        
-        logger.info(f"Loaded {len(train_examples)} training examples")
-        logger.info(f"Loaded {len(val_examples)} validation examples")
-        
-        # Format datasets
-        self.train_dataset = self._format_examples(train_examples)
-        self.val_dataset = self._format_examples(val_examples)
-    
-    def _format_examples(self, examples):
-        """Format QA examples to training text."""
-        formatted = []
-        for ex in examples:
-            question = ex.get('question', '')
-            answers = ex.get('answers', [])
-            subject = ex.get('subject', '')
-            
-            # Format as QA pairs
-            answers_text = "\n".join([f"  - {ans}" for ans in answers])
-            
-            text = f"""Question: {question}
-Subject: {subject}
-Answers:
-{answers_text}"""
-            
-            formatted.append(text)
-        
-        return formatted
-    
+        train_records = read_jsonl(train_path)
+        val_records = read_jsonl(val_path)
+
+        if len(train_records) > self.max_train_examples:
+            train_records = random.Random(self.seed).sample(train_records, self.max_train_examples)
+        if len(val_records) > self.max_val_examples:
+            val_records = random.Random(self.seed + 1).sample(val_records, self.max_val_examples)
+
+        logger.info(f"Loaded {len(train_records)} training records")
+        logger.info(f"Loaded {len(val_records)} validation records")
+
+        self._train_records = train_records
+        self._val_records = val_records
+
     def tokenize_datasets(self):
-        """Tokenize datasets."""
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            self.model_path,
-            trust_remote_code=False,
+        """Tokenize with the real training pipeline (chat template + label masking).
+
+        Handles all three data schemas (TLQA / TimeQA; Temprel skipped) and
+        produces ``input_ids`` / ``attention_mask`` / ``labels`` with prompt
+        tokens masked to -100 — identical to what ``train.py`` trains on.
+        """
+        self.tokenizer = load_llama_tokenizer(self.model_path)
+
+        self.train_dataset = normalize_and_tokenize(
+            self._train_records, self.tokenizer, self.max_seq_length,
         )
-        if self.tokenizer.pad_token is None:
-            self.tokenizer.pad_token = self.tokenizer.eos_token
-        
-        def tokenize_fn(examples):
-            """Tokenize function for HF Dataset."""
-            tokens = self.tokenizer(
-                examples['text'],
-                max_length=self.max_seq_length,
-                truncation=True,
-                padding='max_length',
-            )
-            # For CLM, set labels = input_ids
-            tokens['labels'] = tokens['input_ids'].copy()
-            return tokens
-        
-        # Convert to HF Dataset format
-        train_data = Dataset.from_dict({'text': self.train_dataset})
-        val_data = Dataset.from_dict({'text': self.val_dataset})
-        
-        # Tokenize
-        self.train_dataset = train_data.map(tokenize_fn, batched=True, remove_columns=['text'])
-        self.val_dataset = val_data.map(tokenize_fn, batched=True, remove_columns=['text'])
+        self.val_dataset = normalize_and_tokenize(
+            self._val_records, self.tokenizer, self.max_seq_length,
+        )
+        logger.info(f"Tokenized: train={len(self.train_dataset)}, val={len(self.val_dataset)} examples")
     
     def create_model(self, lora_r: int = 16):
         """Create LLaMA-3.2-3B model with LoRA."""
@@ -374,10 +347,11 @@ Answers:
                 report_to=[],
             )
             
-            # Create trainer
-            data_collator = DataCollatorForLanguageModeling(
+            # Create trainer — collator pads pre-tokenized input_ids/labels
+            # (labels keep their -100 prompt mask; pads get -100 too)
+            data_collator = DataCollatorForSeq2Seq(
                 tokenizer=self.tokenizer,
-                mlm=False,  # Causal LM, not MLM
+                padding=True,
             )
             
             trainer = Trainer(

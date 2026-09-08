@@ -10,8 +10,8 @@ seed: 42
 dtype: bfloat16
 
 # ── Data ───────────────────────────────────────────────
-train_data: data/combined_80_20_split/train.jsonl
-val_data: data/combined_80_20_split/val.jsonl
+train_data: data/combined_80_20_v2/train.jsonl
+val_data: data/combined_80_20_v2/val.jsonl
 # 2048 for cross-model comparability with Mistral/Qwen.
 # NOTE: the archived LLaMA checkpoint was trained with max_seq_length=1024.
 max_seq_length: 2048
@@ -67,7 +67,7 @@ target_modules:
 load_in_4bit: false
 
 # ── Output ───────────────────────────────────────────
-output_dir: checkpoints/llama
+output_dir: checkpoints/llama_v2
 progress_dir: experiments/finetuning/LLaMA/Progress
 
 # ── Reporting ────────────────────────────────────────

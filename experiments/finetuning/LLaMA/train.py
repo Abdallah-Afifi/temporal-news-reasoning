@@ -45,7 +45,7 @@ from typing import Optional
 import torch
 
 # Ensure repo root is on sys.path
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -88,8 +88,15 @@ def load_model(
     model_name_or_path: str,
     dtype: str = "bfloat16",
     load_in_4bit: bool = False,
+    attn_implementation: str = "sdpa",
 ) -> AutoModelForCausalLM:
-    """Load the LLaMA base model with optional 4-bit quantization."""
+    """Load the LLaMA base model with optional 4-bit quantization.
+
+    ``attn_implementation`` selects the attention kernel. "sdpa" is PyTorch's
+    fused implementation: same arithmetic as "eager", materially faster, and
+    it needs no build step (flash-attention 2 would require nvcc, which this
+    host does not have).
+    """
     dtype_map = {
         "bfloat16": torch.bfloat16, "bf16": torch.bfloat16,
         "float16":  torch.float16,  "fp16": torch.float16,
@@ -100,6 +107,7 @@ def load_model(
     load_kwargs: dict = {
         "torch_dtype": torch_dtype,
         "device_map": "auto",
+        "attn_implementation": attn_implementation,
     }
 
     if load_in_4bit:
@@ -328,14 +336,15 @@ class LiveProgressCallback(TrainerCallback):
 
 def train(
     config_path: str | Path,
-    load_in_4bit: bool = False,
+    load_in_4bit: Optional[bool] = None,
     dry_run: bool = False,
+    max_steps_override: int | None = None,
 ) -> None:
     """Run the flat LLaMA LoRA fine-tuning pipeline.
 
     Args:
         config_path:  Path to ``experiments/finetuning/LLaMA/config.yaml``.
-        load_in_4bit: Enable 4-bit QLoRA quantization.
+        load_in_4bit: Force-enable/disable 4-bit QLoRA (None = use config).
         dry_run:      Run only 5 training steps (pipeline verification).
     """
     # ── Load config ───────────────────────────────────────────────
@@ -348,10 +357,15 @@ def train(
     train_data = str((_REPO_ROOT / config["train_data"]).resolve())
     val_data   = str((_REPO_ROOT / config["val_data"]).resolve())
     output_dir = (_REPO_ROOT / config.get("output_dir", "checkpoints/llama")).resolve()
+    if dry_run:
+        # Never clobber real adapters with 5-step verification runs.
+        output_dir = output_dir.with_name(output_dir.name + "_dry_run")
     progress_dir = (_REPO_ROOT / config.get("progress_dir", "experiments/finetuning/LLaMA/Progress")).resolve()
 
     # ── Pre-flight ────────────────────────────────────────────────
-    use_4bit = load_in_4bit or config.get("load_in_4bit", False)
+    # CLI flag (if given) overrides the config; otherwise defer to config.
+    config_4bit = bool(config.get("load_in_4bit", False))
+    use_4bit = config_4bit if load_in_4bit is None else load_in_4bit
     preflight_check(
         data_paths=[Path(train_data), Path(val_data)],
         output_dir=output_dir,
@@ -365,11 +379,20 @@ def train(
     # ── Load tokenizer & model ────────────────────────────────────
     model_source = model_path if (Path(model_path) / "config.json").exists() else HF_MODEL_NAME
     tokenizer = load_tokenizer(model_source)
-    model = load_model(model_source, dtype=config.get("dtype", "bfloat16"), load_in_4bit=use_4bit)
+    model = load_model(
+        model_source,
+        dtype=config.get("dtype", "bfloat16"),
+        load_in_4bit=use_4bit,
+        attn_implementation=config.get("attn_implementation", "sdpa"),
+    )
 
     # ── Apply LoRA ────────────────────────────────────────────────
     peft_config = build_lora_config(config)
     model = get_peft_model(model, peft_config)
+    # Frozen base embeddings + gradient checkpointing (reentrant) silently
+    # drop gradients ("element 0 of tensors does not require grad").
+    # Make embedding outputs require grad so checkpointed blocks backprop.
+    model.enable_input_require_grads()
     model.print_trainable_parameters()
 
     # ── Load & tokenise data ──────────────────────────────────────
@@ -385,6 +408,21 @@ def train(
     # ── Training arguments ────────────────────────────────────────
     epochs = int(config.get("num_train_epochs", 3))
     max_steps = 5 if dry_run else -1
+    if max_steps_override:
+        max_steps = int(max_steps_override)
+        output_dir = output_dir.with_name(output_dir.name + "_pilot")
+        epochs = 1  # a step cap with 3 epochs would just be ignored
+        # A pilot measures TRAINING throughput only. Without these, the
+        # trainer runs a full evaluation over the whole val set after the
+        # capped run -- on v7 that is 6,636 rows at eval-batch 2 = 3,319
+        # steps, roughly 24 MINUTES, against a 9-minute 60-step measurement.
+        # It also wrote a ~300 MB checkpoint nobody wants. Measured on the
+        # 2026-09-08 pilot before this fix.
+        config = dict(config)
+        config["eval_strategy"] = "no"
+        config["save_strategy"] = "no"
+        config["load_best_model_at_end"] = False
+        config["early_stopping_patience"] = 0
 
     training_args = TrainingArguments(
         output_dir=str(output_dir),
@@ -409,6 +447,21 @@ def train(
         bf16=bool(config.get("bf16", True)),
         tf32=bool(config.get("tf32", True)),
         gradient_checkpointing=bool(config.get("gradient_checkpointing", True)),
+        gradient_checkpointing_kwargs={"use_reentrant": False},
+        # Length-grouped batching. HF's LengthGroupedSampler sorts within a
+        # large megabatch and shuffles the megabatches, i.e. the
+        # bucket-then-shuffle recipe -- so batches are length-homogeneous
+        # without becoming content-homogeneous.
+        #
+        # Measured on v6's mixture (docs/performance_review_2026_09_07.md):
+        # padding waste at micro-batch 2 is 40.6% in random order and 0.5%
+        # length-sorted, so this is worth up to ~40% of training compute.
+        #
+        # DEFAULT FALSE so v1-v6 remain bit-reproducible. Turning it on
+        # changes which examples share an optimizer step -- equivalent to a
+        # reseed, not a recipe change (LR, epochs, batch shape, LoRA rank all
+        # untouched) -- but it is a change, so it is opt-in per config.
+        group_by_length=bool(config.get("group_by_length", False)),
         dataloader_num_workers=int(config.get("dataloader_num_workers", 4)),
         dataloader_pin_memory=bool(config.get("dataloader_pin_memory", True)),
         report_to=config.get("report_to", []),
@@ -440,7 +493,7 @@ def train(
 
     log.info("=" * 70)
     log.info("Starting training | %d examples | %d epochs | LR=%.2e",
-             len(train_ds), epochs, float(config.get("learning_rate", 7.31e-5)))
+             len(train_ds), epochs, float(config.get("learning_rate", 4.62e-4)))
     log.info("=" * 70)
     print_gpu_memory(log)
 
@@ -492,13 +545,23 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--load-in-4bit",
-        action="store_true",
-        help="Enable 4-bit QLoRA quantization (reduces VRAM ~40%%).",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Force 4-bit QLoRA on/off (default: use config.yaml value).",
     )
     p.add_argument(
         "--dry-run",
         action="store_true",
         help="Run only 5 training steps (pipeline verification).",
+    )
+    p.add_argument(
+        "--max-steps",
+        type=int,
+        default=None,
+        help="Stop after N steps and write to <output_dir>_pilot. For "
+             "throughput/OOM pilots: --dry-run's 5 steps catch an OOM (v4's "
+             "hit on step 1) but are too warmup-dominated to time. Does "
+             "nothing unless passed, so normal runs are unaffected.",
     )
     return p
 
@@ -509,4 +572,5 @@ if __name__ == "__main__":
         config_path=args.config,
         load_in_4bit=args.load_in_4bit,
         dry_run=args.dry_run,
+        max_steps_override=args.max_steps,
     )

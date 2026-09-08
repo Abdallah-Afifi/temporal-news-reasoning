@@ -23,7 +23,7 @@ from typing import Optional
 from datasets import Dataset
 from transformers import AutoTokenizer
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -82,6 +82,20 @@ def load_tokenizer(
 # Record normalisation  (3 schemas → {question, context, answer})
 # ---------------------------------------------------------------------------
 
+def _first_present(record: dict, *keys: str):
+    """Return the value of the first key present with a non-empty value.
+
+    Builders have written the answer list under different keys across data
+    versions — v3 emitted TLQA answers as ``targets`` only — so each branch
+    checks every known key instead of one canonical name.
+    """
+    for key in keys:
+        value = record.get(key)
+        if value not in (None, "", [], {}):
+            return value
+    return []
+
+
 def normalize_record(record: dict) -> Optional[dict]:
     """Convert a raw JSONL record to ``{question, context, answer}``.
 
@@ -98,12 +112,17 @@ def normalize_record(record: dict) -> Optional[dict]:
         question = record.get("question", "").strip()
         if not question:
             return None
-        answers = record.get("final_answers", record.get("answers", []))
+        answers = _first_present(record, "final_answers", "answers", "targets")
         if isinstance(answers, list):
-            answer = "; ".join(str(a) for a in answers)
+            answer_parts = [str(a).strip() for a in answers if str(a).strip()]
+            answer = "; ".join(answer_parts)
         else:
             answer = str(answers)
-        return {"question": question, "context": "", "answer": answer}
+            answer_parts = [answer] if answer.strip() else []
+        if not answer.strip():
+            return None
+        return {"question": question, "context": "", "answer": answer,
+                "answer_parts": answer_parts}
 
     # ── TimeQA: question + context + targets ────────────────────
     if source == "TimeQA":
@@ -111,12 +130,17 @@ def normalize_record(record: dict) -> Optional[dict]:
         if not question:
             return None
         context = record.get("context", "")
-        targets = record.get("targets", [])
+        targets = _first_present(record, "targets", "final_answers", "answers")
         if isinstance(targets, list):
-            answer = "; ".join(str(t) for t in targets)
+            answer_parts = [str(t).strip() for t in targets if str(t).strip()]
+            answer = "; ".join(answer_parts)
         else:
             answer = str(targets)
-        return {"question": question, "context": context, "answer": answer}
+            answer_parts = [answer] if answer.strip() else []
+        if not answer.strip():
+            return None
+        return {"question": question, "context": context, "answer": answer,
+                "answer_parts": answer_parts}
 
     # ── Unknown source — best-effort extraction ─────────────────
     question = record.get("question", "").strip()
@@ -125,12 +149,15 @@ def normalize_record(record: dict) -> Optional[dict]:
     context = record.get("context", "")
     raw_ans = record.get("answer", record.get("answers", record.get("targets", "")))
     if isinstance(raw_ans, list):
-        answer = "; ".join(str(a) for a in raw_ans)
+        answer_parts = [str(a).strip() for a in raw_ans if str(a).strip()]
+        answer = "; ".join(answer_parts)
     else:
         answer = str(raw_ans)
+        answer_parts = [answer] if answer.strip() else []
     if not answer.strip():
         return None
-    return {"question": question, "context": context, "answer": answer}
+    return {"question": question, "context": context, "answer": answer,
+            "answer_parts": answer_parts}
 
 
 # ---------------------------------------------------------------------------
@@ -252,12 +279,14 @@ def normalize_and_tokenize(
     """
     log = logger or setup_logger("llama.data_loader")
     skipped_by_source: dict[str, int] = {}
+    total_by_source: dict[str, int] = {}
     tokenized: list[dict] = []
 
     for rec in records:
+        src = rec.get("source_dataset", "unknown")
+        total_by_source[src] = total_by_source.get(src, 0) + 1
         norm = normalize_record(rec)
         if norm is None:
-            src = rec.get("source_dataset", "unknown")
             skipped_by_source[src] = skipped_by_source.get(src, 0) + 1
             continue
 
@@ -270,6 +299,21 @@ def normalize_and_tokenize(
 
     for src, count in sorted(skipped_by_source.items()):
         log.info("  Skipped %d records from source=%s", count, src)
+
+    # A source losing a large share of its rows means the builder wrote a
+    # schema this loader does not read. That is how the v3 cycle lost its
+    # entire TLQA slice (3,253 rows) while the log showed only a benign-
+    # looking "tokenize_error" count.
+    for src, count in sorted(skipped_by_source.items()):
+        if src in SKIPPED_DATASETS or src == "tokenize_error":
+            continue
+        total = total_by_source.get(src, 0)
+        if total and count / total > 0.05:
+            log.warning(
+                "  %s: dropped %d/%d rows (%.1f%%) — check that the builder "
+                "writes an answer key this loader reads",
+                src, count, total, 100 * count / total,
+            )
     log.info("Tokenised %d / %d records", len(tokenized), len(records))
 
     return Dataset.from_dict({
