@@ -11,7 +11,7 @@ Notes
 - Prefer using the canonical training and evaluation entrypoints in `scripts/` and `src/training` when available.
 
 Quick links
-- Qwen 3.5 evaluator: `experiments/finetuning/qwen3.5-9b-model/evaluate.py`
+- Qwen evaluator: `experiments/finetuning/qwen3.5-9b-model/evaluate.py` (JSONL mode, same pipeline as LLaMA/Mistral)
 - LLaMA README: `experiments/finetuning/LLaMA/README.md`
 
 If you want to run or reproduce these experiments, read the model README within each subfolder.
