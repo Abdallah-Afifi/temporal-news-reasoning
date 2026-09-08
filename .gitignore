@@ -64,7 +64,7 @@ data/manual_aug/
 data/synthetic/*_v*.jsonl
 
 # ----- Model Weights (local copies from the training repo) -----
-models/
+/models/
 
 # ----- Model Checkpoints -----
 checkpoints/
