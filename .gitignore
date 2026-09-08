@@ -16,8 +16,11 @@ build/
 # ----- Virtual Environments -----
 .venv/
 venv/
+venv_vllm/
+venv_qwen/
 env/
 ENV/
+wheels/
 
 # ----- IDE -----
 .vscode/
@@ -44,6 +47,23 @@ data/embeddings/
 data/index/
 data/training/*.jsonl
 !data/training/.gitkeep
+data/benchmarks/*/*
+!data/benchmarks/*/.gitkeep
+data/combined_80_20_split/
+
+# Third-party corpora downloaded for the rehearsal/augmentation mixture.
+# Rebuild with scripts/prepare_v4_sources.py; never redistributed here.
+data/raw/
+data/prepared_v4/
+data/rehearsal/
+
+# Generated training splits (rebuild with scripts/build_v*_training_data.py)
+data/combined_80_20_v*/
+data/letter_format/
+data/manual_aug/
+
+# ----- Model Weights (local copies from the training repo) -----
+models/
 
 # ----- Model Checkpoints -----
 checkpoints/
@@ -56,6 +76,8 @@ checkpoints/
 # ----- Results (large outputs) -----
 results/**/*.json
 results/**/*.csv
+results/**/*.jsonl
+results_rerun/
 !results/**/.gitkeep
 
 # ----- Logs -----
@@ -78,3 +100,33 @@ experiments/finetuning/**/logs/
 *.npy
 *.npz
 *.faiss
+
+# ----- Local-only CoT / manual annotation working files -----
+data/cot/
+
+# ----- Internal working notes (not for publication) -----
+docs/session_handoff.md
+docs/session_state.md
+scripts/write_manual_cot_batch*.py
+
+# ----- Machine-specific operational notes (local only) -----
+TRANSFER_README.md
+config.props
+scripts/push_to_mo_linux.sh
+scripts/free_disk_for_v7.sh
+
+# ----- Working session notes, plans, and audit write-ups (local only) -----
+# Internal running record of the v1-vN cycles. Not part of the published repo.
+docs/audit_report.md
+docs/audit_*.md
+docs/evaluation_campaign_report.md
+docs/evaluation_caveats_report.md
+docs/finetuning_review_report.md
+docs/mistake_ledger.md
+docs/pc2_vllm_setup.md
+docs/performance_review_*.md
+docs/project_narrative.md
+docs/queue_status_and_timeline.md
+docs/v*_plan.md
+docs/vllm_inference_engine_report.md
+docs/PUSH_CONTEXT_*.md
