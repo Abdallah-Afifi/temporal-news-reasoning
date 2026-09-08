@@ -1,14 +1,15 @@
 # Mistral-7B-Instruct-v0.3 LoRA Fine-Tuning Configuration
 # ========================================================
 # Flat training on combined_80_20_split (same dataset as LLaMA).
-# Optimized for RTX 3090 24GB — 4-bit QLoRA required for 7B model.
+# Optimized for RTX 3090 24GB.
 #
 # Architecture notes:
 #   Mistral-7B uses Grouped-Query Attention (8 KV heads, 32 query heads),
 #   Sliding Window Attention (SWA, window=4096), and SwiGLU MLP.
-#   At ~14 GB for bf16 weights alone, 4-bit QLoRA is essential for 24GB GPU.
+#   At ~14 GB for bf16 weights alone, 4-bit QLoRA is recommended on 24GB
+#   GPUs; pure bfloat16 (~20 GB total) also fits but leaves less headroom.
 #
-# Memory budget (RTX 3090 24GB):
+# Memory budget (RTX 3090 24GB, 4-bit QLoRA):
 #   - 4-bit model weights:  ~4.5 GB
 #   - LoRA adapters (r=16): ~0.3 GB
 #   - Activations + optimizer: ~10–14 GB (with grad checkpointing)
