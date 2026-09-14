@@ -10,9 +10,7 @@ falling back to a simple exact-match evaluator.
 from __future__ import annotations
 
 import logging
-from collections import Counter
 from pathlib import Path
-from typing import Optional
 
 from experiments.finetuning.shared.utils import setup_logger, save_json
 
@@ -37,58 +35,31 @@ class TemporalEvaluator:
     def evaluate(
         self,
         predictions: list[str],
-        gold_labels: list[str],
+        gold_labels: list,
         categories: list[str] | None = None,
-        difficulties: list[Optional[str]] | None = None,
+        difficulties: list | None = None,
     ) -> dict:
-        """Compute evaluation metrics."""
-        # Try to delegate to the project's evaluator
-        try:
-            from src.evaluation.metrics import TemporalEvaluator as _SrcEval
-            ev = _SrcEval(benchmark_name=self.benchmark)
-            return ev.full_evaluation(
-                predictions=predictions,
-                gold_labels=gold_labels,
-                categories=categories,
-                metadata={"model": self.model_key, "stage": self.stage},
-            )
-        except (ImportError, Exception):
-            pass
+        """Compute evaluation metrics by delegating to src.evaluation.metrics.
 
-        # Fallback — simple exact match
-        correct = sum(
-            1 for p, g in zip(predictions, gold_labels)
-            if p.strip().lower() == g.strip().lower()
+        Fails loudly if the project evaluator cannot be used — a silent
+        fallback would risk reporting fake numbers.
+
+        Args:
+            predictions: Model predictions.
+            gold_labels: Gold answers; each entry may be a string or a list
+                of alternative gold answers (any match counts).
+            categories: Per-example category labels (e.g. source dataset).
+            difficulties: Accepted for signature compatibility; currently unused.
+        """
+        from src.evaluation.metrics import TemporalEvaluator as _SrcEval
+
+        ev = _SrcEval(benchmark_name=self.benchmark)
+        return ev.full_evaluation(
+            predictions=predictions,
+            gold_labels=gold_labels,
+            categories=categories,
+            metadata={"model": self.model_key, "stage": self.stage},
         )
-        total = len(predictions)
-        accuracy = correct / total if total > 0 else 0.0
-
-        result: dict = {
-            "model_key": self.model_key,
-            "stage": self.stage,
-            "benchmark": self.benchmark,
-            "num_examples": total,
-            "overall_accuracy": accuracy,
-            "overall_f1": accuracy,
-            "exact_match": accuracy,
-        }
-
-        if categories:
-            cat_total = Counter(categories)
-            cat_correct: dict[str, int] = {}
-            for p, g, c in zip(predictions, gold_labels, categories):
-                if p.strip().lower() == g.strip().lower():
-                    cat_correct[c] = cat_correct.get(c, 0) + 1
-            result["by_category"] = {
-                cat: {
-                    "accuracy": cat_correct.get(cat, 0) / count,
-                    "correct": cat_correct.get(cat, 0),
-                    "total": count,
-                }
-                for cat, count in cat_total.items()
-            }
-
-        return result
 
     # ------------------------------------------------------------------
 

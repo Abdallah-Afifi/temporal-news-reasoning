@@ -41,7 +41,7 @@ from typing import Optional
 
 import torch
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -49,12 +49,7 @@ from peft import PeftModel
 from transformers import AutoModelForCausalLM
 
 from experiments.finetuning.LLaMA.data_loader import load_tokenizer, HF_MODEL_NAME, MODEL_KEY
-from experiments.finetuning.shared.prompt_templates import (
-    build_temporal_cot_prompt,
-    build_implicit_reference_prompt,
-    format_prompt,
-    TEMPORAL_SYSTEM_PROMPT,
-)
+from experiments.finetuning.shared.prompt_templates import format_inference_prompt
 from experiments.finetuning.shared.utils import setup_logger, read_jsonl
 
 # ---------------------------------------------------------------------------
@@ -140,7 +135,7 @@ def run_inference(
     Returns:
         Decoded response string.
     """
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    inputs = tokenizer(prompt, return_tensors="pt", add_special_tokens=False).to(model.device)
     input_len = inputs["input_ids"].shape[1]
 
     gen_kwargs: dict = {
@@ -206,10 +201,11 @@ def run_demo_questions(model, tokenizer) -> None:
         if demo["context"]:
             print(f"CONTEXT : {demo['context'][:200]}…")
 
-        prompt = build_temporal_cot_prompt(
-            model_key=MODEL_KEY,
+        prompt = format_inference_prompt(
+            tokenizer,
             question=demo["question"],
             context=demo["context"],
+            model_key=MODEL_KEY,
         )
         answer = run_inference(model, tokenizer, prompt)
         print(f"\nLLaMA ANSWER:\n{answer}")
@@ -245,7 +241,7 @@ def run_batch_inference(
         context  = rec.get("context", rec.get("input", ""))
         gold     = rec.get("answer", rec.get("output", ""))
 
-        prompt = build_temporal_cot_prompt(MODEL_KEY, question, context)
+        prompt = format_inference_prompt(tokenizer, question, context, model_key=MODEL_KEY)
         answer = run_inference(model, tokenizer, prompt)
 
         print(f"\n[{i+1}/{len(records)}] Q: {question[:100]}…")
@@ -288,10 +284,8 @@ def run_interactive(model, tokenizer) -> None:
         context = input("Context (press Enter to skip): ").strip()
         ref_date = input("Reference date (YYYY-MM-DD, or Enter to skip): ").strip() or None
 
-        prompt = build_temporal_cot_prompt(
-            model_key=MODEL_KEY,
-            question=question,
-            context=context,
+        prompt = format_inference_prompt(
+            tokenizer, question, context, model_key=MODEL_KEY,
             reference_date=ref_date,
         )
         print("\nGenerating…")
@@ -346,8 +340,9 @@ if __name__ == "__main__":
     elif args.interactive:
         run_interactive(model, tokenizer)
     elif args.question:
-        prompt = build_temporal_cot_prompt(
-            MODEL_KEY, args.question, args.context, args.reference_date
+        prompt = format_inference_prompt(
+            tokenizer, args.question, args.context, model_key=MODEL_KEY,
+            reference_date=args.reference_date,
         )
         print(run_inference(model, tokenizer, prompt))
     elif args.input_file:

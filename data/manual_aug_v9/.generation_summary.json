@@ -1,0 +1,37 @@
+{
+ "total": 5976,
+ "by_category": {
+  "Computation": 800,
+  "Timeline": 650,
+  "Localization": 550,
+  "Duration_Compare": 450,
+  "Order_Compare": 100,
+  "Relative_Reasoning": 450,
+  "Order_Reasoning": 400,
+  "Co_temporality": 300,
+  "Explicit_Reasoning": 178,
+  "Counterfactual": 500,
+  "nli_saq": 400,
+  "nli_mcq": 250,
+  "relation": 150,
+  "ordering": 100,
+  "temporal_dialogue": 250,
+  "duration": 148,
+  "storytelling": 150,
+  "longform_free": 150
+ },
+ "by_provenance": {
+  "news": 3515,
+  "wiki": 1637,
+  "dial": 426,
+  "none": 398
+ },
+ "by_slice": {
+  "A": 4378,
+  "B": 900,
+  "C": 698
+ },
+ "shortfalls": {},
+ "seed": 42,
+ "limit": null
+}

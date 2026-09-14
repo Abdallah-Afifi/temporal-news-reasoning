@@ -1,0 +1,146 @@
+[
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/commonsense/durationqa/durationqa_687.jsonl",
+    "num_questions": 687,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/commonsense/mctaco/mctaco_852.jsonl",
+    "num_questions": 851,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/commonsense/situatedgen/situatedgen_115.jsonl",
+    "num_questions": 0,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/commonsense/timedial/timedial_1446.jsonl",
+    "num_questions": 0,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/event-time/menatqa/menatqa_counterfactual_548.json",
+    "num_questions": 548,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/event-time/menatqa/menatqa_order_400.json",
+    "num_questions": 400,
+    "exact_overlap_with_train": 16,
+    "exact_overlap_with_val": 1,
+    "fuzzy_overlap_with_train(>=0.9)": 2,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 4.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/event-time/menatqa/menatqa_scope_651.json",
+    "num_questions": 651,
+    "exact_overlap_with_train": 38,
+    "exact_overlap_with_val": 9,
+    "fuzzy_overlap_with_train(>=0.9)": 3,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 5.84
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/event-time/tempreason/event-event_839.jsonl",
+    "num_questions": 839,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/event-time/tempreason/event-time_1037.jsonl",
+    "num_questions": 1037,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/event-time/timeqa/timeqa_easy_500.jsonl",
+    "num_questions": 500,
+    "exact_overlap_with_train": 43,
+    "exact_overlap_with_val": 10,
+    "fuzzy_overlap_with_train(>=0.9)": 1,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 8.6
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/event-time/timeqa/timeqa_hard_500.jsonl",
+    "num_questions": 500,
+    "exact_overlap_with_train": 7,
+    "exact_overlap_with_val": 1,
+    "fuzzy_overlap_with_train(>=0.9)": 2,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 1.4
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/event-time/tracie/tracie_4248.jsonl",
+    "num_questions": 0,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/symbolic/date_arith/date_arith_4000.jsonl",
+    "num_questions": 4000,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/symbolic/nli/conversion_duration(s3)_2420.jsonl",
+    "num_questions": 0,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/symbolic/nli/duration(s1)_2213.jsonl",
+    "num_questions": 0,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  },
+  {
+    "file": "/tmp/opencode/bench_audit/timebench/TimeBench/extracted_full/TimeBench-full-19000/symbolic/nli/order(s2)_2332.jsonl",
+    "num_questions": 0,
+    "exact_overlap_with_train": 0,
+    "exact_overlap_with_val": 0,
+    "fuzzy_overlap_with_train(>=0.9)": 0,
+    "fuzzy_train_sample_size": 500,
+    "exact_overlap_with_train_pct": 0.0
+  }
+]

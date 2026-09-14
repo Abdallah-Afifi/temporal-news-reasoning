@@ -1,0 +1,22 @@
+{
+ "version": "v4",
+ "dir": "data/combined_80_20_v4",
+ "train_rows": 12830,
+ "val_rows": 3204,
+ "synthetic_pct": 15.1,
+ "general_rehearsal_pct": 20.9,
+ "composition": {
+  "TimeQA": 4963,
+  "TLQA": 3253,
+  "REHEARSAL": 2676,
+  "AUG_DIALOG": 597,
+  "AUG_GLM": 402,
+  "AUG_MCQ": 400,
+  "AUG_ARITH": 320,
+  "AUG_NLI": 207,
+  "AUG_REASON": 12
+ },
+ "story": "Single variable vs v3-fixed: rehearsal swapped to HotpotQA/DROP/CoQA.",
+ "results_dir": "results/corrected/v4",
+ "size_mb": 64.0
+}

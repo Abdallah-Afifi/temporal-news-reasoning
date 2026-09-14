@@ -1,0 +1,27 @@
+{
+ "version": "v7",
+ "dir": "data/combined_80_20_v7",
+ "train_rows": 26570,
+ "val_rows": 6636,
+ "synthetic_pct": 45.0,
+ "general_rehearsal_pct": 24.1,
+ "composition": {
+  "REHEARSAL": 6400,
+  "TimeQA": 4963,
+  "AUG_MCQ2": 4604,
+  "TLQA": 3253,
+  "AUG_ARITH": 2320,
+  "AUG_DURATION": 1573,
+  "AUG_SEQ": 1019,
+  "AUG_DIALOG": 597,
+  "AUG_RELATIVE": 420,
+  "AUG_GLM": 402,
+  "AUG_NOANS": 400,
+  "AUG_MCQ": 400,
+  "AUG_NLI": 207,
+  "AUG_REASON": 12
+ },
+ "story": "Coverage arm: single-target MCQ, shortcut-free NOANS, rehearsal restored, AUG_ARITH/DURATION/RELATIVE added. TRAINING NOW on the second PC.",
+ "results_dir": null,
+ "size_mb": 124.2
+}

@@ -1,0 +1,46 @@
+{
+  "train": {
+    "n": 12067,
+    "synthetic_pct": 14.3,
+    "by_source": {
+      "REHEARSAL": 2080,
+      "TLQA": 3253,
+      "TimeQA": 5005,
+      "AUG_MCQ": 400,
+      "AUG_NLI": 400,
+      "AUG_DIALOG": 597,
+      "AUG_ARITH": 320,
+      "AUG_REASON": 12
+    }
+  },
+  "val": {
+    "n": 3016,
+    "synthetic_pct": 14.3,
+    "by_source": {
+      "AUG_DIALOG": 149,
+      "TimeQA": 1251,
+      "REHEARSAL": 520,
+      "TLQA": 813,
+      "AUG_MCQ": 100,
+      "AUG_ARITH": 80,
+      "AUG_NLI": 100,
+      "AUG_REASON": 3
+    }
+  },
+  "cot_overlaid": 0,
+  "seed": 42,
+  "sizes": {
+    "v2_dir": "data/combined_80_20_v2",
+    "out": "data/combined_80_20_v3_fixed",
+    "mcq": 500,
+    "arith": 400,
+    "nli": 500,
+    "dialog": 800,
+    "reason": 700,
+    "rehearsal": 2600,
+    "cot_file": "",
+    "cot_sources": "TimeQA,TLQA",
+    "val_frac": 0.2,
+    "seed": 42
+  }
+}

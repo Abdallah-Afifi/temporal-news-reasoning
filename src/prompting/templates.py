@@ -1,4 +1,4 @@
- """Module 4: Temporal prompting templates.
+"""Module 4: Temporal prompting templates.
 
 Contains templates for:
 - Timeline-based Chain-of-Thought

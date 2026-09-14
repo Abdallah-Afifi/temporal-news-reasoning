@@ -22,3 +22,10 @@ def test_classify_errors_handles_none_contexts() -> None:
     assert errors["temporal_extraction"] == [1]
     assert errors["hallucination"] == []
     assert errors["other"] == []
+
+def test_temporal_f1_identical_answers_score_one() -> None:
+    """2026-09-09 audit H2: extraction must use the same (raw) form on both
+    sides — normalized references lost ISO/comma dates and scored exact
+    matches below 1.0."""
+    assert temporal_f1(["2024-03-15"], ["2024-03-15"]) == 1.0
+    assert temporal_f1(["March 15, 2024"], ["March 15, 2024"]) == 1.0

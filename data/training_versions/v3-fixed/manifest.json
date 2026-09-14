@@ -1,0 +1,21 @@
+{
+ "version": "v3-fixed",
+ "dir": "data/combined_80_20_v3_fixed",
+ "train_rows": 12067,
+ "val_rows": 3016,
+ "synthetic_pct": 14.3,
+ "general_rehearsal_pct": 17.2,
+ "composition": {
+  "TimeQA": 5005,
+  "TLQA": 3253,
+  "REHEARSAL": 2080,
+  "AUG_DIALOG": 597,
+  "AUG_MCQ": 400,
+  "AUG_NLI": 400,
+  "AUG_ARITH": 320,
+  "AUG_REASON": 12
+ },
+ "story": "D21 TLQA fix; best TimeBench arm (48.19%). Use this, not v3.",
+ "results_dir": "results/corrected/v3_fixed",
+ "size_mb": 61.0
+}

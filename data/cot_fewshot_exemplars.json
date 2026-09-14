@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "description": "Few-shot CoT trace exemplars (k=4). Handwritten 2026-09-11 for the few_shot_cot arm. Contexts are original compositions (NOT benchmark or training-pool text) - zero leakage by construction. Traces are deliberately SHORT (2 steps) to teach termination and anchored extraction, attacking the zero-shot_reasoning failure modes diagnosed in D59/D61: 256-token truncation before ANSWER, and deliberation misordering.",
+  "exemplars": [
+    {
+      "kind": "phrase_qa",
+      "context": "The municipal water project broke ground in March 2019. After two years of construction, the treatment plant opened to the public in April 2021. A filtration wing was added in late 2022.",
+      "question": "When did the treatment plant open to the public?",
+      "choices": null,
+      "steps": [
+        "Step 1: The context dates the groundbreaking March 2019 and the public opening April 2021.",
+        "Step 2: The filtration wing (late 2022) is a later addition, not the opening."
+      ],
+      "answer": "April 2021"
+    },
+    {
+      "kind": "ordering",
+      "context": "A. The ceasefire was signed, in July. B. Peace talks began, in February. C. Elections were held, in September.",
+      "question": "Arrange these 3 events in the order they happened, starting with the earliest. Output nothing except a string like 'B,C,A' made of the event letters.",
+      "choices": null,
+      "steps": [
+        "Step 1: The dates order as February (talks) < July (ceasefire) < September (elections).",
+        "Step 2: Mapping to letters: talks = B, ceasefire = A, elections = C."
+      ],
+      "answer": "B,A,C"
+    },
+    {
+      "kind": "duration_option",
+      "context": null,
+      "question": "Which duration is longer?",
+      "choices": ["300 days", "eleven months"],
+      "steps": [
+        "Step 1: Eleven months is about 330-335 days.",
+        "Step 2: 330 days is longer than 300 days, so option B is longer."
+      ],
+      "answer": "B"
+    },
+    {
+      "kind": "nli",
+      "context": "The festival has been held every summer since 1997, except in 2020, when it was cancelled.",
+      "question": "The festival took place in the summer of 2020.",
+      "choices": null,
+      "steps": [
+        "Step 1: The premise states 2020 was the one exception - the festival was cancelled.",
+        "Step 2: A cancelled festival did not take place, so the hypothesis contradicts the premise."
+      ],
+      "answer": "Contradiction"
+    }
+  ]
+}

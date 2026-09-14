@@ -43,16 +43,14 @@ From the repo root::
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 import torch
 
 # Ensure repo root is on sys.path
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -353,14 +351,14 @@ class LiveProgressCallback(TrainerCallback):
 
 def train(
     config_path: str | Path,
-    load_in_4bit_cli: bool = False,
+    load_in_4bit_cli: bool | None = None,
     dry_run: bool = False,
 ) -> None:
     """Run the flat Mistral-7B LoRA fine-tuning pipeline.
 
     Args:
         config_path:      Path to ``experiments/finetuning/Mistral/config.yaml``.
-        load_in_4bit_cli: Enable 4-bit QLoRA from CLI (overrides config).
+        load_in_4bit_cli: Force-enable/disable 4-bit QLoRA (None = use config).
         dry_run:          Run only 5 training steps (pipeline verification).
     """
     # ── Load config ───────────────────────────────────────────────
@@ -373,10 +371,15 @@ def train(
     train_data = str((_REPO_ROOT / config["train_data"]).resolve())
     val_data   = str((_REPO_ROOT / config["val_data"]).resolve())
     output_dir = (_REPO_ROOT / config.get("output_dir", "checkpoints/mistral")).resolve()
+    if dry_run:
+        # Never clobber real adapters with 5-step verification runs.
+        output_dir = output_dir.with_name(output_dir.name + "_dry_run")
     progress_dir = (_REPO_ROOT / config.get("progress_dir", "experiments/finetuning/Mistral/Progress")).resolve()
 
     # ── Pre-flight ────────────────────────────────────────────────
-    use_4bit = load_in_4bit_cli or config.get("load_in_4bit", True)
+    # CLI flag (if given) overrides the config; otherwise defer to config.
+    config_4bit = bool(config.get("load_in_4bit", True))
+    use_4bit = config_4bit if load_in_4bit_cli is None else load_in_4bit_cli
     preflight_check(
         data_paths=[Path(train_data), Path(val_data)],
         output_dir=output_dir,
@@ -395,6 +398,9 @@ def train(
     # ── Apply LoRA ────────────────────────────────────────────────
     peft_config = build_lora_config(config)
     model = get_peft_model(model, peft_config)
+    # Frozen base embeddings + gradient checkpointing (reentrant) silently
+    # drop gradients ("element 0 of tensors does not require grad").
+    model.enable_input_require_grads()
     model.print_trainable_parameters()
 
     # ── Load & tokenise data ──────────────────────────────────────
@@ -434,6 +440,7 @@ def train(
         bf16=bool(config.get("bf16", True)),
         tf32=bool(config.get("tf32", True)),
         gradient_checkpointing=bool(config.get("gradient_checkpointing", True)),
+        gradient_checkpointing_kwargs={"use_reentrant": False},
         dataloader_num_workers=int(config.get("dataloader_num_workers", 4)),
         dataloader_pin_memory=bool(config.get("dataloader_pin_memory", True)),
         report_to=config.get("report_to", []),
@@ -519,8 +526,9 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--load-in-4bit",
-        action="store_true",
-        help="Enable 4-bit QLoRA quantization (overrides config).",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Force 4-bit QLoRA on/off (default: use config.yaml value).",
     )
     p.add_argument(
         "--dry-run",

@@ -1,0 +1,59 @@
+{
+  "cycle": "v6d",
+  "variables_vs_v6": [
+    "AUG_DURATION +1573 (Duration_Compare: v6 33.1, zs 40.4, v7-with-slice 40.1; generator copied verbatim from build_v7_training_data.py)",
+    "core LOADED from the shipped v6 files (the current v6 builder no longer reproduces them \u2014 its 2026-09-07 TRAM-guard extension filters ~782 different rows), so v6's rows and train/val assignment are bit-identical by construction",
+    "separate rng stream (seed+1000) for the slice"
+  ],
+  "train": {
+    "n": 16109,
+    "synthetic_pct": 36.1,
+    "rehearsal_pct": 12.9,
+    "by_source": {
+      "AUG_MCQ2": 1200,
+      "TimeQA": 4963,
+      "TLQA": 3253,
+      "REHEARSAL": 2077,
+      "AUG_MCQ": 400,
+      "AUG_GLM": 402,
+      "AUG_SEQ": 1019,
+      "AUG_NOANS": 400,
+      "AUG_DIALOG": 597,
+      "AUG_ARITH": 320,
+      "AUG_NLI": 207,
+      "AUG_REASON": 12,
+      "AUG_DURATION": 1259
+    }
+  },
+  "val": {
+    "n": 4022,
+    "synthetic_pct": 36.1,
+    "rehearsal_pct": 12.9,
+    "by_source": {
+      "TLQA": 813,
+      "REHEARSAL": 519,
+      "TimeQA": 1240,
+      "AUG_SEQ": 254,
+      "AUG_DIALOG": 149,
+      "AUG_MCQ2": 299,
+      "AUG_NOANS": 100,
+      "AUG_MCQ": 100,
+      "AUG_GLM": 100,
+      "AUG_ARITH": 80,
+      "AUG_NLI": 51,
+      "AUG_REASON": 3,
+      "AUG_DURATION": 314
+    }
+  },
+  "core_is_v6_prefix": true,
+  "seed": 42,
+  "args": {
+    "v6_dir": "data/combined_80_20_v6",
+    "v3_dir": "data/combined_80_20_v3_fixed",
+    "letter_probe": "data/letter_format/probe.jsonl",
+    "out": "data/combined_80_20_v6d",
+    "aug_duration": 1573,
+    "val_frac": 0.2,
+    "seed": 42
+  }
+}

@@ -1,234 +1,189 @@
 #!/usr/bin/env python3
 """
-Evaluation script for Qwen3.5-9B fine-tuned models
-Evaluates on combined_80_20_split validation set using various metrics
+experiments/finetuning/qwen3.5-9b-model/evaluate.py
+=========================================
+Evaluation script for the fine-tuned Qwen LoRA adapter.
+
+NOTE: this directory name contains dots/dashes and is therefore NOT
+importable as a Python package — this script is intentionally
+self-contained and must be run as a file (``python experiments/finetuning/qwen3.5-9b-model/evaluate.py``).
+
+Mirrors the LLaMA / Mistral evaluation pipeline:
+  - Loads the base model (path from config.yaml) + attaches the LoRA adapter
+  - Evaluates on a combined_80_20_split-format JSONL (default: val.jsonl)
+  - Prompts use the SAME chat template as training
+  - Batched greedy generation, multi-gold metrics, live progress log
+
+Usage (from repo root)::
+
+    python experiments/finetuning/qwen3.5-9b-model/evaluate.py
+    python experiments/finetuning/qwen3.5-9b-model/evaluate.py --max-examples 100
+    python experiments/finetuning/qwen3.5-9b-model/evaluate.py --load-in-4bit
 """
 
-import os
-import json
-import logging
+from __future__ import annotations
+
+import argparse
+import sys
 from pathlib import Path
-from typing import Optional, Dict
+from typing import Optional
 
 import torch
-import numpy as np
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+_REPO_ROOT = Path(__file__).resolve().parents[3]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from peft import PeftModel
+
+from experiments.finetuning.shared.eval_runner import (
+    load_eval_examples_from_jsonl,
+    run_evaluation,
 )
-import jsonlines
-from tqdm import tqdm
+from experiments.finetuning.shared.utils import load_yaml, setup_logger
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+log = setup_logger("qwen3_5.evaluate")
 
-
-class QwenEvaluator:
-    """Evaluator for Qwen3.5-9B models."""
-    
-    def __init__(self, model_path: str, data_root: str = "."):
-        """Initialize evaluator."""
-        self.model_path = model_path
-        self.data_root = data_root
-        self.tokenizer = None
-        self.model = None
-        
-        logger.info(f"Model: {model_path}")
-        logger.info(f"Data root: {data_root}")
-    
-    def load_model(self):
-        """Load tokenizer and model."""
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            self.model_path,
-            trust_remote_code=True,
-        )
-        if self.tokenizer.pad_token is None:
-            self.tokenizer.pad_token = self.tokenizer.eos_token
-        
-        self.model = AutoModelForCausalLM.from_pretrained(
-            self.model_path,
-            device_map="auto",
-            torch_dtype=torch.bfloat16,
-            trust_remote_code=True,
-        )
-        
-        logger.info("Model and tokenizer loaded")
-    
-    def load_val_dataset(self):
-        """Load validation dataset from combined_80_20_split."""
-        val_path = Path(self.data_root) / "data/combined_80_20_split/val.jsonl"
-        
-        if not val_path.exists():
-            raise FileNotFoundError(f"Validation dataset not found at {val_path}")
-        
-        val_examples = []
-        with jsonlines.open(val_path) as reader:
-            for obj in reader:
-                val_examples.append(obj)
-        
-        logger.info(f"Loaded {len(val_examples)} validation examples")
-        return val_examples
-    
-    def format_example(self, ex: Dict) -> str:
-        """Format single example to training text."""
-        question = ex.get('question', '')
-        answers = ex.get('answers', [])
-        subject = ex.get('subject', '')
-        
-        # Format as QA pair
-        answers_text = "\n".join([f"  - {ans}" for ans in answers])
-        
-        text = f"""Question: {question}
-Subject: {subject}
-Answers:
-{answers_text}"""
-        
-        return text
-    
-    def compute_loss(self, examples):
-        """Compute loss on examples."""
-        losses = []
-        
-        for ex in tqdm(examples, desc="Computing loss"):
-            text = self.format_example(ex)
-            
-            # Tokenize
-            inputs = self.tokenizer.encode(text, return_tensors="pt")
-            inputs = inputs.to(self.model.device)
-            
-            # Compute loss
-            with torch.no_grad():
-                outputs = self.model(inputs, labels=inputs)
-                loss = outputs.loss.item()
-            
-            losses.append(loss)
-        
-        return losses
-    
-    def generate_completions(self, examples: list, max_length: int = 100, num_samples: int = 5):
-        """Generate model completions on examples."""
-        completions = []
-        
-        for ex in tqdm(examples[:num_samples], desc="Generating completions"):
-            question = ex.get('question', '')
-            subject = ex.get('subject', '')
-            
-            prompt = f"""Question: {question}
-Subject: {subject}
-Answer:"""
-            
-            # Tokenize
-            inputs = self.tokenizer.encode(prompt, return_tensors="pt")
-            inputs = inputs.to(self.model.device)
-            
-            # Generate
-            with torch.no_grad():
-                outputs = self.model.generate(
-                    inputs,
-                    max_length=max_length,
-                    num_beams=1,
-                    temperature=0.7,
-                    top_p=0.9,
-                    do_sample=True,
-                )
-            
-            # Decode
-            generated_text = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-            
-            completions.append({
-                'question': question,
-                'subject': subject,
-                'prompt': prompt,
-                'generated_text': generated_text,
-            })
-        
-        return completions
-    
-    def evaluate(self, output_dir: Optional[str] = None):
-        """Run full evaluation."""
-        # Load model
-        self.load_model()
-        
-        # Load dataset
-        val_examples = self.load_val_dataset()
-        
-        # Compute loss
-        logger.info("Computing validation loss...")
-        losses = self.compute_loss(val_examples)
-        
-        # Generate sample completions
-        logger.info("Generating sample completions...")
-        completions = self.generate_completions(val_examples, num_samples=5)
-        
-        # Compute statistics
-        mean_loss = np.mean(losses)
-        std_loss = np.std(losses)
-        min_loss = np.min(losses)
-        max_loss = np.max(losses)
-        
-        # Print results
-        print("\n" + "=" * 80)
-        print("EVALUATION RESULTS")
-        print("=" * 80)
-        print(f"\nValidation Loss:")
-        print(f"  Mean: {mean_loss:.4f}")
-        print(f"  Std:  {std_loss:.4f}")
-        print(f"  Min:  {min_loss:.4f}")
-        print(f"  Max:  {max_loss:.4f}")
-        
-        print(f"\nTotal Examples Evaluated: {len(losses)}")
-        
-        # Save results if output dir specified
-        if output_dir:
-            output_dir = Path(output_dir)
-            output_dir.mkdir(parents=True, exist_ok=True)
-            
-            # Save metrics
-            metrics = {
-                'mean_loss': float(mean_loss),
-                'std_loss': float(std_loss),
-                'min_loss': float(min_loss),
-                'max_loss': float(max_loss),
-                'num_examples': len(losses),
-            }
-            
-            with open(output_dir / "metrics.json", 'w') as f:
-                json.dump(metrics, f, indent=2)
-            
-            # Save sample completions
-            with open(output_dir / "sample_completions.json", 'w') as f:
-                json.dump(completions, f, indent=2)
-            
-            logger.info(f"Results saved to {output_dir}")
-        
-        return {
-            'losses': losses,
-            'metrics': metrics,
-            'completions': completions,
-        }
+MODEL_KEY = "qwen"
+SCRIPT_DIR = Path(__file__).parent
+DEFAULT_CONFIG = SCRIPT_DIR / "config.yaml"
+DEFAULT_CHECKPOINT = str(_REPO_ROOT / "checkpoints" / "qwen3.5-9b-model" / "final")
+DEFAULT_VAL_DATA = str(_REPO_ROOT / "data" / "combined_80_20_split" / "val.jsonl")
+RESULTS_DIR = SCRIPT_DIR / "results"
 
 
-def main():
-    import argparse
-    
-    parser = argparse.ArgumentParser(description="Evaluate Qwen3.5-9B on combined_80_20_split")
-    parser.add_argument('--model-path', type=str, required=True, help='Path to fine-tuned model')
-    parser.add_argument('--data-root', type=str, default='.', help='Data root directory')
-    parser.add_argument('--output-dir', type=str, help='Output directory for results')
-    
-    args = parser.parse_args()
-    
-    evaluator = QwenEvaluator(
-        model_path=args.model_path,
-        data_root=args.data_root,
+def load_tokenizer(model_name_or_path: str) -> AutoTokenizer:
+    """Load and configure the Qwen tokenizer (mirrors qwen train.py)."""
+    log.info("Loading Qwen tokenizer from: %s", model_name_or_path)
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name_or_path, use_fast=True, trust_remote_code=True,
     )
-    
-    evaluator.evaluate(output_dir=args.output_dir)
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.padding_side = "right"
+    return tokenizer
+
+
+def resolve_base_model(config_path: Path) -> str:
+    """Resolve the base model directory from config.yaml; fail clearly."""
+    config = load_yaml(config_path)
+    model_path = config.get("model_path", "models/qwen3.5-9b-model")
+    resolved = (Path(model_path) if Path(model_path).is_absolute()
+                else _REPO_ROOT / model_path)
+    if not (resolved / "config.json").exists():
+        raise FileNotFoundError(
+            f"Qwen base model not found at '{resolved}'. "
+            f"Set a valid 'model_path' in {config_path}."
+        )
+    return str(resolved)
+
+
+def load_finetuned_model(
+    base_model_name: str,
+    adapter_path: str,
+    load_in_4bit: bool = False,
+) -> tuple:
+    """Load the Qwen base model and attach the LoRA adapter."""
+    tokenizer = load_tokenizer(base_model_name)
+
+    load_kwargs: dict = {
+        "torch_dtype": torch.bfloat16,
+        "device_map": "auto",
+        "trust_remote_code": True,
+    }
+    if load_in_4bit:
+        from transformers import BitsAndBytesConfig
+        load_kwargs["quantization_config"] = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_quant_type="nf4",
+        )
+
+    log.info("Loading base model: %s", base_model_name)
+    base_model = AutoModelForCausalLM.from_pretrained(base_model_name, **load_kwargs)
+
+    log.info("Attaching LoRA adapter: %s", adapter_path)
+    model = PeftModel.from_pretrained(base_model, adapter_path, is_trainable=False)
+    model.eval()
+    return model, tokenizer
+
+
+def evaluate(
+    adapter_path: str = DEFAULT_CHECKPOINT,
+    base_model_name: Optional[str] = None,
+    data_path: str = DEFAULT_VAL_DATA,
+    stage_name: str = "final",
+    max_examples: Optional[int] = None,
+    output_path: Optional[str] = None,
+    load_in_4bit: bool = False,
+    max_new_tokens: int = 256,
+    batch_size: int = 4,
+) -> None:
+    """Run evaluation of the fine-tuned Qwen adapter on a JSONL split."""
+    if base_model_name is None:
+        base_model_name = resolve_base_model(DEFAULT_CONFIG)
+
+    model, tokenizer = load_finetuned_model(base_model_name, adapter_path, load_in_4bit)
+
+    examples = load_eval_examples_from_jsonl(data_path, max_examples)
+    log.info("Loaded %d eval examples from %s", len(examples), data_path)
+
+    if output_path is None:
+        out_dir = RESULTS_DIR / "combined_val"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        output_path = str(out_dir / "qwen_report.json")
+        md_path = str(out_dir / "report_table.md")
+        progress_path = out_dir / "qwen_live_progress.log"
+    else:
+        output_path_obj = Path(output_path)
+        output_path_obj.parent.mkdir(parents=True, exist_ok=True)
+        md_path = str(output_path_obj.parent / "report_table.md")
+        progress_path = output_path_obj.parent / "qwen_live_progress.log"
+
+    run_evaluation(
+        model=model,
+        tokenizer=tokenizer,
+        model_key=MODEL_KEY,
+        examples=examples,
+        stage_name=stage_name,
+        benchmark_label="combined_val",
+        output_path=output_path,
+        md_path=md_path,
+        progress_path=progress_path,
+        batch_size=batch_size,
+        max_new_tokens=max_new_tokens,
+        logger=log,
+    )
+
+
+def _build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(description="Evaluate fine-tuned Qwen LoRA adapter")
+    p.add_argument("--adapter-path", default=DEFAULT_CHECKPOINT,
+                   help="Path to the LoRA adapter directory.")
+    p.add_argument("--base-model", default=None,
+                   help="Base model path (default: resolved from config.yaml).")
+    p.add_argument("--data", default=DEFAULT_VAL_DATA,
+                   help="JSONL eval data in combined_80_20_split format.")
+    p.add_argument("--stage", default="final")
+    p.add_argument("--max-examples", type=int, default=None)
+    p.add_argument("--output", default=None)
+    p.add_argument("--load-in-4bit", action="store_true")
+    p.add_argument("--max-new-tokens", type=int, default=256)
+    p.add_argument("--batch-size", type=int, default=4)
+    return p
 
 
 if __name__ == "__main__":
-    main()
+    args = _build_parser().parse_args()
+    evaluate(
+        adapter_path=args.adapter_path,
+        base_model_name=args.base_model,
+        data_path=args.data,
+        stage_name=args.stage,
+        max_examples=args.max_examples,
+        output_path=args.output,
+        load_in_4bit=args.load_in_4bit,
+        max_new_tokens=args.max_new_tokens,
+        batch_size=args.batch_size,
+    )

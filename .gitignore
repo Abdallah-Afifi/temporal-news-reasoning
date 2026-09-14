@@ -16,8 +16,11 @@ build/
 # ----- Virtual Environments -----
 .venv/
 venv/
+venv_vllm/
+venv_qwen/
 env/
 ENV/
+wheels/
 
 # ----- IDE -----
 .vscode/
@@ -44,6 +47,33 @@ data/embeddings/
 data/index/
 data/training/*.jsonl
 !data/training/.gitkeep
+data/benchmarks/*/*
+!data/benchmarks/*/.gitkeep
+data/combined_80_20_split/
+
+# Third-party corpora downloaded for the rehearsal/augmentation mixture.
+# Rebuild with scripts/prepare_v4_sources.py; never redistributed here.
+data/raw/
+data/prepared_v4/
+data/rehearsal/
+
+# Generated training splits.
+#
+# WARNING (2026-09-12 audit): "rebuild with the builder" is NOT true for every
+# arm. Re-running scripts/build_v6_training_data.py with its own defaults and
+# seed 42 yields 14,854 train rows against the shipped 14,850, with 782 rows
+# differing by membership and only 790/14,850 at the same index (the Sep-7
+# TRAM-guard extension changed the filter). The shipped splits are therefore
+# PRIMARY DATA, not derived data, and exist only in this working copy.
+# The manifests are small and are tracked so the mixture of every arm stays
+# in version control even while the rows themselves do not.
+data/combined_80_20_v*/*
+!data/combined_80_20_v*/manifest.json
+data/letter_format/
+data/manual_aug/
+
+# ----- Model Weights (local copies from the training repo) -----
+models/
 
 # ----- Model Checkpoints -----
 checkpoints/
@@ -54,9 +84,17 @@ checkpoints/
 *.onnx
 
 # ----- Results (large outputs) -----
+# predictions.jsonl files are multi-GB and stay out; the small scored tables
+# that the thesis actually quotes are tracked (2026-09-12 audit): losing them
+# means losing the campaign's results with no way to regenerate them without
+# the GPU runs.
 results/**/*.json
 results/**/*.csv
+results/**/*.jsonl
+results_rerun/
 !results/**/.gitkeep
+!results/rescored/*.json
+!results/overlap_audit_fullzip.json
 
 # ----- Logs -----
 logs/
@@ -73,8 +111,60 @@ experiments/finetuning/**/logs/
 *.tar.gz
 
 # ----- Misc -----
+# single-writer locks left by scripts/run_eval_vllm.py (flock releases on
+# process exit, so a leftover file is harmless)
+*.jsonl.lock
 *.pkl
 *.pickle
 *.npy
 *.npz
 *.faiss
+
+# ----- Local-only CoT / manual annotation working files -----
+data/cot/
+
+# ----- Internal working notes (not for publication) -----
+#
+# DECISION NEEDED (2026-09-12 audit): these exclusions mean the decision log
+# (D1-D63), the mistake ledger, every plan and every audit live in exactly one
+# directory on one machine, outside version control. That is the project's
+# whole reasoning record. If they must stay off the public remote, add a
+# PRIVATE remote and track them there -- do not leave them untracked.
+docs/session_handoff.md
+docs/session_state.md
+scripts/write_manual_cot_batch*.py
+
+# ----- Machine-specific operational notes (local only) -----
+TRANSFER_README.md
+config.props
+
+# ----- Working session notes, plans, and audit write-ups (local only) -----
+# Internal running record of the v1-v5 cycles. Not part of the published repo.
+docs/audit_report.md
+docs/evaluation_campaign_report.md
+docs/evaluation_caveats_report.md
+docs/finetuning_review_report.md
+docs/mistake_ledger.md
+docs/pc2_vllm_setup.md
+docs/project_narrative.md
+docs/queue_status_and_timeline.md
+docs/v3_plan.md
+docs/v4_plan.md
+docs/v5_plan.md
+docs/vllm_inference_engine_report.md
+
+# v9 synthetic-arm generation caches (pickles, benchmark indexes)
+data/.v9_cache/
+
+# ---------------------------------------------------------------------------
+# Bulk data that slipped past the rules above (2026-09-14b audit). The policy
+# is unchanged — code, configs, manifests, audit notes and docs are versioned;
+# regenerable or bulk training/eval data is not. These are naming gaps, not
+# new policy: `data/manual_aug/` and `data/combined_80_20_v*/` were already
+# excluded, `data/manual_aug_v9/` and `data/training_versions/` simply did not
+# match, and `.corrupt_backup` dodged the `results/**/*.jsonl` rule.
+data/training_versions/**/*.jsonl
+data/manual_aug_v9/*.jsonl
+data/synthetic/*.jsonl
+results/**/*.corrupt_backup
+results/**/*.jsonl.bak

@@ -5,10 +5,19 @@
 2. Read ``T_start`` / ``T_end`` from Postgres for those chunk ids (needs ``psycopg2``).
 3. Read entity/event/date links from Neo4j, or rebuild a rough view from ``temporal_ie.jsonl``.
 
-Edit the connection strings in this file if your database uses different credentials or ports.
+Connection settings come from the environment, so no credential is committed
+to this file (audit 2026-09-12):
+
+    PGHOST PGPORT PGDATABASE PGUSER PGPASSWORD
+    NEO4J_URI NEO4J_USER NEO4J_PASSWORD
+
+Defaults are the local development values used while the stores were built;
+the password has no default and an unset NEO4J_PASSWORD simply falls back to
+the ``temporal_ie.jsonl`` simulation path below.
 Not used by the Streamlit app; only for local debugging after data is loaded.
 """
 
+import os
 import sys
 import json
 import faiss
@@ -70,7 +79,13 @@ def query_postgres(chunk_ids: list[str]):
         return {}
     
     try:
-        conn = psycopg2.connect(dbname='temporal_rag', user='postgres', host='localhost', port=5432)
+        conn = psycopg2.connect(
+            dbname=os.environ.get("PGDATABASE", "temporal_rag"),
+            user=os.environ.get("PGUSER", "postgres"),
+            password=os.environ.get("PGPASSWORD") or None,
+            host=os.environ.get("PGHOST", "localhost"),
+            port=int(os.environ.get("PGPORT", "5432")),
+        )
         cur = conn.cursor()
         
         # Format the IN clause
@@ -105,7 +120,14 @@ def query_neo4j(chunk_ids: list[str]):
         return {}
     
     try:
-        driver = GraphDatabase.driver('bolt://localhost:7687', auth=('neo4j', 'temporalrag'))
+        neo4j_password = os.environ.get("NEO4J_PASSWORD")
+        if not neo4j_password:
+            print("  -> NEO4J_PASSWORD not set; skipping the live graph.")
+            return simulate_neo4j_with_json(chunk_ids)
+        driver = GraphDatabase.driver(
+            os.environ.get("NEO4J_URI", "bolt://localhost:7687"),
+            auth=(os.environ.get("NEO4J_USER", "neo4j"), neo4j_password),
+        )
         # Quick check if it's up
         driver.verify_connectivity()
     except Exception as e:

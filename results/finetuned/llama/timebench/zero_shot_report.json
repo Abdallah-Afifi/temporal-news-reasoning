@@ -1,17 +1,15 @@
 {
   "benchmark": "timebench/zero_shot",
-  "model": "llama",
-  "configuration": "fine_tuned",
-  "timestamp": "2026-05-10T13:13:30.775394",
+  "timestamp": "2026-08-31T03:40:45.235355",
   "num_examples": 21188,
-  "overall_accuracy": 0.10321880309609213,
-  "overall_f1": 0.07497300768225579,
-  "exact_match": 0.10321880309609213,
-  "temporal_f1": 0.8291262963110602,
+  "overall_accuracy": 0.3806399848971116,
+  "overall_f1": 0.1772953876142045,
+  "exact_match": 0.3806399848971116,
+  "temporal_f1": 0.9647268894342709,
   "by_category": {
     "duration": {
-      "accuracy": 0.3563068920676203,
-      "correct": 548,
+      "accuracy": 0.7334200260078023,
+      "correct": 1128,
       "total": 1538
     },
     "situated_generation": {
@@ -20,47 +18,44 @@
       "total": 115
     },
     "temporal_dialogue": {
-      "accuracy": 0.24688796680497926,
-      "correct": 357,
+      "accuracy": 0.6825726141078838,
+      "correct": 987,
       "total": 1446
     },
     "temporal_reasoning": {
-      "accuracy": 0.4077825159914712,
-      "correct": 765,
+      "accuracy": 0.4173773987206823,
+      "correct": 783,
       "total": 1876
     },
     "temporal_qa": {
-      "accuracy": 0.495,
-      "correct": 495,
+      "accuracy": 0.37,
+      "correct": 370,
       "total": 1000
     },
     "temporal_ordering": {
-      "accuracy": 0.0,
-      "correct": 0,
+      "accuracy": 0.5065913370998116,
+      "correct": 2152,
       "total": 4248
     },
     "arithmetic": {
-      "accuracy": 0.0055,
-      "correct": 22,
+      "accuracy": 0.0335,
+      "correct": 134,
       "total": 4000
     },
     "temporal_nli": {
-      "accuracy": 0.0,
-      "correct": 0,
+      "accuracy": 0.36051687006460875,
+      "correct": 2511,
       "total": 6965
     }
   },
   "error_analysis": {
-    "temporal_extraction": 403,
-    "hallucination": 3044,
-    "other": 15554
+    "temporal_extraction": 465,
+    "hallucination": 281,
+    "other": 12377
   },
   "metadata": {
     "model": "llama",
-    "task": "zero_shot",
-    "adapter_dir": "./checkpoints/llama/final",
-    "prompt_type": "zero_shot",
-    "max_new_tokens": 128,
-    "temperature": 0.0
-  }
+    "task": "zero_shot"
+  },
+  "eval_wall_time_seconds": 1.07
 }

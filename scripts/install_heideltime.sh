@@ -11,7 +11,7 @@ set -e
 
 TREETAGGER_DIR="${1:-$HOME/treetagger}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 ENV_FILE="$PROJECT_DIR/.env"
 
 echo "============================================================"
@@ -58,10 +58,15 @@ echo "  TreeTagger installed."
 # ── 3. py_heideltime via pip ────────────────────────────────
 echo ""
 echo "[3/5] Installing py_heideltime..."
-if [ -f "$PROJECT_DIR/.venv/bin/activate" ]; then
-    source "$PROJECT_DIR/.venv/bin/activate"
-fi
-pip install -q py_heideltime>=1.0.3
+PIP="pip"
+for _v in venv .venv; do
+    if [ -x "$PROJECT_DIR/$_v/bin/python" ]; then
+        PIP="$PROJECT_DIR/$_v/bin/python -m pip"
+        echo "  using $PROJECT_DIR/$_v"
+        break
+    fi
+done
+$PIP install -q "py_heideltime>=1.0.3"
 echo "  py_heideltime installed."
 
 # ── 4. Configure py_heideltime to find TreeTagger ──────────

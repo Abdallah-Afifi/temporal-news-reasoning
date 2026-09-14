@@ -1,0 +1,22 @@
+{
+ "version": "v5",
+ "dir": "data/combined_80_20_v5",
+ "train_rows": 18180,
+ "val_rows": 4542,
+ "synthetic_pct": 10.7,
+ "general_rehearsal_pct": 44.1,
+ "composition": {
+  "REHEARSAL": 8026,
+  "TimeQA": 4963,
+  "TLQA": 3253,
+  "AUG_DIALOG": 597,
+  "AUG_GLM": 402,
+  "AUG_MCQ": 400,
+  "AUG_ARITH": 320,
+  "AUG_NLI": 207,
+  "AUG_REASON": 12
+ },
+ "story": "Single variable vs v4: rehearsal x3 volume (44% general). Sequence emission collapsed (D37/D38).",
+ "results_dir": "results/corrected/v5",
+ "size_mb": 74.2
+}

@@ -1,0 +1,51 @@
+{
+  "train": {
+    "n": 12830,
+    "synthetic_pct": 15.1,
+    "by_source": {
+      "TimeQA": 4963,
+      "TLQA": 3253,
+      "AUG_DIALOG": 597,
+      "REHEARSAL": 2676,
+      "AUG_GLM": 402,
+      "AUG_NLI": 207,
+      "AUG_ARITH": 320,
+      "AUG_MCQ": 400,
+      "AUG_REASON": 12
+    }
+  },
+  "val": {
+    "n": 3204,
+    "synthetic_pct": 15.1,
+    "by_source": {
+      "REHEARSAL": 668,
+      "TimeQA": 1240,
+      "AUG_ARITH": 80,
+      "AUG_MCQ": 100,
+      "TLQA": 813,
+      "AUG_DIALOG": 149,
+      "AUG_GLM": 100,
+      "AUG_NLI": 51,
+      "AUG_REASON": 3
+    }
+  },
+  "aug_nli_neutral_dropped": 162,
+  "rehearsal_by_pool": {
+    "prepared_v4/coqa": 1114,
+    "prepared_v4/hotpot": 1115,
+    "prepared_v4/drop": 1115
+  },
+  "star_overlaid": 0,
+  "seed": 42,
+  "args": {
+    "v3_dir": "data/combined_80_20_v3_fixed",
+    "manual_aug": "data/manual_aug",
+    "letter_probe": "data/letter_format/probe.jsonl",
+    "out": "data/combined_80_20_v4",
+    "rehearsal": 3344,
+    "star_file": "",
+    "star_sources": "TimeQA,TLQA,AUG_LETTER",
+    "val_frac": 0.2,
+    "seed": 42
+  }
+}

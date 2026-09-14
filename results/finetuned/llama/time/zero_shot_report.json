@@ -1,66 +1,26 @@
 {
   "benchmark": "time/zero_shot",
-  "model": "llama",
-  "configuration": "fine_tuned",
-  "timestamp": "2026-05-10T12:47:09.892820",
+  "timestamp": "2026-08-31T03:27:06.290657",
   "num_examples": 106500,
-  "overall_accuracy": 0.3443286384976526,
-  "overall_f1": 0.1631580253303881,
-  "exact_match": 0.3443286384976526,
-  "temporal_f1": 0.8426142056799695,
+  "overall_accuracy": 0.32372769953051644,
+  "overall_f1": 0.17320445563175807,
+  "exact_match": 0.32372769953051644,
+  "temporal_f1": 0.8820899448383708,
   "by_category": {
-    "temporal_simultaneous": {
-      "accuracy": 0.6947822675559043,
-      "correct": 3542,
-      "total": 5098
-    },
-    "news_temporal_mcq": {
-      "accuracy": 0.3118321388225272,
-      "correct": 16838,
-      "total": 53997
-    },
-    "temporal_context": {
-      "accuracy": 0.3799717025624902,
-      "correct": 2417,
-      "total": 6361
-    },
-    "temporal_qa": {
-      "accuracy": 0.3460285642696066,
-      "correct": 5524,
-      "total": 15964
-    },
-    "arithmetic": {
-      "accuracy": 0.028503562945368172,
-      "correct": 48,
-      "total": 1684
-    },
-    "duration": {
-      "accuracy": 0.045477513895907026,
-      "correct": 90,
-      "total": 1979
-    },
-    "temporal_ordering": {
-      "accuracy": 0.383851284234426,
-      "correct": 8115,
-      "total": 21141
-    },
-    "temporal_recency": {
-      "accuracy": 0.35144927536231885,
-      "correct": 97,
-      "total": 276
+    "unknown": {
+      "accuracy": 0.32372769953051644,
+      "correct": 34477,
+      "total": 106500
     }
   },
   "error_analysis": {
-    "temporal_extraction": 4574,
-    "hallucination": 6085,
-    "other": 59170
+    "temporal_extraction": 5322,
+    "hallucination": 4874,
+    "other": 61827
   },
   "metadata": {
     "model": "llama",
-    "task": "zero_shot",
-    "adapter_dir": "./checkpoints/llama/final",
-    "prompt_type": "zero_shot",
-    "max_new_tokens": 128,
-    "temperature": 0.0
-  }
+    "task": "zero_shot"
+  },
+  "eval_wall_time_seconds": 21.21
 }

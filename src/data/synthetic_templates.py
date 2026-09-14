@@ -55,6 +55,10 @@ class DateCandidate:
     expression: str
     parsed_date: date | None
     sentence: str
+    # True when the article gave only a bare year ("2023"). parsed_date is
+    # then a SORTING KEY of Jan 1, not a fact about the article, and must
+    # never be presented as the answer -- see _build_date_extraction_example.
+    year_only: bool = False
 
 
 class SyntheticDataGenerator:
@@ -71,7 +75,13 @@ class SyntheticDataGenerator:
 
     def __init__(
         self,
-        data_root: str | Path = "/home/abdallah/Documents/Thesis/Datasets",
+        # Was hardcoded to "/home/abdallah/Documents/Thesis/Datasets" — a
+        # THIRD machine's path (alongside download_ccnews.py's
+        # "/home/g2/..."), which is why this generator only ever produced a
+        # 300-row sample and was written off as blocked. The corpus was on
+        # this PC the whole time, under ~/thesis/. Copied to data/corpus/
+        # 2026-09-08: ccnews 2023-2024 (100k articles) + cnn_stories.
+        data_root: str | Path = Path(__file__).resolve().parents[2] / "data" / "corpus",
         seed: int = 13,
         max_articles_per_source: int = 4000,
     ) -> None:
@@ -318,7 +328,10 @@ class SyntheticDataGenerator:
             if parsed is None:
                 continue
             sentence = self._find_sentence_with_expression(article.text, expression)
-            candidates.append(DateCandidate(expression=expression, parsed_date=parsed, sentence=sentence))
+            candidates.append(DateCandidate(
+                expression=expression, parsed_date=parsed, sentence=sentence,
+                year_only=bool(re.fullmatch(r"(?:19|20)\d{2}", expression.strip())),
+            ))
         deduped: list[DateCandidate] = []
         seen = set()
         for candidate in candidates:
@@ -350,9 +363,26 @@ class SyntheticDataGenerator:
         candidate: DateCandidate,
         include_cot: bool,
     ) -> dict[str, Any]:
-        answer = candidate.parsed_date.isoformat() if candidate.parsed_date else candidate.expression
+        # FIXED 2026-09-08 (D51). This used to answer with parsed_date.isoformat()
+        # unconditionally, so a bare "2023" in the text produced the gold
+        # "2023-01-01" -- a date the article never states. 69.3% of this
+        # category was fabricated that way, and the answer appeared in the
+        # context only 2.0% of the time. One sampled item asked about a
+        # COPYRIGHT LINE. Now a year-only mention is answered with the year.
+        if candidate.year_only:
+            answer = candidate.expression.strip()
+            rationale = (
+                f"The article mentions only the year '{answer}' in the supporting "
+                f"sentence, so the year is all that can be stated."
+            )
+        else:
+            answer = (candidate.parsed_date.isoformat() if candidate.parsed_date
+                      else candidate.expression)
+            rationale = (
+                f"The article explicitly mentions '{candidate.expression}' in the "
+                f"supporting sentence, so the answer is {answer}."
+            )
         question = f"According to the article, what date is mentioned in the sentence about {self._short_event_hint(candidate.sentence)}?"
-        rationale = f"The article explicitly mentions '{candidate.expression}' in the supporting sentence, so the answer is {answer}."
         return self._build_example(
             article=article,
             category="explicit_date_extraction",
@@ -462,14 +492,29 @@ class SyntheticDataGenerator:
         second: DateCandidate,
         include_cot: bool,
     ) -> dict[str, Any]:
+        # FIXED 2026-09-08 (D51). The claim was ALWAYS built reversed, so the
+        # answer was "false" in 659 of 659 generated rows -- the label was
+        # predictable without reading anything. That is exactly the AUG_NLI
+        # leakage defect that already cost this project a cycle. The claim
+        # direction is now chosen at random, so the label is balanced and the
+        # model has to check the article.
         earlier, later = sorted([first, second], key=lambda c: c.parsed_date or date.min)
-        claim = f"The event tied to {later.expression} happened before the event tied to {earlier.expression}."
+        if self.random.random() < 0.5:
+            claim = (f"The event tied to {earlier.expression} happened before "
+                     f"the event tied to {later.expression}.")
+            answer = "true"
+            rationale = (f"The article places {earlier.expression} before "
+                         f"{later.expression}, so the claim states the order "
+                         f"correctly and is true.")
+        else:
+            claim = (f"The event tied to {later.expression} happened before "
+                     f"the event tied to {earlier.expression}.")
+            answer = "false"
+            rationale = (f"The article places {earlier.expression} before "
+                         f"{later.expression}, so the claim reverses the order "
+                         f"and is false.")
         question = (
             f"Given the article, is the claim true, false, or unknown: '{claim}'?"
-        )
-        answer = "false"
-        rationale = (
-            f"The article places {earlier.expression} before {later.expression}, so the claim reverses the order and is false."
         )
         return self._build_example(
             article=article,
@@ -520,11 +565,33 @@ class SyntheticDataGenerator:
         sentences: list[str],
         include_cot: bool,
     ) -> dict[str, Any]:
-        question = "Put the following events in chronological order as they appear in the article: " + "; ".join(
-            f"Event {index + 1}: {self._short_event_hint(sentence)}" for index, sentence in enumerate(sentences)
+        # FIXED 2026-09-08 (D51). This used to present the events in article
+        # order and answer "Event 1 > Event 2 > Event 3" EVERY time -- 4,476 of
+        # 4,476 generated rows carried that single constant, so the slice
+        # taught a fixed string rather than any ordering. It also used a
+        # ">"-separated form that matches no benchmark.
+        #
+        # Now the events are SHUFFLED before being shown, labelled A/B/C, and
+        # the gold is the permutation that restores article order, emitted in
+        # TIME's comma-separated letter form ("B,C,A"). Article order is the
+        # ground truth: these sentences are drawn in narrative sequence.
+        order = list(range(len(sentences)))
+        self.random.shuffle(order)                       # order[i] = which event is shown at slot i
+        letters = [chr(ord("A") + i) for i in range(len(sentences))]
+        shown = [sentences[order[i]] for i in range(len(sentences))]
+        slot_of = {order[i]: i for i in range(len(sentences))}
+        answer = ",".join(letters[slot_of[k]] for k in range(len(sentences)))
+        question = (
+            "Below are events from the article, listed out of order. Put them "
+            "into the order they occur in the article. Answer with the option "
+            "letters separated by commas and nothing else.\n"
+            + "\n".join(f"{letters[i]}. {self._short_event_hint(shown[i])}"
+                         for i in range(len(sentences)))
         )
-        answer = " > ".join(f"Event {index + 1}" for index in range(len(sentences)))
-        rationale = "The article presents the events in narrative order, so the timeline follows their appearance from first to last."
+        rationale = (
+            "Reading the article in sequence, the events appear in the order "
+            + ", ".join(letters[slot_of[k]] for k in range(len(sentences))) + "."
+        )
         return self._build_example(
             article=article,
             category="timeline_construction",

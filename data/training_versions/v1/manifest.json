@@ -1,0 +1,16 @@
+{
+ "version": "v1",
+ "dir": "data/combined_80_20_split",
+ "train_rows": 12000,
+ "val_rows": 3000,
+ "synthetic_pct": 0.0,
+ "general_rehearsal_pct": 0.0,
+ "composition": {
+  "TimeQA": 7337,
+  "TLQA": 4066,
+  "Temprel": 597
+ },
+ "story": "Original mixture: TimeQA+TLQA+Temprel, no synthetic. Trained llama v1 and the mistral v1 adapter (Sept-1 campaign).",
+ "results_dir": "results/corrected/v1",
+ "size_mb": 159.8
+}

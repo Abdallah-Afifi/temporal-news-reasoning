@@ -1,0 +1,18 @@
+{
+ "version": "v2",
+ "dir": "data/combined_80_20_v2",
+ "train_rows": 16557,
+ "val_rows": 4138,
+ "synthetic_pct": 31.4,
+ "general_rehearsal_pct": 0.0,
+ "composition": {
+  "TimeQA": 7291,
+  "TLQA": 4066,
+  "AUG_MCQ": 2000,
+  "AUG_ARITH": 1600,
+  "AUG_NLI": 1600
+ },
+ "story": "Leakage purge + first AUG slices (31% synthetic). The \"v2 catastrophe\" was a scoring artifact (D39).",
+ "results_dir": "results/corrected/v2",
+ "size_mb": 101.5
+}

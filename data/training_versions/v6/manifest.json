@@ -1,0 +1,25 @@
+{
+ "version": "v6",
+ "dir": "data/combined_80_20_v6",
+ "train_rows": 14850,
+ "val_rows": 3708,
+ "synthetic_pct": 30.7,
+ "general_rehearsal_pct": 14.0,
+ "composition": {
+  "TimeQA": 4963,
+  "TLQA": 3253,
+  "REHEARSAL": 2077,
+  "AUG_MCQ2": 1200,
+  "AUG_SEQ": 1019,
+  "AUG_DIALOG": 597,
+  "AUG_GLM": 402,
+  "AUG_MCQ": 400,
+  "AUG_NOANS": 400,
+  "AUG_ARITH": 320,
+  "AUG_NLI": 207,
+  "AUG_REASON": 12
+ },
+ "story": "Format arm: AUG_SEQ + AUG_NOANS + rehearsal cap. First arm to lead zs on TIME (+0.73pp, benchmark artifact - D49).",
+ "results_dir": "results/corrected/v6",
+ "size_mb": 79.3
+}

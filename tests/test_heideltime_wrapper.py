@@ -1,4 +1,21 @@
+import shutil
+
+import pytest
+
 from src.rag.heideltime_wrapper import HeidelTimeWrapper
+
+# HeidelTime is a Java program; py_heideltime shells out to a JVM. Without one
+# every assertion below fails on the wrapper's own fallback path (it swallows
+# the OSError and returns the DCT), which looks like four broken tests rather
+# than one absent optional dependency — and red tests that are always red stop
+# being read. Skip instead, loudly (2026-09-12 audit).
+#
+# Nothing in the evaluated chain depends on HeidelTime: `src/rag/` has no
+# non-test importers. Install a JDK to run these.
+pytestmark = pytest.mark.skipif(
+    shutil.which("java") is None,
+    reason="HeidelTime needs a JVM; `java` not found on PATH",
+)
 
 
 class TestHeidelTimeWrapper:

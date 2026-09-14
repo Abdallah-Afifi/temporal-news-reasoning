@@ -1,0 +1,108 @@
+# LLaMA-3.2-3B-Instruct LoRA Fine-Tuning Configuration — V5 CYCLE
+# ================================================================
+# Data-only bundle (docs/v5_plan.md): identical hyperparameters to v2/v3/v4;
+# only the data and output dir change. ONE VARIABLE vs v4 — the rehearsal
+# slice grows 3,344 -> 10,032 rows (20.9% -> 44.1% of the mixture) — with
+# pool composition, AUG_MCQ target format, batch shape, LoRA rank, LR and
+# epochs all held at v4's values.
+#
+# Rationale: under the v5 scoring protocol v4 reaches 37.63% on TIME against
+# zero-shot's 41.49%, and that residual deficit is spread across
+# Counterfactual (-12.8pp), Explicit_Reasoning (-7.4pp), Timeline (-6.0pp),
+# Order_Reasoning (-5.7pp) and Relative_Reasoning (-5.3pp) rather than
+# concentrated in one task — the signature of general reasoning being
+# forgotten, for which rehearsal volume is the standard remedy.
+#
+# EXPECT A LONGER RUN THAN v4. 18,180 train rows vs v4's 12,830 (+41.7%), and
+# the added rows are the LONG ones (HotpotQA/DROP/CoQA passages, 429 tokens
+# average vs the mixture's shorter supervised rows). v4 took 6h57m.
+# MEASURED on the 2026-09-06 run: 3,408 steps at 7.8-8.5 s/it = ~8 h, better
+# than the ~10-12 h first estimated from the row count. Do not "optimise" the
+# batch shape to improve on it — that was measured on 2026-09-05 and 2x8 is
+# already the fastest on this card.
+
+# ── Model ──────────────────────────────────────────────
+model_path: models/Llama-3.2-3B-Instruct
+seed: 42
+dtype: bfloat16
+
+# ── Data ───────────────────────────────────────────────
+train_data: data/combined_80_20_v5/train.jsonl
+val_data: data/combined_80_20_v5/val.jsonl
+max_seq_length: 2048
+
+# ── Training (identical to v2 / HPO-optimized) ─────────
+learning_rate: 4.62258900102083e-04
+num_train_epochs: 3
+warmup_ratio: 0.08185086660174143
+weight_decay: 0.010909498032426036
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+
+# ── Speed optimizations (RTX 3090 24 GB) ───────────────
+# Activation checkpointing recomputes activations in the backward pass to
+# save memory. Gradients are mathematically identical either way, so turning
+# it off is a pure speed/memory trade and does NOT change the recipe — v4
+# stays comparable to v1-v3. Set back to true if this OOMs.
+# 2026-09-05: it OOMed on the first training step (22.31/23.53 GiB used by
+# this process alone) -- v4's new rehearsal data (HotpotQA/DROP/CoQA full
+# passages, avg 429 / max 1,518 tokens) runs far longer than v1-v3's dolly
+# rehearsal ever did. Turned back on per this comment's own contingency.
+gradient_checkpointing: true
+attn_implementation: sdpa
+# BATCH SHAPE: 2 x 8, identical to v1/v2/v3/v3-corrected. Do not "optimise"
+# this — it was measured on 2026-09-05 and larger micro-batches are WORSE on
+# this card (full write-up: docs/v4_plan.md § "Throughput protocol"):
+#   2 x 8  ->  8.4-9.6 s/it   (~6 h)   <- this, the fastest measured
+#   4 x 4  -> 11.9-13.0 s/it  (~8 h)   ~35% slower
+#   8 x 2  -> OOM (tried to allocate 6.48 GiB with 2.88 GiB free)
+# Why bigger is slower: the GPU is already saturated at batch 2 (2048-token
+# sequences on a 3B model), so a larger micro-batch adds no parallelism — it
+# just pads every sequence out to the longest in the group (this data runs
+# 429 tokens avg, 1,518 max), and gradient_checkpointing then recomputes that
+# padding in the backward pass too.
+# Why 8 OOMs: the ceiling is the logits tensor, batch x seq_len x vocab, and
+# Llama-3's vocab is 128,256 -> ~2.1 GB at batch 2 but ~8.4 GB at batch 8 in
+# fp32. gradient_checkpointing does not shrink it, and fixing flash-attn
+# would not either (it is the loss input, not an attention intermediate).
+# Keeping 2 x 8 also keeps v4 bit-comparable to v1-v3: no second variable.
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+tf32: true
+
+# ── Logging & Checkpointing ────────────────────────────
+logging_steps: 10
+eval_strategy: epoch
+save_strategy: epoch
+save_total_limit: 3
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+early_stopping_patience: 2
+
+# ── LoRA (identical to v2) ──────────────────────────────
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# ── Quantization ───────────────────────────────────────
+load_in_4bit: false
+
+# ── Output ─────────────────────────────────────────────
+output_dir: checkpoints/llama_v5
+progress_dir: experiments/finetuning/LLaMA/Progress
+
+# ── Reporting ──────────────────────────────────────────
+report_to: []

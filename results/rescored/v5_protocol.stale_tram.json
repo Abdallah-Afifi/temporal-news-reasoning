@@ -1,0 +1,2570 @@
+{
+  "time": {
+    "zero-shot": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 40.962845081428256,
+      "v5_pct": 41.463135726469666,
+      "stored_correct": 42986,
+      "v5_correct": 43511,
+      "protocol_drift": 5,
+      "rewritten": 5,
+      "rules_fired": 51789,
+      "rules_fired_pct": 49.351528030570144,
+      "strict_correct": 42486,
+      "strict_pct": 40.48637780043644,
+      "rule_credit_pp": 0.9767579260332226,
+      "abstain_n": 2427,
+      "abstain_pct": 52.94602389781623,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 42226,
+      "no_abstain_pct": 41.191275167785236,
+      "macro_pct": 40.13999801608545,
+      "_paired": null,
+      "by_category": {
+        "Timeline": {
+          "stored_pct": 16.48,
+          "v5_pct": 16.48,
+          "n": 13159
+        },
+        "Counterfactual": {
+          "stored_pct": 42.59,
+          "v5_pct": 42.61,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 40.35,
+          "v5_pct": 40.35,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 58.55,
+          "v5_pct": 58.61,
+          "n": 9720
+        },
+        "Co_temporality": {
+          "stored_pct": 50.69,
+          "v5_pct": 50.68,
+          "n": 10089
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 46.86,
+          "v5_pct": 46.98,
+          "n": 10265
+        },
+        "Order_Reasoning": {
+          "stored_pct": 49.91,
+          "v5_pct": 49.92,
+          "n": 10266
+        },
+        "Order_Compare": {
+          "stored_pct": 61.07,
+          "v5_pct": 61.07,
+          "n": 9897
+        },
+        "Extract": {
+          "stored_pct": 9.55,
+          "v5_pct": 9.55,
+          "n": 3340
+        },
+        "Computation": {
+          "stored_pct": 18.83,
+          "v5_pct": 18.83,
+          "n": 9372
+        },
+        "Localization": {
+          "stored_pct": 41.36,
+          "v5_pct": 46.45,
+          "n": 9894
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v1-ft": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 32.68565547603846,
+      "v5_pct": 33.41846215420387,
+      "stored_correct": 34300,
+      "v5_correct": 35069,
+      "protocol_drift": 83,
+      "rewritten": 83,
+      "rules_fired": 63378,
+      "rules_fired_pct": 60.39508666939841,
+      "strict_correct": 30468,
+      "strict_pct": 29.034010234517197,
+      "rule_credit_pp": 4.384451919686676,
+      "abstain_n": 2427,
+      "abstain_pct": 21.755253399258343,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 34541,
+      "no_abstain_pct": 33.694591852661155,
+      "macro_pct": 32.70974718387105,
+      "_paired": [
+        15782,
+        7340
+      ],
+      "by_category": {
+        "Timeline": {
+          "stored_pct": 0.08,
+          "v5_pct": 0.08,
+          "n": 13159
+        },
+        "Counterfactual": {
+          "stored_pct": 31.01,
+          "v5_pct": 31.05,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 41.29,
+          "v5_pct": 41.45,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 50.81,
+          "v5_pct": 50.87,
+          "n": 9720
+        },
+        "Co_temporality": {
+          "stored_pct": 43.57,
+          "v5_pct": 43.66,
+          "n": 10089
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 40.4,
+          "v5_pct": 40.56,
+          "n": 10265
+        },
+        "Order_Reasoning": {
+          "stored_pct": 44.17,
+          "v5_pct": 44.24,
+          "n": 10266
+        },
+        "Order_Compare": {
+          "stored_pct": 56.18,
+          "v5_pct": 56.18,
+          "n": 9897
+        },
+        "Extract": {
+          "stored_pct": 7.75,
+          "v5_pct": 7.75,
+          "n": 3340
+        },
+        "Computation": {
+          "stored_pct": 0.68,
+          "v5_pct": 0.68,
+          "n": 9372
+        },
+        "Localization": {
+          "stored_pct": 36.07,
+          "v5_pct": 43.28,
+          "n": 9894
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v2-ft": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 32.44170422817065,
+      "v5_pct": 37.47796338825413,
+      "stored_correct": 34044,
+      "v5_correct": 39329,
+      "protocol_drift": 40197,
+      "rewritten": 40197,
+      "rules_fired": 61698,
+      "rules_fired_pct": 58.79415660526592,
+      "strict_correct": 27398,
+      "strict_pct": 26.108501129227456,
+      "rule_credit_pp": 11.369462259026676,
+      "abstain_n": 2427,
+      "abstain_pct": 5.727235269880511,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 39190,
+      "no_abstain_pct": 38.22967067270173,
+      "macro_pct": 36.614451409966705,
+      "_paired": [
+        12138,
+        7956
+      ],
+      "by_category": {
+        "Timeline": {
+          "stored_pct": 0.28,
+          "v5_pct": 0.28,
+          "n": 13159
+        },
+        "Counterfactual": {
+          "stored_pct": 27.12,
+          "v5_pct": 36.14,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 38.45,
+          "v5_pct": 41.27,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 44.19,
+          "v5_pct": 58.01,
+          "n": 9720
+        },
+        "Co_temporality": {
+          "stored_pct": 51.7,
+          "v5_pct": 53.06,
+          "n": 10089
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 38.27,
+          "v5_pct": 46.41,
+          "n": 10265
+        },
+        "Order_Reasoning": {
+          "stored_pct": 36.33,
+          "v5_pct": 48.35,
+          "n": 10266
+        },
+        "Order_Compare": {
+          "stored_pct": 52.95,
+          "v5_pct": 57.18,
+          "n": 9897
+        },
+        "Extract": {
+          "stored_pct": 7.19,
+          "v5_pct": 7.49,
+          "n": 3340
+        },
+        "Computation": {
+          "stored_pct": 10.07,
+          "v5_pct": 10.07,
+          "n": 9372
+        },
+        "Localization": {
+          "stored_pct": 42.79,
+          "v5_pct": 44.49,
+          "n": 9894
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v3-corr": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 37.76956136422112,
+      "v5_pct": 39.97751074433719,
+      "stored_correct": 39635,
+      "v5_correct": 41952,
+      "protocol_drift": 5898,
+      "rewritten": 5898,
+      "rules_fired": 42722,
+      "rules_fired_pct": 40.71127035706458,
+      "strict_correct": 36332,
+      "strict_pct": 34.622018505989196,
+      "rule_credit_pp": 5.355492238347992,
+      "abstain_n": 2427,
+      "abstain_pct": 7.210548001648125,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 41777,
+      "no_abstain_pct": 40.75327766505385,
+      "macro_pct": 38.87974394587413,
+      "_paired": [
+        10481,
+        8922
+      ],
+      "by_category": {
+        "Timeline": {
+          "stored_pct": 13.28,
+          "v5_pct": 13.28,
+          "n": 13159
+        },
+        "Counterfactual": {
+          "stored_pct": 32.99,
+          "v5_pct": 35.12,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 42.53,
+          "v5_pct": 42.58,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 52.23,
+          "v5_pct": 57.07,
+          "n": 9720
+        },
+        "Co_temporality": {
+          "stored_pct": 51.54,
+          "v5_pct": 52.39,
+          "n": 10089
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 44.7,
+          "v5_pct": 46.77,
+          "n": 10265
+        },
+        "Order_Reasoning": {
+          "stored_pct": 45.65,
+          "v5_pct": 49.92,
+          "n": 10266
+        },
+        "Order_Compare": {
+          "stored_pct": 61.03,
+          "v5_pct": 61.06,
+          "n": 9897
+        },
+        "Extract": {
+          "stored_pct": 11.8,
+          "v5_pct": 11.98,
+          "n": 3340
+        },
+        "Computation": {
+          "stored_pct": 4.88,
+          "v5_pct": 4.88,
+          "n": 9372
+        },
+        "Localization": {
+          "stored_pct": 43.65,
+          "v5_pct": 52.63,
+          "n": 9894
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v4": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 33.62143721590638,
+      "v5_pct": 40.080427677031416,
+      "stored_correct": 35282,
+      "v5_correct": 42060,
+      "protocol_drift": 13049,
+      "rewritten": 13049,
+      "rules_fired": 37879,
+      "rules_fired_pct": 36.09620827337787,
+      "strict_correct": 33198,
+      "strict_pct": 31.6355215887325,
+      "rule_credit_pp": 8.444906088298914,
+      "abstain_n": 2427,
+      "abstain_pct": 6.6749072929542645,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 41898,
+      "no_abstain_pct": 40.87131262681442,
+      "macro_pct": 38.83073353642912,
+      "_paired": [
+        10145,
+        8694
+      ],
+      "by_category": {
+        "Timeline": {
+          "stored_pct": 10.48,
+          "v5_pct": 10.48,
+          "n": 13159
+        },
+        "Counterfactual": {
+          "stored_pct": 29.62,
+          "v5_pct": 34.74,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 42.53,
+          "v5_pct": 42.53,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 51.0,
+          "v5_pct": 59.21,
+          "n": 9720
+        },
+        "Co_temporality": {
+          "stored_pct": 48.39,
+          "v5_pct": 49.82,
+          "n": 10089
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 41.3,
+          "v5_pct": 46.85,
+          "n": 10265
+        },
+        "Order_Reasoning": {
+          "stored_pct": 44.03,
+          "v5_pct": 50.39,
+          "n": 10266
+        },
+        "Order_Compare": {
+          "stored_pct": 40.86,
+          "v5_pct": 62.04,
+          "n": 9897
+        },
+        "Extract": {
+          "stored_pct": 7.04,
+          "v5_pct": 7.22,
+          "n": 3340
+        },
+        "Computation": {
+          "stored_pct": 15.16,
+          "v5_pct": 15.16,
+          "n": 9372
+        },
+        "Localization": {
+          "stored_pct": 28.36,
+          "v5_pct": 48.71,
+          "n": 9894
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v5": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 34.93076930407189,
+      "v5_pct": 38.44805077235346,
+      "stored_correct": 36656,
+      "v5_correct": 40347,
+      "protocol_drift": 22891,
+      "rewritten": 22891,
+      "rules_fired": 60185,
+      "rules_fired_pct": 57.35236661298469,
+      "strict_correct": 35791,
+      "strict_pct": 34.10648090795605,
+      "rule_credit_pp": 4.341569864397414,
+      "abstain_n": 2427,
+      "abstain_pct": 0.7416563658838071,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 40329,
+      "no_abstain_pct": 39.340760106133914,
+      "macro_pct": 37.55177301597149,
+      "_paired": [
+        11036,
+        7872
+      ],
+      "by_category": {
+        "Timeline": {
+          "stored_pct": 0.03,
+          "v5_pct": 0.03,
+          "n": 13159
+        },
+        "Counterfactual": {
+          "stored_pct": 29.49,
+          "v5_pct": 32.58,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 41.81,
+          "v5_pct": 43.3,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 52.57,
+          "v5_pct": 58.99,
+          "n": 9720
+        },
+        "Co_temporality": {
+          "stored_pct": 49.74,
+          "v5_pct": 50.04,
+          "n": 10089
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 44.34,
+          "v5_pct": 46.79,
+          "n": 10265
+        },
+        "Order_Reasoning": {
+          "stored_pct": 44.71,
+          "v5_pct": 49.23,
+          "n": 10266
+        },
+        "Order_Compare": {
+          "stored_pct": 66.19,
+          "v5_pct": 67.83,
+          "n": 9897
+        },
+        "Extract": {
+          "stored_pct": 7.34,
+          "v5_pct": 7.4,
+          "n": 3340
+        },
+        "Computation": {
+          "stored_pct": 8.1,
+          "v5_pct": 8.1,
+          "n": 9372
+        },
+        "Localization": {
+          "stored_pct": 31.41,
+          "v5_pct": 48.78,
+          "n": 9894
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v6": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 41.33163075691592,
+      "v5_pct": 42.17878958251937,
+      "stored_correct": 43373,
+      "v5_correct": 44262,
+      "protocol_drift": 78,
+      "rewritten": 78,
+      "rules_fired": 51759,
+      "rules_fired_pct": 49.322939993710634,
+      "strict_correct": 30658,
+      "strict_pct": 29.215067801294087,
+      "rule_credit_pp": 12.963721781225285,
+      "abstain_n": 2427,
+      "abstain_pct": 99.87639060568603,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 41838,
+      "no_abstain_pct": 40.81278289371001,
+      "macro_pct": 40.647901544779124,
+      "_paired": [
+        10145,
+        10896
+      ],
+      "by_category": {
+        "Timeline": {
+          "stored_pct": 17.87,
+          "v5_pct": 17.87,
+          "n": 13159
+        },
+        "Counterfactual": {
+          "stored_pct": 55.65,
+          "v5_pct": 55.66,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 33.09,
+          "v5_pct": 33.09,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 57.13,
+          "v5_pct": 57.06,
+          "n": 9720
+        },
+        "Co_temporality": {
+          "stored_pct": 48.92,
+          "v5_pct": 48.92,
+          "n": 10089
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 44.72,
+          "v5_pct": 44.79,
+          "n": 10265
+        },
+        "Order_Reasoning": {
+          "stored_pct": 48.77,
+          "v5_pct": 48.75,
+          "n": 10266
+        },
+        "Order_Compare": {
+          "stored_pct": 68.72,
+          "v5_pct": 68.72,
+          "n": 9897
+        },
+        "Extract": {
+          "stored_pct": 7.69,
+          "v5_pct": 7.93,
+          "n": 3340
+        },
+        "Computation": {
+          "stored_pct": 12.48,
+          "v5_pct": 12.48,
+          "n": 9372
+        },
+        "Localization": {
+          "stored_pct": 42.94,
+          "v5_pct": 51.84,
+          "n": 9894
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v6-vllm": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 41.33067782235394,
+      "v5_pct": 42.17593077883342,
+      "stored_correct": 43372,
+      "v5_correct": 44259,
+      "protocol_drift": 79,
+      "rewritten": 79,
+      "rules_fired": 51750,
+      "rules_fired_pct": 49.31436358265278,
+      "strict_correct": 30659,
+      "strict_pct": 29.21602073585607,
+      "rule_credit_pp": 12.959910042977349,
+      "abstain_n": 2427,
+      "abstain_pct": 99.87639060568603,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 41835,
+      "no_abstain_pct": 40.80985640705478,
+      "macro_pct": 40.65249809752565,
+      "_paired": [
+        10150,
+        10898
+      ],
+      "by_category": {
+        "Co_temporality": {
+          "stored_pct": 48.94,
+          "v5_pct": 48.91,
+          "n": 10089
+        },
+        "Computation": {
+          "stored_pct": 12.43,
+          "v5_pct": 12.43,
+          "n": 9372
+        },
+        "Counterfactual": {
+          "stored_pct": 55.66,
+          "v5_pct": 55.67,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 33.11,
+          "v5_pct": 33.11,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 57.09,
+          "v5_pct": 57.02,
+          "n": 9720
+        },
+        "Localization": {
+          "stored_pct": 42.91,
+          "v5_pct": 51.83,
+          "n": 9894
+        },
+        "Order_Compare": {
+          "stored_pct": 68.76,
+          "v5_pct": 68.76,
+          "n": 9897
+        },
+        "Order_Reasoning": {
+          "stored_pct": 48.74,
+          "v5_pct": 48.72,
+          "n": 10266
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 44.72,
+          "v5_pct": 44.8,
+          "n": 10265
+        },
+        "Timeline": {
+          "stored_pct": 17.87,
+          "v5_pct": 17.87,
+          "n": 13159
+        },
+        "Extract": {
+          "stored_pct": 7.81,
+          "v5_pct": 8.05,
+          "n": 3340
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v7-vllm": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 12,
+      "stored_pct": 35.49681243389016,
+      "v5_pct": 36.14766673972498,
+      "stored_correct": 37250,
+      "v5_correct": 37933,
+      "protocol_drift": 198,
+      "rewritten": 198,
+      "rules_fired": 8745,
+      "rules_fired_pct": 8.333412744546832,
+      "strict_correct": 37903,
+      "strict_pct": 36.11907870286547,
+      "rule_credit_pp": 0.02858803685951017,
+      "abstain_n": 2427,
+      "abstain_pct": 73.67119901112484,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 36145,
+      "no_abstain_pct": 35.259286717652564,
+      "macro_pct": 34.78748270187344,
+      "_paired": [
+        15574,
+        9996
+      ],
+      "by_category": {
+        "Co_temporality": {
+          "stored_pct": 46.39,
+          "v5_pct": 46.25,
+          "n": 10089
+        },
+        "Computation": {
+          "stored_pct": 6.63,
+          "v5_pct": 6.63,
+          "n": 9372
+        },
+        "Counterfactual": {
+          "stored_pct": 47.6,
+          "v5_pct": 47.38,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 40.11,
+          "v5_pct": 40.11,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 51.11,
+          "v5_pct": 50.7,
+          "n": 9720
+        },
+        "Localization": {
+          "stored_pct": 34.05,
+          "v5_pct": 41.73,
+          "n": 9894
+        },
+        "Order_Compare": {
+          "stored_pct": 40.41,
+          "v5_pct": 40.41,
+          "n": 9897
+        },
+        "Order_Reasoning": {
+          "stored_pct": 44.9,
+          "v5_pct": 44.84,
+          "n": 10266
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 40.46,
+          "v5_pct": 40.51,
+          "n": 10265
+        },
+        "Timeline": {
+          "stored_pct": 17.53,
+          "v5_pct": 17.53,
+          "n": 13159
+        },
+        "Extract": {
+          "stored_pct": 6.59,
+          "v5_pct": 6.59,
+          "n": 3340
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v7c-vllm": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 41.006680071279504,
+      "v5_pct": 41.911967905163955,
+      "stored_correct": 43032,
+      "v5_correct": 43982,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 17720,
+      "rules_fired_pct": 16.8860004383499,
+      "strict_correct": 43757,
+      "strict_pct": 41.69755762871764,
+      "rule_credit_pp": 0.2144102764463156,
+      "abstain_n": 2427,
+      "abstain_pct": 99.17593737124021,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 41575,
+      "no_abstain_pct": 40.55622756360231,
+      "macro_pct": 40.29858816931389,
+      "_paired": [
+        9979,
+        10450
+      ],
+      "by_category": {
+        "Co_temporality": {
+          "stored_pct": 51.28,
+          "v5_pct": 51.28,
+          "n": 10089
+        },
+        "Computation": {
+          "stored_pct": 1.8,
+          "v5_pct": 1.8,
+          "n": 9372
+        },
+        "Counterfactual": {
+          "stored_pct": 55.68,
+          "v5_pct": 55.72,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 41.37,
+          "v5_pct": 41.37,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 57.56,
+          "v5_pct": 57.62,
+          "n": 9720
+        },
+        "Localization": {
+          "stored_pct": 42.54,
+          "v5_pct": 51.87,
+          "n": 9894
+        },
+        "Order_Compare": {
+          "stored_pct": 64.03,
+          "v5_pct": 64.03,
+          "n": 9897
+        },
+        "Order_Reasoning": {
+          "stored_pct": 49.71,
+          "v5_pct": 49.74,
+          "n": 10266
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 44.03,
+          "v5_pct": 44.17,
+          "n": 10265
+        },
+        "Timeline": {
+          "stored_pct": 18.76,
+          "v5_pct": 18.76,
+          "n": 13159
+        },
+        "Extract": {
+          "stored_pct": 6.92,
+          "v5_pct": 6.92,
+          "n": 3340
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    },
+    "v6d-vllm": {
+      "n": 104939,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 39.56107834075034,
+      "v5_pct": 39.96226379134545,
+      "stored_correct": 41515,
+      "v5_correct": 41936,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 49993,
+      "rules_fired_pct": 47.640057557247545,
+      "strict_correct": 36317,
+      "strict_pct": 34.60772448755944,
+      "rule_credit_pp": 5.354539303786012,
+      "abstain_n": 2427,
+      "abstain_pct": 97.19818706221673,
+      "no_abstain_n": 102512,
+      "no_abstain_correct": 39577,
+      "no_abstain_pct": 38.60718745122522,
+      "macro_pct": 38.528597630346866,
+      "_paired": [
+        11704,
+        10129
+      ],
+      "by_category": {
+        "Co_temporality": {
+          "stored_pct": 48.7,
+          "v5_pct": 48.7,
+          "n": 10089
+        },
+        "Computation": {
+          "stored_pct": 5.27,
+          "v5_pct": 5.27,
+          "n": 9372
+        },
+        "Counterfactual": {
+          "stored_pct": 53.54,
+          "v5_pct": 53.54,
+          "n": 9720
+        },
+        "Duration_Compare": {
+          "stored_pct": 32.49,
+          "v5_pct": 32.49,
+          "n": 9217
+        },
+        "Explicit_Reasoning": {
+          "stored_pct": 53.63,
+          "v5_pct": 53.65,
+          "n": 9720
+        },
+        "Localization": {
+          "stored_pct": 40.0,
+          "v5_pct": 44.02,
+          "n": 9894
+        },
+        "Order_Compare": {
+          "stored_pct": 66.65,
+          "v5_pct": 66.65,
+          "n": 9897
+        },
+        "Order_Reasoning": {
+          "stored_pct": 48.7,
+          "v5_pct": 48.72,
+          "n": 10266
+        },
+        "Relative_Reasoning": {
+          "stored_pct": 44.37,
+          "v5_pct": 44.57,
+          "n": 10265
+        },
+        "Timeline": {
+          "stored_pct": 17.43,
+          "v5_pct": 17.43,
+          "n": 13159
+        },
+        "Extract": {
+          "stored_pct": 8.77,
+          "v5_pct": 8.77,
+          "n": 3340
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 104939
+    }
+  },
+  "timebench": {
+    "zero-shot": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 45.04389086595492,
+      "v5_pct": 45.176749703440095,
+      "stored_correct": 9493,
+      "v5_correct": 9521,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 2975,
+      "rules_fired_pct": 14.116251482799525,
+      "strict_correct": 7187,
+      "strict_pct": 34.102016607354685,
+      "rule_credit_pp": 11.07473309608541,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 9521,
+      "no_abstain_pct": 45.176749703440095,
+      "macro_pct": 45.63317968918858,
+      "_paired": null,
+      "by_category": {
+        "duration": {
+          "stored_pct": 78.61,
+          "v5_pct": 78.61,
+          "n": 1538
+        },
+        "temporal_dialogue": {
+          "stored_pct": 78.63,
+          "v5_pct": 78.63,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 54.32,
+          "v5_pct": 54.32,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 48.25,
+          "v5_pct": 48.25,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 51.55,
+          "v5_pct": 51.55,
+          "n": 4248
+        },
+        "temporal_nli": {
+          "stored_pct": 46.88,
+          "v5_pct": 46.88,
+          "n": 6965
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "arithmetic": {
+          "stored_pct": 6.12,
+          "v5_pct": 6.83,
+          "n": 4000
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 50.65,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v1-ft": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 38.85172004744958,
+      "v5_pct": 38.87544483985765,
+      "stored_correct": 8188,
+      "v5_correct": 8193,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 2984,
+      "rules_fired_pct": 14.158956109134046,
+      "strict_correct": 6462,
+      "strict_pct": 30.661921708185055,
+      "rule_credit_pp": 8.213523131672595,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 8193,
+      "no_abstain_pct": 38.87544483985765,
+      "macro_pct": 40.20450409577332,
+      "_paired": [
+        3466,
+        2138
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 73.28,
+          "v5_pct": 73.28,
+          "n": 1538
+        },
+        "temporal_dialogue": {
+          "stored_pct": 68.67,
+          "v5_pct": 68.67,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 42.75,
+          "v5_pct": 42.75,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 45.32,
+          "v5_pct": 45.32,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 50.85,
+          "v5_pct": 50.85,
+          "n": 4248
+        },
+        "temporal_nli": {
+          "stored_pct": 36.37,
+          "v5_pct": 36.37,
+          "n": 6965
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "arithmetic": {
+          "stored_pct": 4.28,
+          "v5_pct": 4.4,
+          "n": 4000
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 44.83,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v2-ft": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 44.03795966785291,
+      "v5_pct": 45.42348754448398,
+      "stored_correct": 9281,
+      "v5_correct": 9573,
+      "protocol_drift": 284,
+      "rewritten": 284,
+      "rules_fired": 2945,
+      "rules_fired_pct": 13.973902728351128,
+      "strict_correct": 8187,
+      "strict_pct": 38.84697508896797,
+      "rule_credit_pp": 6.57651245551601,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 9573,
+      "no_abstain_pct": 45.42348754448398,
+      "macro_pct": 44.32655332251372,
+      "_paired": [
+        4214,
+        4266
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 77.31,
+          "v5_pct": 77.63,
+          "n": 1538
+        },
+        "temporal_dialogue": {
+          "stored_pct": 46.2,
+          "v5_pct": 54.98,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 41.04,
+          "v5_pct": 41.04,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 61.78,
+          "v5_pct": 61.78,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 52.59,
+          "v5_pct": 52.59,
+          "n": 4248
+        },
+        "temporal_nli": {
+          "stored_pct": 46.16,
+          "v5_pct": 46.16,
+          "n": 6965
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "arithmetic": {
+          "stored_pct": 16.43,
+          "v5_pct": 20.43,
+          "n": 4000
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 42.88,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v3-corr": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 46.79952550415184,
+      "v5_pct": 48.455516014234874,
+      "stored_correct": 9863,
+      "v5_correct": 10212,
+      "protocol_drift": 199,
+      "rewritten": 199,
+      "rules_fired": 1347,
+      "rules_fired_pct": 6.391459074733096,
+      "strict_correct": 9478,
+      "strict_pct": 44.972716488730725,
+      "rule_credit_pp": 3.4827995255041486,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 10212,
+      "no_abstain_pct": 48.455516014234874,
+      "macro_pct": 47.08793232612965,
+      "_paired": [
+        2964,
+        3655
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 76.85,
+          "v5_pct": 77.11,
+          "n": 1538
+        },
+        "temporal_dialogue": {
+          "stored_pct": 56.36,
+          "v5_pct": 58.37,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 49.79,
+          "v5_pct": 49.79,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 63.81,
+          "v5_pct": 63.81,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 57.42,
+          "v5_pct": 57.42,
+          "n": 4248
+        },
+        "temporal_nli": {
+          "stored_pct": 48.38,
+          "v5_pct": 48.38,
+          "n": 6965
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "arithmetic": {
+          "stored_pct": 13.93,
+          "v5_pct": 21.82,
+          "n": 4000
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 50.32,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v4": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 46.045077105575324,
+      "v5_pct": 46.723606168446025,
+      "stored_correct": 9704,
+      "v5_correct": 9847,
+      "protocol_drift": 157,
+      "rewritten": 157,
+      "rules_fired": 1872,
+      "rules_fired_pct": 8.882562277580071,
+      "strict_correct": 8926,
+      "strict_pct": 42.35349940688019,
+      "rule_credit_pp": 4.370106761565836,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 9847,
+      "no_abstain_pct": 46.723606168446025,
+      "macro_pct": 46.1870920977249,
+      "_paired": [
+        3670,
+        3996
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 77.44,
+          "v5_pct": 77.83,
+          "n": 1538
+        },
+        "temporal_dialogue": {
+          "stored_pct": 59.06,
+          "v5_pct": 60.58,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 48.51,
+          "v5_pct": 48.51,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 62.8,
+          "v5_pct": 62.8,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 54.47,
+          "v5_pct": 54.47,
+          "n": 4248
+        },
+        "temporal_nli": {
+          "stored_pct": 46.56,
+          "v5_pct": 46.56,
+          "n": 6965
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "arithmetic": {
+          "stored_pct": 15.88,
+          "v5_pct": 18.75,
+          "n": 4000
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 45.54,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v5": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 46.26809015421115,
+      "v5_pct": 48.071174377224196,
+      "stored_correct": 9751,
+      "v5_correct": 10131,
+      "protocol_drift": 241,
+      "rewritten": 241,
+      "rules_fired": 2933,
+      "rules_fired_pct": 13.916963226571767,
+      "strict_correct": 8476,
+      "strict_pct": 40.21826809015421,
+      "rule_credit_pp": 7.852906287069985,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 10131,
+      "no_abstain_pct": 48.071174377224196,
+      "macro_pct": 47.98865479971568,
+      "_paired": [
+        3216,
+        3826
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 79.71,
+          "v5_pct": 79.84,
+          "n": 1538
+        },
+        "temporal_dialogue": {
+          "stored_pct": 60.58,
+          "v5_pct": 70.89,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 48.56,
+          "v5_pct": 48.56,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 62.23,
+          "v5_pct": 62.23,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 55.18,
+          "v5_pct": 55.18,
+          "n": 4248
+        },
+        "temporal_nli": {
+          "stored_pct": 46.63,
+          "v5_pct": 46.63,
+          "n": 6965
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "arithmetic": {
+          "stored_pct": 14.85,
+          "v5_pct": 20.57,
+          "n": 4000
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 47.59,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v6": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 44.16132858837485,
+      "v5_pct": 47.43534994068802,
+      "stored_correct": 9307,
+      "v5_correct": 9997,
+      "protocol_drift": 6,
+      "rewritten": 6,
+      "rules_fired": 2980,
+      "rules_fired_pct": 14.139976275207593,
+      "strict_correct": 8231,
+      "strict_pct": 39.05575326215896,
+      "rule_credit_pp": 8.379596678529062,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 9997,
+      "no_abstain_pct": 47.43534994068802,
+      "macro_pct": 46.79572133220034,
+      "_paired": [
+        3985,
+        4461
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 72.5,
+          "v5_pct": 72.5,
+          "n": 1538
+        },
+        "temporal_dialogue": {
+          "stored_pct": 65.28,
+          "v5_pct": 65.35,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 52.88,
+          "v5_pct": 52.88,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 58.96,
+          "v5_pct": 58.96,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 53.88,
+          "v5_pct": 53.88,
+          "n": 4248
+        },
+        "temporal_nli": {
+          "stored_pct": 43.89,
+          "v5_pct": 43.89,
+          "n": 6965
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "arithmetic": {
+          "stored_pct": 9.68,
+          "v5_pct": 26.9,
+          "n": 4000
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 48.61,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v6-vllm": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 44.189798339264534,
+      "v5_pct": 47.444839857651246,
+      "stored_correct": 9313,
+      "v5_correct": 9999,
+      "protocol_drift": 6,
+      "rewritten": 6,
+      "rules_fired": 2980,
+      "rules_fired_pct": 14.139976275207593,
+      "strict_correct": 8232,
+      "strict_pct": 39.06049822064057,
+      "rule_credit_pp": 8.384341637010678,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 9999,
+      "no_abstain_pct": 47.444839857651246,
+      "macro_pct": 46.81420221727651,
+      "_paired": [
+        3985,
+        4463
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 72.5,
+          "v5_pct": 72.5,
+          "n": 1538
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "temporal_dialogue": {
+          "stored_pct": 65.35,
+          "v5_pct": 65.42,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 52.99,
+          "v5_pct": 52.99,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 58.96,
+          "v5_pct": 58.96,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 53.93,
+          "v5_pct": 53.93,
+          "n": 4248
+        },
+        "arithmetic": {
+          "stored_pct": 9.7,
+          "v5_pct": 26.82,
+          "n": 4000
+        },
+        "temporal_nli": {
+          "stored_pct": 43.89,
+          "v5_pct": 43.89,
+          "n": 6965
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 48.18,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v7-vllm": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 113,
+      "stored_pct": 44.02846975088968,
+      "v5_pct": 45.60379596678529,
+      "stored_correct": 9279,
+      "v5_correct": 9611,
+      "protocol_drift": 1,
+      "rewritten": 1,
+      "rules_fired": 1780,
+      "rules_fired_pct": 8.446026097271648,
+      "strict_correct": 8174,
+      "strict_pct": 38.785290628706996,
+      "rule_credit_pp": 6.818505338078296,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 9611,
+      "no_abstain_pct": 45.60379596678529,
+      "macro_pct": 46.238363933306424,
+      "_paired": [
+        3548,
+        3638
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 72.17,
+          "v5_pct": 72.17,
+          "n": 1538
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "temporal_dialogue": {
+          "stored_pct": 81.95,
+          "v5_pct": 82.02,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 39.93,
+          "v5_pct": 39.93,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 59.19,
+          "v5_pct": 59.19,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 53.98,
+          "v5_pct": 53.98,
+          "n": 4248
+        },
+        "arithmetic": {
+          "stored_pct": 12.43,
+          "v5_pct": 20.7,
+          "n": 4000
+        },
+        "temporal_nli": {
+          "stored_pct": 41.92,
+          "v5_pct": 41.92,
+          "n": 6965
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 53.49,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v7c-vllm": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 44.669039145907476,
+      "v5_pct": 45.68446026097271,
+      "stored_correct": 9414,
+      "v5_correct": 9628,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 472,
+      "rules_fired_pct": 2.239620403321471,
+      "strict_correct": 9392,
+      "strict_pct": 44.56465005931198,
+      "rule_credit_pp": 1.1198102016607336,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 9628,
+      "no_abstain_pct": 45.68446026097271,
+      "macro_pct": 45.352227615622176,
+      "_paired": [
+        2771,
+        2878
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 75.88,
+          "v5_pct": 75.94,
+          "n": 1538
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "temporal_dialogue": {
+          "stored_pct": 63.0,
+          "v5_pct": 63.07,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 47.87,
+          "v5_pct": 47.87,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 60.43,
+          "v5_pct": 60.43,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 54.03,
+          "v5_pct": 54.03,
+          "n": 4248
+        },
+        "arithmetic": {
+          "stored_pct": 10.32,
+          "v5_pct": 15.62,
+          "n": 4000
+        },
+        "temporal_nli": {
+          "stored_pct": 45.86,
+          "v5_pct": 45.86,
+          "n": 6965
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 50.01,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    },
+    "v6d-vllm": {
+      "n": 21075,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 46.33926453143535,
+      "v5_pct": 47.23606168446026,
+      "stored_correct": 9766,
+      "v5_correct": 9955,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 2908,
+      "rules_fired_pct": 13.798339264531435,
+      "strict_correct": 7836,
+      "strict_pct": 37.18149466192171,
+      "rule_credit_pp": 10.05456702253855,
+      "abstain_n": 0,
+      "abstain_pct": NaN,
+      "no_abstain_n": 21075,
+      "no_abstain_correct": 9955,
+      "no_abstain_pct": 47.23606168446026,
+      "macro_pct": 47.37106746213358,
+      "_paired": [
+        2691,
+        3125
+      ],
+      "by_category": {
+        "duration": {
+          "stored_pct": 79.32,
+          "v5_pct": 79.32,
+          "n": 1538
+        },
+        "situated_generation": {
+          "stored_pct": 0.0,
+          "v5_pct": 0.0,
+          "n": 115
+        },
+        "temporal_dialogue": {
+          "stored_pct": 70.89,
+          "v5_pct": 70.89,
+          "n": 1446
+        },
+        "temporal_reasoning": {
+          "stored_pct": 51.55,
+          "v5_pct": 51.55,
+          "n": 1876
+        },
+        "temporal_qa": {
+          "stored_pct": 60.32,
+          "v5_pct": 60.32,
+          "n": 887
+        },
+        "temporal_ordering": {
+          "stored_pct": 55.44,
+          "v5_pct": 55.44,
+          "n": 4248
+        },
+        "arithmetic": {
+          "stored_pct": 9.7,
+          "v5_pct": 14.43,
+          "n": 4000
+        },
+        "temporal_nli": {
+          "stored_pct": 47.04,
+          "v5_pct": 47.04,
+          "n": 6965
+        }
+      },
+      "generation_f1": {
+        "situated_generation": {
+          "token_f1": 45.77,
+          "n": 115
+        }
+      },
+      "expected_n": 21075
+    }
+  },
+  "tram": {
+    "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected.",
+    "zero-shot": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 35.10517698727111,
+      "v5_pct": 35.19713166645938,
+      "stored_correct": 344353,
+      "v5_correct": 345255,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 526189,
+      "rules_fired_pct": 53.64250630531808,
+      "strict_correct": 107420,
+      "strict_pct": 10.950966339694041,
+      "rule_credit_pp": 24.246165326765336,
+      "abstain_n": 3,
+      "abstain_pct": 100.0,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 345252,
+      "no_abstain_pct": 35.196933475377584,
+      "macro_pct": 44.979660471360965,
+      "_paired": null,
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 44.34,
+          "v5_pct": 44.34,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 18.5,
+          "v5_pct": 20.31,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 80.25,
+          "v5_pct": 80.25,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 43.02,
+          "v5_pct": 43.14,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 33.08,
+          "v5_pct": 33.19,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 34.63,
+          "v5_pct": 34.63,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 23.76,
+          "v5_pct": 23.76,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 25.06,
+          "v5_pct": 25.06,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 69.48,
+          "v5_pct": 69.48,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 74.44,
+          "v5_pct": 75.65,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v1-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 33.378834928097966,
+      "v5_pct": 33.483124991079784,
+      "stored_correct": 327419,
+      "v5_correct": 328442,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 526236,
+      "rules_fired_pct": 53.64729773538665,
+      "strict_correct": 133148,
+      "strict_pct": 13.573815548292519,
+      "rule_credit_pp": 19.909309442787265,
+      "abstain_n": 3,
+      "abstain_pct": 66.66666666666667,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 328440,
+      "no_abstain_pct": 33.48302350356555,
+      "macro_pct": 41.94490007364947,
+      "_paired": [
+        90099,
+        73286
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 40.37,
+          "v5_pct": 40.4,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 15.61,
+          "v5_pct": 17.86,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 77.73,
+          "v5_pct": 77.73,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 40.08,
+          "v5_pct": 40.18,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 30.2,
+          "v5_pct": 30.23,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 34.77,
+          "v5_pct": 34.77,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 25.91,
+          "v5_pct": 25.91,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 19.85,
+          "v5_pct": 19.85,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 61.48,
+          "v5_pct": 61.48,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 69.88,
+          "v5_pct": 71.04,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v2-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 31.407110482221757,
+      "v5_pct": 31.500390450577928,
+      "stored_correct": 308078,
+      "v5_correct": 308993,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 383616,
+      "rules_fired_pct": 39.10785611029668,
+      "strict_correct": 231418,
+      "strict_pct": 23.591982204424834,
+      "rule_credit_pp": 7.908408246153094,
+      "abstain_n": 3,
+      "abstain_pct": 33.333333333333336,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 308992,
+      "no_abstain_pct": 31.500384844762287,
+      "macro_pct": 43.8062631555422,
+      "_paired": [
+        170530,
+        134268
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 41.69,
+          "v5_pct": 41.72,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 22.62,
+          "v5_pct": 24.84,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 80.17,
+          "v5_pct": 80.17,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 46.78,
+          "v5_pct": 46.89,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 41.44,
+          "v5_pct": 41.44,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 31.52,
+          "v5_pct": 31.52,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 16.42,
+          "v5_pct": 16.42,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 19.82,
+          "v5_pct": 19.82,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 60.43,
+          "v5_pct": 60.43,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 74.02,
+          "v5_pct": 74.81,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v3c-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 30.07244234482393,
+      "v5_pct": 30.181625783194924,
+      "stored_correct": 294986,
+      "v5_correct": 296057,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 152009,
+      "rules_fired_pct": 15.496606240276964,
+      "strict_correct": 225289,
+      "strict_pct": 22.967159334419392,
+      "rule_credit_pp": 7.214466448775532,
+      "abstain_n": 3,
+      "abstain_pct": 66.66666666666667,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 296055,
+      "no_abstain_pct": 30.181514198477952,
+      "macro_pct": 42.632831123300384,
+      "_paired": [
+        196314,
+        147116
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 44.59,
+          "v5_pct": 44.59,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 22.79,
+          "v5_pct": 24.94,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 77.48,
+          "v5_pct": 77.48,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 43.96,
+          "v5_pct": 44.05,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 37.4,
+          "v5_pct": 37.41,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 30.23,
+          "v5_pct": 30.23,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 17.56,
+          "v5_pct": 17.56,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 18.09,
+          "v5_pct": 18.09,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 57.43,
+          "v5_pct": 57.43,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 73.06,
+          "v5_pct": 74.55,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v4-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 31.922749913856205,
+      "v5_pct": 32.012869577273534,
+      "stored_correct": 313136,
+      "v5_correct": 314020,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 142867,
+      "rules_fired_pct": 14.564622119280102,
+      "strict_correct": 244865,
+      "strict_pct": 24.962840930638443,
+      "rule_credit_pp": 7.050028646635091,
+      "abstain_n": 3,
+      "abstain_pct": 66.66666666666667,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 314018,
+      "no_abstain_pct": 32.01276359317576,
+      "macro_pct": 45.09203825913401,
+      "_paired": [
+        179724,
+        148489
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 45.06,
+          "v5_pct": 45.06,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 22.05,
+          "v5_pct": 24.15,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 79.33,
+          "v5_pct": 79.33,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 49.69,
+          "v5_pct": 49.72,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 35.73,
+          "v5_pct": 35.73,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 30.46,
+          "v5_pct": 30.46,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 22.85,
+          "v5_pct": 22.85,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 21.47,
+          "v5_pct": 21.47,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 65.95,
+          "v5_pct": 65.95,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 75.34,
+          "v5_pct": 76.21,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v5-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 31.49457956730328,
+      "v5_pct": 31.574402753339218,
+      "stored_correct": 308936,
+      "v5_correct": 309719,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 491771,
+      "rules_fired_pct": 50.133752260637486,
+      "strict_correct": 217513,
+      "strict_pct": 22.174432521372836,
+      "rule_credit_pp": 9.399970231966382,
+      "abstain_n": 3,
+      "abstain_pct": 33.333333333333336,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 309718,
+      "no_abstain_pct": 31.574397373880508,
+      "macro_pct": 43.31507447178225,
+      "_paired": [
+        192293,
+        156757
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 37.78,
+          "v5_pct": 37.78,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 20.86,
+          "v5_pct": 22.72,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 80.08,
+          "v5_pct": 80.08,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 50.17,
+          "v5_pct": 50.19,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 39.48,
+          "v5_pct": 39.48,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 30.27,
+          "v5_pct": 30.27,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 18.3,
+          "v5_pct": 18.3,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 25.01,
+          "v5_pct": 25.01,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 55.75,
+          "v5_pct": 55.75,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 72.81,
+          "v5_pct": 73.58,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v6-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 31.052136875865262,
+      "v5_pct": 31.15061605557243,
+      "stored_correct": 304596,
+      "v5_correct": 305562,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 525364,
+      "rules_fired_pct": 53.55840141581661,
+      "strict_correct": 203401,
+      "strict_pct": 20.735780156955016,
+      "rule_credit_pp": 10.414835898617415,
+      "abstain_n": 3,
+      "abstain_pct": 66.66666666666667,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 305560,
+      "no_abstain_pct": 31.150507434385243,
+      "macro_pct": 43.495062055057495,
+      "_paired": [
+        196344,
+        156651
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 46.74,
+          "v5_pct": 46.74,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 21.96,
+          "v5_pct": 24.23,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 76.97,
+          "v5_pct": 76.97,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 54.82,
+          "v5_pct": 54.84,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 33.89,
+          "v5_pct": 33.89,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 30.22,
+          "v5_pct": 30.22,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 13.61,
+          "v5_pct": 13.61,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 23.46,
+          "v5_pct": 23.46,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 57.46,
+          "v5_pct": 57.46,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 72.53,
+          "v5_pct": 73.51,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v7-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 31.29792704385076,
+      "v5_pct": 31.395896496954894,
+      "stored_correct": 307007,
+      "v5_correct": 307968,
+      "protocol_drift": 1,
+      "rewritten": 1,
+      "rules_fired": 98146,
+      "rules_fired_pct": 10.005525436376946,
+      "strict_correct": 253902,
+      "strict_pct": 25.884120792971483,
+      "rule_credit_pp": 5.51177570398341,
+      "abstain_n": 3,
+      "abstain_pct": 100.0,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 307965,
+      "no_abstain_pct": 31.395686680293398,
+      "macro_pct": 42.948618220181956,
+      "_paired": [
+        190490,
+        153203
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 41.42,
+          "v5_pct": 41.42,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 19.76,
+          "v5_pct": 22.13,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 73.36,
+          "v5_pct": 73.36,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 53.39,
+          "v5_pct": 53.45,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 36.51,
+          "v5_pct": 36.51,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 30.29,
+          "v5_pct": 30.29,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 15.09,
+          "v5_pct": 15.09,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 23.29,
+          "v5_pct": 23.29,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 61.29,
+          "v5_pct": 61.29,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 71.84,
+          "v5_pct": 72.66,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v7c-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 31.9045017014674,
+      "v5_pct": 32.00247115457153,
+      "stored_correct": 312957,
+      "v5_correct": 313918,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 87798,
+      "rules_fired_pct": 8.950595258727029,
+      "strict_correct": 263745,
+      "strict_pct": 26.88756858371444,
+      "rule_credit_pp": 5.11490257085709,
+      "abstain_n": 3,
+      "abstain_pct": 66.66666666666667,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 313916,
+      "no_abstain_pct": 32.00236513867155,
+      "macro_pct": 44.39810921066575,
+      "_paired": [
+        185525,
+        154188
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 46.55,
+          "v5_pct": 46.55,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 21.01,
+          "v5_pct": 23.26,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 78.15,
+          "v5_pct": 78.15,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 51.67,
+          "v5_pct": 51.74,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 32.24,
+          "v5_pct": 32.24,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 30.28,
+          "v5_pct": 30.28,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 20.98,
+          "v5_pct": 20.98,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 23.9,
+          "v5_pct": 23.9,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 62.69,
+          "v5_pct": 62.69,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 73.24,
+          "v5_pct": 74.19,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    },
+    "v6d-vllm": {
+      "n": 980918,
+      "torn": 0,
+      "empty_gold": 0,
+      "stored_pct": 31.47449633914354,
+      "v5_pct": 31.559926517812904,
+      "stored_correct": 308739,
+      "v5_correct": 309577,
+      "protocol_drift": 0,
+      "rewritten": 0,
+      "rules_fired": 190650,
+      "rules_fired_pct": 19.435875373884464,
+      "strict_correct": 223817,
+      "strict_pct": 22.817095822484653,
+      "rule_credit_pp": 8.742830695328252,
+      "abstain_n": 3,
+      "abstain_pct": 100.0,
+      "no_abstain_n": 980915,
+      "no_abstain_correct": 309574,
+      "no_abstain_pct": 31.559717202815737,
+      "macro_pct": 43.710363773566485,
+      "_paired": [
+        173579,
+        137901
+      ],
+      "by_category": {
+        "ambiguity": {
+          "stored_pct": 48.18,
+          "v5_pct": 48.18,
+          "n": 3624
+        },
+        "arithmetic": {
+          "stored_pct": 21.71,
+          "v5_pct": 23.6,
+          "n": 31168
+        },
+        "causality": {
+          "stored_pct": 78.07,
+          "v5_pct": 78.07,
+          "n": 1190
+        },
+        "duration": {
+          "stored_pct": 50.51,
+          "v5_pct": 50.56,
+          "n": 14394
+        },
+        "frequency": {
+          "stored_pct": 32.93,
+          "v5_pct": 32.93,
+          "n": 9256
+        },
+        "temporal_nli": {
+          "stored_pct": 31.42,
+          "v5_pct": 31.42,
+          "n": 564268
+        },
+        "temporal_ordering": {
+          "stored_pct": 18.03,
+          "v5_pct": 18.03,
+          "n": 58904
+        },
+        "temporal_relation": {
+          "stored_pct": 20.57,
+          "v5_pct": 20.57,
+          "n": 204914
+        },
+        "storytelling": {
+          "stored_pct": 59.15,
+          "v5_pct": 59.15,
+          "n": 67204
+        },
+        "typical_time": {
+          "stored_pct": 73.66,
+          "v5_pct": 74.59,
+          "n": 25996
+        }
+      },
+      "generation_f1": {},
+      "expected_n": 980918,
+      "_withdrawn": "WITHDRAWN 2026-09-12: these TRAM numbers were produced from prompts that omitted the question. BenchmarkLoader._tram_csv_to_example never read the NLI `Hypothesis` (564,268 items) or storytelling's `Story` (67,204), and used the `Source` provenance string as `relation`'s context (204,914) -- 836,386 of 980,918 items (85.3%). Do NOT quote. Re-run in progress: scripts/run_schedule_tram_rerun.sh -> results/rescored/v5_protocol_tram_fixed.json. See docs/audit_2026_09_12.md 0a. TIME and TimeBench are unaffected."
+    }
+  }
+}

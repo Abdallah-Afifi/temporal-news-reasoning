@@ -1,0 +1,71 @@
+{
+  "cycle": "v5",
+  "variable_vs_v4": "rehearsal 3344 -> 10032 rows",
+  "train": {
+    "n": 18180,
+    "synthetic_pct": 10.7,
+    "rehearsal_pct": 44.1,
+    "by_source": {
+      "AUG_DIALOG": 597,
+      "REHEARSAL": 8026,
+      "TimeQA": 4963,
+      "TLQA": 3253,
+      "AUG_ARITH": 320,
+      "AUG_MCQ": 400,
+      "AUG_GLM": 402,
+      "AUG_NLI": 207,
+      "AUG_REASON": 12
+    }
+  },
+  "val": {
+    "n": 4542,
+    "synthetic_pct": 10.6,
+    "rehearsal_pct": 44.2,
+    "by_source": {
+      "REHEARSAL": 2006,
+      "AUG_DIALOG": 149,
+      "TLQA": 813,
+      "TimeQA": 1240,
+      "AUG_MCQ": 100,
+      "AUG_GLM": 100,
+      "AUG_NLI": 51,
+      "AUG_ARITH": 80,
+      "AUG_REASON": 3
+    }
+  },
+  "aug_nli_neutral_dropped": 162,
+  "rehearsal_by_pool": {
+    "prepared_v4/coqa": 3344,
+    "prepared_v4/hotpot": 3344,
+    "prepared_v4/drop": 3344
+  },
+  "near_dup_dropped": 38,
+  "answer_style_train": {
+    "mean_target_words": 3.32,
+    "pct_bare_numeric": 17.7,
+    "pct_date_bearing": 22.6,
+    "mean_target_words_by_source": {
+      "AUG_ARITH": 2.28,
+      "AUG_DIALOG": 2.95,
+      "AUG_GLM": 1.87,
+      "AUG_MCQ": 3.47,
+      "AUG_NLI": 1.0,
+      "AUG_REASON": 1.0,
+      "REHEARSAL": 2.03,
+      "TLQA": 7.51,
+      "TimeQA": 2.98
+    }
+  },
+  "second_variable_enabled": false,
+  "seed": 42,
+  "args": {
+    "v3_dir": "data/combined_80_20_v3_fixed",
+    "manual_aug": "data/manual_aug",
+    "letter_probe": "data/letter_format/probe.jsonl",
+    "out": "data/combined_80_20_v5",
+    "rehearsal": 10032,
+    "aug_counterfactual": "",
+    "val_frac": 0.2,
+    "seed": 42
+  }
+}

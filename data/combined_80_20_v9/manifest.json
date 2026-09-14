@@ -1,0 +1,53 @@
+{
+  "cycle": "v9",
+  "variables_vs_v6": [
+    "AUG_GLM2 +5976 (docs/synthetic_data_ruleset.md; audited, all \u00a77 gates PASS)",
+    "retired: REHEARSAL, AUG_NOANS, AUG_MCQ, AUG_MCQ2, AUG_DURATION, AUG_ARITH, AUG_DIALOG, AUG_NLI, AUG_REASON (L1 swap)",
+    "total capped at 15000 (was 18,558 in v6)"
+  ],
+  "train": {
+    "n": 12002,
+    "aug_glm2_pct": 39.8,
+    "by_source": {
+      "TimeQA": 4963,
+      "AUG_GLM2": 4781,
+      "AUG_SEQ": 1019,
+      "TLQA": 837,
+      "AUG_GLM": 402
+    }
+  },
+  "val": {
+    "n": 2998,
+    "aug_glm2_pct": 39.9,
+    "by_source": {
+      "TimeQA": 1240,
+      "AUG_GLM2": 1195,
+      "AUG_SEQ": 254,
+      "TLQA": 209,
+      "AUG_GLM": 100
+    }
+  },
+  "near_dup_dropped": 0,
+  "answer_style_train": {
+    "mean_target_words": 5.61,
+    "pct_bare_numeric": 3.6,
+    "pct_date_bearing": 25.9,
+    "mean_target_words_by_source": {
+      "AUG_GLM": 1.79,
+      "AUG_GLM2": 9.28,
+      "AUG_SEQ": 1.0,
+      "TLQA": 7.62,
+      "TimeQA": 3.0
+    }
+  },
+  "seed": 42,
+  "args": {
+    "v6_dir": "data/combined_80_20_v6",
+    "aug_dir": "data/manual_aug_v9",
+    "letter_probe": "data/letter_format/probe.jsonl",
+    "out": "data/combined_80_20_v9",
+    "cap": 15000,
+    "val_frac": 0.2,
+    "seed": 42
+  }
+}

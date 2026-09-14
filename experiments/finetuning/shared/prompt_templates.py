@@ -73,6 +73,68 @@ def example_to_training_text(
     return "\n\n".join(parts)
 
 
+def build_inference_messages(
+    question: str,
+    context: str = "",
+    model_key: str = "llama",
+    reference_date: str | None = None,
+) -> list[dict[str, str]]:
+    """Build chat messages for inference that EXACTLY match the training format.
+
+    Training used :func:`build_chat_messages` (system + user) for LLaMA/Qwen,
+    while the Mistral data loader folds the system prompt into the user turn
+    (its chat template drops the system role when an assistant turn exists).
+    This helper reproduces both variants so eval-time prompts stay in-distribution.
+
+    Args:
+        question:       The question text.
+        context:        Optional context passage.
+        model_key:      "mistral" folds the system prompt into the user turn;
+                        anything else uses a separate system role.
+        reference_date: Optional reference date (interactive use only —
+                        training format has no reference date).
+
+    Returns:
+        List of ``{"role": ..., "content": ...}`` dicts.
+    """
+    parts: list[str] = []
+    if context:
+        parts.append(f"Context:\n{context}")
+    if reference_date:
+        parts.append(f"Reference Date: {reference_date}")
+    parts.append(f"Question: {question}")
+    user_content = "\n\n".join(parts)
+
+    if model_key == "mistral":
+        return [{
+            "role": "user",
+            "content": f"{TEMPORAL_SYSTEM_PROMPT}\n\n{user_content}",
+        }]
+
+    return [
+        {"role": "system", "content": TEMPORAL_SYSTEM_PROMPT},
+        {"role": "user", "content": user_content},
+    ]
+
+
+def format_inference_prompt(
+    tokenizer,
+    question: str,
+    context: str = "",
+    model_key: str = "llama",
+    reference_date: str | None = None,
+) -> str:
+    """Render an inference prompt via the tokenizer's chat template.
+
+    Mirrors the training-side prompt (``add_generation_prompt=True``), so the
+    model continues from the same formatting it was fine-tuned on.
+    """
+    messages = build_inference_messages(question, context, model_key, reference_date)
+    return tokenizer.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=True,
+    )
+
+
 def build_temporal_cot_prompt(
     model_key: str,
     question: str,

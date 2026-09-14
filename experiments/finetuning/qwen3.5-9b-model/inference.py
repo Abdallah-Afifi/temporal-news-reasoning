@@ -5,17 +5,35 @@ Inference script for Qwen3.5-9B fine-tuned model
 
 import argparse
 import logging
+import sys
 from pathlib import Path
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 
+_REPO_ROOT = Path(__file__).resolve().parents[3]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from experiments.finetuning.shared.prompt_templates import TEMPORAL_SYSTEM_PROMPT
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+
+def format_prompt(tokenizer, user_text):
+    """Wrap a free-form prompt in the chat template used during fine-tuning."""
+    messages = [
+        {"role": "system", "content": TEMPORAL_SYSTEM_PROMPT},
+        {"role": "user", "content": user_text},
+    ]
+    return tokenizer.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=True,
+    )
 
 
 def load_model(model_path, lora_path=None):
@@ -42,9 +60,10 @@ def load_model(model_path, lora_path=None):
 
 
 def generate_response(model, tokenizer, prompt, max_tokens=100):
-    """Generate response for a prompt."""
-    
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    """Generate response for a prompt (wrapped in the training chat template)."""
+
+    formatted = format_prompt(tokenizer, prompt)
+    inputs = tokenizer(formatted, return_tensors="pt", add_special_tokens=False).to(model.device)
     
     with torch.no_grad():
         outputs = model.generate(

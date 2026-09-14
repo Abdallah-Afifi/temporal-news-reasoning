@@ -1,0 +1,86 @@
+{
+  "cycle": "v6",
+  "variables_vs_v5": [
+    "rehearsal 8026 -> 2600 rows and 50% long-form",
+    "AUG_SEQ +1273 (new: comma-separated-letter ordering shape)",
+    "AUG_NOANS +500 / AUG_MCQ2 +1500"
+  ],
+  "train": {
+    "n": 14850,
+    "synthetic_pct": 30.7,
+    "rehearsal_pct": 14.0,
+    "by_source": {
+      "AUG_MCQ2": 1200,
+      "TimeQA": 4963,
+      "TLQA": 3253,
+      "REHEARSAL": 2077,
+      "AUG_MCQ": 400,
+      "AUG_GLM": 402,
+      "AUG_SEQ": 1019,
+      "AUG_NOANS": 400,
+      "AUG_DIALOG": 597,
+      "AUG_ARITH": 320,
+      "AUG_NLI": 207,
+      "AUG_REASON": 12
+    }
+  },
+  "val": {
+    "n": 3708,
+    "synthetic_pct": 30.6,
+    "rehearsal_pct": 14.0,
+    "by_source": {
+      "TLQA": 813,
+      "REHEARSAL": 519,
+      "TimeQA": 1240,
+      "AUG_SEQ": 254,
+      "AUG_DIALOG": 149,
+      "AUG_MCQ2": 299,
+      "AUG_NOANS": 100,
+      "AUG_MCQ": 100,
+      "AUG_GLM": 100,
+      "AUG_ARITH": 80,
+      "AUG_NLI": 51,
+      "AUG_REASON": 3
+    }
+  },
+  "rehearsal_by_source": {
+    "databricks/databricks-dolly-15k": 1300,
+    "prepared_v4/hotpot": 434,
+    "prepared_v4/coqa": 433,
+    "prepared_v4/drop": 433
+  },
+  "near_dup_dropped": 39,
+  "answer_style_train": {
+    "mean_target_words": 4.89,
+    "pct_bare_numeric": 4.6,
+    "pct_date_bearing": 26.0,
+    "mean_target_words_by_source": {
+      "AUG_ARITH": 2.28,
+      "AUG_DIALOG": 2.96,
+      "AUG_GLM": 1.81,
+      "AUG_MCQ": 3.43,
+      "AUG_MCQ2": 3.21,
+      "AUG_NLI": 1.0,
+      "AUG_NOANS": 5.95,
+      "AUG_REASON": 1.0,
+      "AUG_SEQ": 1.0,
+      "REHEARSAL": 10.24,
+      "TLQA": 7.49,
+      "TimeQA": 2.99
+    }
+  },
+  "seed": 42,
+  "args": {
+    "v3_dir": "data/combined_80_20_v3_fixed",
+    "manual_aug": "data/manual_aug",
+    "letter_probe": "data/letter_format/probe.jsonl",
+    "out": "data/combined_80_20_v6",
+    "rehearsal": 2600,
+    "rehearsal_long_frac": 0.5,
+    "aug_seq": 1500,
+    "aug_noans": 500,
+    "aug_mcq2": 1500,
+    "val_frac": 0.2,
+    "seed": 42
+  }
+}

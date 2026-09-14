@@ -1,0 +1,133 @@
+# LLaMA-3.2-3B-Instruct LoRA Fine-Tuning Configuration — V9 CYCLE
+# ================================================================
+# The synthetic-swap arm (docs/synthetic_data_ruleset.md). Data-only bundle:
+# hyperparameters IDENTICAL to v2..v7 — only train_data, val_data and
+# output_dir change, so v9 stays comparable to every earlier arm.
+#
+# WHY THIS ARM:
+#   AUG_GLM2 = 5,976 LLM-grade rows across all 18 surfaces, every §7 gate
+#   PASS (see data/manual_aug_v9/AUDIT.md), swapped into v6's mixture at the
+#   L1 cap of 15,000 rows (v6 was 18,558). Retired: rehearsal and the spent
+#   synthetic slices (AUG_NOANS/MCQ/MCQ2/DURATION/ARITH/DIALOG/NLI/REASON).
+#   Block B trains `neutral` for the first time (L4).
+#
+
+# ================================================================
+# The MCQ / format arm. Data-only bundle: hyperparameters IDENTICAL to
+# v2/v3-corrected/v4/v5/v6 — only train_data, val_data and output_dir change,
+# so v7 stays comparable to every earlier arm.
+#
+# WHY THIS ARM (measured on v6, D49):
+#   v6 = 42.19% TIME vs zero-shot 41.46% — the first arm ever to lead, BUT
+#   +1.09pp of that +0.73pp margin is the no-answer benchmark artifact
+#   (99.88% vs zero-shot's 52.95%). Strip it and v6 is 41.10%, i.e. −0.36pp.
+#   v6 also LOST the biggest bucket: answerable MCQ fell 64.49% -> 60.99%
+#   (−1.14pp) because context-grounded rehearsal was cut 44.2% -> 14.0%.
+#   That confirmed D41's correlation as causal.
+#
+# THREE data changes vs v6:
+#   1. rehearsal 2,600 -> 8,000 (6,800 context-grounded) — restore the MCQ
+#      bucket, the 0.45pp-per-point lever.
+#   2. AUG_MCQ2 1,500 -> 5,755, and MCQ targets are now SINGLE (D45) — the
+#      benchmark is 60.7% MCQ while v6's mixture was 8.6%, and the dual gold
+#      was the only reason the scorer needed a trailing-letter rule.
+#   3. abstain options injected as DISTRACTORS in answerable rows, tuned so
+#      P(correct | option is abstain-phrased) ~= 49% instead of v6's 100%.
+#      This DELIBERATELY costs the no-answer bucket — the point is an honest
+#      number, not a shortcut.
+#
+# PRE-REGISTERED CHECK (D45): count _TRAILING_LETTER_RE firings on v7's
+# predictions. ~0 firings plus a good score proves the result does NOT depend
+# on the scoring change.
+#
+# EXPECT A LONGER RUN THAN v6. 22,574 train rows vs v6's 14,850 (+52%), and
+# the added rows are short MCQ/rehearsal items. v6 took 8h18m for 2,784 steps;
+# v7 is ~4,233 steps, so budget ~12 h unless the speed work
+# (docs/performance_review_2026_09_07.md) lands first — gradient_checkpointing
+# off is ~30% and mathematically identical, bucketing another ~40%.
+
+# ── Model ──────────────────────────────────────────────
+model_path: models/Llama-3.2-3B-Instruct
+seed: 42
+dtype: bfloat16
+
+# ── Data ───────────────────────────────────────────────
+train_data: data/combined_80_20_v9/train.jsonl
+val_data: data/combined_80_20_v9/val.jsonl
+max_seq_length: 2048
+
+# ── Training (identical to v2 / HPO-optimized) ─────────
+learning_rate: 4.62258900102083e-04
+num_train_epochs: 3
+warmup_ratio: 0.08185086660174143
+weight_decay: 0.010909498032426036
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+
+# ── Speed optimizations (RTX 3090 24 GB) ───────────────
+# Activation checkpointing recomputes activations in the backward pass to
+# save memory. Gradients are mathematically identical either way, so turning
+# it off is a pure speed/memory trade and does NOT change the recipe — v4
+# stays comparable to v1-v3. Set back to true if this OOMs.
+# 2026-09-05: it OOMed on the first training step (22.31/23.53 GiB used by
+# this process alone) -- v4's new rehearsal data (HotpotQA/DROP/CoQA full
+# passages, avg 429 / max 1,518 tokens) runs far longer than v1-v3's dolly
+# rehearsal ever did. Turned back on per this comment's own contingency.
+gradient_checkpointing: true
+attn_implementation: sdpa
+# BATCH SHAPE: 2 x 8, identical to v1/v2/v3/v3-corrected. Do not "optimise"
+# this — it was measured on 2026-09-05 and larger micro-batches are WORSE on
+# this card (full write-up: docs/v4_plan.md § "Throughput protocol"):
+#   2 x 8  ->  8.4-9.6 s/it   (~6 h)   <- this, the fastest measured
+#   4 x 4  -> 11.9-13.0 s/it  (~8 h)   ~35% slower
+#   8 x 2  -> OOM (tried to allocate 6.48 GiB with 2.88 GiB free)
+# Why bigger is slower: the GPU is already saturated at batch 2 (2048-token
+# sequences on a 3B model), so a larger micro-batch adds no parallelism — it
+# just pads every sequence out to the longest in the group (this data runs
+# 429 tokens avg, 1,518 max), and gradient_checkpointing then recomputes that
+# padding in the backward pass too.
+# Why 8 OOMs: the ceiling is the logits tensor, batch x seq_len x vocab, and
+# Llama-3's vocab is 128,256 -> ~2.1 GB at batch 2 but ~8.4 GB at batch 8 in
+# fp32. gradient_checkpointing does not shrink it, and fixing flash-attn
+# would not either (it is the loss input, not an attention intermediate).
+# Keeping 2 x 8 also keeps v4 bit-comparable to v1-v3: no second variable.
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+tf32: true
+
+# ── Logging & Checkpointing ────────────────────────────
+logging_steps: 10
+eval_strategy: epoch
+save_strategy: epoch
+save_total_limit: 3
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+early_stopping_patience: 2
+
+# ── LoRA (identical to v2) ──────────────────────────────
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# ── Quantization ───────────────────────────────────────
+load_in_4bit: false
+
+# ── Output ─────────────────────────────────────────────
+output_dir: checkpoints/llama_v9
+progress_dir: experiments/finetuning/LLaMA/Progress
+
+# ── Reporting ──────────────────────────────────────────
+report_to: []

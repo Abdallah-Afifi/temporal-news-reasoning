@@ -1,76 +1,26 @@
 {
   "benchmark": "tram/zero_shot",
-  "model": "mistral",
-  "configuration": "zero_shot",
-  "timestamp": "2026-04-04T23:03:21.214636",
-  "num_examples": 980918,
-  "overall_accuracy": 0.23177880312115792,
-  "overall_f1": 0.15182757323333088,
-  "exact_match": 0.23177880312115792,
-  "temporal_f1": 0.9502980737745009,
+  "timestamp": "2026-08-30T13:19:40.861084",
+  "num_examples": 3,
+  "overall_accuracy": 1.0,
+  "overall_f1": 1.0,
+  "exact_match": 1.0,
+  "temporal_f1": 1.0,
   "by_category": {
     "ambiguity": {
-      "accuracy": 0.45667770419426046,
-      "correct": 1655,
-      "total": 3624
-    },
-    "arithmetic": {
-      "accuracy": 0.1071291067761807,
-      "correct": 3339,
-      "total": 31168
-    },
-    "causality": {
-      "accuracy": 0.5899159663865546,
-      "correct": 702,
-      "total": 1190
-    },
-    "duration": {
-      "accuracy": 0.4168403501458941,
-      "correct": 6000,
-      "total": 14394
-    },
-    "frequency": {
-      "accuracy": 0.13818063958513396,
-      "correct": 1279,
-      "total": 9256
-    },
-    "temporal_nli": {
-      "accuracy": 0.1837920987899367,
-      "correct": 103708,
-      "total": 564268
-    },
-    "temporal_ordering": {
-      "accuracy": 0.11629091402960749,
-      "correct": 6850,
-      "total": 58904
-    },
-    "temporal_relation": {
-      "accuracy": 0.26185619332988475,
-      "correct": 53658,
-      "total": 204914
-    },
-    "storytelling": {
-      "accuracy": 0.5961103505743706,
-      "correct": 40061,
-      "total": 67204
-    },
-    "typical_time": {
-      "accuracy": 0.3886751807970457,
-      "correct": 10104,
-      "total": 25996
+      "accuracy": 1.0,
+      "correct": 3,
+      "total": 3
     }
   },
   "error_analysis": {
-    "temporal_extraction": 9444,
-    "hallucination": 37609,
-    "other": 706509
+    "temporal_extraction": 0,
+    "hallucination": 0,
+    "other": 0
   },
   "metadata": {
     "model": "mistral",
-    "prompt_type": "zero_shot",
-    "max_new_tokens": 128,
-    "temperature": 0.0,
-    "notes": "Template \u2014 populate after running baseline evaluation",
     "task": "zero_shot"
-  }
+  },
+  "eval_wall_time_seconds": 0.0
 }

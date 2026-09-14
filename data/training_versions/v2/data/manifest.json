@@ -1,0 +1,31 @@
+{
+  "seed": 42,
+  "pool_records_after_leakage_filter": 14195,
+  "excluded_leaked_records": 805,
+  "augmented": {
+    "AUG_MCQ": 2500,
+    "AUG_ARITH": 2000,
+    "AUG_NLI": 2000
+  },
+  "train": 16557,
+  "val": 4138,
+  "train_by_source": {
+    "TLQA": 4066,
+    "AUG_MCQ": 2000,
+    "TimeQA": 7291,
+    "AUG_ARITH": 1600,
+    "AUG_NLI": 1600
+  },
+  "val_by_source": {
+    "TimeQA": 1822,
+    "AUG_MCQ": 500,
+    "TLQA": 1016,
+    "AUG_ARITH": 400,
+    "AUG_NLI": 400
+  },
+  "notes": [
+    "leakage filter: normalized question text vs TIME + TimeBench(full zip) + TRAM",
+    "rehearsal/general-instruction mix NOT included (requires external dataset)",
+    "aug formats mirror the evaluation prompt structures (MCQ choices embedded; NLI hypothesis+instruction)"
+  ]
+}

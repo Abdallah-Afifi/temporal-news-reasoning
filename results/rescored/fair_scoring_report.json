@@ -1,0 +1,730 @@
+{
+  "llama zs TIME": {
+    "n": 106500,
+    "accuracy": 38.9,
+    "ci95_pp": 0.29,
+    "complete": true,
+    "by_category": {
+      "Co-temporality": {
+        "acc": 79.5,
+        "n": 1800
+      },
+      "Co_temporality": {
+        "acc": 44.6,
+        "n": 8439
+      },
+      "Computation": {
+        "acc": 19.24,
+        "n": 9516
+      },
+      "Counterfactual": {
+        "acc": 42.57,
+        "n": 9870
+      },
+      "Duration_Compare": {
+        "acc": 40.17,
+        "n": 9365
+      },
+      "Explicit_Reasoning": {
+        "acc": 58.51,
+        "n": 9870
+      },
+      "Extract": {
+        "acc": 9.65,
+        "n": 3400
+      },
+      "Localization": {
+        "acc": 41.16,
+        "n": 10044
+      },
+      "Order_Compare": {
+        "acc": 61.07,
+        "n": 10047
+      },
+      "Order_Reasoning": {
+        "acc": 49.79,
+        "n": 10416
+      },
+      "Relative_Reasoning": {
+        "acc": 46.78,
+        "n": 10415
+      },
+      "Timeline": {
+        "acc": 0.04,
+        "n": 13318
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "time",
+    "arm": "zs"
+  },
+  "llama v1-ft TIME": {
+    "n": 106500,
+    "accuracy": 32.69,
+    "ci95_pp": 0.28,
+    "complete": true,
+    "by_category": {
+      "Co-temporality": {
+        "acc": 65.0,
+        "n": 1800
+      },
+      "Co_temporality": {
+        "acc": 39.38,
+        "n": 8439
+      },
+      "Computation": {
+        "acc": 0.68,
+        "n": 9516
+      },
+      "Counterfactual": {
+        "acc": 31.05,
+        "n": 9870
+      },
+      "Duration_Compare": {
+        "acc": 40.98,
+        "n": 9365
+      },
+      "Explicit_Reasoning": {
+        "acc": 50.68,
+        "n": 9870
+      },
+      "Extract": {
+        "acc": 7.91,
+        "n": 3400
+      },
+      "Localization": {
+        "acc": 35.72,
+        "n": 10044
+      },
+      "Order_Compare": {
+        "acc": 56.11,
+        "n": 10047
+      },
+      "Order_Reasoning": {
+        "acc": 44.35,
+        "n": 10416
+      },
+      "Relative_Reasoning": {
+        "acc": 40.6,
+        "n": 10415
+      },
+      "Timeline": {
+        "acc": 0.05,
+        "n": 13318
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "time",
+    "arm": "v1"
+  },
+  "llama v2-ft TIME": {
+    "n": 106500,
+    "accuracy": 31.75,
+    "ci95_pp": 0.28,
+    "complete": true,
+    "by_category": {
+      "Co-temporality": {
+        "acc": 61.33,
+        "n": 1800
+      },
+      "Co_temporality": {
+        "acc": 43.07,
+        "n": 8439
+      },
+      "Computation": {
+        "acc": 9.96,
+        "n": 9516
+      },
+      "Counterfactual": {
+        "acc": 27.12,
+        "n": 9870
+      },
+      "Duration_Compare": {
+        "acc": 38.53,
+        "n": 9365
+      },
+      "Explicit_Reasoning": {
+        "acc": 43.89,
+        "n": 9870
+      },
+      "Extract": {
+        "acc": 7.47,
+        "n": 3400
+      },
+      "Localization": {
+        "acc": 42.68,
+        "n": 10044
+      },
+      "Order_Compare": {
+        "acc": 52.95,
+        "n": 10047
+      },
+      "Order_Reasoning": {
+        "acc": 35.92,
+        "n": 10416
+      },
+      "Relative_Reasoning": {
+        "acc": 37.51,
+        "n": 10415
+      },
+      "Timeline": {
+        "acc": 0.01,
+        "n": 13318
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "time",
+    "arm": "v2"
+  },
+  "llama v3-ft TIME (HF)": {
+    "n": 101323,
+    "accuracy": 25.36,
+    "ci95_pp": 0.27,
+    "complete": true,
+    "by_category": {
+      "Co-temporality": {
+        "acc": 59.73,
+        "n": 1793
+      },
+      "Co_temporality": {
+        "acc": 37.51,
+        "n": 7996
+      },
+      "Computation": {
+        "acc": 16.26,
+        "n": 9294
+      },
+      "Counterfactual": {
+        "acc": 21.55,
+        "n": 9497
+      },
+      "Duration_Compare": {
+        "acc": 22.28,
+        "n": 9192
+      },
+      "Explicit_Reasoning": {
+        "acc": 35.5,
+        "n": 9440
+      },
+      "Extract": {
+        "acc": 13.95,
+        "n": 1555
+      },
+      "Localization": {
+        "acc": 41.99,
+        "n": 9536
+      },
+      "Order_Compare": {
+        "acc": 25.39,
+        "n": 9815
+      },
+      "Order_Reasoning": {
+        "acc": 31.37,
+        "n": 9952
+      },
+      "Relative_Reasoning": {
+        "acc": 28.32,
+        "n": 10012
+      },
+      "Timeline": {
+        "acc": 0.02,
+        "n": 13241
+      }
+    },
+    "status": "INCOMPLETE (101323/106500)",
+    "model": "llama",
+    "benchmark": "time",
+    "arm": "v3"
+  },
+  "llama v3-ft TIME (vLLM)": {
+    "n": 106500,
+    "accuracy": 25.1,
+    "ci95_pp": 0.26,
+    "complete": true,
+    "by_category": {
+      "Co-temporality": {
+        "acc": 59.83,
+        "n": 1800
+      },
+      "Co_temporality": {
+        "acc": 37.22,
+        "n": 8439
+      },
+      "Computation": {
+        "acc": 16.04,
+        "n": 9516
+      },
+      "Counterfactual": {
+        "acc": 21.6,
+        "n": 9870
+      },
+      "Duration_Compare": {
+        "acc": 22.22,
+        "n": 9365
+      },
+      "Explicit_Reasoning": {
+        "acc": 35.33,
+        "n": 9870
+      },
+      "Extract": {
+        "acc": 6.5,
+        "n": 3400
+      },
+      "Localization": {
+        "acc": 42.58,
+        "n": 10044
+      },
+      "Order_Compare": {
+        "acc": 25.46,
+        "n": 10047
+      },
+      "Order_Reasoning": {
+        "acc": 31.85,
+        "n": 10416
+      },
+      "Relative_Reasoning": {
+        "acc": 27.98,
+        "n": 10415
+      },
+      "Timeline": {
+        "acc": 0.02,
+        "n": 13318
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "time",
+    "arm": "v3vllm"
+  },
+  "llama zs TimeBench": {
+    "n": 21188,
+    "accuracy": 44.8,
+    "ci95_pp": 0.67,
+    "complete": true,
+    "by_category": {
+      "arithmetic": {
+        "acc": 6.22,
+        "n": 4000
+      },
+      "duration": {
+        "acc": 78.41,
+        "n": 1538
+      },
+      "situated_generation": {
+        "acc": 0.0,
+        "n": 115
+      },
+      "temporal_dialogue": {
+        "acc": 78.63,
+        "n": 1446
+      },
+      "temporal_nli": {
+        "acc": 46.79,
+        "n": 6965
+      },
+      "temporal_ordering": {
+        "acc": 51.55,
+        "n": 4248
+      },
+      "temporal_qa": {
+        "acc": 42.8,
+        "n": 1000
+      },
+      "temporal_reasoning": {
+        "acc": 54.53,
+        "n": 1876
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "timebench",
+    "arm": "zs"
+  },
+  "llama v1-ft TimeBench": {
+    "n": 21188,
+    "accuracy": 38.45,
+    "ci95_pp": 0.66,
+    "complete": true,
+    "by_category": {
+      "arithmetic": {
+        "acc": 4.28,
+        "n": 4000
+      },
+      "duration": {
+        "acc": 73.34,
+        "n": 1538
+      },
+      "situated_generation": {
+        "acc": 0.0,
+        "n": 115
+      },
+      "temporal_dialogue": {
+        "acc": 68.26,
+        "n": 1446
+      },
+      "temporal_nli": {
+        "acc": 36.05,
+        "n": 6965
+      },
+      "temporal_ordering": {
+        "acc": 50.66,
+        "n": 4248
+      },
+      "temporal_qa": {
+        "acc": 40.1,
+        "n": 1000
+      },
+      "temporal_reasoning": {
+        "acc": 42.43,
+        "n": 1876
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "timebench",
+    "arm": "v1"
+  },
+  "llama v2-ft TimeBench": {
+    "n": 21188,
+    "accuracy": 43.88,
+    "ci95_pp": 0.67,
+    "complete": true,
+    "by_category": {
+      "arithmetic": {
+        "acc": 16.18,
+        "n": 4000
+      },
+      "duration": {
+        "acc": 72.11,
+        "n": 1538
+      },
+      "situated_generation": {
+        "acc": 0.0,
+        "n": 115
+      },
+      "temporal_dialogue": {
+        "acc": 53.6,
+        "n": 1446
+      },
+      "temporal_nli": {
+        "acc": 46.17,
+        "n": 6965
+      },
+      "temporal_ordering": {
+        "acc": 52.5,
+        "n": 4248
+      },
+      "temporal_qa": {
+        "acc": 54.9,
+        "n": 1000
+      },
+      "temporal_reasoning": {
+        "acc": 41.1,
+        "n": 1876
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "timebench",
+    "arm": "v2"
+  },
+  "llama v3-ft TimeBench": {
+    "n": 21188,
+    "accuracy": 45.65,
+    "ci95_pp": 0.67,
+    "complete": true,
+    "by_category": {
+      "arithmetic": {
+        "acc": 14.03,
+        "n": 4000
+      },
+      "duration": {
+        "acc": 72.89,
+        "n": 1538
+      },
+      "situated_generation": {
+        "acc": 0.0,
+        "n": 115
+      },
+      "temporal_dialogue": {
+        "acc": 65.49,
+        "n": 1446
+      },
+      "temporal_nli": {
+        "acc": 48.92,
+        "n": 6965
+      },
+      "temporal_ordering": {
+        "acc": 55.27,
+        "n": 4248
+      },
+      "temporal_qa": {
+        "acc": 56.1,
+        "n": 1000
+      },
+      "temporal_reasoning": {
+        "acc": 38.75,
+        "n": 1876
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "timebench",
+    "arm": "v3"
+  },
+  "llama v3-ft TimeBench (vLLM)": {
+    "n": 21188,
+    "accuracy": 45.64,
+    "ci95_pp": 0.67,
+    "complete": true,
+    "by_category": {
+      "arithmetic": {
+        "acc": 14.0,
+        "n": 4000
+      },
+      "duration": {
+        "acc": 72.89,
+        "n": 1538
+      },
+      "situated_generation": {
+        "acc": 0.0,
+        "n": 115
+      },
+      "temporal_dialogue": {
+        "acc": 65.42,
+        "n": 1446
+      },
+      "temporal_nli": {
+        "acc": 48.89,
+        "n": 6965
+      },
+      "temporal_ordering": {
+        "acc": 55.37,
+        "n": 4248
+      },
+      "temporal_qa": {
+        "acc": 56.0,
+        "n": 1000
+      },
+      "temporal_reasoning": {
+        "acc": 38.7,
+        "n": 1876
+      }
+    },
+    "status": "ok",
+    "model": "llama",
+    "benchmark": "timebench",
+    "arm": "v3vllm"
+  },
+  "mistral zs TimeBench": {
+    "n": 21188,
+    "accuracy": 44.93,
+    "ci95_pp": 0.67,
+    "complete": true,
+    "by_category": {
+      "arithmetic": {
+        "acc": 9.35,
+        "n": 4000
+      },
+      "duration": {
+        "acc": 76.01,
+        "n": 1538
+      },
+      "situated_generation": {
+        "acc": 0.0,
+        "n": 115
+      },
+      "temporal_dialogue": {
+        "acc": 64.52,
+        "n": 1446
+      },
+      "temporal_nli": {
+        "acc": 50.97,
+        "n": 6965
+      },
+      "temporal_ordering": {
+        "acc": 59.44,
+        "n": 4248
+      },
+      "temporal_qa": {
+        "acc": 33.3,
+        "n": 1000
+      },
+      "temporal_reasoning": {
+        "acc": 33.85,
+        "n": 1876
+      }
+    },
+    "status": "ok",
+    "model": "mistral",
+    "benchmark": "timebench",
+    "arm": "zs"
+  },
+  "mistral v1-ft TIME": {
+    "n": 106500,
+    "accuracy": 37.5,
+    "ci95_pp": 0.29,
+    "complete": true,
+    "by_category": {
+      "Co-temporality": {
+        "acc": 73.44,
+        "n": 1800
+      },
+      "Co_temporality": {
+        "acc": 41.36,
+        "n": 8439
+      },
+      "Computation": {
+        "acc": 20.94,
+        "n": 9516
+      },
+      "Counterfactual": {
+        "acc": 32.03,
+        "n": 9870
+      },
+      "Duration_Compare": {
+        "acc": 40.91,
+        "n": 9365
+      },
+      "Explicit_Reasoning": {
+        "acc": 54.93,
+        "n": 9870
+      },
+      "Extract": {
+        "acc": 8.53,
+        "n": 3400
+      },
+      "Localization": {
+        "acc": 43.17,
+        "n": 10044
+      },
+      "Order_Compare": {
+        "acc": 68.25,
+        "n": 10047
+      },
+      "Order_Reasoning": {
+        "acc": 43.93,
+        "n": 10416
+      },
+      "Relative_Reasoning": {
+        "acc": 44.77,
+        "n": 10415
+      },
+      "Timeline": {
+        "acc": 0.01,
+        "n": 13318
+      }
+    },
+    "status": "ok",
+    "model": "mistral",
+    "benchmark": "time",
+    "arm": "v1"
+  },
+  "mistral v1-ft TimeBench": {
+    "n": 21188,
+    "accuracy": 42.06,
+    "ci95_pp": 0.66,
+    "complete": true,
+    "by_category": {
+      "arithmetic": {
+        "acc": 0.93,
+        "n": 4000
+      },
+      "duration": {
+        "acc": 72.04,
+        "n": 1538
+      },
+      "situated_generation": {
+        "acc": 0.0,
+        "n": 115
+      },
+      "temporal_dialogue": {
+        "acc": 81.81,
+        "n": 1446
+      },
+      "temporal_nli": {
+        "acc": 47.7,
+        "n": 6965
+      },
+      "temporal_ordering": {
+        "acc": 55.48,
+        "n": 4248
+      },
+      "temporal_qa": {
+        "acc": 30.7,
+        "n": 1000
+      },
+      "temporal_reasoning": {
+        "acc": 31.82,
+        "n": 1876
+      }
+    },
+    "status": "ok",
+    "model": "mistral",
+    "benchmark": "timebench",
+    "arm": "v1"
+  },
+  "mistral zs TIME": {
+    "n": 5773,
+    "accuracy": 26.55,
+    "ci95_pp": 1.14,
+    "complete": true,
+    "by_category": {
+      "Co-temporality": {
+        "acc": 100.0,
+        "n": 1
+      },
+      "Co_temporality": {
+        "acc": 43.48,
+        "n": 552
+      },
+      "Computation": {
+        "acc": 0.0,
+        "n": 549
+      },
+      "Counterfactual": {
+        "acc": 34.68,
+        "n": 545
+      },
+      "Duration_Compare": {
+        "acc": 46.58,
+        "n": 556
+      },
+      "Explicit_Reasoning": {
+        "acc": 25.28,
+        "n": 538
+      },
+      "Extract": {
+        "acc": 13.51,
+        "n": 296
+      },
+      "Localization": {
+        "acc": 0.93,
+        "n": 537
+      },
+      "Order_Compare": {
+        "acc": 48.21,
+        "n": 558
+      },
+      "Order_Reasoning": {
+        "acc": 33.27,
+        "n": 547
+      },
+      "Relative_Reasoning": {
+        "acc": 37.99,
+        "n": 558
+      },
+      "Timeline": {
+        "acc": 0.0,
+        "n": 536
+      }
+    },
+    "status": "INCOMPLETE (5773/106500)",
+    "model": "mistral",
+    "benchmark": "time",
+    "arm": "zs"
+  }
+}

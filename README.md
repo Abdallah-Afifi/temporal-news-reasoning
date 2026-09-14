@@ -1,27 +1,75 @@
 # Efficient Temporal Reasoning for News Understanding
 
-> Can small language models (3B parameters) achieve competitive temporal reasoning performance on real-world news understanding through specialized fine-tuning and temporal-aware retrieval?
+> Does specialized LoRA fine-tuning on out-of-domain temporal QA transfer to
+> temporal reasoning over real-world news in a 3B-parameter model?
 
 ## Overview
 
-This project investigates whether combining **LoRA fine-tuning**, **temporal-aware RAG**, and **specialized prompting** can enable small language models (Qwen2.5-3B, Phi-3-mini, LLaMA-3.2-3B) to perform temporal reasoning on news articles — approaching large model performance at a fraction of the cost.
+This repository holds two largely independent bodies of work. **Read this
+section before any other: the repository is bigger than the evaluated
+system.**
 
-**Latest Update:** The comprehensive Retrieval-Augmented Generation (RAG) system from the `Retrieval-augmented-generation` branch has been successfully merged into main, bringing production-ready RAG capabilities including FAISS semantic search, temporal filtering, knowledge graph support, and an interactive web UI.
+**1. The evaluated chain (what every published number comes from).** A
+LoRA fine-tuning campaign on **LLaMA-3.2-3B-Instruct only**, eleven arms
+(v1 → v6d), evaluated on TIME / TimeBench / TRAM under a frozen scoring
+protocol. The single reference is
+[`docs/results_and_methodology.md`](docs/results_and_methodology.md).
+
+Headline finding, stated honestly: **no fine-tuned arm beats the zero-shot
+baseline on TIME or TimeBench** once a TIME benchmark artifact is excluded
+(2,427 items where a "There is no answer" option is always the gold — see §1.1
+of the methodology document). On TRAM, an audit on 2026-09-12 found that 85.3% of the
+column had been generated from prompts that omitted the question (the NLI
+hypothesis and the storytelling passage never reached the model). The loader is
+fixed and **all ten arms were re-run on 2026-09-13**: zero-shot scores 46.95%
+(not 35.20%) and no fine-tuned arm beats it, by −3.0 to −8.2pp. The campaign's value is the negative
+result and its attribution: fine-tuning on Wikipedia-style temporal QA moves
+only the categories the synthetic slices directly target, and costs broad
+temporal ability everywhere else.
+
+**2. The RAG system** (`temporal_rag/`, `src/rag/`, `src/temporal/`,
+`src/pipeline/`) — FAISS indexing, temporal filtering, a Neo4j temporal
+knowledge graph, GLiNER entity extraction, and a Gradio UI. It is a
+substantial, separately developed component and is **not part of the
+evaluated chain**: no number in the results tables passes through it.
+
+### Status of the components
+
+| Component | Status |
+|---|---|
+| LoRA fine-tuning + evaluation harness (`experiments/`, `scripts/`, `src/{data,evaluation,models}`) | **Evaluated.** Produces every published number |
+| Temporal-aware RAG (`temporal_rag/`) | Built and runnable; **not evaluated**, no tests, needs Postgres + Neo4j + a JVM for HeidelTime |
+| `src/rag/` retrieval + timeline construction | Prototype; zero non-test importers |
+| `src/prompting/` (timeline CoT, self-consistency) | **Not implemented** — the methods `raise NotImplementedError` |
+| `src/training/` | **Do not use** — a divergent second trainer; the real one is `experiments/finetuning/LLaMA/train.py` |
+
+### Not claimed
+
+- **No large-model comparison exists in this repository.** There is no GPT-4 /
+  Claude / 70B baseline and no cost or latency comparison, so the project does
+  not and cannot claim to "approach large model performance at a fraction of
+  the cost".
+- **One model, one seed.** Every corrected number is LLaMA-3.2-3B-Instruct
+  with seed 42, single run, greedy decoding, no confidence intervals. Qwen and
+  Mistral artifacts exist in `results/` but predate the frozen protocol and
+  are not comparable.
 
 ### Key Components
 
-| Module | Description |
-|--------|-------------|
-| **Temporal Intent Detection** | Classifies queries as recency/past/future/atemporal and extracts temporal constraints |
-| **Temporal-Aware RAG** | Dense retrieval (Sentence-BERT) + temporal filtering + re-ranking |
-| **Timeline Construction** | Builds chronological event timelines from retrieved documents |
-| **LoRA Fine-Tuned SLMs** | Parameter-efficient fine-tuning on temporal reasoning tasks |
-| **Temporal Prompting** | Timeline-based Chain-of-Thought + temporal context injection |
-| **Consistency Checking** | Cross-references temporal facts and detects contradictions |
+| Module | Description | State |
+|--------|-------------|-------|
+| **LoRA Fine-Tuned SLMs** | Parameter-efficient fine-tuning on temporal reasoning tasks | **Evaluated** |
+| **Evaluation harness** | Frozen scoring protocol, HF + vLLM engines, CPU rescoring from immutable predictions | **Evaluated** |
+| **Temporal-Aware RAG** | Dense retrieval (Sentence-BERT) + temporal filtering + re-ranking | Built, not evaluated |
+| **Temporal Intent Detection** | Classifies queries as recency/past/future/atemporal | Prototype |
+| **Timeline Construction** | Builds chronological event timelines from retrieved documents | Prototype |
+| **Temporal Prompting** | Timeline-based Chain-of-Thought + temporal context injection | **Not implemented** (stubs) |
+| **Consistency Checking** | Cross-references temporal facts and detects contradictions | **Not implemented** (stub) |
 
-### ✅ RAG System Components (Now in Main)
+### RAG System Components (`temporal_rag/`, not in the evaluated chain)
 
-The `temporal_rag/` directory contains a complete, production-ready RAG system featuring:
+The `temporal_rag/` directory contains a complete but **unevaluated and
+untested** RAG system featuring:
 
 - **Indexing**: FAISS-based semantic indexing with multiple chunking strategies (recursive & character-based)
 - **Embedding**: Advanced encoder supporting various embedding models and preprocessing
@@ -81,21 +129,23 @@ temporal-news-reasoning/
 ### 1. Environment Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/Abdallah-Afifi/temporal-news-reasoning.git
 cd temporal-news-reasoning
 
-# Create conda environment
-conda create -n temporal python=3.10 -y
-conda activate temporal
+# Python 3.12 (the version the published numbers were produced with)
+python3.12 -m venv venv
+venv/bin/python -m pip install -U pip
+venv/bin/python -m pip install torch --index-url https://download.pytorch.org/whl/cu128
 
-# Install dependencies
-pip install -r requirements.txt
-
-# Copy and configure environment variables
-cp .env.example .env
-# Edit .env with your API keys
+# For a fresh install:
+venv/bin/python -m pip install -r requirements.txt
+# To REPRODUCE the published numbers, use the exact environment instead:
+venv/bin/python -m pip install -r requirements.lock.venv.txt
 ```
+
+`requirements.txt` pins only 2 of 47 dependencies, so it will not reproduce
+the evaluated environment — `requirements.lock.venv.txt` (and
+`requirements.lock.venv_vllm.txt` for the vLLM engine) will.
 
 ### 2. Download Models & Data
 
@@ -111,11 +161,27 @@ bash scripts/install_heideltime.sh
 python scripts/verify_install.py
 ```
 
-### 4. Run Baselines
+### 4. Run an evaluation
 
 ```bash
-python scripts/run_baselines.py --model qwen --benchmark timebench
+# HF engine (the path used for TIME/TimeBench on arms v1-v6)
+./venv/bin/python scripts/run_baselines.py --model llama --benchmark timebench \
+    --results-dir ./results/baseline/smoke --batch-size 32 \
+    --token-budget 57344 --max-samples 5
+
+# Re-score every arm from the stored predictions (CPU only, ~8 min).
+# --tram-root IS REQUIRED for a quotable TRAM column: without it the scorer
+# reads the pre-2026-09-12 predictions, whose prompts omitted the NLI
+# hypothesis and the storytelling passage for 85.3% of items. It prints a
+# STALE banner in that case — do not quote a run that shows one.
+./venv/bin/python scripts/rescore_v5_protocol.py --tram-root results/tram_fixed
 ```
+
+The protocol is frozen. Read `docs/results_and_methodology.md` §5 before
+running anything that will be quoted — in particular, a fine-tuned arm must be
+evaluated from a **merged** checkpoint on vLLM (`scripts/merge_lora.py`);
+`--adapter-dir` alone selects the training system prompt and loads no LoRA
+weights.
 
 ## Benchmarks
 
@@ -129,10 +195,13 @@ python scripts/run_baselines.py --model qwen --benchmark timebench
 
 | Model | Parameters | Notes |
 |-------|-----------|-------|
-| Qwen2.5-3B-Instruct | 3B | Primary model |
-| Phi-3-mini-4k-instruct | 3.8B | Secondary model |
-| LLaMA-3.2-3B-Instruct | 3B | Tertiary model |
-| all-MiniLM-L6-v2 | 22M | Embedding model for RAG |
+| LLaMA-3.2-3B-Instruct | 3B | **The only model in the evaluated campaign** — every published number |
+| Mistral-7B-Instruct-v0.3 | 7B | Side experiment; scored under a superseded protocol, **not comparable**, and banned from vLLM (parity failure) |
+| Qwen3.5-9B | 9B | Side experiment; not in the evaluated chain |
+| all-MiniLM-L6-v2 | 22M | Embedding model for the (unevaluated) RAG system |
+
+Qwen2.5-3B and Phi-3-mini appear in early planning documents but were never
+run under the frozen protocol; they are not present in `models/`.
 
 ## Branch Strategy
 

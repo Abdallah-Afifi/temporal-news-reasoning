@@ -5,8 +5,9 @@ Quick inference testing for the fine-tuned Mistral-7B-Instruct-v0.3 LoRA adapter
 
 Mistral-specific behaviour:
   - [INST] / [/INST] chat format (no separate system-prompt token).
-  - System instructions are prepended INSIDE [INST] automatically
-    by build_temporal_cot_prompt -> format_mistral_prompt.
+  - System instructions are folded into the user turn by
+    format_inference_prompt(model_key="mistral"), matching the training
+    data loader.
   - trust_remote_code NOT required.
   - Merging LoRA weights (merge_and_unload) makes inference faster on CPU/GPU
     but cannot be done with 4-bit quantized models.
@@ -25,11 +26,10 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Optional
 
 import torch
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
@@ -37,7 +37,7 @@ from peft import PeftModel
 from transformers import AutoModelForCausalLM
 
 from experiments.finetuning.Mistral.data_loader import load_tokenizer, HF_MODEL_NAME, MODEL_KEY
-from experiments.finetuning.shared.prompt_templates import build_temporal_cot_prompt
+from experiments.finetuning.shared.prompt_templates import format_inference_prompt
 from experiments.finetuning.shared.utils import setup_logger, read_jsonl
 
 log = setup_logger("mistral.inference")
@@ -73,7 +73,7 @@ def run_inference(
     model, tokenizer, prompt: str,
     max_new_tokens: int = 256, do_sample: bool = False, temperature: float = 0.1,
 ) -> str:
-    inputs  = tokenizer(prompt, return_tensors="pt").to(model.device)
+    inputs  = tokenizer(prompt, return_tensors="pt", add_special_tokens=False).to(model.device)
     gen_kw  = {"max_new_tokens": max_new_tokens, "do_sample": do_sample,
                "pad_token_id": tokenizer.eos_token_id, "eos_token_id": tokenizer.eos_token_id}
     if do_sample:
@@ -113,7 +113,7 @@ def run_demo_questions(model, tokenizer) -> None:
         print(f"Q: {demo['question']}")
         if demo["context"]:
             print(f"C: {demo['context'][:200]}")
-        prompt = build_temporal_cot_prompt(MODEL_KEY, demo["question"], demo["context"])
+        prompt = format_inference_prompt(tokenizer, demo["question"], demo["context"], model_key=MODEL_KEY)
         print(f"\nMistral: {run_inference(model, tokenizer, prompt)}")
 
 
@@ -126,7 +126,7 @@ def run_batch_inference(model, tokenizer, input_path, max_items=None, output_pat
         question = rec.get("question", rec.get("instruction", ""))
         context  = rec.get("context", rec.get("input", ""))
         gold     = rec.get("answer", rec.get("output", ""))
-        prompt   = build_temporal_cot_prompt(MODEL_KEY, question, context)
+        prompt   = format_inference_prompt(tokenizer, question, context, model_key=MODEL_KEY)
         answer   = run_inference(model, tokenizer, prompt)
         print(f"[{i+1}/{len(records)}] Q: {question[:80]}...")
         print(f"  -> {answer[:150]}")
@@ -153,7 +153,7 @@ def run_interactive(model, tokenizer) -> None:
             continue
         context  = input("Context (Enter to skip): ").strip()
         ref_date = input("Reference date (YYYY-MM-DD, Enter to skip): ").strip() or None
-        prompt   = build_temporal_cot_prompt(MODEL_KEY, question, context, ref_date)
+        prompt   = format_inference_prompt(tokenizer, question, context, model_key=MODEL_KEY, reference_date=ref_date)
         print(f"\n-> {run_inference(model, tokenizer, prompt)}\n")
 
 
@@ -184,7 +184,7 @@ if __name__ == "__main__":
     elif args.interactive:
         run_interactive(model, tokenizer)
     elif args.question:
-        prompt = build_temporal_cot_prompt(MODEL_KEY, args.question, args.context, args.reference_date)
+        prompt = format_inference_prompt(tokenizer, args.question, args.context, model_key=MODEL_KEY, reference_date=args.reference_date)
         print(run_inference(model, tokenizer, prompt))
     elif args.input_file:
         run_batch_inference(model, tokenizer, args.input_file, args.max_items, args.output)

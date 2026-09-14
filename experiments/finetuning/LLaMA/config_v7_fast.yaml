@@ -1,0 +1,115 @@
+# V7 — SPEED VARIANT. Identical data and recipe to config_v7.yaml; the ONLY
+# differences are two throughput settings that do not change the recipe:
+#
+#   gradient_checkpointing: TRUE -- kept ON. Do NOT try false again.
+#     MEASURED 2026-09-08: with it off, v7 OOMs on the first training step --
+#     "Tried to allocate 48.00 MiB. GPU 0 has 23.53 GiB total of which
+#     68.50 MiB is free; this process has 22.44 GiB in use." v4 OOMed the same
+#     way on 2026-09-05. That is TWICE, on two different mixtures, so it is a
+#     property of 2,048-token sequences on a 24 GB card, not of the data. The
+#     ~30% it would have bought is NOT AVAILABLE on this hardware.
+#
+#   group_by_length: true
+#     Batches length-similar sequences. Measured padding waste at micro-batch
+#     2 on this data: 40.6% random vs 0.5% length-sorted, so worth up to ~40%.
+#     HF's LengthGroupedSampler sorts within a megabatch and shuffles the
+#     megabatches, so batches stay content-diverse. This DOES change which
+#     examples share an optimizer step -- equivalent to a reseed, not a recipe
+#     change -- so v7-fast is not bit-comparable to v1-v6. Every arm already
+#     differs in data, so grouping introduces no new CLASS of difference, but
+#     say so in the write-up.
+#
+# So group_by_length is the only speedup available here. Baseline is
+# MEASURED at 8.82 s/step (60-step pilot) = 12.2 h for v7's 4,980 steps.
+# Grouping should cut that, but the gain is UNVERIFIED until piloted --
+# and grouping can RAISE peak memory, since it puts the longest sequences
+# in one batch instead of pairing them with short ones. Test, do not assume.
+# Use config_v7.yaml instead if you want v7 bit-comparable to v6.
+#
+
+# ── Model ──────────────────────────────────────────────
+model_path: models/Llama-3.2-3B-Instruct
+seed: 42
+dtype: bfloat16
+
+# ── Data ───────────────────────────────────────────────
+train_data: data/combined_80_20_v7/train.jsonl
+val_data: data/combined_80_20_v7/val.jsonl
+max_seq_length: 2048
+
+# ── Training (identical to v2 / HPO-optimized) ─────────
+learning_rate: 4.62258900102083e-04
+num_train_epochs: 3
+warmup_ratio: 0.08185086660174143
+weight_decay: 0.010909498032426036
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+
+# ── Speed optimizations (RTX 3090 24 GB) ───────────────
+# Activation checkpointing recomputes activations in the backward pass to
+# save memory. Gradients are mathematically identical either way, so turning
+# it off is a pure speed/memory trade and does NOT change the recipe — v4
+# stays comparable to v1-v3. Set back to true if this OOMs.
+# 2026-09-05: it OOMed on the first training step (22.31/23.53 GiB used by
+# this process alone) -- v4's new rehearsal data (HotpotQA/DROP/CoQA full
+# passages, avg 429 / max 1,518 tokens) runs far longer than v1-v3's dolly
+# rehearsal ever did. Turned back on per this comment's own contingency.
+gradient_checkpointing: true
+attn_implementation: sdpa
+# BATCH SHAPE: 2 x 8, identical to v1/v2/v3/v3-corrected. Do not "optimise"
+# this — it was measured on 2026-09-05 and larger micro-batches are WORSE on
+# this card (full write-up: docs/v4_plan.md § "Throughput protocol"):
+#   2 x 8  ->  8.4-9.6 s/it   (~6 h)   <- this, the fastest measured
+#   4 x 4  -> 11.9-13.0 s/it  (~8 h)   ~35% slower
+#   8 x 2  -> OOM (tried to allocate 6.48 GiB with 2.88 GiB free)
+# Why bigger is slower: the GPU is already saturated at batch 2 (2048-token
+# sequences on a 3B model), so a larger micro-batch adds no parallelism — it
+# just pads every sequence out to the longest in the group (this data runs
+# 429 tokens avg, 1,518 max), and gradient_checkpointing then recomputes that
+# padding in the backward pass too.
+# Why 8 OOMs: the ceiling is the logits tensor, batch x seq_len x vocab, and
+# Llama-3's vocab is 128,256 -> ~2.1 GB at batch 2 but ~8.4 GB at batch 8 in
+# fp32. gradient_checkpointing does not shrink it, and fixing flash-attn
+# would not either (it is the loss input, not an attention intermediate).
+# Keeping 2 x 8 also keeps v4 bit-comparable to v1-v3: no second variable.
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+tf32: true
+
+# ── Logging & Checkpointing ────────────────────────────
+logging_steps: 10
+eval_strategy: epoch
+save_strategy: epoch
+save_total_limit: 3
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+early_stopping_patience: 2
+
+# ── LoRA (identical to v2) ──────────────────────────────
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# ── Quantization ───────────────────────────────────────
+load_in_4bit: false
+
+# ── Output ─────────────────────────────────────────────
+output_dir: checkpoints/llama_v7
+group_by_length: true
+progress_dir: experiments/finetuning/LLaMA/Progress
+
+# ── Reporting ──────────────────────────────────────────
+report_to: []

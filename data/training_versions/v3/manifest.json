@@ -1,0 +1,21 @@
+{
+ "version": "v3",
+ "dir": "data/combined_80_20_v3",
+ "train_rows": 12436,
+ "val_rows": 3108,
+ "synthetic_pct": 16.9,
+ "general_rehearsal_pct": 16.7,
+ "composition": {
+  "TimeQA": 5005,
+  "TLQA": 3253,
+  "REHEARSAL": 2080,
+  "AUG_DIALOG": 597,
+  "AUG_MCQ": 400,
+  "AUG_NLI": 400,
+  "AUG_REASON": 381,
+  "AUG_ARITH": 320
+ },
+ "story": "Dolly rehearsal added; TLQA rows carried empty targets (D21) - broken checkpoint.",
+ "results_dir": "results/corrected/v3",
+ "size_mb": 57.4
+}

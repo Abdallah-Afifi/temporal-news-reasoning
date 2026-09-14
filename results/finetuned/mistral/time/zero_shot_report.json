@@ -1,31 +1,26 @@
 {
   "benchmark": "time/zero_shot",
-  "model": "mistral",
-  "configuration": "fine_tuned",
-  "timestamp": "2026-05-11T22:40:56.878185",
-  "num_examples": 15964,
-  "overall_accuracy": 0.3558631921824104,
-  "overall_f1": 0.14367170057320755,
-  "exact_match": 0.3558631921824104,
-  "temporal_f1": 0.8860489707328139,
+  "timestamp": "2026-09-01T07:52:13.403871",
+  "num_examples": 106500,
+  "overall_accuracy": 0.374112676056338,
+  "overall_f1": 0.1638608748233027,
+  "exact_match": 0.374112676056338,
+  "temporal_f1": 0.8724637903046354,
   "by_category": {
-    "temporal_qa": {
-      "accuracy": 0.3558631921824104,
-      "correct": 5681,
-      "total": 15964
+    "unknown": {
+      "accuracy": 0.374112676056338,
+      "correct": 39843,
+      "total": 106500
     }
   },
   "error_analysis": {
-    "temporal_extraction": 2281,
-    "hallucination": 201,
-    "other": 7801
+    "temporal_extraction": 4116,
+    "hallucination": 6528,
+    "other": 56013
   },
   "metadata": {
     "model": "mistral",
-    "task": "zero_shot",
-    "adapter_dir": "./checkpoints/mistral/final",
-    "prompt_type": "zero_shot",
-    "max_new_tokens": 128,
-    "temperature": 0.0
-  }
+    "task": "zero_shot"
+  },
+  "eval_wall_time_seconds": 23.47
 }

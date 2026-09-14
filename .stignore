@@ -1,0 +1,24 @@
+// Git internals — never sync. Code history travels via git push/pull.
+/.git
+
+// Machine-specific — each PC keeps its own
+/venv
+/venv_qwen
+/venv_vllm
+/.pytest_cache
+/.env
+/config.props
+/TRANSFER_README.md
+
+// Model weights (85G) — too large for the other PC's free disk. Copy manually if needed.
+/models
+
+// Runtime logs (machine-specific)
+/logs
+
+// OS / editor noise
+/.DS_Store
+/Thumbs.db
+*~
+*.tmp
+*.swp

@@ -1,0 +1,74 @@
+# LLaMA-3.2-3B-Instruct LoRA Fine-Tuning Configuration
+# =====================================================
+# Flat training on combined_80_20_split (no curriculum stages).
+# Hyperparameters from HPO best trial.
+# Optimized for RTX 3090 24GB — MAX SPEED.
+
+# ── Model ──────────────────────────────────────────────
+model_path: models/Llama-3.2-3B-Instruct
+seed: 42
+dtype: bfloat16
+
+# ── Data ───────────────────────────────────────────────
+train_data: data/combined_80_20_v2/train.jsonl
+val_data: data/combined_80_20_v2/val.jsonl
+# 2048 for cross-model comparability with Mistral/Qwen.
+# NOTE: the archived LLaMA checkpoint was trained with max_seq_length=1024.
+max_seq_length: 2048
+
+# ── Training (HPO-optimized) ──────────────────────────
+learning_rate: 4.62258900102083e-04
+num_train_epochs: 3
+warmup_ratio: 0.08185086660174143
+weight_decay: 0.010909498032426036
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+
+# ── Speed optimizations (RTX 3090 24GB — target ~20GB) ─
+# Gradient checkpointing ON = saves ~40% activation VRAM, slight speed cost
+# but batch=16 more than compensates vs original batch=4
+gradient_checkpointing: true
+# RTX 3090 (24 GB): bs 8 x seq 2048 x 128k-vocab logits OOMs in the CE loss.
+# bs 2 x accum 8 keeps the effective batch at 16 (identical optimization).
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8
+# Fast data loading
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+# Ampere TF32 fast math
+tf32: true
+
+# ── Logging & Checkpointing ──────────────────────────
+logging_steps: 10
+eval_strategy: epoch
+save_strategy: epoch
+save_total_limit: 3
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+early_stopping_patience: 2
+
+# ── LoRA (HPO-optimized) ─────────────────────────────
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# ── Quantization ─────────────────────────────────────
+load_in_4bit: false
+
+# ── Output ───────────────────────────────────────────
+output_dir: checkpoints/llama_v2
+progress_dir: experiments/finetuning/LLaMA/Progress
+
+# ── Reporting ────────────────────────────────────────
+report_to: []

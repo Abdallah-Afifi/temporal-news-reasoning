@@ -1,6 +1,21 @@
 # ============================================================
 # Core Dependencies
 # ============================================================
+#
+# NOTE (2026-09-12 audit): the ranges below are INSTALL guidance, not a
+# reproducibility record — only 2 of 47 entries are pinned, so a fresh
+# `pip install -r requirements.txt` will not reproduce the environment that
+# produced the published numbers. That environment is captured exactly in:
+#
+#   requirements.lock.venv.txt       training + HF eval + all CPU scoring
+#   requirements.lock.venv_vllm.txt  the vLLM eval engine
+#   requirements.lock.venv_qwen.txt  the Qwen side experiments
+#
+# Key versions behind every number in docs/results_and_methodology.md:
+#   torch 2.10.0+cu128 · transformers 4.57.6 · peft 0.18.1 · trl 1.12.0
+#   accelerate 1.14.0 · datasets 5.0.1 · numpy 2.5.2
+#   vLLM 0.28.0 on torch 2.13.0+cu130 (venv_vllm)
+#
 
 # Deep Learning
 torch>=2.1.0
