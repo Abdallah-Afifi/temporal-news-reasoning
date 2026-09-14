@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "description": "SELF-MINED few-shot CoT exemplars (D63): llama zero_shot_reasoning generations on TRAINING-POOL questions (v6 train, never benchmarks), answer-verified with the frozen scorer, shortest-trace-first per kind. Same traces the v9/STaR pipeline would train on -- placed in-prompt instead of in-weights. kinds: 2x phrase_qa, 1x ordering, 1x duration_phrase.",
+  "exemplars": [
+    {
+      "kind": "ordering",
+      "context": "",
+      "question": "Sort the following 3 facts from earliest to latest. Reply with only the letters in order, comma separated, e.g. 'B,A,C'.\nA. Minister for Transport (New South Wales) began in 2011.\nB. Premier of New South Wales began in 2017.\nC. Treasurer of New South Wales began in 2015.",
+      "choices": null,
+      "steps": [
+        "Step 1: Compare the years for each fact.",
+        "Step 2: Arrange the facts in order from earliest to latest based on their years."
+      ],
+      "answer": "A,C,B"
+    },
+    {
+      "kind": "duration_phrase",
+      "context": "",
+      "question": "Which is longer: a 400-day expedition or a 13-month expedition?",
+      "choices": null,
+      "steps": [
+        "Step 1: Convert the duration of the 400-day expedition to months to make a comparison with the 13-month expedition.",
+        "Step 2: Compare the durations of the two expeditions."
+      ],
+      "answer": "the 400-day expedition."
+    },
+    {
+      "kind": "phrase_qa",
+      "context": "",
+      "question": "A passport issued on 12 May 2016 is valid for exactly 10 years. Until what date is it valid?",
+      "choices": null,
+      "steps": [
+        "Step 1: The passport was issued on 12 May 2016, and it is valid for exactly 10 years.",
+        "Step 2: To find the date until which the passport is valid, we need to add 10 years to the date of issuance.",
+        "Step 3: Adding 10 years to 12 May 2016, we get 12 May 2026."
+      ],
+      "answer": "12 May 2026"
+    },
+    {
+      "kind": "phrase_qa",
+      "context": "",
+      "question": "A clock gains 2 minutes every hour. Set correctly at 06:00, what does it show when the true time is 12:00?",
+      "choices": null,
+      "steps": [
+        "Step 1: The clock gains 2 minutes every hour, so after 6 hours, it will have gained 2 * 6 = 12 minutes.",
+        "Step 2: The true time is 12:00, which is 6 hours after 06:00.",
+        "Step 3: Since the clock gains 12 minutes after 6 hours, the clock will show 12:12 when the true time is 12:00."
+      ],
+      "answer": "12:12"
+    }
+  ]
+}

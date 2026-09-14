@@ -21,7 +21,7 @@ baseline on TIME or TimeBench** once a TIME benchmark artifact is excluded
 of the methodology document). On TRAM, an audit on 2026-09-12 found that 85.3% of the
 column had been generated from prompts that omitted the question (the NLI
 hypothesis and the storytelling passage never reached the model). The loader is
-fixed and **all ten arms were re-run on 2026-09-13**: zero-shot scores 46.95%
+fixed and **all ten arms were re-run on 2026-09-13**: zero-shot scores 46.93%
 (not 35.20%) and no fine-tuned arm beats it, by −3.0 to −8.2pp. The campaign's value is the negative
 result and its attribution: fine-tuning on Wikipedia-style temporal QA moves
 only the categories the synthetic slices directly target, and costs broad

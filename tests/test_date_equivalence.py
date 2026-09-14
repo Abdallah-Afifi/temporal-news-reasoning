@@ -104,3 +104,71 @@ def test_bare_year_requires_agreeing_content_words() -> None:
     assert matches_any("in 1945", ["1945"])
     assert matches_any("1945", ["in 1945"])
     assert matches_any("the year 1990", ["1990"])
+
+
+def test_full_date_requires_agreeing_content_words() -> None:
+    """A shared month-year or full date must not credit a different claim.
+
+    The 2026-09-07 guard above covered only BARE YEARS, so a shared month or
+    day still licensed any surrounding assertion. Measured on TIME by the
+    2026-09-14b audit: 27 items on zero-shot, 26 on v6 and 32 on v7c were
+    scored correct for answers that contradict the gold.
+    """
+    # full date (ymd) — substituted subject
+    assert not matches_any(
+        "Britain and Ireland suspended flights to Egypt on November 1, 2015",
+        ["Russia and Britain suspended flights to Egypt on November 1, 2015."],
+    )
+    assert not matches_any(
+        "A third party mediated the talks on July 8, 2017",
+        ["Egypt mediated the talks on July 8, 2017"],
+    )
+    # the temporal claim itself differs — the project's own subject matter
+    assert not matches_any(
+        "1 day after September 25, 2015.",
+        ["2 days after September 25, 2015"],
+    )
+    # month-year (ym) — substituted subject
+    assert not matches_any(
+        "Egyptian military operations in July 2015",
+        ["Israeli airstrikes in July 2015"],
+    )
+
+
+def test_genuine_date_reformatting_still_matches() -> None:
+    """The new content guard must not cost the reformattings this module exists
+    to credit: only SUBSTITUTED content words are refused, never date
+    scaffolding (month names, day numbers, ordinals, years)."""
+    assert matches_any("18 March 1934", ["March 18, 1934."])
+    assert matches_any("March 18, 1934", ["18 March 1934"])
+    assert matches_any("1934-03-18", ["March 18, 1934"])
+    assert matches_any("September 1183", ["Sep, 1183"])
+    # filler may still be dropped or added around a full date
+    assert matches_any("on March 18, 1934", ["March 18, 1934"])
+    assert matches_any("March 18, 1934", ["on March 18, 1934"])
+    # and the level rule is unchanged: less specific never matches more
+    assert not matches_any("1783", ["February 24, 1783"])
+    assert not matches_any("Dec, 1183", ["Sep, 1183"])
+
+
+def test_ordinal_day_is_demoted_to_month_year_known_limitation() -> None:
+    """PINS A KNOWN LIMITATION, not desired behaviour.
+
+    `_DMY` requires a bare `\\d{1,2}` for the day, so an ordinal form loses its
+    day and is demoted to a month-year signature. The level rule then refuses
+    it against a full-date gold, and "March 3rd, 2015" is scored wrong for the
+    gold "March 3, 2015" — precisely the class of defect this module exists to
+    remove.
+
+    Measured on TIME by the 2026-09-14b audit and left unfixed deliberately:
+    it costs 2 items on zero-shot, 3 on v6 and 2 on v7c (~0.002pp), it is
+    near-uniform across arms so it does not bias any comparison, and widening
+    the day pattern risks over-matching for no measurable gain. Revisit only
+    if a future arm emits ordinals at a materially higher rate.
+    """
+    from src.evaluation.date_equivalence import _signature
+
+    assert _signature("1st May 2016") == ("ym", [(2016, 5)])
+    assert not matches_any("March 3rd, 2015", ["March 3, 2015."])
+    # stripping the suffix is all it takes — the day itself is right
+    assert matches_any("March 3, 2015", ["March 3, 2015."])

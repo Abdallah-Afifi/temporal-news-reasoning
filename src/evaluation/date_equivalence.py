@@ -63,6 +63,11 @@ _MAX_WORDS = 12
 # A token that is nothing but a 3-4 digit year.
 _YEAR_TOKEN_RE = re.compile(r"\d{3,4}")
 
+# Any token that is date scaffolding rather than content: a month name, or a
+# number (optionally ordinal) standing for a day or a year. Used to compare
+# what the two sides actually CLAIM, once the date itself is set aside.
+_DATE_TOKEN_RE = re.compile(rf"(?:\d{{1,4}}(?:st|nd|rd|th)?|{_MRE})")
+
 
 def _triples(text: str) -> list[tuple[int, int, int]]:
     """Every complete (year, month, day) date in ``text``."""
@@ -136,7 +141,21 @@ def same_date(prediction: Any, gold: Any) -> bool:
         # subset either way is fine. It may never SUBSTITUTE a content word,
         # which is what "establishment" -> "overthrow" does.
         return cp <= cg or cg <= cp
-    return True
+    # The SAME content rule at the month-year and full-date levels (2026-09-14b
+    # audit). Until now the substitution guard above applied only to bare
+    # years, so a shared month or full date licensed any surrounding claim:
+    # measured on TIME, 27 items on zero-shot, 26 on v6 and 32 on v7c were
+    # credited for answers that contradict the gold —
+    #   "Britain and Ireland suspended flights"  vs "Russia and Britain …"
+    #   "A third party mediated the talks"       vs "Egypt mediated the talks"
+    #   "1 day after September 25, 2015"         vs "2 days after …"
+    # A shared date is strong evidence of the same event, but it cannot license
+    # a different assertion about it. Date scaffolding (months, days, years) is
+    # set aside so a genuine reformatting — "18 March 1934" vs "March 18, 1934",
+    # "1st" vs "1" — still matches; only substituted CONTENT words are refused.
+    cp = {w for w in np_ if not _DATE_TOKEN_RE.fullmatch(w)}
+    cg = {w for w in nr if not _DATE_TOKEN_RE.fullmatch(w)}
+    return cp <= cg or cg <= cp
 
 
 def matches_any(prediction: Any, golds: Iterable[Any]) -> bool:

@@ -15,19 +15,40 @@ TimeBench 21,075 · TRAM 980,918.
 below are the CORRECTED ones, §9. Any TRAM number in an older document is
 stale by 5–12pp and ranks the arms differently.)
 
+> **Scorer correction, 2026-09-14b — the table below moved by ≤0.04pp.**
+> `same_date` applied its content-substitution guard only to BARE YEARS, so a
+> shared month or full date licensed any surrounding claim: "Britain and
+> Ireland suspended flights…" was scored correct against "Russia and Britain
+> suspended flights… on November 1, 2015", and "1 day after September 25,
+> 2015" against "2 days after September 25, 2015". The guard now applies at
+> every date level (`docs/audit_2026_09_14b.md` §A1).
+>
+> Effect, measured on all 32 cells: **TIME −0.01 to −0.04pp, TRAM −0.01 to
+> −0.03pp, TimeBench bit-identical.** No arm changes rank, and the v6-vs-
+> zero-shot gap is 0.72pp before and after. The table above carries the
+> corrected values.
+>
+> **Figures elsewhere in this document have NOT been swept** and may still
+> show the pre-correction value in the second decimal (e.g. "41.46" for
+> zero-shot TIME in §1.1, §3 and §8, and the derived deltas such as
+> "−8.04 vs zs"). Every one of them is within 0.04pp of correct and none
+> changes a sign, a rank or a significance verdict. The authoritative source
+> is `results/rescored/v5_protocol.json` / `..._tram_fixed.json`, regenerated
+> by `scripts/rescore_v5_protocol.py --tram-root results/tram_fixed`.
+
 | Arm | One-line identity | TIME | TimeBench | TRAM (re-run) |
 |---|---|---|---|---|
-| zero-shot | base Llama-3.2-3B-Instruct, no training | **41.46%** | 45.18% | **46.95%** |
-| v1-ft | first arm: TimeQA+TLQA+Temprel core | 33.42% | 38.88% | 38.71% |
-| v2-ft | + AUG_MCQ/ARITH/NLI scale-ups | 37.48% | 45.42% | 41.30% |
+| zero-shot | base Llama-3.2-3B-Instruct, no training | **41.44%** | 45.18% | **46.93%** |
+| v1-ft | first arm: TimeQA+TLQA+Temprel core | 33.39% | 38.88% | 38.69% |
+| v2-ft | + AUG_MCQ/ARITH/NLI scale-ups | 37.46% | 45.42% | 41.29% |
 | v3 | **broken** (corrupted data) — superseded | — | — | — |
-| v3-corr | v3 rebuilt on repaired data | 39.98% | **48.46%** | 41.50% |
-| v4 | rehearsal source swap (dolly/hotpot/coqa/drop) | 40.08% | 46.72% | 43.80% |
-| v5 | rehearsal ×3 volume (8,026 rows) | 38.45% | 48.07% | 42.68% |
-| **v6** | rehearsal cap 2,600 + AUG_SEQ/NOANS/MCQ2 | **42.18%** | 47.44% | 42.78% |
-| v7 | six bundled changes (confounded) | 36.15% | 45.60% | 39.04% |
-| **v7c** | v6 + dual-gold removal (the clean arm) | **41.91%** | 45.68% | **43.92%** |
-| v6d | v6 + AUG_DURATION slice isolated | 39.96% | 47.24% | 42.86% |
+| v3-corr | v3 rebuilt on repaired data | 39.96% | **48.46%** | 41.48% |
+| v4 | rehearsal source swap (dolly/hotpot/coqa/drop) | 40.07% | 46.72% | 43.79% |
+| v5 | rehearsal ×3 volume (8,026 rows) | 38.43% | 48.07% | 42.67% |
+| **v6** | rehearsal cap 2,600 + AUG_SEQ/NOANS/MCQ2 | **42.16%** | 47.44% | 42.76% |
+| v7 | six bundled changes (confounded) | 36.11% | 45.60% | 39.02% |
+| **v7c** | v6 + dual-gold removal (the clean arm) | **41.88%** | 45.68% | **43.89%** |
+| v6d | v6 + AUG_DURATION slice isolated | 39.94% | 47.24% | 42.85% |
 
 Random baselines: TIME 13.56%, TRAM 18.92% — but see §8.1, the TIME figure
 needs a recheck for two categories. Key significances: v6 and v7c beat
