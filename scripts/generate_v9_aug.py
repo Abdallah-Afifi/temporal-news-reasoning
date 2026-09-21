@@ -10,6 +10,7 @@ total across Blocks A/B/C, plus a hidden .generation_summary.json.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import pickle
 import random
@@ -72,6 +73,13 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="data/manual_aug_v9")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--scale", type=float, default=1.0, help=(
+        "Multiply every category allocation by this factor. 1.0 reproduces the "
+        "5,990-row v9 set. Added 2026-09-16 to size-match a synthetic-only arm "
+        "against v1 (12,000 real rows); the corpus, not the allocation, is the "
+        "binding constraint, so the delivered total will fall short of "
+        "scale*5990 once eligible articles run out -- the shortfall is "
+        "reported, never padded (ruleset section 8)."))
     ap.add_argument("--limit", type=int, default=None,
                     help="scan only the first N usable articles (smoke tests)")
     ap.add_argument("--ban", default=None,
@@ -86,7 +94,18 @@ def main() -> int:
 
     cache = Path("data/.v9_cache")
     cache.mkdir(parents=True, exist_ok=True)
-    ckey = cache / f"arts_{args.limit or 'all'}_{len(ban)}.pkl"
+    # The cached index is the OUTPUT of v9/corpus.py -- _clean_sent() runs at
+    # load time and its result is what gets pickled. Keying the cache only on
+    # (limit, ban size) meant an edit to the loader was silently ignored:
+    # the page-furniture filter added on 2026-09-16 at 12:36 never reached the
+    # data, because the cache written at 12:27 kept being reloaded. Nine
+    # minutes of staleness cost a fix that looked applied and was not.
+    # The loader's source hash is now part of the key, so changing corpus.py
+    # invalidates the index automatically.
+    _corpus_src = (Path(__file__).resolve().parents[1]
+                   / "scripts" / "v9" / "corpus.py").read_bytes()
+    _sig = hashlib.sha1(_corpus_src).hexdigest()[:10]
+    ckey = cache / f"arts_{args.limit or 'all'}_{len(ban)}_{_sig}.pkl"
     if ckey.exists():
         print(f"loading cached article index {ckey}")
         arts = pickle.loads(ckey.read_bytes())
@@ -110,6 +129,19 @@ def main() -> int:
             if len(out) >= want:
                 break
         return out[:want]
+
+    if args.scale != 1.0:
+        # Mutate CATS in place: BlockA reads CATS[...] directly for its paired
+        # slices, so rebinding a local copy here would scale the top-level
+        # counts and leave the pair counts at their unscaled values.
+        for _k, _v in CATS.items():
+            for _f in ("total", "mcq", "pairs"):
+                _v[_f] = int(round(_v[_f] * args.scale))
+        print(f"scale={args.scale}: Block A allocation -> "
+              f"{ {k: v['total'] for k, v in CATS.items()} }")
+
+    def _n(x: int) -> int:
+        return int(round(x * args.scale))
 
     rows: list[dict] = []
     a = BlockA(arts, topics, rng)
@@ -138,16 +170,16 @@ def main() -> int:
         print(f"SHORTFALLS: {a.shortfalls}")
 
     b = BlockB(full2, rng)
-    rows += b.gen_nli(400, mcq=False)
-    rows += b.gen_nli(250, mcq=True)
-    rows += b.gen_relation(150)
-    rows += b.gen_ordering(100)
+    rows += b.gen_nli(_n(400), mcq=False)
+    rows += b.gen_nli(_n(250), mcq=True)
+    rows += b.gen_relation(_n(150))
+    rows += b.gen_ordering(_n(100))
 
     c = BlockC(any2, topics, rng)
-    rows += c.gen_dialogue(250, pool=full2)
-    rows += c.gen_duration(150)
-    rows += c.gen_storytelling(150)
-    rows += c.gen_longform(150)
+    rows += c.gen_dialogue(_n(250), pool=full2)
+    rows += c.gen_duration(_n(150))
+    rows += c.gen_storytelling(_n(150))
+    rows += c.gen_longform(_n(150))
     aug_rows = [r for r in rows if r["slice"] == "A"]
     want_a = {k: v["total"] for k, v in CATS.items()}
     have_a = Counter(r["category"] for r in aug_rows)
@@ -169,6 +201,7 @@ def main() -> int:
         "shortfalls": a.shortfalls,
         "seed": args.seed,
         "limit": args.limit,
+        "scale": args.scale,
     }
     (out_dir / ".generation_summary.json").write_text(
         json.dumps(summary, indent=1))

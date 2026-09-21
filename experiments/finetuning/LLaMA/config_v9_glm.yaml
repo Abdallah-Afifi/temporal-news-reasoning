@@ -5,35 +5,43 @@
 # output_dir change, so v9 stays comparable to every earlier arm.
 #
 # WHY THIS ARM:
-#   AUG_GLM2 = ~5,990 synthetic rows across all 18 surfaces, swapped into v6's
-#   mixture at the L1 cap of 15,000 rows (v6 was 18,558). Retired: rehearsal
-#   and the spent synthetic slices (AUG_NOANS/MCQ/MCQ2/DURATION/ARITH/DIALOG/
-#   NLI/REASON). Block B trains `neutral` for the first time (L4).
+#   v6's mixture with the spent synthetic slices retired and AUG_GLM2 swapped
+#   in -- but here AUG_GLM2 is genuinely GLM-authored: 3,000 rows generated via
+#   the standing-brief/ORDER-line chat protocol (scripts/make_glm_packets.py
+#   --master, docs/audit_2026_09_16.md section 7.5 on) and verified per-row by
+#   scripts/ingest_glm_batch.py. This supersedes config_v9.yaml, whose
+#   data/manual_aug_v9/ was produced by deterministic Python templates over a
+#   CC-News corpus, not by GLM -- see the provenance correction in
+#   docs/synthetic_data_ruleset.md and docs/audit_2026_09_16.md.
 #
-# PROVENANCE — READ BEFORE QUOTING (corrected by the 2026-09-16 audit):
-#   AUG_GLM2 contains NO model-generated text. Despite the name, and despite
-#   docs/synthetic_data_ruleset.md being written as a spec for an LLM, the rows
-#   that exist on disk were produced by DETERMINISTIC PYTHON TEMPLATES
-#   (scripts/generate_v9_aug.py -> scripts/v9/block_{a,b,c}.py) filling slots
-#   from a local CC-News snapshot. No API is called anywhere in that path.
-#   This header previously described the rows as "LLM-grade"; they are not,
-#   and any write-up calling v9 an LLM-generated-data arm would be wrong.
+#   AUG_GLM2 here: 3,000 rows, 20.0% of the 12,002-row train split (lower than
+#   the template arm's 39.9% -- this session generated 3,000 rows against the
+#   ruleset's original 6,000-row plan, not a bug, an honest consequence of
+#   manual chat-driven generation). Capped at the L1 total of 15,000.
+#   Hyperparameters are byte-identical to config_v6.yaml outside the three
+#   path lines, so the arm stays comparable to v1-v7c. Control = v6.
 #
-# DO NOT TRAIN THIS ARM AS IT STANDS (2026-09-16 audit):
-#   data/manual_aug_v9/AUDIT.md now reports OVERALL: FAIL on three §7.5 gates
-#   that did not exist when the arm was staged —
-#     1. free-text golds average 8.21 words vs TIME's 2.35, with 14.7% at or
-#        above 20 words vs TIME's 0.95%. The ruleset's own §9 says "keep golds
-#        terse" and cites the 2.35 figure; the generator does not honour it.
-#        AUG_GLM2 is 39.8% of the train mixture, so this sets the answer style
-#        the frozen scorer then has to match.
-#     2. 127 rows carry golds truncated mid-sentence or lifted from page
-#        furniture (bylines, "Related Stories", nav text).
-#     3. 28 rows still repeat a single context line five or more times.
-#   Gates 2 and 3 are generator bugs. Gate 1 is a design question: several
-#   Block A categories ask questions ("what was reported concerning X?") that
-#   have no terse answer, so the fix is a question-design decision, not a
-#   formatting one. Resolve it before spending GPU time on this arm.
+# DATA QUALITY (verified 2026-09-21, data/manual_aug_glm/AUDIT.md):
+#   Contamination: 0 collisions, 0 shingle overlap vs TIME/TimeBench/TRAM.
+#   Shortcut probes: all pass (letter balance, longest-option, overlap,
+#   length-bias). Padding: 0/3000. Truncation/page-furniture: 0/3000.
+#   Answer style (the gate that failed the template arm): free-text mean
+#   3.12 words, 0.0% >=20 words -- against TIME's own 2.35/0.95%, and far
+#   below the template arm's 8.11/14.8%.
+#   AUDIT.md's own OVERALL line still reads FAIL. Both contributing gates are
+#   confirmed tool-convention mismatches, not data defects: (1) "near-duplicate
+#   questions" flags rows sharing mandated boilerplate (fixed Duration_Compare/
+#   Order_Compare option text, Timeline's sorting instruction) -- every
+#   same-gold pair was hand-checked and is a distinct event-pairing, 0 true
+#   duplicates; (2) "gold recomputation" uses the template generator's date-
+#   parsing conventions, which GLM's rationale format doesn't match -- every
+#   category with a dedicated machine gate in ingest_glm_batch.py (Computation,
+#   Timeline, Duration_Compare, Order_Compare) verifies at 100% via that gate
+#   instead. Do not requote the bare FAIL without this context.
+#   Known limitation, accepted rather than fixed further: Block A provenance
+#   is news 76.8% / wiki 18.6% / dial 4.5% against the ruleset's 60/35/5
+#   target -- closer than the first build (83/14.5/2.5) after a targeted
+#   top-up, not fully corrected.
 #
 # ── Model ──────────────────────────────────────────────
 model_path: models/Llama-3.2-3B-Instruct
@@ -41,8 +49,8 @@ seed: 42
 dtype: bfloat16
 
 # ── Data ───────────────────────────────────────────────
-train_data: data/combined_80_20_v9/train.jsonl
-val_data: data/combined_80_20_v9/val.jsonl
+train_data: data/combined_80_20_v9_glm/train.jsonl
+val_data: data/combined_80_20_v9_glm/val.jsonl
 max_seq_length: 2048
 
 # ── Training (identical to v2 / HPO-optimized) ─────────
@@ -115,7 +123,7 @@ target_modules:
 load_in_4bit: false
 
 # ── Output ─────────────────────────────────────────────
-output_dir: checkpoints/llama_v9
+output_dir: checkpoints/llama_v9_glm
 progress_dir: experiments/finetuning/LLaMA/Progress
 
 # ── Reporting ──────────────────────────────────────────

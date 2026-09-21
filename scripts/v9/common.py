@@ -41,16 +41,53 @@ def make_row(slice_: str, category: str, provenance: str, question: str,
     }
 
 
+# Function words a fragment must not end on. AUDIT 2026-09-16: trim_sentence
+# and clip both cut at a fixed word count and appended nothing but a period, so
+# 128 golds and 187 question stems ended mid-clause ("...the submarine
+# disappeared somewhere in.") -- a gold no model can produce and no scorer can
+# match.
+_DANGLING = {
+    "in", "on", "at", "of", "to", "for", "with", "from", "by", "the", "a", "an",
+    "and", "or", "that", "as", "into", "after", "before", "when", "who",
+    "which", "was", "were", "is", "are", "has", "have", "had", "he", "she",
+    "they", "it", "but", "than", "over", "under", "between", "during", "while",
+    "its", "his", "her", "their", "this", "these", "those", "about", "against",
+}
+
+
+def strip_dangling(cut: str) -> str:
+    """Drop trailing function words so a fragment ends on a content word."""
+    w = cut.rstrip(" ,;:.").split()
+    while w and w[-1].lower().strip(",;:.") in _DANGLING:
+        w.pop()
+    return " ".join(w).rstrip(" ,;:")
+
+
 def trim_sentence(s: str, max_words: int = 28) -> str:
     s = re.sub(r"\s+", " ", s).strip()
     words = s.split()
     if len(words) <= max_words:
         return s
     cut = " ".join(words[:max_words])
-    m = re.search(r"[,;:]\s+[A-Za-z']+$", cut)
-    if m and len(words) > max_words + 1:
+    # Prefer ending at a clause boundary inside the window; the original only
+    # handled a boundary in the final two tokens.
+    #
+    # The boundary is taken ONLY if it keeps most of the window. AUDIT
+    # 2026-09-19: an earlier version accepted any boundary past the midpoint,
+    # which cut distractors well short of their 24-word budget. Golds in
+    # Relative_Reasoning are full paraphrased sentences and are NOT capped, so
+    # shorter distractors made the gold the longest option in 30% of rows and
+    # failed the L7 shortcut probe that had passed at 18%. Keeping >= 80% of
+    # the budget preserves the anti-dangling fix without shrinking the option.
+    m = None
+    for m2 in re.finditer(r"[,;:]", cut):
+        if len(cut[: m2.start()].split()) >= int(max_words * 0.8):
+            m = m2
+            break
+    if m:
         cut = cut[: m.start()]
-    return cut.rstrip(" ,;:") + "."
+    cut = strip_dangling(cut)
+    return (cut + ".") if cut else " ".join(words[:max_words]).rstrip(" ,;:") + "."
 
 
 def subject_of(art: Article) -> str:

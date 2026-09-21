@@ -58,6 +58,10 @@ ARMS = {
         ("v7-vllm", "results/corrected/v7_vllm/llama/time/finetuned/predictions.jsonl"),
         ("v7c-vllm", "results/corrected/v7_corrected_vllm/llama/time/finetuned/predictions.jsonl"),
         ("v6d-vllm", "results/corrected/v6d_vllm/llama/time/finetuned/predictions.jsonl"),
+        # v9 — the synthetic-swap arm (AUG_GLM2). vLLM on all three
+        # benchmarks; see docs/audit_2026_09_16.md for the data caveats.
+        ("v9-vllm", "results/corrected/v9_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v9-glm-vllm", "results/corrected/v9_glm_vllm/llama/time/finetuned/predictions.jsonl"),
         # CoT arms (added 2026-09-14). These existed since 2026-09-09 with
         # complete predictions and were NOT in this list, so they never
         # reached the canonical table — the same defect class as the
@@ -89,6 +93,10 @@ ARMS = {
         ("v7-vllm", "results/corrected/v7_vllm/llama/tram/finetuned/predictions.jsonl"),
         ("v7c-vllm", "results/corrected/v7_corrected_vllm/llama/tram/finetuned/predictions.jsonl"),
         ("v6d-vllm", "results/corrected/v6d_vllm/llama/tram/finetuned/predictions.jsonl"),
+        # v9 — the synthetic-swap arm (AUG_GLM2). vLLM on all three
+        # benchmarks; see docs/audit_2026_09_16.md for the data caveats.
+        ("v9-vllm", "results/corrected/v9_vllm/llama/tram/finetuned/predictions.jsonl"),
+        ("v9-glm-vllm", "results/corrected/v9_glm_vllm/llama/tram/finetuned/predictions.jsonl"),
 ],
     "timebench": [
         ("zero-shot", "results/baseline/zero_shot_v3/llama/timebench/zero_shot/predictions.jsonl"),
@@ -102,6 +110,10 @@ ARMS = {
         ("v7-vllm", "results/corrected/v7_vllm/llama/timebench/finetuned/predictions.jsonl"),
         ("v7c-vllm", "results/corrected/v7_corrected_vllm/llama/timebench/finetuned/predictions.jsonl"),
         ("v6d-vllm", "results/corrected/v6d_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        # v9 — the synthetic-swap arm (AUG_GLM2). vLLM on all three
+        # benchmarks; see docs/audit_2026_09_16.md for the data caveats.
+        ("v9-vllm", "results/corrected/v9_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v9-glm-vllm", "results/corrected/v9_glm_vllm/llama/timebench/finetuned/predictions.jsonl"),
         # CoT arms (added 2026-09-14). These existed since 2026-09-09 with
         # complete predictions and were NOT in this list, so they never
         # reached the canonical table — the same defect class as the
@@ -431,7 +443,13 @@ def main() -> int:
                  "v2-vllm": ("v2", "finetuned"), "v3c-vllm": ("v3c", "finetuned"),
                  "v4-vllm": ("v4", "finetuned"), "v5-vllm": ("v5", "finetuned"),
                  "v6-vllm": ("v6", "finetuned"), "v7-vllm": ("v7", "finetuned"),
-                 "v7c-vllm": ("v7c", "finetuned"), "v6d-vllm": ("v6d", "finetuned")}
+                 "v7c-vllm": ("v7c", "finetuned"), "v6d-vllm": ("v6d", "finetuned"),
+                 # v9 writes its TRAM leg straight to the fixed root, so it is
+                 # listed here as well as in ARMS["tram"]. Omitting it here
+                 # would make --tram-root drop the arm silently, which is the
+                 # v7-omission defect (F1) in a new place.
+                 "v9-vllm": ("v9", "finetuned"),
+                 "v9-glm-vllm": ("v9_glm", "finetuned")}
         _SUPERSEDED_TRAM.update(p for _, p in ARMS["tram"])
         ARMS["tram"] = [
             (label, f"{args.tram_root}/{d}/llama/tram/{sub_}/predictions.jsonl")

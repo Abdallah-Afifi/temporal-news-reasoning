@@ -55,6 +55,46 @@ DIAL_REACT = [
     "Right, that slots in before the rest.",
 ]
 
+# Filler exchanges used ONLY to reach the word band when the source article is
+# short on datable events. AUDIT 2026-09-16: the previous implementation
+# appended ONE verbatim exchange in a `while` loop, so a short article produced
+# up to 76 identical copies of the same two lines -- 7.1% of v9 rows carried
+# such a block, and all 250 temporal_dialogue rows did. Training on that
+# teaches degenerate repetition and spends the context budget on nothing.
+# Each exchange here is used AT MOST ONCE per context; if the pool runs out the
+# context is returned SHORT rather than padded (ruleset section 8: report a
+# shortfall, never pad).
+# Emitted with p=0.3 after an event turn. AUDIT 2026-09-16: this used to be ONE
+# hardcoded string, so a transcript with many events repeated it verbatim up to
+# 14 times. Drawn from a pool now.
+DIAL_ASIDE = [
+    "We should watch whether anything further comes of it.",
+    "Worth keeping an eye on how that develops.",
+    "I expect we will hear more about that one.",
+    "That may matter later on, depending on what follows.",
+    "I had not connected those two until just now.",
+    "It is easy to lose track of which came first.",
+]
+
+DIAL_FILLER = [
+    ("Anything else you remember from that period?",
+     "Only that the reporting kept adding detail with each update."),
+    ("Was there any follow-up coverage after that?",
+     "A little, though it mostly restated what was already known."),
+    ("Did the earlier reports line up with this?",
+     "Broadly, yes -- the dates were the part people kept revising."),
+    ("How widely was this picked up at the time?",
+     "Enough that several outlets ran their own version of it."),
+    ("Did anyone dispute the sequence of events?",
+     "Not the sequence so much as how long the gaps between them were."),
+    ("Was the timing ever clarified afterwards?",
+     "Only in passing, when a later piece referred back to it."),
+    ("Do you recall what prompted the coverage?",
+     "It came up alongside the other developments we went through."),
+    ("Anything in the follow-ups that changed the picture?",
+     "Nothing that moved the dates we already have."),
+]
+
 
 def _clamp(text: str, lo: int, hi: int) -> bool:
     return lo <= len(text.split()) <= hi
@@ -182,18 +222,23 @@ def dial_context(art: Article, events: list[Event], rng: random.Random,
                           "event": frag, "date": ev.date,
                           "date_str": ev_stated})
             if rng.random() < 0.3:
-                extra = "We should watch whether anything further comes of it."
+                extra = rng.choice(DIAL_ASIDE)
                 lines.append(_turn(answerer if ei % 2 == 0 else asker, extra))
-                words += 10
+                words += len(extra.split()) + 1
         lines.append(_turn(b if si % 2 else a,
                            f"Let us pick this up again after the next update."))
         words += 12
     ctx = "\n".join(lines)
-    while words < words_band[0]:
-        pad = (f"{a}: Anything else you remember from that period?\n"
-               f"{b}: Only that the reporting kept adding detail with each update.")
-        ctx += "\n" + pad
-        words += 18
+    # Reach the word band with DISTINCT filler exchanges, each used at most
+    # once. If the pool is exhausted the context stays short -- padding with
+    # repeats is what the 2026-09-16 audit found and removed.
+    filler = list(DIAL_FILLER)
+    rng.shuffle(filler)
+    for ask, reply in filler:
+        if words >= words_band[0]:
+            break
+        ctx += f"\n{a}: {ask}\n{b}: {reply}"
+        words += len(ask.split()) + len(reply.split()) + 2
     return ctx, facts
 
 

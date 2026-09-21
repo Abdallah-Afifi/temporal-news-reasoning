@@ -82,6 +82,19 @@ def _clean_sent(s: str) -> str | None:
         return None
     if re.search(r"http|www\.|@|All rights reserved|\bUPI\b|Follow (us|him|her)", s):
         return None
+    # Page furniture. AUDIT 2026-09-16: the filter above let bylines, nav text
+    # and newsletter prompts through, and they surfaced as gold answers and as
+    # MCQ options ("Photos Related Stories ...", "By IANS | Published: ...",
+    # "Please enter an answer in digits:2 x 1 = Post navigation Previous post").
+    # DELIBERATELY CASE-SENSITIVE and narrow: an earlier, broader case-folded
+    # version also removed ordinary prose containing "copyright", "subscribe"
+    # or "published:", which cut Co_temporality to 266/300 rows and pushed the
+    # longest-option shortcut probe to 35% by stripping short distractors.
+    if re.search(r"Related Stories|Post navigation|Previous post|Next post|"
+                 r"Read More|Share this|Sign up for our|Getty Images|"
+                 r"answer in digits|NEWSLETTER|\| Published:|"
+                 r"\bBy [A-Z][a-z]+ [A-Z][a-z]+ \|", s):
+        return None
     if not re.search(r"[a-z]", s) or not re.match(r"[A-Z\"'\u201c]", s):
         return None
     return s

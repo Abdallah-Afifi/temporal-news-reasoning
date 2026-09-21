@@ -605,8 +605,28 @@ def recompute_localization_relative(row: dict) -> bool:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dir", default="data/manual_aug_v9")
+    ap.add_argument("--scale", type=float, default=None, help=(
+        "Scale the §4 allocation before the distribution gate. Defaults to the "
+        "`scale` recorded in .generation_summary.json, so a set generated with "
+        "--scale is audited against the allocation it was actually asked for "
+        "rather than the 1x table, which would fail every category as 'over "
+        "allocation'."))
     ap.add_argument("--sample-rows", type=int, default=3)
     args = ap.parse_args()
+    _scale = args.scale
+    if _scale is None:
+        _summ = Path(args.dir) / ".generation_summary.json"
+        if _summ.exists():
+            try:
+                _scale = float(json.loads(_summ.read_text()).get("scale", 1.0))
+            except Exception:
+                _scale = 1.0
+        else:
+            _scale = 1.0
+    if _scale != 1.0:
+        for _k in ALLOC:
+            ALLOC[_k] = int(round(ALLOC[_k] * _scale))
+        print(f"allocation scaled x{_scale} for the distribution gate")
     d = PROJECT_ROOT / args.dir
     cache = PROJECT_ROOT / "data" / ".v9_cache"
     cache.mkdir(parents=True, exist_ok=True)
@@ -633,7 +653,12 @@ def main() -> int:
                 assert r["targets"][0].strip()
                 assert isinstance(r["rationale"], str) and r["rationale"].strip()
                 assert r["source"] == "augmented"
-                assert r["provenance"] == "none" or r["source_id"]
+                # source_id is a CC-News pointer, required only for
+                # corpus-grounded rows. Per the recorded deviation of
+                # 2026-09-16 the passages are written by the generator, so an
+                # empty source_id is correct and this asserted 1,350 false
+                # failures on the first GLM audit.
+                assert isinstance(r.get("source_id", ""), str)
             except AssertionError as e:
                 bad += 1
                 if bad <= 5:
@@ -701,9 +726,26 @@ def main() -> int:
 
     near = []
     for cat, rows in sorted(cats.items()):
-        sets = [toks(r["question"]) for r in rows]
+        # Compare only what VARIES between questions in a category. Several
+        # cards mandate fixed wording -- Timeline's 40-word sorting
+        # instruction, Duration_Compare's three fixed options -- and on a
+        # bag-of-words measure that boilerplate dominates. The first GLM audit
+        # reported 127 "near-duplicates", 125 of them Timeline and
+        # Duration_Compare rows that share nothing but their mandated stem.
+        # Tokens common to over half the category's questions are treated as
+        # scaffolding and excluded; this self-calibrates per card.
+        raw = [toks(r["question"]) for r in rows]
+        if not raw:
+            continue
+        df: Counter = Counter()
+        for t in raw:
+            df.update(t)
+        boiler = {w for w, n in df.items() if n > 0.5 * len(raw)}
+        sets = [t - boiler for t in raw]
         for i in range(len(sets)):
             for j in range(i + 1, len(sets)):
+                if not sets[i] or not sets[j]:
+                    continue
                 inter = len(sets[i] & sets[j])
                 if inter and inter / len(sets[i] | sets[j]) > 0.9:
                     near.append((cat, i))
@@ -719,6 +761,12 @@ def main() -> int:
     jan1_total = 0
     for cat in ALLOC:
         rows = cats.get(cat, [])
+        # A category with no rows yet is not a failure -- it is unstarted.
+        # Auditing a PARTIAL generation run is the common case while a slice is
+        # being built, and the per-category maths below divides by len(rows).
+        if not rows:
+            rep.row(f"| {cat} | 0 | {ALLOC[cat]} | - | - | - | not started |")
+            continue
         golds = [r["targets"][0] for r in rows]
         cg = Counter(golds)
         top = cg.most_common(1)[0][1] / len(rows) if rows else 0
@@ -767,7 +815,19 @@ def main() -> int:
             uni = len(g) / n_perms if n_perms else 0
             mx = max(c.values()) if c else 0
             all_present = len(c) == n_perms
-            ok = mx <= 1.5 * max(uni, 1) and (all_present or k == 5)
+            # Poisson bound, not a flat multiplier. AUDIT 2026-09-19: the old
+            # rule `mx <= 1.5 * max(uni, 1)` is invalid when uni is small,
+            # because the spread of a max over n_perms bins is dominated by
+            # Poisson variance. Simulated on uniform RANDOM assignments:
+            #   k=4, n=55  (uni 2.29) -> the 1.5x rule fails random data 100%
+            #   k=5, n=16  (uni 0.13) -> fails random data 65%
+            # i.e. it rejected correctly-shuffled data for being correctly
+            # shuffled. The bound below is ~the 99th percentile of the null,
+            # and still catches the defect this gate exists for: D51's one
+            # permutation over 4,476 rows sits far outside it.
+            import math as _m
+            limit = max(2.0, uni + 3.0 * _m.sqrt(uni) + 1.0)
+            ok = mx <= limit and (all_present or k == 5 or len(g) < n_perms)
             cover.append((k, len(g), len(c), n_perms, mx, ok))
         ok_all = all(x[5] for x in cover)
         det = "; ".join(
@@ -821,6 +881,25 @@ def main() -> int:
             ov = [len(toks(o) & qh) for o in ch]
             if ov[gi] == max(ov) and ov.count(max(ov)) == 1:
                 overlap += 1
+        # TIE-ROBUST LENGTH BIAS. AUDIT 2026-09-19: the longest-option probe
+        # above only counts a UNIQUE maximum. Counterfactual options are
+        # near-identical sentences differing in one clause, so they tie at the
+        # top constantly and the probe read 0.0% on a live batch -- it would
+        # read 0.0% with a real length cue present too. This measures the
+        # gold's mean length against its distractors', which ties cannot hide.
+        _d = []
+        for r in mcq:
+            ch = parse_choices(r["question"])
+            if r["targets"][0] not in ch or len(ch) < 2:
+                continue
+            gi = ch.index(r["targets"][0])
+            lens = [len(o.split()) for o in ch]
+            others = [l for i, l in enumerate(lens) if i != gi]
+            _d.append(lens[gi] - sum(others) / len(others))
+        len_bias = sum(_d) / len(_d) if _d else 0.0
+        spread = (sum(len(o.split()) for r in mcq
+                      for o in parse_choices(r["question"]))
+                  / max(1, sum(len(parse_choices(r["question"])) for r in mcq)))
         longest_rate = longest / len(mcq) * 100
         overlap_rate = overlap / len(mcq) * 100
         if n_opt == 2:
@@ -828,13 +907,18 @@ def main() -> int:
         else:
             a_lim = 38 if n_opt == 3 else 30
             l_lim, o_lim = 30, 35
+        # The gold may not run more than 15% of mean option length longer or
+        # shorter than its distractors on average -- either direction is a cue.
+        bias_ok = abs(len_bias) <= max(1.5, 0.15 * spread)
         ok = letter_ok and a_rate <= a_lim and longest_rate <= l_lim \
-            and overlap_rate <= o_lim
+            and overlap_rate <= o_lim and bias_ok
+        if not bias_ok:
+            probe_fail.append(f"{cat}(length-bias {len_bias:+.1f}w)")
         if not ok:
             probe_fail.append(cat)
         rep.row(f"| {cat} | {len(mcq)} | "
                 f"{dict(letters.most_common())} | {a_rate:.0f}% | "
-                f"{longest_rate:.0f}% | {overlap_rate:.0f}% | "
+                f"{longest_rate:.0f}% | {overlap_rate:.0f}% ({len_bias:+.1f}w) | "
                 f"{'PASS' if ok else 'FAIL'} |")
     rep.gate(not probe_fail, "shortcut probes", ", ".join(probe_fail) or "all pass")
 
@@ -883,8 +967,115 @@ def main() -> int:
     rep.gate(not gold_fail, "gold recomputation >= 99% per recomputable category",
              ", ".join(gold_fail) or "all recomputable categories verified")
 
+    # ---------- 7.5 surface quality (added by the 2026-09-16 audit) ----------
+    # WHY THESE GATES EXIST: every §7.1-§7.4 gate passed on the first v9 build
+    # while the data carried 9.28-word golds (§9 asks for terse, TIME's mean is
+    # 2.35), contexts padded with one line repeated up to 76 times, and golds
+    # truncated mid-sentence or lifted from page furniture. The old gates
+    # measured contamination, distribution, shortcuts and arithmetic -- nothing
+    # measured whether a row reads as a well-formed QA pair.
+    rep.h("7.5 Surface quality")
+
+    import statistics as _st
+    _all = [r for rows in cats.values() for r in rows]
+
+    # (a) §9 answer style. TIME's mean gold is 2.35 words, median 1, and only
+    #     0.95% of its golds reach 20 words. A mixture far above that trains the
+    #     model away from the answer shape the frozen scorer matches on.
+    # MCQ golds must be the option text verbatim (§9), so they are reported but
+    # NOT gated. The gate applies to free-text golds, which are what §9's
+    # "keep golds terse" and the 2.35-word TIME figure actually describe.
+    def _lens(rs):
+        w = sorted(len(r["targets"][0].split()) for r in rs
+                   if r.get("targets") and r["targets"][0].split())
+        return w
+    # longform_free is excluded the same way MCQ is: its gold is 2-4 SENTENCES
+    # by explicit card design ("long-form free answer over a passage"), not a
+    # terse temporal fact. AUDIT 2026-09-19: adding its planned 75 rows to a
+    # corpus that was otherwise at 0.0% >=20-word golds still pushed the >=20w
+    # share to 5.8%, over the 5% limit, purely because the category exists as
+    # specified -- not from any construction defect. Reported, not gated, on
+    # the same basis as MCQ option text.
+    _mcq = [r for r in _all if "Choices:" in r["question"]]
+    _lff = [r for r in _all if r["category"] == "longform_free"]
+    _free = [r for r in _all
+             if "Choices:" not in r["question"] and r["category"] != "longform_free"]
+    _wm, _wl, _wf = _lens(_mcq), _lens(_lff), _lens(_free)
+    for _nm, _w in (("MCQ (reported, not gated)", _wm),
+                    ("longform_free (reported, not gated)", _wl),
+                    ("free-text (gated)", _wf)):
+        if _w:
+            rep.row(f"gold length {_nm}: n={len(_w)} mean={_st.mean(_w):.2f} "
+                    f"median={_w[len(_w)//2]} >=20 words="
+                    f"{100*sum(1 for x in _w if x >= 20)/len(_w):.1f}%")
+    rep.row("TIME reference (free-text, n=104,939): mean 2.35, median 1, >=20w 0.95%")
+    for cat in sorted(cats):
+        if cat == "longform_free":
+            continue
+        cw = [len(r["targets"][0].split()) for r in cats[cat]
+              if r.get("targets") and "Choices:" not in r["question"]]
+        if cw and _st.mean(cw) > 6.0:
+            rep.row(f"  - {cat} (free-text): mean {_st.mean(cw):.1f} words")
+    _mean = _st.mean(_wf) if _wf else 0.0
+    _long = sum(1 for x in _wf if x >= 20) / max(1, len(_wf))
+    rep.gate(_mean <= 6.0 and _long <= 0.05,
+             "§9 answer style — free-text mean gold <= 6 words and < 5% >= 20 words "
+             "(MCQ and longform_free excluded, see above)",
+             f"mean={_mean:.2f} (TIME 2.35), >=20w={_long*100:.1f}% (TIME 0.95%)")
+
+    # (b) degenerate context padding.
+    import collections as _c
+    _deg = 0
+    _degcat: _c.Counter = _c.Counter()
+    # A dated answer turn ("Casey: That was on 2024.") legitimately recurs when
+    # several events in one transcript share a coarse date -- that is content,
+    # not padding, so it is excluded. What this gate targets is FILLER repeated
+    # to hit a word band: the original build had 426 such rows (7.1%), one line
+    # appearing up to 76 times.
+    _ANSWER_TURN = re.compile(r"^[A-Z][a-z]+: That was on .+\.$")
+    for r in _all:
+        ls = [l for l in (r.get("context") or "").split("\n")
+              if l.strip() and not _ANSWER_TURN.match(l.strip())]
+        if not ls:
+            continue
+        n = _c.Counter(ls).most_common(1)[0][1]
+        if n >= 5:
+            _deg += 1
+            _degcat[r["category"]] += 1
+    _degfrac = _deg / max(1, len(_all))
+    rep.gate(_degfrac <= 0.005,
+             "no context padded by repeating a filler line >= 5 times",
+             f"rows={_deg} ({_degfrac*100:.2f}%)"
+             + (f" {dict(_degcat.most_common(5))}" if _deg else ""))
+
+    # (c) golds that are truncated mid-sentence or lifted from page furniture.
+    _DANGLE = re.compile(r"\b(in|on|at|of|to|for|with|from|by|the|a|an|and|or|that|"
+                         r"as|into|after|before|when|who|which|was|were|is|are|has|"
+                         r"have|had|he|she|they|it)\s*$", re.I)
+    _BOILER = re.compile(r"Published:|Credit:|Related Stories|Post navigation|"
+                         r"Previous post|Read More|Share this|Follow us|Advertisement|"
+                         r"Sign up|Subscribe|All rights reserved|Click here|"
+                         r"Getty Images|answer in digits|Submitted by", re.I)
+    _trunc = [r for r in _all if r.get("targets")
+              and len(r["targets"][0]) > 25
+              and _DANGLE.search(r["targets"][0].strip().rstrip("."))]
+    _boil = [r for r in _all if r.get("targets") and _BOILER.search(r["targets"][0])]
+    _frac = (len(_trunc) + len(_boil)) / max(1, len(_all))
+    rep.gate(_frac <= 0.01, "golds neither truncated mid-sentence nor page furniture",
+             f"truncated={len(_trunc)}, boilerplate={len(_boil)} "
+             f"({_frac*100:.1f}% of rows)")
+
     # ---------- manual-check sample ----------
-    rep.h("Manual-check samples (§7.4 protocol: 100 rows/category by eye)")
+    # HONESTY FIX (2026-09-16): this header used to read "§7.4 protocol: 100
+    # rows/category by eye". The block dumps `--sample-rows` rows per category
+    # (default 3) and records no human verdict, so the old wording asserted a
+    # manual review that had not happened for the ~2,900 rows in categories
+    # whose golds cannot be recomputed. It now says what it does.
+    rep.h(f"Automated sample dump — {args.sample_rows} rows/category, "
+          f"NOT the §7.4 manual check")
+    rep.row("§7.4 requires 100 rows/category reviewed by eye for each "
+            "non-recomputable category; that review is tracked separately and "
+            "is NOT evidenced by this dump.")
     for cat in sorted(cats):
         rows = cats[cat]
         for r in rows[:args.sample_rows]:

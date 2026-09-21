@@ -1,4 +1,4 @@
-# v9 AUG_GLM2 audit — 5976 rows, 18 categories
+# v9 AUG_GLM2 audit — 5948 rows, 18 categories
 Generated from `data/corpus/ccnews` per `docs/synthetic_data_ruleset.md`.
 
 ## 7.1 Machine gates
@@ -14,54 +14,54 @@ Generated from `data/corpus/ccnews` per `docs/synthetic_data_ruleset.md`.
 
 | category | rows | alloc | distinct golds | top gold share | in-context | verdict |
 |---|---|---|---|---|---|---|
-| Computation | 800 | 800 | 376 | 4.0% | 0% | PASS |
+| Computation | 800 | 800 | 386 | 3.6% | 0% | PASS |
 | Timeline | 650 | 650 | 95 | 10.0% | n/a | PASS |
-| Localization | 550 | 550 | 228 | 9.3% | 72% | PASS |
-| Counterfactual | 500 | 500 | 450 | 10.0% | 29% | PASS |
+| Localization | 550 | 550 | 232 | 10.7% | 73% | PASS |
+| Counterfactual | 500 | 500 | 451 | 10.0% | 29% | PASS |
 | Duration_Compare | 450 | 450 | 3 | 40.0% | n/a | PASS |
-| Relative_Reasoning | 450 | 450 | 406 | 10.0% | 38% | PASS |
-| Order_Reasoning | 400 | 400 | 365 | 8.8% | 91% | PASS |
+| Relative_Reasoning | 438 | 450 | 398 | 8.9% | 38% | PASS |
+| Order_Reasoning | 400 | 400 | 364 | 8.8% | 91% | PASS |
 | Co_temporality | 300 | 300 | 276 | 8.3% | 38% | PASS |
-| Explicit_Reasoning | 178 | 200 | 169 | 5.6% | 53% | PASS |
+| Explicit_Reasoning | 162 | 200 | 161 | 1.2% | 54% | PASS |
 | Order_Compare | 100 | 100 | 3 | 47.0% | n/a | PASS |
 | nli_saq | 400 | 400 | 3 | 33.5% | n/a | PASS |
 | nli_mcq | 250 | 250 | 3 | 33.6% | n/a | PASS |
 | relation | 150 | 150 | 3 | 33.3% | n/a | PASS |
 | ordering | 100 | 100 | 3 | 37.0% | n/a | PASS |
-| temporal_dialogue | 250 | 250 | 71 | 18.0% | n/a | PASS |
-| duration | 148 | 150 | 33 | 12.2% | n/a | PASS |
+| temporal_dialogue | 250 | 250 | 69 | 18.0% | n/a | PASS |
+| duration | 148 | 150 | 33 | 10.1% | n/a | PASS |
 | storytelling | 150 | 150 | 150 | 0.7% | n/a | PASS |
 | longform_free | 150 | 150 | 150 | 0.7% | n/a | PASS |
 - [PASS] per-category distribution targets — all categories in band
-- [PASS] fabricated YYYY-01-01 golds < 2% — count=4
+- [PASS] fabricated YYYY-01-01 golds < 2% — count=5
 - [PASS] Timeline permutation coverage (k=5 documented deviation: 65 rows over 120 perms, each used at most once) — k=3: rows=390, perms_seen=6/6, max_per_perm=65; k=4: rows=195, perms_seen=24/24, max_per_perm=9; k=5: rows=65, perms_seen=65/120, max_per_perm=1
 
-Block A provenance split: news 60.0% (target 60), wiki 36.0% (35), dial 4.0% (5)
-§5.12 paired rows carrying an abstain option: 330 (target ~352, i.e. 8% of 4,400)
+Block A provenance split: news 59.9% (target 60), wiki 36.1% (35), dial 4.0% (5)
+§5.12 paired rows carrying an abstain option: 302 (target ~352, i.e. 8% of 4,400)
 
 ## 7.3 Shortcut probes (the L7 gate)
 
 | category | n_mcq | gold letters | always-A | longest | overlap | verdict |
 |---|---|---|---|---|---|---|
-| Counterfactual | 305 | {'D': 77, 'B': 76, 'C': 76, 'A': 76} | 25% | 2% | 2% | PASS |
+| Counterfactual | 305 | {'A': 77, 'C': 76, 'B': 76, 'D': 76} | 25% | 6% | 2% | PASS |
 | Duration_Compare | 450 | {'B': 180, 'A': 166, 'C': 104} | 37% | 23% | 0% | PASS |
-| Relative_Reasoning | 261 | {'C': 68, 'B': 66, 'A': 64, 'D': 63} | 25% | 18% | 10% | PASS |
-| Order_Reasoning | 232 | {'D': 59, 'B': 59, 'A': 58, 'C': 56} | 25% | 0% | 2% | PASS |
-| Co_temporality | 150 | {'A': 38, 'D': 38, 'B': 37, 'C': 37} | 25% | 23% | 5% | PASS |
-| Explicit_Reasoning | 100 | {'A': 26, 'D': 26, 'B': 24, 'C': 24} | 26% | 12% | 10% | PASS |
-| Order_Compare | 100 | {'B': 47, 'A': 38, 'C': 15} | 38% | 15% | 10% | PASS |
-| nli_mcq | 250 | {'B': 84, 'A': 83, 'C': 83} | 33% | 0% | 0% | PASS |
-| relation | 150 | {'C': 50, 'A': 50, 'B': 50} | 33% | 0% | 0% | PASS |
+| Relative_Reasoning | 249 | {'A': 64, 'D': 63, 'C': 61, 'B': 61} | 26% | 20% | 8% | PASS |
+| Order_Reasoning | 232 | {'B': 63, 'C': 59, 'D': 55, 'A': 55} | 24% | 0% | 2% | PASS |
+| Co_temporality | 150 | {'D': 38, 'B': 38, 'C': 37, 'A': 37} | 25% | 19% | 5% | PASS |
+| Explicit_Reasoning | 84 | {'B': 21, 'A': 21, 'C': 21, 'D': 21} | 25% | 15% | 7% | PASS |
+| Order_Compare | 100 | {'B': 47, 'A': 38, 'C': 15} | 38% | 15% | 6% | PASS |
+| nli_mcq | 250 | {'B': 84, 'C': 83, 'A': 83} | 33% | 0% | 0% | PASS |
+| relation | 150 | {'B': 50, 'C': 50, 'A': 50} | 33% | 0% | 0% | PASS |
 | ordering | 100 | {'A': 37, 'C': 37, 'B': 26} | 37% | 0% | 0% | PASS |
-| temporal_dialogue | 137 | {'D': 35, 'A': 34, 'B': 34, 'C': 34} | 25% | 1% | 3% | PASS |
-| duration | 148 | {'B': 37, 'D': 37, 'C': 37, 'A': 37} | 25% | 0% | 0% | PASS |
-| storytelling | 150 | {'B': 76, 'A': 74} | 49% | 4% | 0% | PASS |
+| temporal_dialogue | 139 | {'B': 35, 'D': 35, 'C': 35, 'A': 34} | 24% | 1% | 3% | PASS |
+| duration | 148 | {'B': 38, 'D': 37, 'C': 37, 'A': 36} | 24% | 0% | 0% | PASS |
+| storytelling | 150 | {'A': 75, 'B': 75} | 50% | 6% | 0% | PASS |
 - [PASS] shortcut probes — all pass
-- [PASS] abstain-option presence uninformative — P(gold=abstain | abstain option present) = 0.50 over 330 rows
+- [PASS] abstain-option presence uninformative — P(gold=abstain | abstain option present) = 0.50 over 302 rows
 
 ## 7.4 Gold correctness (recomputed from stated dates)
 
-- PASS Computation: 800/800 recomputed correct (100.0%)
+- PASS Computation: 799/800 recomputed correct (99.9%)
 - PASS Duration_Compare: 450/450 recomputed correct (100.0%)
 - PASS Order_Compare: 100/100 recomputed correct (100.0%)
 - PASS Timeline: 650/650 recomputed correct (100.0%)
@@ -69,65 +69,81 @@ Block A provenance split: news 60.0% (target 60), wiki 36.0% (35), dial 4.0% (5)
 - PASS ordering: 100/100 recomputed correct (100.0%)
 - PASS nli_saq: 400/400 recomputed correct (100.0%)
 - PASS nli_mcq: 250/250 recomputed correct (100.0%)
-- PASS Localization relative-expression subset: 149/150 (99.3%)
-- [PASS] gold recomputation >= 99% per recomputable category — all recomputable categories verified
+- FAIL Localization relative-expression subset: 134/137 (97.8%)
+- [FAIL] gold recomputation >= 99% per recomputable category — Localization-relative
 
-## Manual-check samples (§7.4 protocol: 100 rows/category by eye)
+## 7.5 Surface quality
 
-- **Co_temporality** `news` gold=`The move will make Ottawa the hometown of an NLL team for the first time since t` Q: While events around Ottawa’s NLL history…and future | were still unfolding between 2001 and 2024, what was reported concerning Ottawa? ⏎ Choices: ⏎ A. The moved seemed to benefit the team as the Rebel boasted more home w
-- **Co_temporality** `news` gold=`Approximately 8,500 people lost their jobs in 2022, followed by 11,250 in 2023, ` Q: While events around Why I think PC gaming were still unfolding between 2017 and January 2024, what was reported concerning Approximately?
-- **Co_temporality** `dial` gold=`Photos Related Stories Literary farmers tell the story of China's rural revitali` Q: During the Outline developments spanning 2021 through 2030, what was happening with Photos?
-- **Computation** `dial` gold=`1 year` Q: What was the span of time between Advocate Rethabile Setlojoane, to sue Insp Monethi for contempt of court on 17 October 2022 and Insp Monethi’s contempt proceedings were before Justice Realeboha Mathaba, who also sits o
-- **Computation** `news` gold=`1 year` Q: How many days elapsed between Peru must refrain from implementing the sentence issued by the Constitutional Court on March 17, 2022 and The Inter-American Court of Human Rights (IACHR) gave the Peruvian Government one o
-- **Computation** `news` gold=`1 year 7 months` Q: How much time went by between The common shares (or common share equivalents in lieu thereof) offered in on October 11, 2022 and The offering is expected to close on or about on June 3, 2024?   (Hint: Please answer in th
-- **Counterfactual** `dial` gold=`Reportedly, grace won grand finals with the Magpies in 2016, 2018 and 2022 but t` Q: Assuming the timing of Grace won grand finals with the Magpies in 2016, 2018 had been other than reported, what was reported concerning Grace won grand finals with the Magpies in 2016, 2018? ⏎ Choices: ⏎ A. Grace won gra
-- **Counterfactual** `news` gold=`Copper averaged 14 points and 5.8 rebounds when she competed for the Scarlet Kni` Q: If This is as good as it gets of what it had never been made public, what does the passage record about Copper averaged 14 points and 5.8 rebounds when she competed? ⏎ Choices: ⏎ A. Copper averaged 14 points and 5.8 rebo
-- **Counterfactual** `news` gold=`Early life Raúl Alejandro Ocasio Ruiz grew up in Canóvanas and Carolina after be` Q: If official accounts of Start of his musical career He was depressed after giving had been withdrawn, what did the reporting actually establish about Early life Raúl Alejandro Ocasio Ruiz grew up in Canóvanas? ⏎ Choices:
-- **Duration_Compare** `wiki` gold=`The two durations are approximately the same length.` Q: Which of the following two durations is longer? *Duration 1:* Between "On, he died of cytomegalovirus pneumonia, a common opportunistic infection in people, on 4 February 1987" and "Nureyev, who once served as Paris Oper
-- **Duration_Compare** `news` gold=`Duration 1 is longer.` Q: Which of the following two durations is longer? *Duration 1:* Between "Since, fuel prices in India have been revised daily, and this is, on June 2017" and "Food inflation stood at 8.42 percent and 8.18 percent for the Co
-- **Duration_Compare** `news` gold=`Duration 1 is longer.` Q: Which of the following two durations is longer? *Duration 1:* Between "Cake Dialogue While Dining During his inaugural bilateral summit as president at, on April 2017" and "The National Highway Traffic Safety Administrat
-- **Explicit_Reasoning** `dial` gold=`Significant disruptions to malaria services, such as the distribution of bed net` Q: What notable activities did Climate change drives deadly malaria surge engage in between 2019 and 2020?
-- **Explicit_Reasoning** `wiki` gold=`Madison County Clerk's Office Biannual Voter Registration Clean Up Underway Subm` Q: What notable activities did Madison County Clerk's Office Biannual engage in between October 11, 2023 and Nov 22, 2023? ⏎ Choices: ⏎ A. Jones, Board of Election Commissioners Announce Next Step to Further Expand Ballot A
-- **Explicit_Reasoning** `wiki` gold=`There is no answer.` Q: What developments involving KSA warns “no more excuses for some things” took place between September 2022 and May 2023? ⏎ Choices: ⏎ A. There is no answer. ⏎ B. Jansen’s tenure as chair of the KSA saw the launch of the N
-- **Localization** `wiki` gold=`December 21, 2023` Q: On which date did Fall session delivers transformative action on housing CANADA, and the follow-up?
-- **Localization** `news` gold=`1996` Q: In what year did He also shared insights into his honesty with his first wife?
-- **Localization** `news` gold=`2016` Q: In what year did A New York jury found Trump guilty of falsifying business records in a scheme?
-- **Order_Compare** `news` gold=`Fact 2 happened earlier.` Q: For Fact1: In, Zafar pleaded guilty to stalking Armina's father Abu Hayat and threatening him over the phone during a conversation about marriage (on January 2023) and Fact2: Meraj Zafar, 22, this week entered a last-min
-- **Order_Compare** `wiki` gold=`Fact 1 happened earlier.` Q: For Fact1: According to Ak Zhaik newspaper, Gerogeld Belger was born in Russia's city of Engels (on October 28, 1934) and Fact2: Gerald Belger died in Almaty at the age of 81 (on February 7, 2015), which one happened ear
-- **Order_Compare** `news` gold=`Fact 1 happened earlier.` Q: For Fact1: The primary election is on Tuesday (on June 4, 2024) and Fact2: The general election takes place on Tuesday (on November 5, 2024), which one happened earlier? ⏎ Choices: ⏎ A. Fact 1 happened earlier. ⏎ B. Fact
-- **Order_Reasoning** `news` gold=`The tennis event at Paris 2024 holds special significance for Nadal as it will t` Q: In 2024, what came second in the sequence of developments for Alcaraz provides Olympics update?
-- **Order_Reasoning** `wiki` gold=`Dressel will be seen competing in the men's 100m freestyle and 100m butterfly at` Q: What was the 4th development in the 2023 coverage of Caeleb Dressel clocks his fastest 50m freestyle time in?
-- **Order_Reasoning** `wiki` gold=`Also, there were only a handful of COVID-19 deaths in the U.S. before March 2020` Q: What was the 4th recorded development for Texas AG suing Pfizer, says in 2020? ⏎ Choices: ⏎ A. Pfizer's Phase 3 trial concluded in November 2020. ⏎ B. Although much of 2020 was spent with large-scale pandemic-related shu
-- **Relative_Reasoning** `news` gold=`Reportedly, police initiate action against six persons for spreading false infor` Q: What followed directly after In 2023 , it increased to 74,752 residential flats.? ⏎ Choices: ⏎ A. Please enter an answer in digits:2 × 1 = Post navigation Previous Previous post: Watch: I propose to host COP33 Summit in 
-- **Relative_Reasoning** `news` gold=`Reportedly, the protest came soon after the NSW Government passed its landmark c` Q: What followed directly after "So there's a bit of a policy car crash, because you have? ⏎ Choices: ⏎ A. “This layoff is directly linked to the Biden administration’s refusal to approve the mine expansion application, whi
-- **Relative_Reasoning** `news` gold=`By Anna Akopyan • Published: 01 Jun 2024 • 19:46 Tango Porteño Credit: Manticora` Q: What was the most recent development after Popularly known as the “Queen of Tejano Music,” Quintanilla was born in?
-- **Timeline** `news` gold=`B,A,C` Q: Below are 3 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters. ⏎ Choices: ⏎ A. As
-- **Timeline** `news` gold=`E,A,C,B,D` Q: Below are 5 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters. ⏎ Choices: ⏎ A. Th
-- **Timeline** `wiki` gold=`A,B,C,D` Q: Below are 4 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters. ⏎ Choices: ⏎ A. Th
-- **duration** `none` gold=`about 54 years` Q: The Boeing 747 production ran from 1969 to 2023. How long did it last in total? ⏎ Choices: ⏎ A. about 30 years ⏎ B. about 54 years ⏎ C. about 40 years ⏎ D. about 60 years
-- **duration** `none` gold=`about 2 years` Q: The construction of the Eiffel Tower ran from 1887 to 1889. How long did it last in total? ⏎ Choices: ⏎ A. about 6 months ⏎ B. about 5 years ⏎ C. about 10 years ⏎ D. about 2 years
-- **duration** `none` gold=`about 3 years` Q: How long did the Spanish Civil War last? ⏎ Choices: ⏎ A. about 1 year ⏎ B. about 5 years ⏎ C. about 3 years ⏎ D. about 7 years
-- **longform_free** `news` gold=`You can measure levels of different viruses including polio. Controversy Since b` Q: What developments does the passage report between September 2020 and September 15, 2023?
-- **longform_free** `wiki` gold=`Kissinger believed Israel then could more easily keep territories seized in 1967` Q: Describe what happened between 1967 and 2021 according to the passage.
-- **longform_free** `news` gold=`The Republic placed second in 2019 and 2020. The Republic placed second in 2019 ` Q: Summarize the sequence of developments concerning Singapore ranked 3rd globally in that the passage records.
-- **nli_mcq** `news` gold=`neutral` Q: The Post Independence, an impactful decision came when took place in the capital. ⏎ Choices: ⏎ A. entailment ⏎ B. neutral ⏎ C. contradiction
-- **nli_mcq** `news` gold=`entailment` Q: The President Ronald Reagan announced O’Connor’s nomination to came after the O’Connor was born in El Paso. ⏎ Choices: ⏎ A. entailment ⏎ B. neutral ⏎ C. contradiction
-- **nli_mcq** `news` gold=`contradiction` Q: Fewer than 323 days separated the Baylah May, 3 Barrett and Foehner became from the "She's just my whole world now." Augustine. ⏎ Choices: ⏎ A. entailment ⏎ B. neutral ⏎ C. contradiction
-- **nli_saq** `news` gold=`contradiction` Q: The The electric vehicle maker opted to initiate came before the Tesla proceeded to investigate the condition from.
-- **nli_saq** `news` gold=`contradiction` Q: Fewer than 276 days separated the Prince Christian Valdemar Henri John Their eldest from the Princess Isabella Henrietta Ingrid Margrethe Also known.
-- **nli_saq** `news` gold=`neutral` Q: The MISSING CHILD 2: Diego Hernandez is thirteen had been planned years in advance.
-- **ordering** `none` gold=`TRUE` Q: the mining firm staged the concert on February 13, 2004. Then the parliamentary committee unveiled the logo on August 31, 2004. - True/False? ⏎ Choices: ⏎ A. TRUE ⏎ B. Undetermined ⏎ C. FALSE
-- **ordering** `none` gold=`FALSE` Q: the port authority adopted the resolution on January 15, 2018. Then the parliamentary committee announced the merger on January 6, 2018. - True/False? ⏎ Choices: ⏎ A. TRUE ⏎ B. Undetermined ⏎ C. FALSE
-- **ordering** `none` gold=`TRUE` Q: the software studio held the vote on May 20, 1965. Then the energy utility unveiled the memorial on May 21, 1965. - True/False? ⏎ Choices: ⏎ A. TRUE ⏎ B. Undetermined ⏎ C. FALSE
-- **relation** `none` gold=`DURING` Q: The inquiry ran from May 12, 1980 to September 9, 1980, and the ferry operator approved the budget on July 11, 1980, in the middle of it. What is the relationship between the events? ⏎ Choices: ⏎ A. IDENTITY ⏎ B. BEFORE 
-- **relation** `none` gold=`DURING` Q: The lecture programme ran from May 12, 1986 to May 26, 1986, and the chamber of commerce completed the survey on May 19, 1986, in the middle of it. What is the relationship between the events? ⏎ Choices: ⏎ A. IDENTITY ⏎ 
-- **relation** `none` gold=`IDENTITY` Q: The winter gala, also billed as the season finale, completed the survey on October 26, 1963. What is the relationship between the events? ⏎ Choices: ⏎ A. IDENTITY ⏎ B. BEFORE ⏎ C. DURING
-- **storytelling** `news` gold=`With 11 members from 1993-2010, the Big Ten wasn’t splintered into divisions and` Q: Which of the two endings is the most plausible correct ending to the story? ⏎ Choices: ⏎ A. With 40 members from 1993-2010, the Big Ten wasn’t splintered into divisions and didn’t have a conference championship game. ⏎ B
-- **storytelling** `news` gold=`Additionally, he founded Six Oaks Home and Design on May 8, 2023, and is current` Q: Which of the two endings is the most plausible correct ending to the story? ⏎ Choices: ⏎ A. Additionally, he founded Six Oaks Home and Design on May 8, 2023, and is currently serving as the company’s CEO. ⏎ B. Additional
-- **storytelling** `news` gold=`"Love Accidentally" (2022) The only thing competing coworkers Alexa (Brenda Song` Q: Which of the two endings is the most plausible correct ending to the story? ⏎ Choices: ⏎ A. "Love Accidentally" (2022) The only thing competing coworkers Alexa (Brenda Song) and Jason (Aaron O’Connell) have in common is 
-- **temporal_dialogue** `dial` gold=`Session 1` Q: In which session was Imran Khan addressed the Court on ( ) he also mentioned other cases, the general elections held discussed?
-- **temporal_dialogue** `dial` gold=`Feb. 14, 1963` Q: According to the transcript, on what date did He joined the Army on Feb. 14, 1963 happen? ⏎ Choices: ⏎ A. 3 March, 1942 ⏎ B. January 1969 ⏎ C. Nov. 21, 2023 ⏎ D. Feb. 14, 1963
-- **temporal_dialogue** `dial` gold=`6 September, 2024` Q: According to the transcript, on what date did The best part about the reveal of the Astro Bot game was that this is a PS5 exclusive coming this happen? ⏎ Choices: ⏎ A. 6 September, 2024 ⏎ B. 6 June, 2024 ⏎ C. July 2024 ⏎
+gold length MCQ (reported, not gated): n=3157 mean=9.80 median=4 >=20 words=21.2%
+gold length free-text (gated): n=2791 mean=8.11 median=3 >=20 words=14.8%
+TIME reference (free-text, n=104,939): mean 2.35, median 1, >=20w 0.95%
+  - Co_temporality (free-text): mean 14.9 words
+  - Counterfactual (free-text): mean 14.4 words
+  - Explicit_Reasoning (free-text): mean 16.0 words
+  - Order_Reasoning (free-text): mean 17.1 words
+  - Relative_Reasoning (free-text): mean 15.2 words
+  - longform_free (free-text): mean 44.2 words
+- [FAIL] §9 answer style — free-text mean gold <= 6 words and < 5% >= 20 words — mean=8.11 (TIME 2.35), >=20w=14.8% (TIME 0.95%)
+- [PASS] no context padded by repeating a filler line >= 5 times — rows=6 (0.10%) {'Order_Reasoning': 2, 'Computation': 1, 'Explicit_Reasoning': 1, 'Relative_Reasoning': 1, 'temporal_dialogue': 1}
+- [FAIL] golds neither truncated mid-sentence nor page furniture — truncated=79, boilerplate=14 (1.6% of rows)
+
+## Automated sample dump — 3 rows/category, NOT the §7.4 manual check
+
+§7.4 requires 100 rows/category reviewed by eye for each non-recomputable category; that review is tracked separately and is NOT evidenced by this dump.
+- **Co_temporality** `news` gold=`Newsom, whom the two right-wingers accused of running a shadow campaign for pres` Q: While events around 'You're Down 41 Points' In were still unfolding between 2019 and 2028, what was reported concerning Newsom? ⏎ Choices: ⏎ A. Hannity suggested that Newsom would somehow be secretly anointed at the 2024
+- **Co_temporality** `news` gold=`ROCKVILLE PIKE SUITE, ROCKVILLE, USA, May 31, 2024 /EINPresswire.com/ -- The glo` Q: While events around Coating Solvent Market to Grow were still unfolding between 2024 and 2034, what was reported concerning Coating Solvent Market to Grow?
+- **Co_temporality** `news` gold=`Between 2014 and 2016, the Come And Get It singer appeared in several films, inc` Q: While events around Why Did Selena Gomez Discontinue were still unfolding between January 20, 2006 and May 25th, 2024, what was reported concerning Between? ⏎ Choices: ⏎ A. She declined a part in High School Musical in 2
+- **Computation** `dial` gold=`2 years 5 months` Q: What was the span of time between Hefner died on aged 91 and was buried on 27 September 2017 and Just under three years later on 17 March 2020?   (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 
+- **Computation** `news` gold=`7 months` Q: How many months went by between To be eligible for the payments, you must have been entitled in September 17 2023 and Income-based Jobseekers Allowance and Income-related Employment and Support Allowance, as well in Apri
+- **Computation** `news` gold=`6 years` Q: How much time went by between According to evidence presented at trial, on on Jan. 23, 2018 and Wheeler’s sentencing hearing is set for on Feb. 1, 2024?   (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 
+- **Counterfactual** `news` gold=`Reportedly, if 2021 was the boom, then 2022 was the bust.` Q: Had the circumstances around Many strange things happened in the global economy unfolded otherwise, what did the reporting actually establish about If 2021 was the boom, then 2022 was the bust? ⏎ Choices: ⏎ A. Reportedly
+- **Counterfactual** `news` gold=`Although he never won the Championship, he finished second twice, in 2008 and 20` Q: If the reports of Edwards took part in 445 Cup Series races had turned out to be mistaken, what does the passage record about Although he never won the Championship, he finished second twice? ⏎ Choices: ⏎ A. Although he 
+- **Counterfactual** `wiki` gold=`Reportedly, huawei and Seres joined hands to launch the Aito brand in 2021, with` Q: If the reports of Huawei’s Aito Hikes New M7 SUV’s Output Capacity to 700 had turned out to be mistaken, what is documented about Huawei and Seres joined hands to launch the Aito brand? ⏎ Choices: ⏎ A. Huawei and Seres j
+- **Duration_Compare** `news` gold=`The two durations are approximately the same length.` Q: Which of the following two durations is longer? *Duration 1:* Between "The BMC is planning to open the bridge partially by, though, on February 2024" and "As per the new deadline, one arm of the bridge will be, on May 20
+- **Duration_Compare** `wiki` gold=`Duration 2 is longer.` Q: Which of the following two durations is longer? *Duration 1:* Between "Mapes Guilty Verdict - Vandalia Statehouse Hosting Annual Grand Levee Celebration Saturday, on Oct 10, 2023" and "Takes On Illinois Corruption In New
+- **Duration_Compare** `wiki` gold=`Duration 1 is longer.` Q: Which of the following two durations is longer? *Duration 1:* Between "More like this: Yesterday - Blackhawk Bank Becomes First Mid Bank &, on Jul 25, 2023" and "First Mid Earns 2023 Top Workplaces Culture Excellence Awa
+- **Explicit_Reasoning** `news` gold=`Reportedly, district Judge Donald Molloy issued a preliminary injunction, preven` Q: What developments involving Montana's championship run extra special took place between 2024 and January 1, 2024? ⏎ Choices: ⏎ A. Manchester United decided to buy British in 2019 and that worked out well, didn’t it? ⏎ B.
+- **Explicit_Reasoning** `news` gold=`Highway 385 May 31, 2024 • Land Line Staff | Two complete closures are scheduled` Q: What notable activities did South Dakota closing portion of engage in between May 31, 2024 and 2025? ⏎ Choices: ⏎ A. Highway 385 May 31, 2024 • Land Line Staff | Two complete closures are scheduled on the only north-sout
+- **Explicit_Reasoning** `wiki` gold=`They were released within weeks of each other in 2011 (2011)` Q: What developments involving Stepson of notorious canoe conman took place between 2008 and 2013?
+- **Localization** `news` gold=`2007` Q: In what year did "Sustained recovery is only possible with a rebound in investments, which are still 12?
+- **Localization** `news` gold=`August 2024` Q: In which month and year did Fulton County prosecutors want Trump’s trial to begin in August 2024, which would be?
+- **Localization** `wiki` gold=`2030` Q: In what year did Despite the daunting statistics, Dr. Obidike’s address carried an undertone of optimism and progress?
+- **Order_Compare** `news` gold=`Fact 2 happened earlier.` Q: For Fact1: In another development, HUL announced key changes to its management committee (MC) and said its beauty and personal care division will transition into dedicated beauty and wellbeing (B&W) and personal care (PC
+- **Order_Compare** `news` gold=`Fact 2 happened earlier.` Q: For Fact1: Since, the DWP has been working to repay those impacted and the recent figures released showed that of the 173,538 accounts checked between and, up to 82,323 pensioners have been identified as having underpaym
+- **Order_Compare** `wiki` gold=`Fact 2 happened earlier.` Q: For Fact1: On, Justice Sandra O’Connor visited my father, John Driggs, at his home just hours before he passed away (on Dec. 10, 2014) and Fact2: Senate with a vote of 99-0 and was sworn in as the first woman Supreme Cou
+- **Order_Reasoning** `news` gold=`The Yahoo Fantasy football crew got together for their very first mock draft of ` Q: What was the first development in the 2024 coverage of OU Sooners vs UCLA Bruins?
+- **Order_Reasoning** `wiki` gold=`European Destinations Will Continue to Thrive In 2023, Italy dethroned Mexico as` Q: What was the second recorded development for Squaremouth Predicts the Four Biggest in 2023? ⏎ Choices: ⏎ A. The average international trip cost in 2023 is $6,574, up 21 percent from last year and 30 percent over 2021. ⏎ 
+- **Order_Reasoning** `news` gold=`Counting of votes for General Elections to State Legislative Assemblies of Aruna` Q: What was the 4th development in the 2024 coverage of Polling now completed for 7? ⏎ Choices: ⏎ A. Counting of votes for General Elections to State Legislative Assemblies of Arunachal Pradesh and Sikkim will take place on
+- **Relative_Reasoning** `wiki` gold=`Area Teams Take Care In Shootout To Honor Legacy Of Beloved Broadcaster Tom Emer` Q: Which event was the latest to follow All eight games will be broadcast on WSMI 106.1-FM and online?
+- **Relative_Reasoning** `news` gold=`Watch the first trailer for “Furiosa: A Mad Max Saga” 2025 Rolls-Royce Cullinan ` Q: Which event was the latest to follow A prequel to 2015's hit movie “Mad Max: Fury Road” arrives?
+- **Relative_Reasoning** `news` gold=`“The question has been when can we put it here, and it wouldn’t be here now if i` Q: After He earned All-ACC selections in both 2008 and 2009 as part, what was the last reported development? ⏎ Choices: ⏎ A. He spent the 2019-20 seasons as the offensive line coach at Georgia State before coming back to Cl
+- **Timeline** `news` gold=`B,A,C` Q: Below are 3 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters. ⏎ Choices: ⏎ A. Ci
+- **Timeline** `news` gold=`D,C,A,B,E` Q: Below are 5 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters. ⏎ Choices: ⏎ A. Nu
+- **Timeline** `wiki` gold=`C,B,D,A` Q: Below are 4 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters. ⏎ Choices: ⏎ A. In
+- **duration** `none` gold=`about 8 days` Q: The the Apollo 11 mission ran from July 16 to July 24, 1969. How long did it last in total? ⏎ Choices: ⏎ A. about 2 days ⏎ B. about 2 weeks ⏎ C. about 1 month ⏎ D. about 8 days
+- **duration** `none` gold=`about 13 years` Q: For roughly how long was Prohibition in the United States ongoing? ⏎ Choices: ⏎ A. about 13 years ⏎ B. about 6 years ⏎ C. about 20 years ⏎ D. about 30 years
+- **duration** `none` gold=`about 623 years` Q: How long did the Ottoman Empire last? ⏎ Choices: ⏎ A. about 300 years ⏎ B. about 623 years ⏎ C. about 500 years ⏎ D. about 800 years
+- **longform_free** `news` gold=`Shoppers who bought a used car in 2019 would have to spend an additional. The av` Q: Summarize the sequence of developments concerning Used car prices fall, but that the passage records.
+- **longform_free** `wiki` gold=`She joined GK in 2017 as Head of Treasury & Corporate Finance. In addition to he` Q: Describe what happened between 2017 and October 17, 2023 according to the passage.
+- **longform_free** `news` gold=`On June 2, 2024, a book: Nnamdi Azikiwe University. He noted that at the 14th co` Q: Summarize the sequence of developments concerning 29 Students Bags First Class that the passage records.
+- **nli_mcq** `news` gold=`neutral` Q: Few people paid attention to the He was born the second oldest of at the time. ⏎ Choices: ⏎ A. entailment ⏎ B. neutral ⏎ C. contradiction
+- **nli_mcq** `news` gold=`contradiction` Q: The Guardion’s stockholders had previously approved the sale came before the Securities and Exchange Commission on April 8. ⏎ Choices: ⏎ A. entailment ⏎ B. neutral ⏎ C. contradiction
+- **nli_mcq** `news` gold=`entailment` Q: The Maria Pilecka Lived a Long Life Maria came after the Later, she moved to Krupa, where she. ⏎ Choices: ⏎ A. entailment ⏎ B. neutral ⏎ C. contradiction
+- **nli_saq** `news` gold=`contradiction` Q: Fewer than 5 days separated the The record date for the distributions is from the All distributions are payable on January 8.
+- **nli_saq** `news` gold=`neutral` Q: The Born on September 10, 1933 took place in the capital.
+- **nli_saq** `news` gold=`contradiction` Q: Fewer than 3 days separated the The catered banquet will begin at 6:30 from the DELTA – The next Fulton County Genealogical.
+- **ordering** `none` gold=`TRUE` Q: the port authority published the findings on December 18, 2009. Then the parliamentary committee held the vote on July 6, 2010. - True/False? ⏎ Choices: ⏎ A. TRUE ⏎ B. Undetermined ⏎ C. FALSE
+- **ordering** `none` gold=`FALSE` Q: the record label launched the campaign on July 19, 1972. Then the football club released its annual figures on May 20, 1972. - True/False? ⏎ Choices: ⏎ A. TRUE ⏎ B. Undetermined ⏎ C. FALSE
+- **ordering** `none` gold=`FALSE` Q: the airline retired the fleet on February 18, 1960. Then the construction firm staged the concert on August 2, 1959. - True/False? ⏎ Choices: ⏎ A. TRUE ⏎ B. Undetermined ⏎ C. FALSE
+- **relation** `none` gold=`BEFORE` Q: The television network paused the project on September 12, 1989, and the water authority closed the facility on October 22, 1989. What is the relationship between the events? ⏎ Choices: ⏎ A. IDENTITY ⏎ B. BEFORE ⏎ C. DUR
+- **relation** `none` gold=`DURING` Q: The tournament ran from April 4, 2010 to June 3, 2010, and the city council inaugurated the bridge on May 4, 2010, in the middle of it. What is the relationship between the events? ⏎ Choices: ⏎ A. IDENTITY ⏎ B. BEFORE ⏎ 
+- **relation** `none` gold=`BEFORE` Q: The cycling team hosted the festival on October 6, 2011, and the parliamentary committee released its annual figures on October 9, 2011. What is the relationship between the events? ⏎ Choices: ⏎ A. IDENTITY ⏎ B. BEFORE ⏎
+- **storytelling** `news` gold=`The company reported 43% year-over-year revenue growth in the fourth quarter of ` Q: Which of the two endings is the most plausible correct ending to the story? ⏎ Choices: ⏎ A. The company reported 43% year-over-year revenue growth in the fourth quarter of fiscal 2023. ⏎ B. The company reported 60% year-
+- **storytelling** `news` gold=`Microsoft Corp., 2024 WL 2745115 (Cal. App. Ct. May 29, 2024)` Q: Which of the two endings is the most plausible correct ending to the story? ⏎ Choices: ⏎ A. Microsoft Corp., 2024 WL 2745115 (Cal. App. Ct. May 29, 2024) ⏎ B. Microsoft Corp., 2024 WL 2745115 (Cal. App. Ct. May 2024, 202
+- **storytelling** `news` gold=`The area of ​​the Järvselja study and experimental forest in Tartu County will d` Q: Which of the two endings is the most plausible correct ending to the story? ⏎ Choices: ⏎ A. The area of ​​the Järvselja study and experimental forest in Tartu County will decrease by 20.5 hectares compared to the volume 
+- **temporal_dialogue** `dial` gold=`Session 2` Q: In which session was More like this: - Electrical License Requirement Debated discussed?
+- **temporal_dialogue** `dial` gold=`Session 1` Q: In which session was More like this: - Natalie Beck discussed?
+- **temporal_dialogue** `dial` gold=`Session 2` Q: In which session was Alphalogic Industries bonus share details Earlier record date for bonus shares was fixed on but later discussed?
 
 ## Recorded deviations and decisions
 
@@ -140,4 +156,9 @@ Block A provenance split: news 60.0% (target 60), wiki 36.0% (35), dial 4.0% (5)
 - [NOTE] Duration_Compare / Order_Compare event phrases — event descriptions carry their dates inline (', on March 3, 2015' / '(on March 3, 2015)') so §7.4 recomputation is unambiguous; contexts still state the same dates.
 - [NOTE] verification fallbacks — where strict context matching is ambiguous, the recomputer falls back to the row's rationale-recorded dates after cross-checking them against the context; Computation, Duration_Compare, Order_Compare, Timeline, relation, ordering, nli and Localization-relative all verify at 100%.
 
-**Overall: PASS**
+**Overall: FAIL**
+
+Blocking failures:
+- gold recomputation >= 99% per recomputable category (Localization-relative)
+- §9 answer style — free-text mean gold <= 6 words and < 5% >= 20 words (mean=8.11 (TIME 2.35), >=20w=14.8% (TIME 0.95%))
+- golds neither truncated mid-sentence nor page furniture (truncated=79, boilerplate=14 (1.6% of rows))

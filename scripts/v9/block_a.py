@@ -14,7 +14,7 @@ from datetime import timedelta
 from itertools import permutations
 
 from .common import ABSTAIN, dated_tail_fact, make_row, paraphrase, move_date_front, \
-    subject_of, swap_one_token, trim_sentence
+    strip_dangling, subject_of, swap_one_token, trim_sentence
 from .corpus import Article, Event, TopicIndex
 from .ctxbuild import dial_context, dial_context_drop_turns, news_context, \
     news_context_no_gold, wiki_context, wiki_context_drop
@@ -114,8 +114,13 @@ REL_PHRASES = {3: "three days later", 4: "four days later", 5: "five days later"
 
 
 def clip(lead: str, n: int) -> str:
-    """Word-prefix of a lead that stays a verbatim substring of the passage."""
-    return " ".join(lead.split()[:n]).rstrip(" ,;:")
+    """Word-prefix of a lead that stays a verbatim substring of the passage.
+
+    Trailing function words are dropped (AUDIT 2026-09-16) so the fragment does
+    not end mid-clause; dropping words from the end keeps it a substring.
+    """
+    cut = " ".join(lead.split()[:n]).rstrip(" ,;:")
+    return strip_dangling(cut) or cut
 
 
 def nonverbatim_sent(sent: str, ctx: str) -> str | None:

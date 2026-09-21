@@ -10,6 +10,28 @@
 > moved TIME `Counterfactual` **+13.1pp**. That slice is the proof small
 > targeted generation works. This document is that slice done at scale and
 > across the whole benchmark surface.
+>
+> ---
+>
+> **PROVENANCE CORRECTION — 2026-09-16 audit. Read this before citing v9.**
+>
+> This document is written as a spec for an LLM, but the `AUG_GLM2` rows that
+> actually exist in `data/manual_aug_v9/` were **not** produced by an LLM. They
+> were produced by deterministic Python templates
+> (`scripts/generate_v9_aug.py` -> `scripts/v9/block_{a,b,c}.py`) that fill
+> slots from a local CC-News snapshot. There is no API call on that path. The
+> `GLM` in the source name, this file's title, and the phrase "LLM-grade" that
+> stood in `config_v9.yaml` all describe an intention, not the artifact.
+>
+> The distinction matters for the write-up: the `AUG_GLM` precedent cited just
+> above (502 rows, Counterfactual +13.1pp) *was* LLM-written, so a reader who
+> assumes AUG_GLM2 is "the same thing at scale" would be drawing a conclusion
+> the data does not support. Template-generated text has different failure
+> modes, and the audit found them — see §7.5 in `data/manual_aug_v9/AUDIT.md`,
+> which currently reports **OVERALL: FAIL**.
+>
+> Note also that §9's terseness rule below is **not met** by the generator:
+> free-text golds average 8.21 words against TIME's 2.35. §7.5 now gates this.
 
 ---
 

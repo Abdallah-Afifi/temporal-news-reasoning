@@ -86,6 +86,19 @@ leg() { # name model benchmark budget batch
 leg llama_timebench    llama   timebench 57344 32 || { echo "llama tb failed; stopping"; exit 1; }
 leg mistral_timebench  mistral timebench 26624 24 || { echo "mistral tb failed; stopping"; exit 1; }
 leg llama_time         llama   time      57344 32 || { echo "llama time failed; stopping"; exit 1; }
-leg mistral_time       mistral time      20480 20 || { echo "mistral time failed; stopping"; exit 1; }
+
+# mistral_time: DROPPED 2026-09-15 by decision, not by failure.
+#
+# At --max-new-tokens 768 this leg costs 6-8 days on its own -- more than the
+# other three combined -- and mistral is a SIDE EXPERIMENT that is not
+# comparable to the llama campaign: it is banned from the vLLM path for a
+# 2.20pp parity failure (D46/D53) and every mistral figure in results/
+# predates the frozen protocol. The three legs above give the arm its llama
+# result on both benchmarks plus the mistral TimeBench point, at roughly a
+# third of the GPU time.
+#
+# To restore it, uncomment the line below; it is idempotent like the others
+# and will simply run when the chain is next launched.
+# leg mistral_time       mistral time      20480 20 || { echo "mistral time failed; stopping"; exit 1; }
 
 echo "$(date '+%F %T') ALL FEWSHOT LEGS COMPLETE" | tee "$Q/complete.marker"

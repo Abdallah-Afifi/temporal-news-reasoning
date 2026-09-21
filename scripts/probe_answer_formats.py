@@ -51,6 +51,12 @@ ARM_PATHS = {
     "v7-vllm": "results/corrected/v7_vllm/llama/time/finetuned/predictions.jsonl",
     "v7-corrected": "results/corrected/v7_corrected_vllm/llama/time/finetuned/predictions.jsonl",
     "v6d": "results/corrected/v6d_vllm/llama/time/finetuned/predictions.jsonl",
+    # v9 — vLLM only, like v7/v7c/v6d. Registered BEFORE the run so the
+    # post-run probe cannot silently print "MISSING — skipped": that probe
+    # is the pre-registered test of whether a low v9 TIME score is answer
+    # style (its golds average ~7.9 words vs TIME's 2.35) or reasoning.
+    "v9": "results/corrected/v9_vllm/llama/time/finetuned/predictions.jsonl",
+    "v9-vllm": "results/corrected/v9_vllm/llama/time/finetuned/predictions.jsonl",
 }
 
 # A letter sequence, with EITHER separator. TIME uses both: "C,B,A" (11,361

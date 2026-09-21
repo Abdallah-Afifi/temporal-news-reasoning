@@ -42,6 +42,21 @@ CAP = 15_000
 KEEP = {"TimeQA", "TLQA", "AUG_GLM", "AUG_SEQ"}
 
 
+def _audit_verdict(aug_dir: str) -> str:
+    """The OVERALL line from the arm's acceptance report, or a clear absence.
+
+    Read at build time so the manifest cannot outlive the verdict it quotes.
+    """
+    p = Path(aug_dir) / "AUDIT.md"
+    if not p.exists():
+        return "NOT AUDITED -- data/manual_aug_v9/AUDIT.md absent"
+    for line in p.read_text(errors="replace").splitlines():
+        t = line.strip().lstrip("*").strip()
+        if t.upper().startswith("OVERALL"):
+            return t.rstrip("*").strip()
+    return "audit report present but states no OVERALL verdict"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -133,8 +148,13 @@ def main() -> None:
     stats = {
         "cycle": "v9",
         "variables_vs_v6": [
-            f"AUG_GLM2 +{n_aug} (docs/synthetic_data_ruleset.md; audited, "
-            f"all §7 gates PASS)",
+            # Do NOT hardcode a verdict here. This line read "audited, all §7
+            # gates PASS" and kept saying so after the 2026-09-16 audit added
+            # §7.5 and the acceptance report turned to OVERALL: FAIL -- a
+            # manifest asserting a gate state it never checks. Read the real
+            # verdict out of the audit report instead.
+            f"AUG_GLM2 +{n_aug} (docs/synthetic_data_ruleset.md; "
+            f"acceptance report: {_audit_verdict(args.aug_dir)})",
             "retired: REHEARSAL, AUG_NOANS, AUG_MCQ, AUG_MCQ2, AUG_DURATION, "
             "AUG_ARITH, AUG_DIALOG, AUG_NLI, AUG_REASON (L1 swap)",
             f"total capped at {args.cap} (was 18,558 in v6)",

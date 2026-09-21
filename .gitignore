@@ -168,3 +168,19 @@ data/manual_aug_v9/*.jsonl
 data/synthetic/*.jsonl
 results/**/*.corrupt_backup
 results/**/*.jsonl.bak
+
+# ----- v9-GLM chat-generation pipeline (2026-09-21) -----
+# Same policy: the row data is bulk and regenerable in principle (though not
+# cheaply -- it took a full session of chat-driven generation); AUDIT.md and
+# the generation summary document its state and are small, so they stay.
+data/manual_aug_glm/*.jsonl
+# Ledger of which glm_raw/ reply files are ingested, keyed by their content
+# hash -- meaningless without those replies, which are excluded below.
+data/manual_aug_glm/.ingested.json
+# Raw GLM chat replies and the generated prompt packets/orders -- inputs and
+# intermediate artifacts of the generation process, not its output. Fully
+# reproducible from scripts/make_glm_packets.py given the same args; ORDERS.txt
+# in particular goes stale the moment the ledger changes, so keeping it out
+# avoids a file that silently lies about what is still needed.
+data/glm_raw/
+data/glm_packets/
