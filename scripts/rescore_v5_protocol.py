@@ -62,6 +62,10 @@ ARMS = {
         # benchmarks; see docs/audit_2026_09_16.md for the data caveats.
         ("v9-vllm", "results/corrected/v9_vllm/llama/time/finetuned/predictions.jsonl"),
         ("v9-glm-vllm", "results/corrected/v9_glm_vllm/llama/time/finetuned/predictions.jsonl"),
+        # ZERO-SHOT vLLM (added 2026-09-21, scripts/run_zs_vllm_time_timebench.sh).
+        # No adapter, base model straight to vLLM. Removes the need to invoke HF/vLLM
+        # parity to compare a vLLM-only arm (v7/v7c/v6d/v9/v9-glm) against zero-shot.
+        ("zs-vllm", "results/baseline/zero_shot_vllm/llama/time/zero_shot/predictions.jsonl"),
         # CoT arms (added 2026-09-14). These existed since 2026-09-09 with
         # complete predictions and were NOT in this list, so they never
         # reached the canonical table — the same defect class as the
@@ -114,6 +118,10 @@ ARMS = {
         # benchmarks; see docs/audit_2026_09_16.md for the data caveats.
         ("v9-vllm", "results/corrected/v9_vllm/llama/timebench/finetuned/predictions.jsonl"),
         ("v9-glm-vllm", "results/corrected/v9_glm_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        # ZERO-SHOT vLLM (added 2026-09-21, scripts/run_zs_vllm_time_timebench.sh).
+        # No adapter, base model straight to vLLM. Removes the need to invoke HF/vLLM
+        # parity to compare a vLLM-only arm (v7/v7c/v6d/v9/v9-glm) against zero-shot.
+        ("zs-vllm", "results/baseline/zero_shot_vllm/llama/timebench/zero_shot/predictions.jsonl"),
         # CoT arms (added 2026-09-14). These existed since 2026-09-09 with
         # complete predictions and were NOT in this list, so they never
         # reached the canonical table — the same defect class as the
