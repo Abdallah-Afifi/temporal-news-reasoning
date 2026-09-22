@@ -410,3 +410,45 @@ def test_order_compare_false_near_tie_is_rejected() -> None:
          "targets": ["They happen at almost the same time."],
          "rationale": _OC})
     assert errs and "days apart" in errs[0]
+
+
+# --- shape-queue proportioning (found 2026-09-22, round 2) -------------------
+#
+# The old approach picked a shape per order from `(k*7) % 100`, which gives
+# 7,14,21,28,35,42,49,56 for k=1..8 -- every one under the news threshold. Any
+# category with <=8 orders got 100% news regardless of where k started. Hit
+# twice: Co_temporality/Counterfactual/Order_Compare in round 1, Order_Compare
+# again in round 2 (caught before generation).
+
+import sys as _sys
+_sys.path.insert(0, str(ROOT / "scripts"))
+from make_glm_packets import build_shape_queues  # noqa: E402
+
+
+def test_a_small_category_is_not_forced_all_news() -> None:
+    """Order_Compare's exact round-2 shape: 50 rows / 20 per packet = 3 orders."""
+    q = build_shape_queues({"Order_Compare": 50}, per_packet=20)
+    shapes = q["Order_Compare"]
+    assert len(shapes) == 3
+    assert "news" not in shapes or shapes.count("news") < 3, (
+        f"category forced all-news: {shapes}")
+    assert "wiki" in shapes
+
+
+def test_every_category_with_three_or_more_orders_gets_a_wiki_row() -> None:
+    want = {"Order_Compare": 50, "Explicit_Reasoning": 60, "storytelling": 75}
+    q = build_shape_queues(want, per_packet=20)
+    for cat, shapes in q.items():
+        if len(shapes) >= 3:
+            assert "wiki" in shapes, f"{cat}: {shapes}"
+
+
+def test_a_single_order_category_still_gets_a_shape() -> None:
+    q = build_shape_queues({"nli_mcq": 15}, per_packet=20)
+    assert q["nli_mcq"] in (["news"], ["wiki"], ["dial"])
+
+
+def test_no_context_and_dialogue_categories_are_excluded_from_queues() -> None:
+    q = build_shape_queues({"relation": 75, "temporal_dialogue": 100}, per_packet=20)
+    assert "relation" not in q
+    assert "temporal_dialogue" not in q

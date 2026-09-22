@@ -591,6 +591,52 @@ def build_master() -> str:
     return "\n".join(parts)
 
 
+def build_shape_queues(want: dict, per_packet: int) -> dict:
+    """Per-category news/wiki/dial queues, proportioned to 60/35/5 and shuffled.
+
+    BUG FOUND 2026-09-22, round 2: the original approach picked a shape per
+    order from a single shared formula `(k*7) % 100`, hoping it would spread
+    evenly across each category's short run of orders BY LUCK. It cannot: for
+    k=1..8 that formula gives 7,14,21,28,35,42,49,56 -- every one under the 60
+    threshold -- so ANY category with 8 or fewer orders got 100% news
+    regardless of where k started. This is exactly how round 1's
+    Co_temporality, Counterfactual and Order_Compare, and then round 2's
+    Order_Compare again (caught before any rows were generated), ended up
+    all-news: a genuine dead zone in the formula's early outputs, not a
+    global-vs-per-category indexing slip.
+
+    Fixed by computing each category's own order COUNT first, building an
+    explicit list proportioned to 60/35/5 (rounded, at least one wiki row
+    whenever the category has >=3 orders so a small category is never forced
+    back to all-news), and shuffling it with a per-category-seeded RNG for
+    reproducibility. Proportion is correct by construction, not by hoping a
+    shared sequence happens to spread out.
+    """
+    def order_count(n_rows: int) -> int:
+        c, r = 0, n_rows
+        while r > 0:
+            r -= min(per_packet, r)
+            c += 1
+        return c
+
+    queues: dict[str, list[str]] = {}
+    for cat, n_rows in want.items():
+        if cat in NO_CONTEXT or cat == "temporal_dialogue" or n_rows <= 0:
+            continue
+        n_orders = order_count(n_rows)
+        n_wiki = (max(1, round(n_orders * 0.35)) if n_orders >= 3
+                 else round(n_orders * 0.35))
+        n_dial = max(0, round(n_orders * 0.05))
+        if n_wiki + n_dial >= n_orders and n_orders > 1:
+            n_dial = 0
+            n_wiki = min(n_wiki, n_orders - 1)
+        n_news = n_orders - n_wiki - n_dial
+        q = ["news"] * n_news + ["wiki"] * n_wiki + ["dial"] * n_dial
+        random.Random(f"prov-{cat}").shuffle(q)
+        queues[cat] = q
+    return queues
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -637,6 +683,7 @@ def main() -> int:
         if have:
             print(f"already banked: {dict(have)}")
             want = {c: max(0, n - have.get(c, 0)) for c, n in want.items()}
+        shape_queues = build_shape_queues(want, args.per_packet)
         lines, i = [], 0
         for cat in sorted(want, key=lambda c: -want[c]):
             left = want[cat]
@@ -654,8 +701,7 @@ def main() -> int:
                 elif cat == "temporal_dialogue":
                     shape, npass = "dial", args.passages
                 else:
-                    r = (i * 7) % 100
-                    shape = "news" if r < 60 else ("wiki" if r < 95 else "dial")
+                    shape = shape_queues[cat].pop()
                     npass = args.passages
                 dom = DOMAINS[(i * 3) % len(DOMAINS)]
                 era = ERAS[(i * 5) % len(ERAS)]
@@ -691,14 +737,16 @@ def main() -> int:
 
     # TIME is 58.8% News / 35.3% Wiki / 4.5% Dial -- match it across Block A
     # packets. temporal_dialogue is dial by definition; the no-context
-    # categories get neither a shape nor a provenance.
-    def pick_prov(cat: str, k: int) -> str:
+    # categories get neither a shape nor a provenance. See build_shape_queues()
+    # for why this is a precomputed proportional queue, not a shared formula.
+    shape_queues = build_shape_queues(want, args.per_packet)
+
+    def pick_prov(cat: str) -> str:
         if cat in NO_CONTEXT:
             return "none"
         if cat == "temporal_dialogue":
             return "dial"
-        r = (k * 7) % 100          # deterministic, evenly spread
-        return "news" if r < 60 else ("wiki" if r < 95 else "dial")
+        return shape_queues[cat].pop()
 
     idx = 0
     plan = []
@@ -710,7 +758,7 @@ def main() -> int:
             remaining -= n
             idx += 1
             k += 1
-            prov = pick_prov(cat, idx)
+            prov = pick_prov(cat)
             if cat in NO_CONTEXT:
                 src = ('This category carries NO context. Set `context` to "" '
                        'and `source_id` to "". Invent the events yourself; they '
