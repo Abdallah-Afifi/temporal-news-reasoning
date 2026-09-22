@@ -302,6 +302,15 @@ def check(r: dict) -> list[str]:
     gold = str(tg[0]).strip()
     q = str(r.get("question", ""))
     ctx = str(r.get("context", ""))
+    # Found 2026-09-22, checkpoint file 163: the "offset" row type's rationale
+    # came back as a one-element JSON list, e.g. ["The passage states..."],
+    # not a bare string. Every downstream use does str(r.get("rationale", ""))
+    # -- str(["text"]) is "['text']", non-empty, so the plain truthiness check
+    # a few lines below silently accepted it. Isolated to 1 row of 20, content
+    # otherwise correct, but the field is schema-wrong, so it is caught here
+    # explicitly rather than coerced past.
+    if not isinstance(r.get("rationale"), str):
+        e.append(f"rationale must be a plain string, got {type(r.get('rationale')).__name__}")
     opts = options(q)
 
     # --- §3 / §2 MCQ structure ---

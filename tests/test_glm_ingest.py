@@ -452,3 +452,19 @@ def test_no_context_and_dialogue_categories_are_excluded_from_queues() -> None:
     q = build_shape_queues({"relation": 75, "temporal_dialogue": 100}, per_packet=20)
     assert "relation" not in q
     assert "temporal_dialogue" not in q
+
+
+# --- rationale type guard (found 2026-09-22, checkpoint file 163) ------------
+#
+# One row's rationale came back as ["text"] instead of "text". Every
+# downstream use does str(r.get("rationale", "")), and str(["text"]) is
+# "['text']" -- non-empty, so the plain truthiness check let it through.
+
+def test_list_wrapped_rationale_is_rejected() -> None:
+    r = row(rationale=["The passage states the drive opened on March 4, 2016."])
+    errs = check(r)
+    assert any("plain string" in e for e in errs)
+
+
+def test_string_rationale_still_passes() -> None:
+    assert check(row(rationale="The passage states the drive opened on March 4, 2016.")) == []
