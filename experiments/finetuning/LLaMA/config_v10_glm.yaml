@@ -1,0 +1,130 @@
+# LLaMA-3.2-3B-Instruct LoRA Fine-Tuning Configuration — V9 CYCLE
+# ================================================================
+# The synthetic-swap arm (docs/synthetic_data_ruleset.md). Data-only bundle:
+# hyperparameters IDENTICAL to v2..v7 — only train_data, val_data and
+# output_dir change, so v9 stays comparable to every earlier arm.
+#
+# WHY THIS ARM — TWO CHANGES vs v9-glm, ACCEPTED AS A CONFOUND (2026-09-22)
+#
+# v9-glm's result (train_data/val_data config_v9_glm.yaml pointed here):
+#   TIME 40.79% (zs 41.44%, -0.65pp), TimeBench 45.05% (zs 45.18%, -0.12pp),
+#   TRAM 44.45% (zs 46.93%, -2.49pp). Clean, no abstain-artifact, but no
+#   headline beat -- consistent with 9 arms before it, including v1's PURE
+#   real-data arm (also lost, -8.25pp TRAM), so this was never purely a data-
+#   quality question. Two things ARE different about this data specifically
+#   and are worth testing:
+#     (a) AUG_GLM2 doubles from 3,000 to 6,000 rows (the ruleset's original
+#         plan; round 1 was half of it) -- roughly doubling its share of the
+#         12,002-row train split.
+#     (b) The `news` shape's noisy-retrieval mechanism changes: round 1 only
+#         taught "recognise when the answer is cleanly ABSENT" (1 in 5 rows).
+#         TIME's own Setting field is 59.6% retriever-supplied context, and
+#         v9-glm gained +3.81pp on gold-context items but LOST -2.1 to -2.9pp
+#         on retriever-supplied ones (src/data/data_loader.py documents the
+#         same split in v7c, so it is not new to this arm) -- the absent-
+#         passage mechanism never taught distinguishing the right passage
+#         from a plausible WRONG one next to it. Round 2 adds that.
+#
+# THE HYPERPARAMETER CHANGE (the researcher's explicit choice, made with the
+# confound risk stated plainly first): lora_r 16 -> 32, lora_alpha 32 -> 64
+# (ratio held constant, standard practice). Not a guess -- learning_rate was
+# HPO-optimised via a real Optuna search (experiments/finetuning/LLaMA/
+# hyperparameter_search.py, TPE sampler); lora_r was held FIXED at 16
+# throughout that search and every arm since, so it is the one lever with no
+# existing evidence behind its value. Motivation: a more heterogeneous,
+# larger-share synthetic mixture may be capacity-constrained by a small
+# adapter. Nothing else changed vs config_v9_glm.yaml.
+#
+# ATTRIBUTION WARNING: three things changed from v9-glm at once (data volume,
+# data content via the near-miss mechanism, LoRA capacity). If v10-glm's
+# result differs from v9-glm's, THIS ARM ALONE CANNOT SAY WHICH CHANGE CAUSED
+# IT. That needs a follow-up ablation (e.g. rank-32 on the ORIGINAL 3,000-row
+# data, or rank-16 on the new 6,000-row data) before any single cause is
+# claimed. Flagged and accepted by the researcher (2026-09-22), not an
+# oversight -- see the conversation record, not just this comment.
+#
+# ── Model ──────────────────────────────────────────────
+model_path: models/Llama-3.2-3B-Instruct
+seed: 42
+dtype: bfloat16
+
+# ── Data ───────────────────────────────────────────────
+train_data: data/combined_80_20_v10_glm/train.jsonl
+val_data: data/combined_80_20_v10_glm/val.jsonl
+max_seq_length: 2048
+
+# ── Training (identical to v2 / HPO-optimized) ─────────
+learning_rate: 4.62258900102083e-04
+num_train_epochs: 3
+warmup_ratio: 0.08185086660174143
+weight_decay: 0.010909498032426036
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+
+# ── Speed optimizations (RTX 3090 24 GB) ───────────────
+# Activation checkpointing recomputes activations in the backward pass to
+# save memory. Gradients are mathematically identical either way, so turning
+# it off is a pure speed/memory trade and does NOT change the recipe — v4
+# stays comparable to v1-v3. Set back to true if this OOMs.
+# 2026-09-05: it OOMed on the first training step (22.31/23.53 GiB used by
+# this process alone) -- v4's new rehearsal data (HotpotQA/DROP/CoQA full
+# passages, avg 429 / max 1,518 tokens) runs far longer than v1-v3's dolly
+# rehearsal ever did. Turned back on per this comment's own contingency.
+gradient_checkpointing: true
+attn_implementation: sdpa
+# BATCH SHAPE: 2 x 8, identical to v1/v2/v3/v3-corrected. Do not "optimise"
+# this — it was measured on 2026-09-05 and larger micro-batches are WORSE on
+# this card (full write-up: docs/v4_plan.md § "Throughput protocol"):
+#   2 x 8  ->  8.4-9.6 s/it   (~6 h)   <- this, the fastest measured
+#   4 x 4  -> 11.9-13.0 s/it  (~8 h)   ~35% slower
+#   8 x 2  -> OOM (tried to allocate 6.48 GiB with 2.88 GiB free)
+# Why bigger is slower: the GPU is already saturated at batch 2 (2048-token
+# sequences on a 3B model), so a larger micro-batch adds no parallelism — it
+# just pads every sequence out to the longest in the group (this data runs
+# 429 tokens avg, 1,518 max), and gradient_checkpointing then recomputes that
+# padding in the backward pass too.
+# Why 8 OOMs: the ceiling is the logits tensor, batch x seq_len x vocab, and
+# Llama-3's vocab is 128,256 -> ~2.1 GB at batch 2 but ~8.4 GB at batch 8 in
+# fp32. gradient_checkpointing does not shrink it, and fixing flash-attn
+# would not either (it is the loss input, not an attention intermediate).
+# Keeping 2 x 8 also keeps v4 bit-comparable to v1-v3: no second variable.
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+tf32: true
+
+# ── Logging & Checkpointing ────────────────────────────
+logging_steps: 10
+eval_strategy: epoch
+save_strategy: epoch
+save_total_limit: 3
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+early_stopping_patience: 2
+
+# ── LoRA (identical to v2) ──────────────────────────────
+lora_r: 32
+lora_alpha: 64
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# ── Quantization ───────────────────────────────────────
+load_in_4bit: false
+
+# ── Output ─────────────────────────────────────────────
+output_dir: checkpoints/llama_v10_glm
+progress_dir: experiments/finetuning/LLaMA/Progress
+
+# ── Reporting ──────────────────────────────────────────
+report_to: []

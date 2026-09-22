@@ -119,6 +119,21 @@ Total roughly 700-1000 words across the three. Rules:
   teaches "when unsure, abstain" instead of teaching the task. A previous arm
   learned exactly that and emitted 2,424 false abstentions against a baseline's
   1,291. No single gold string may exceed 10% of a category.
+
+- SEPARATELY, in about 1 row in 5 -- not the same rows as the absent-passage
+  ones above -- REPLACE one of the two non-gold sub-passages with a NEAR-MISS:
+  same topic, similar entities and timeframe, but reporting a DIFFERENT
+  specific fact (a different date, outcome, or actor) from the gold. The
+  correct passage stays present and fully answers the question; the near-miss
+  is what a retriever plausibly returns by mistake, not a random unrelated
+  article. Round-1 v9-glm evaluation (2026-09-22) showed the model gains on
+  TIME items with clean gold context (+3.81pp, best of any arm) but LOSES on
+  retriever-supplied context (bm25/vector/hybrid, -2.1 to -2.9pp; TIME is
+  59.6% retriever-supplied) -- a pattern also seen in earlier arms, so it is
+  not specific to this data, but this generation has never trained the one
+  thing that condition needs: distinguishing the right passage from a
+  plausible wrong one sitting right next to it. Cleanly ABSENT passages (the
+  block above) do not teach that; this does.
 - Never write `Context: "None"`.""",
 
 "wiki": """Each passage is ONE flowing third-person narrative, roughly

@@ -25,8 +25,14 @@
 # Must run from a shell with real GPU access — a Claude Code Bash-tool
 # session can neither see the GPU nor signal these processes (D32/D33/D55).
 #
-# EXPECTED RUNTIME: ~4 min TimeBench + ~25 min TIME (v9's schedule measured
-# these orders of magnitude on the same engine/model/hardware).
+# EXPECTED RUNTIME: ~4 min TimeBench + ~3h45m TIME. The "~25 min TIME" figure
+# in run_schedule_v9.sh/v9_glm.sh/v6d.sh/v7_corrected.sh has NO log evidence
+# anywhere in this project -- traced 2026-09-21 to an unverified guess copied
+# forward across five scripts. The only genuine full-scale measurement found
+# (logs/vllm_ft_v3_llama_time.log, 106,500 items, same model/decoding):
+# TimeBench 21,188 items in 3.5 min, TIME 106,500 items in 3h41m -- TIME runs
+# ~12.5x slower per item, not proportionally similar. Do not trust the ~25min
+# figure elsewhere until it is corrected there too.
 #
 # WHERE RESULTS GO:
 #   results/baseline/zero_shot_vllm/llama/<bench>/zero_shot/predictions.jsonl

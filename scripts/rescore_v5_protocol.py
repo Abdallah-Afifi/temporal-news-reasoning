@@ -62,6 +62,10 @@ ARMS = {
         # benchmarks; see docs/audit_2026_09_16.md for the data caveats.
         ("v9-vllm", "results/corrected/v9_vllm/llama/time/finetuned/predictions.jsonl"),
         ("v9-glm-vllm", "results/corrected/v9_glm_vllm/llama/time/finetuned/predictions.jsonl"),
+        # v10-glm (added 2026-09-22): AUG_GLM2 doubled to 6,000 rows, news-shape
+        # near-miss-passage mechanism added, lora_r 16->32/alpha 32->64. A KNOWN
+        # three-way confound vs v9-glm -- see run_schedule_v10_glm.sh.
+        ("v10-glm-vllm", "results/corrected/v10_glm_vllm/llama/time/finetuned/predictions.jsonl"),
         # ZERO-SHOT vLLM (added 2026-09-21, scripts/run_zs_vllm_time_timebench.sh).
         # No adapter, base model straight to vLLM. Removes the need to invoke HF/vLLM
         # parity to compare a vLLM-only arm (v7/v7c/v6d/v9/v9-glm) against zero-shot.
@@ -101,6 +105,10 @@ ARMS = {
         # benchmarks; see docs/audit_2026_09_16.md for the data caveats.
         ("v9-vllm", "results/corrected/v9_vllm/llama/tram/finetuned/predictions.jsonl"),
         ("v9-glm-vllm", "results/corrected/v9_glm_vllm/llama/tram/finetuned/predictions.jsonl"),
+        # v10-glm (added 2026-09-22): AUG_GLM2 doubled to 6,000 rows, news-shape
+        # near-miss-passage mechanism added, lora_r 16->32/alpha 32->64. A KNOWN
+        # three-way confound vs v9-glm -- see run_schedule_v10_glm.sh.
+        ("v10-glm-vllm", "results/corrected/v10_glm_vllm/llama/tram/finetuned/predictions.jsonl"),
 ],
     "timebench": [
         ("zero-shot", "results/baseline/zero_shot_v3/llama/timebench/zero_shot/predictions.jsonl"),
@@ -118,6 +126,10 @@ ARMS = {
         # benchmarks; see docs/audit_2026_09_16.md for the data caveats.
         ("v9-vllm", "results/corrected/v9_vllm/llama/timebench/finetuned/predictions.jsonl"),
         ("v9-glm-vllm", "results/corrected/v9_glm_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        # v10-glm (added 2026-09-22): AUG_GLM2 doubled to 6,000 rows, news-shape
+        # near-miss-passage mechanism added, lora_r 16->32/alpha 32->64. A KNOWN
+        # three-way confound vs v9-glm -- see run_schedule_v10_glm.sh.
+        ("v10-glm-vllm", "results/corrected/v10_glm_vllm/llama/timebench/finetuned/predictions.jsonl"),
         # ZERO-SHOT vLLM (added 2026-09-21, scripts/run_zs_vllm_time_timebench.sh).
         # No adapter, base model straight to vLLM. Removes the need to invoke HF/vLLM
         # parity to compare a vLLM-only arm (v7/v7c/v6d/v9/v9-glm) against zero-shot.
@@ -322,7 +334,18 @@ def rescore(path: Path, choices_by_id: dict[str, list[str] | None],
     # llama's TIME CoT outputs were truncated, and they score 0.08%).
     anchor_have = anchor_missing = 0
     correct_ids: set[str] = set()
-    for line in open(path, encoding="utf-8"):
+    # errors="replace", not the default "strict". FOUND 2026-09-22: v4's TIME
+    # predictions.jsonl (dated 2026-09-06, untouched since) has one invalid
+    # UTF-8 byte near its start. Strict decoding raises INSIDE this iteration,
+    # before the per-line json.loads try/except below ever runs, so it isn't
+    # caught by the "torn line" handling that already exists for a mid-write
+    # kill -- it aborted the whole rescore, for every arm still to come. Same
+    # philosophy as that handling: one corrupt byte in one row of a
+    # multi-hundred-thousand-row arm should not block scoring everything
+    # after it. A replaced byte inside a JSON string still parses; if it lands
+    # somewhere that breaks JSON structure instead, the existing
+    # JSONDecodeError handler below already counts it as torn and continues.
+    for line in open(path, encoding="utf-8", errors="replace"):
         try:
             r = json.loads(line)
         except json.JSONDecodeError:
@@ -457,7 +480,8 @@ def main() -> int:
                  # would make --tram-root drop the arm silently, which is the
                  # v7-omission defect (F1) in a new place.
                  "v9-vllm": ("v9", "finetuned"),
-                 "v9-glm-vllm": ("v9_glm", "finetuned")}
+                 "v9-glm-vllm": ("v9_glm", "finetuned"),
+                 "v10-glm-vllm": ("v10_glm", "finetuned")}
         _SUPERSEDED_TRAM.update(p for _, p in ARMS["tram"])
         ARMS["tram"] = [
             (label, f"{args.tram_root}/{d}/llama/tram/{sub_}/predictions.jsonl")
