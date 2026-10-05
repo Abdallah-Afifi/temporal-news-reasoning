@@ -58,6 +58,16 @@
 # so a TRAM leg written under results/corrected/ would be silently dropped.
 # Both paths are registered in that script.
 # ===========================================================================
+# SUPERSEDED 2026-09-23 before it was ever launched: it trains on the legacy
+# prompt (not the one it is evaluated on) and on data with 561 benchmark-
+# contaminated TimeQA rows (docs/audit_2026_09_23.md §1, §D1). Use
+# scripts/run_schedule_v11.sh. FORCE_V10=1 runs it anyway, for a deliberate
+# legacy-prompt ablation only.
+# ===========================================================================
+if [ "${FORCE_V10:-0}" != "1" ]; then
+  echo "run_schedule_v10_glm.sh is superseded by run_schedule_v11.sh (see header). FORCE_V10=1 to override."
+  exit 1
+fi
 set -u
 cd "$(dirname "$0")/.."
 Q=logs/sched_v10_glm

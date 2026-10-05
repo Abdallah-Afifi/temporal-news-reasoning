@@ -1,0 +1,281 @@
+{
+  "seed": "hpo-dev-v1",
+  "benchmarks": {
+    "time": {
+      "pool": 104939,
+      "dev": 5000,
+      "test_minus_dev": 99939,
+      "strata": {
+        "Co-temporality|bm25": {
+          "pool": 1800,
+          "dev": 86
+        },
+        "Co_temporality|base": {
+          "pool": 4599,
+          "dev": 219
+        },
+        "Co_temporality|bm25": {
+          "pool": 30,
+          "dev": 1
+        },
+        "Co_temporality|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Co_temporality|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Computation|base": {
+          "pool": 3882,
+          "dev": 185
+        },
+        "Computation|bm25": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Computation|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Computation|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Counterfactual|base": {
+          "pool": 4230,
+          "dev": 202
+        },
+        "Counterfactual|bm25": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Counterfactual|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Counterfactual|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Duration_Compare|base": {
+          "pool": 3727,
+          "dev": 178
+        },
+        "Duration_Compare|bm25": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Duration_Compare|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Duration_Compare|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Explicit_Reasoning|base": {
+          "pool": 4230,
+          "dev": 202
+        },
+        "Explicit_Reasoning|bm25": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Explicit_Reasoning|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Explicit_Reasoning|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Extract|base": {
+          "pool": 1540,
+          "dev": 73
+        },
+        "Extract|bm25": {
+          "pool": 600,
+          "dev": 29
+        },
+        "Extract|hybrid": {
+          "pool": 600,
+          "dev": 29
+        },
+        "Extract|vector": {
+          "pool": 600,
+          "dev": 29
+        },
+        "Localization|base": {
+          "pool": 4404,
+          "dev": 210
+        },
+        "Localization|bm25": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Localization|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Localization|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Order_Compare|base": {
+          "pool": 4407,
+          "dev": 210
+        },
+        "Order_Compare|bm25": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Order_Compare|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Order_Compare|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Order_Reasoning|base": {
+          "pool": 4776,
+          "dev": 228
+        },
+        "Order_Reasoning|bm25": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Order_Reasoning|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Order_Reasoning|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Relative_Reasoning|base": {
+          "pool": 4775,
+          "dev": 228
+        },
+        "Relative_Reasoning|bm25": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Relative_Reasoning|hybrid": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Relative_Reasoning|vector": {
+          "pool": 1830,
+          "dev": 87
+        },
+        "Timeline|base": {
+          "pool": 1798,
+          "dev": 86
+        },
+        "Timeline|bm25": {
+          "pool": 3787,
+          "dev": 181
+        },
+        "Timeline|hybrid": {
+          "pool": 3787,
+          "dev": 181
+        },
+        "Timeline|vector": {
+          "pool": 3787,
+          "dev": 181
+        }
+      },
+      "sha256": "da02e34a5c76d9c0ce78786a3d97232737149cd5c26b192df50850754537d902"
+    },
+    "timebench": {
+      "pool": 21075,
+      "dev": 2500,
+      "test_minus_dev": 18575,
+      "strata": {
+        "arithmetic": {
+          "pool": 4000,
+          "dev": 474
+        },
+        "duration": {
+          "pool": 1538,
+          "dev": 182
+        },
+        "situated_generation": {
+          "pool": 115,
+          "dev": 14
+        },
+        "temporal_dialogue": {
+          "pool": 1446,
+          "dev": 172
+        },
+        "temporal_nli": {
+          "pool": 6965,
+          "dev": 826
+        },
+        "temporal_ordering": {
+          "pool": 4248,
+          "dev": 504
+        },
+        "temporal_qa": {
+          "pool": 887,
+          "dev": 105
+        },
+        "temporal_reasoning": {
+          "pool": 1876,
+          "dev": 223
+        }
+      },
+      "sha256": "dfef077cfe44d2105a02021f4d28c93379e08dc130af553882ab88c5346b9d30"
+    },
+    "tram": {
+      "pool": 980918,
+      "dev": 10000,
+      "test_minus_dev": 970918,
+      "strata": {
+        "ambiguity": {
+          "pool": 3624,
+          "dev": 37
+        },
+        "arithmetic": {
+          "pool": 31168,
+          "dev": 318
+        },
+        "causality": {
+          "pool": 1190,
+          "dev": 12
+        },
+        "duration": {
+          "pool": 14394,
+          "dev": 147
+        },
+        "frequency": {
+          "pool": 9256,
+          "dev": 94
+        },
+        "storytelling": {
+          "pool": 67204,
+          "dev": 685
+        },
+        "temporal_nli": {
+          "pool": 564268,
+          "dev": 5752
+        },
+        "temporal_ordering": {
+          "pool": 58904,
+          "dev": 601
+        },
+        "temporal_relation": {
+          "pool": 204914,
+          "dev": 2089
+        },
+        "typical_time": {
+          "pool": 25996,
+          "dev": 265
+        }
+      },
+      "sha256": "9c7affcdef12feeba39ade470770b0cfdb988d75479ee476a3e81037f0df0e2a"
+    }
+  }
+}

@@ -13,6 +13,14 @@ Optimizes:
 Usage:
     python hyperparameter_search.py --n-trials 20
     python hyperparameter_search.py --n-trials 50 --seed 42
+
+SUPERSEDED 2026-09-23 (docs/audit_2026_09_23.md §5) -- kept for provenance of
+the learning rate every arm v2-v10 used. Its objective is eval loss on the
+in-distribution val split of the OLD combined_80_20_split, on 500 train / 200
+val rows for 1 epoch at max_seq_length 1024; the chosen LR was then applied to
+3 epochs over 12k rows. Batch size and LoRA rank, listed above as searched,
+are in fact held fixed by the code. Use scripts/hpo_v11.py, which selects on
+benchmark-format dev accuracy (docs/hpo_v11_protocol.md).
 """
 
 import os

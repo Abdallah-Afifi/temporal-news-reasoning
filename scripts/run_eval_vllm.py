@@ -45,6 +45,18 @@ def main() -> int:
     ap.add_argument("--max-new-tokens", default=128, type=int)
     ap.add_argument("--gpu-mem", type=float, default=0.90)
     ap.add_argument("--max-samples", default=None, type=int)
+    ap.add_argument("--system-prompt", choices=["auto", "none"], default="auto", help=(
+        "auto: legacy behaviour (training system prompt iff --adapter-dir). "
+        "none: never add one -- REQUIRED for eval_parity arms, which were "
+        "trained on the exact zero-shot prompt (shared/eval_parity.py)."))
+    ap.add_argument("--date-string", default=None, help=(
+        "Pin the chat template's 'Today Date' (eval_parity arms and their "
+        "zero-shot reference use '26 Jul 2024'). Unset = wall-clock date, the "
+        "legacy behaviour, which makes prompts differ between run days."))
+    ap.add_argument("--ids-file", default=None, help=(
+        "JSON {benchmark: [ids]}; evaluate ONLY these ids (the HPO dev split, "
+        "data/hpo_dev/dev_ids.json). Unlike --max-samples, which takes a biased "
+        "dataset-order prefix, this is the stratified subset."))
     args = ap.parse_args()
 
     system_prompt = None
@@ -52,7 +64,8 @@ def main() -> int:
         from experiments.finetuning.shared.prompt_templates import (
             TEMPORAL_SYSTEM_PROMPT,
         )
-        system_prompt = TEMPORAL_SYSTEM_PROMPT
+        if args.system_prompt == "auto":
+            system_prompt = TEMPORAL_SYSTEM_PROMPT
         # vLLM loads ONLY what is at --model-dir. The adapter is NOT merged in
         # here: passing an un-merged adapter dir evaluates the BASE model with
         # the training prompt (audit 2026-09-09 M1). Merge first
@@ -92,6 +105,12 @@ def main() -> int:
     from transformers import AutoTokenizer
 
     examples = BenchmarkLoader(str(PROJECT_ROOT / "data" / "benchmarks")).load(args.benchmark)
+    if args.ids_file:
+        wanted = set(json.loads(Path(args.ids_file).read_text())[args.benchmark])
+        examples = [ex for ex in examples if ex.id in wanted]
+        if len(examples) != len(wanted):
+            raise SystemExit(f"FATAL: {len(wanted) - len(examples)} ids in "
+                             f"{args.ids_file} are not in {args.benchmark}")
     if args.max_samples is not None:
         examples = examples[: args.max_samples]
     print(f"benchmark={args.benchmark} examples={len(examples)}")
@@ -155,6 +174,10 @@ def main() -> int:
                 f"adapter_dir {prior.get('adapter_dir')} != {args.adapter_dir}")
         if prior.get("engine", "vllm") != "vllm":
             mismatch.append(f"engine {prior.get('engine')} != vllm")
+        if prior.get("date_string") != args.date_string:
+            mismatch.append(f"date_string {prior.get('date_string')} != {args.date_string}")
+        if bool(prior.get("system_prompt", bool(prior.get("adapter_dir")))) != bool(system_prompt):
+            mismatch.append("system prompt on/off differs from the existing file")
         if mismatch:
             raise SystemExit(
                 "FATAL: refusing to resume into a predictions file written by a "
@@ -174,8 +197,9 @@ def main() -> int:
         if system_prompt:
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": _build_zero_shot_prompt(ex)})
+        kw = {"date_string": args.date_string} if args.date_string else {}
         text = tok.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
+            messages, tokenize=False, add_generation_prompt=True, **kw
         )
         return tok(text, truncation=True, max_length=4096,
                    add_special_tokens=False)["input_ids"]
@@ -215,6 +239,8 @@ def main() -> int:
                 rec["model_dir"] = str(args.model_dir)
                 if args.adapter_dir:
                     rec["adapter_dir"] = str(args.adapter_dir)
+                rec["system_prompt"] = bool(system_prompt)
+                rec["date_string"] = args.date_string
                 out.write(json.dumps(rec, ensure_ascii=False) + "\n")
             out.flush()
             done = len(done_ids) + ci + len(chunk)

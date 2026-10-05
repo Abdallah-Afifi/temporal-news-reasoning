@@ -397,7 +397,10 @@ def train(
 
     # ── Load & tokenise data ──────────────────────────────────────
     max_length = int(config.get("max_seq_length", 2048))
-    train_ds, val_ds = load_flat_datasets(train_data, val_data, tokenizer, max_length, log)
+    prompt_format = str(config.get("prompt_format", "legacy"))
+    log.info("prompt_format: %s", prompt_format)
+    train_ds, val_ds = load_flat_datasets(train_data, val_data, tokenizer, max_length, log,
+                                          prompt_format=prompt_format)
 
     save_data_stats(
         run_dir, len(train_ds), len(val_ds),
@@ -425,6 +428,10 @@ def train(
         config["early_stopping_patience"] = 0
 
     training_args = TrainingArguments(
+        # Without seed= the Trainer re-seeds with its default 42 at
+        # construction, so the yaml seed only reached LoRA init and data order
+        # / dropout were always seed 42 (audit 2026-09-23 §4).
+        seed=int(config.get("seed", 42)),
         output_dir=str(output_dir),
         num_train_epochs=epochs,
         max_steps=max_steps,
@@ -515,7 +522,9 @@ def train(
     save_training_summary(run_dir, train_result, t.elapsed_str, config)
 
     # ── Log final eval loss ───────────────────────────────────────
-    if not dry_run:
+    # HPO trials set final_eval: false -- they are selected on dev-set
+    # ACCURACY, and a val-loss pass over ~2.9k rows costs ~20 min per trial.
+    if not dry_run and config.get("final_eval", True):
         eval_metrics = trainer.evaluate()
         log.info("Final eval_loss: %.4f", eval_metrics.get("eval_loss", float("nan")))
         save_json(eval_metrics, run_dir / "final_eval_metrics.json")

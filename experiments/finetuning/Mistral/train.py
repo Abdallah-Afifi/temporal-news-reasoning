@@ -405,7 +405,9 @@ def train(
 
     # ── Load & tokenise data ──────────────────────────────────────
     max_length = int(config.get("max_seq_length", 1024))
-    train_ds, val_ds = load_flat_datasets(train_data, val_data, tokenizer, max_length, log)
+    prompt_format = config.get("prompt_format", "legacy")
+    train_ds, val_ds = load_flat_datasets(train_data, val_data, tokenizer, max_length, log,
+                                          prompt_format=prompt_format)
 
     save_data_stats(
         run_dir, len(train_ds), len(val_ds),
@@ -445,6 +447,11 @@ def train(
         dataloader_pin_memory=bool(config.get("dataloader_pin_memory", True)),
         report_to=config.get("report_to", []),
         run_name=f"mistral-lora-{datetime.now().strftime('%Y%m%d_%H%M')}",
+        # Without seed= the Trainer re-seeds with its default 42 at
+        # construction, so the yaml seed only reached LoRA init and data order
+        # / dropout were always seed 42 (audit 2026-09-23 §4; ported to
+        # Mistral 2026-09-28 -- this file never had the fix).
+        seed=int(config.get("seed", 42)),
         # Optimizer: use paged adamw for QLoRA to reduce memory
         optim="paged_adamw_8bit" if use_4bit else "adamw_torch",
     )

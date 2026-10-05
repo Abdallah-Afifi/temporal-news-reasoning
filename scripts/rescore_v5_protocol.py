@@ -66,6 +66,18 @@ ARMS = {
         # near-miss-passage mechanism added, lora_r 16->32/alpha 32->64. A KNOWN
         # three-way confound vs v9-glm -- see run_schedule_v10_glm.sh.
         ("v10-glm-vllm", "results/corrected/v10_glm_vllm/llama/time/finetuned/predictions.jsonl"),
+        # v11 (added 2026-09-23): train/eval PROMPT PARITY, decontaminated data,
+        # hyperparameters chosen on the HPO dev split (scripts/hpo_v11.py). Every
+        # v11 number must be read with --exclude-ids data/hpo_dev/dev_ids.json
+        # and --reference zs-vllm-pinned (same engine, same pinned date).
+        ("zs-vllm-pinned", "results/baseline/zero_shot_vllm_pinned/llama/time/zero_shot/predictions.jsonl"),
+        ("v11-best", "results/corrected/v11_best_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v11-best-s43", "results/corrected/v11_best_s43_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v11-best-s44", "results/corrected/v11_best_s44_vllm/llama/time/finetuned/predictions.jsonl"),
+        # v12 single-variable arms (docs/v12_plan.md), paired with zs-vllm-pinned.
+        ("v12-data", "results/corrected/v12_data_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v12-ctx", "results/corrected/v12_ctx_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v11-2ep", "results/corrected/v11_2ep_vllm/llama/time/finetuned/predictions.jsonl"),
         # ZERO-SHOT vLLM (added 2026-09-21, scripts/run_zs_vllm_time_timebench.sh).
         # No adapter, base model straight to vLLM. Removes the need to invoke HF/vLLM
         # parity to compare a vLLM-only arm (v7/v7c/v6d/v9/v9-glm) against zero-shot.
@@ -75,17 +87,41 @@ ARMS = {
         # reached the canonical table — the same defect class as the
         # v7-corrected omission fixed on 2026-09-09 (F1). They are base-model
         # prompting arms, not fine-tunes: no adapter, no training.
-        # Mistral zero-shot: complete since the zero_shot_v3 era and quoted in
-        # session_state, but never in this list until 2026-09-14, so it was
-        # never scored by the frozen scorer. Mistral is a SIDE experiment --
-        # banned from vLLM for a 2.20pp parity failure (D46/D53) -- so its
-        # numbers are not comparable to the llama campaign, but they should at
-        # least be produced by the same scorer as everything else.
+        # Mistral zero-shot (HF engine, pre-audit prompt): complete since the
+        # zero_shot_v3 era and quoted in session_state, but never in this
+        # list until 2026-09-14, so it was never scored by the frozen scorer.
         ("zs-mistral", "results/baseline/zero_shot_v3/mistral/time/zero_shot/predictions.jsonl"),
         ("zsCoT-llama", "results/baseline/zero_shot_cot/llama/time/zero_shot/predictions.jsonl"),
         ("zsCoT-mistr", "results/baseline/zero_shot_cot/mistral/time/zero_shot/predictions.jsonl"),
         ("fsCoT-llama", "results/baseline/few_shot_cot/llama/time/zero_shot/predictions.jsonl"),
         ("fsCoT-mistr", "results/baseline/few_shot_cot/mistral/time/zero_shot/predictions.jsonl"),
+        # The D46/D53 "mistral-vLLM banned, 2.20pp parity failure" ban is
+        # LIFTED (2026-09-28, docs/mistral_plan.md): the Sept-3 parity report
+        # (n=2,000, 55.15% agreement, -2.70pp) compared vLLM's zero-shot
+        # output against results/finetuned/mistral's FINE-TUNED predictions,
+        # not a zero-shot HF reference -- a broken --reference path in
+        # logs/vllm_parity_chain.sh, not an engine bug (D57 already
+        # eliminated the tokenizer-level suspects on 2026-09-09 and flagged
+        # this as the leading theory, but the confirming GPU re-test was
+        # never run). Re-checked here with the CORRECT reference
+        # (zero_shot_v3, the matching zero-shot run): 1,971/2,000 ids
+        # overlap, 95.18% agreement, -0.051pp delta -- in line with D57's own
+        # "near llama's 94%" resolution criterion. Mistral-vLLM arms below
+        # are therefore first-class, same as the llama campaign.
+        ("zs-vllm-mistral", "results/baseline/zero_shot_vllm/mistral/time/zero_shot/predictions.jsonl"),
+        ("mistral-best", "results/corrected/mistral_best_vllm/mistral/time/finetuned/predictions.jsonl"),
+        # Mistral seed replicates (docs/mistral_plan.md §7 follow-up): same
+        # m05 recipe, seed the only variable. Registered 2026-10-03; missing
+        # files are reported and skipped until run_mistral_seeds.sh fills them.
+        ("mistral-best-s43", "results/corrected/mistral_best_s43_vllm/mistral/time/finetuned/predictions.jsonl"),
+        ("mistral-best-s44", "results/corrected/mistral_best_s44_vllm/mistral/time/finetuned/predictions.jsonl"),
+        # v13 (docs/v13_plan.md): soup + four single-variable arms, paired
+        # with zs-vllm-pinned. Registered before launch, same as v12 was.
+        ("soup-v11", "results/corrected/soup_v11_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v13-base", "results/corrected/v13_base_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v13-2ep", "results/corrected/v13_2ep_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v13-ctx", "results/corrected/v13_ctx_vllm/llama/time/finetuned/predictions.jsonl"),
+        ("v13-r32", "results/corrected/v13_r32_vllm/llama/time/finetuned/predictions.jsonl"),
 ],
     # TRAM: added 2026-09-07 for its first ever run (D48). Arms appear here
     # only once their predictions exist; a missing file is reported and
@@ -109,6 +145,8 @@ ARMS = {
         # near-miss-passage mechanism added, lora_r 16->32/alpha 32->64. A KNOWN
         # three-way confound vs v9-glm -- see run_schedule_v10_glm.sh.
         ("v10-glm-vllm", "results/corrected/v10_glm_vllm/llama/tram/finetuned/predictions.jsonl"),
+        # v11 arms: TRAM legs write to results/tram_fixed/<arm>/ (see --tram-root map).
+        # Mistral arms (zs-vllm-mistral, mistral-best): same, see --tram-root map.
 ],
     "timebench": [
         ("zero-shot", "results/baseline/zero_shot_v3/llama/timebench/zero_shot/predictions.jsonl"),
@@ -130,6 +168,18 @@ ARMS = {
         # near-miss-passage mechanism added, lora_r 16->32/alpha 32->64. A KNOWN
         # three-way confound vs v9-glm -- see run_schedule_v10_glm.sh.
         ("v10-glm-vllm", "results/corrected/v10_glm_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        # v11 (added 2026-09-23): train/eval PROMPT PARITY, decontaminated data,
+        # hyperparameters chosen on the HPO dev split (scripts/hpo_v11.py). Every
+        # v11 number must be read with --exclude-ids data/hpo_dev/dev_ids.json
+        # and --reference zs-vllm-pinned (same engine, same pinned date).
+        ("zs-vllm-pinned", "results/baseline/zero_shot_vllm_pinned/llama/timebench/zero_shot/predictions.jsonl"),
+        ("v11-best", "results/corrected/v11_best_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v11-best-s43", "results/corrected/v11_best_s43_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v11-best-s44", "results/corrected/v11_best_s44_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        # v12 single-variable arms (docs/v12_plan.md), paired with zs-vllm-pinned.
+        ("v12-data", "results/corrected/v12_data_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v12-ctx", "results/corrected/v12_ctx_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v11-2ep", "results/corrected/v11_2ep_vllm/llama/timebench/finetuned/predictions.jsonl"),
         # ZERO-SHOT vLLM (added 2026-09-21, scripts/run_zs_vllm_time_timebench.sh).
         # No adapter, base model straight to vLLM. Removes the need to invoke HF/vLLM
         # parity to compare a vLLM-only arm (v7/v7c/v6d/v9/v9-glm) against zero-shot.
@@ -139,17 +189,25 @@ ARMS = {
         # reached the canonical table — the same defect class as the
         # v7-corrected omission fixed on 2026-09-09 (F1). They are base-model
         # prompting arms, not fine-tunes: no adapter, no training.
-        # Mistral zero-shot: complete since the zero_shot_v3 era and quoted in
-        # session_state, but never in this list until 2026-09-14, so it was
-        # never scored by the frozen scorer. Mistral is a SIDE experiment --
-        # banned from vLLM for a 2.20pp parity failure (D46/D53) -- so its
-        # numbers are not comparable to the llama campaign, but they should at
-        # least be produced by the same scorer as everything else.
+        # Mistral zero-shot (HF engine, pre-audit prompt): complete since the
+        # zero_shot_v3 era and quoted in session_state, but never in this
+        # list until 2026-09-14, so it was never scored by the frozen scorer.
         ("zs-mistral", "results/baseline/zero_shot_v3/mistral/timebench/zero_shot/predictions.jsonl"),
         ("zsCoT-llama", "results/baseline/zero_shot_cot/llama/timebench/zero_shot/predictions.jsonl"),
         ("zsCoT-mistr", "results/baseline/zero_shot_cot/mistral/timebench/zero_shot/predictions.jsonl"),
         ("fsCoT-llama", "results/baseline/few_shot_cot/llama/timebench/zero_shot/predictions.jsonl"),
         ("fsCoT-mistr", "results/baseline/few_shot_cot/mistral/timebench/zero_shot/predictions.jsonl"),
+        # D46/D53 ban lifted -- see the "time" ARMS entry above for the
+        # full explanation (docs/mistral_plan.md).
+        ("zs-vllm-mistral", "results/baseline/zero_shot_vllm/mistral/timebench/zero_shot/predictions.jsonl"),
+        ("mistral-best", "results/corrected/mistral_best_vllm/mistral/timebench/finetuned/predictions.jsonl"),
+        ("mistral-best-s43", "results/corrected/mistral_best_s43_vllm/mistral/timebench/finetuned/predictions.jsonl"),
+        ("mistral-best-s44", "results/corrected/mistral_best_s44_vllm/mistral/timebench/finetuned/predictions.jsonl"),
+        ("soup-v11", "results/corrected/soup_v11_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v13-base", "results/corrected/v13_base_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v13-2ep", "results/corrected/v13_2ep_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v13-ctx", "results/corrected/v13_ctx_vllm/llama/timebench/finetuned/predictions.jsonl"),
+        ("v13-r32", "results/corrected/v13_r32_vllm/llama/timebench/finetuned/predictions.jsonl"),
 ],
 }
 
@@ -238,7 +296,19 @@ _NOT_ARMS = (
     # three legs additionally ran at the retired 256-token budget. Superseded
     # in full; see that directory's WHY_SUPERSEDED.md.
     "few_shot_cot_SUPERSEDED_truncated_exemplars",
+    # v11 HPO: per-trial DEV-ONLY predictions (17,500 items, not full arms)
+    # and the dev zero-shot reference. Scored by scripts/hpo_v11.py, never here.
+    "results/hpo_v11/",
+    # Mistral HPO-lite (2026-09-28): same pattern, scored by scripts/hpo_mistral.py.
+    "results/hpo_mistral/",
+    # v13-prog pilot (2026-10-03): dev-only, scored by scripts/score_v13_pilot.py.
+    "results/hpo_v13_pilot/",
 )
+
+
+def model_family(label: str) -> str:
+    """'mistral' for Mistral arms, 'llama' otherwise (every other arm is LLaMA)."""
+    return "mistral" if "mistr" in label else "llama"
 
 # The TRAM paths that --tram-root supersedes. Without this the check would
 # flag all ten stale-prompt files as "missing" on every --tram-root run, and a
@@ -293,7 +363,8 @@ def rescore(path: Path, choices_by_id: dict[str, list[str] | None],
             abstain_ids: set[str] | None = None,
             want_correct_ids: bool = False,
             ref_correct: set[str] | None = None,
-            settings: dict[str, str] | None = None) -> dict:
+            settings: dict[str, str] | None = None,
+            skip_ids: set[str] | None = None) -> dict:
     """Score one arm under the v5 protocol.
 
     The headline number (``v5_pct``) is unchanged. Four diagnostics are
@@ -354,6 +425,20 @@ def rescore(path: Path, choices_by_id: dict[str, list[str] | None],
             # first bad line would silently discard everything after it and
             # under-report a 99.99%-complete run as a tiny partial.
             torn += 1
+            continue
+        if not isinstance(r, dict) or "id" not in r or "reference" not in r:
+            # FOUND 2026-09-26: results/tram_fixed/v1/.../predictions.jsonl
+            # (written 2026-09-12, never modified since) read cleanly on 09-25
+            # and on 09-26 held 6 unparseable lines and 2 rows whose key had
+            # become "referefce" -- a single flipped bit (n 0x6E -> f 0x66),
+            # i.e. on-disk/memory corruption, not a code path. A row that
+            # parses but has lost a required key is as unusable as a torn
+            # line: count it the same way instead of crashing every arm.
+            torn += 1
+            continue
+        if skip_ids and r["id"] in skip_ids:
+            # HPO dev split (data/hpo_dev/dev_ids.json): hyperparameters were
+            # selected on these items, so no arm is scored on them.
             continue
         refs = r["reference"] if isinstance(r["reference"], list) else [r["reference"]]
         gold = [_normalize_answer(g) for g in refs]
@@ -464,12 +549,28 @@ def main() -> int:
         "stale results/corrected paths. Used by "
         "scripts/run_schedule_tram_rerun.sh after the 2026-09-12 loader fix; "
         "TIME and TimeBench are unaffected either way."))
+    ap.add_argument("--exclude-ids", default=None, help=(
+        "JSON {benchmark: [ids]} removed from EVERY arm before scoring -- the "
+        "HPO dev split (data/hpo_dev/dev_ids.json). Required for any number "
+        "quoted after the 2026-09-23 hyperparameter search: those items chose "
+        "the hyperparameters, so scoring on them is test-set selection."))
+    ap.add_argument("--reference", default="zero-shot", help=(
+        "Arm label used as the McNemar reference. 'zero-shot' is the HF-engine "
+        "run for TIME/TimeBench; vLLM arms should be paired with a vLLM "
+        "zero-shot (e.g. zs-vllm-pinned) -- audit 2026-09-23 §E3."))
     args = ap.parse_args()
+    exclude: dict[str, set[str]] = {}
+    if args.exclude_ids:
+        exclude = {b: set(v) for b, v in
+                   json.loads(Path(args.exclude_ids).read_text()).items()}
+        print(f"EXCLUDING dev ids: " + ", ".join(f"{b}={len(v):,}" for b, v in exclude.items()))
 
     if args.tram_root:
-        # arm label -> directory name under --tram-root. zero-shot writes to
-        # a `zero_shot/` config subdir (no adapter); every other arm writes to
-        # `finetuned/`.
+        # arm label -> (directory name under --tram-root, config subdir,
+        # model key). zero-shot writes to a `zero_shot/` config subdir (no
+        # adapter); every other arm writes to `finetuned/`. model key
+        # defaults to "llama" below (3rd tuple element optional) -- Mistral
+        # arms are the first to need a different one (2026-09-28).
         rerun = {"zero-shot": ("zero_shot", "zero_shot"), "v1-vllm": ("v1", "finetuned"),
                  "v2-vllm": ("v2", "finetuned"), "v3c-vllm": ("v3c", "finetuned"),
                  "v4-vllm": ("v4", "finetuned"), "v5-vllm": ("v5", "finetuned"),
@@ -481,17 +582,54 @@ def main() -> int:
                  # v7-omission defect (F1) in a new place.
                  "v9-vllm": ("v9", "finetuned"),
                  "v9-glm-vllm": ("v9_glm", "finetuned"),
-                 "v10-glm-vllm": ("v10_glm", "finetuned")}
+                 "v10-glm-vllm": ("v10_glm", "finetuned"),
+                 # v11 (2026-09-23). Listed HERE because --tram-root replaces
+                 # ARMS["tram"] wholesale -- the recurring silent-drop defect.
+                 "zs-vllm-pinned": ("zs_vllm_pinned", "zero_shot"),
+                 "v11-best": ("v11_best", "finetuned"),
+                 "v11-best-s43": ("v11_best_s43", "finetuned"),
+                 "v11-best-s44": ("v11_best_s44", "finetuned"),
+                 "v12-data": ("v12_data", "finetuned"),
+                 "v12-ctx": ("v12_ctx", "finetuned"),
+                 "v11-2ep": ("v11_2ep", "finetuned"),
+                 # Mistral (2026-09-28, docs/mistral_plan.md). See the "time"
+                 # ARMS comment for why mistral-vLLM (D46/D53) is no longer banned.
+                 "zs-vllm-mistral": ("zs_vllm_mistral", "zero_shot", "mistral"),
+                 "mistral-best": ("mistral_best", "finetuned", "mistral"),
+                 "mistral-best-s43": ("mistral_best_s43", "finetuned", "mistral"),
+                 "mistral-best-s44": ("mistral_best_s44", "finetuned", "mistral"),
+                 "soup-v11": ("soup_v11", "finetuned"),
+                 "v13-base": ("v13_base", "finetuned"),
+                 "v13-2ep": ("v13_2ep", "finetuned"),
+                 "v13-ctx": ("v13_ctx", "finetuned"),
+                 "v13-r32": ("v13_r32", "finetuned")}
         _SUPERSEDED_TRAM.update(p for _, p in ARMS["tram"])
         ARMS["tram"] = [
-            (label, f"{args.tram_root}/{d}/llama/tram/{sub_}/predictions.jsonl")
-            for label, (d, sub_) in rerun.items()
+            (label, f"{args.tram_root}/{v[0]}/{v[2] if len(v) > 2 else 'llama'}/tram/{v[1]}/predictions.jsonl")
+            for label, v in rerun.items()
         ]
         print(f"TRAM arms repointed at {args.tram_root} (2026-09-12 fixed prompts)")
+
+    # The reference must exist for every benchmark. It used to fall back
+    # silently to the legacy HF "zero-shot" arm when missing (audit
+    # 2026-10-04 §4.5), which pairs every arm against the wrong baseline.
+    for bench in ("time", "timebench", "tram"):
+        ref_paths = [p for l, p in ARMS[bench] if l == args.reference]
+        if not ref_paths:
+            raise SystemExit(f"ERROR: --reference {args.reference!r} is not an arm "
+                             f"for {bench}")
+        if not (PROJECT_ROOT / ref_paths[0]).exists():
+            raise SystemExit(f"ERROR: --reference {args.reference!r} predictions "
+                             f"missing for {bench}: {ref_paths[0]}")
+    ref_family = model_family(args.reference)
 
     report: dict = {}
     for bench in ("time", "timebench", "tram"):
         cmap = choice_map(bench, args.data_dir)
+        skip = exclude.get(bench, set())
+        # Remove the excluded ids from the expected-n denominator too, or every
+        # arm would be flagged PARTIAL by exactly len(skip).
+        cmap = {k: v for k, v in cmap.items() if k not in skip}
         smap = setting_map(bench, args.data_dir)
         abst = abstain_option_ids(cmap)
         arms: dict = {}
@@ -518,7 +656,9 @@ def main() -> int:
                   f"({100 * len(abst) / len(cmap):.1f}% of {len(cmap):,})")
         print(f"{'arm':12s}{'n':>8s}{'stored':>10s}{'v5':>10s}{'delta':>8s}"
               f"{'drift':>8s}{'fired':>8s}{'strict':>9s}{'no-abst':>9s}{'macro':>8s}")
-        for label, p in ARMS[bench]:
+        # The McNemar reference must be scored first so its per-item
+        # correctness exists when the other arms are paired against it.
+        for label, p in sorted(ARMS[bench], key=lambda a: a[0] != args.reference):
             path = PROJECT_ROOT / p
             if not path.exists():
                 print(f"{label:12s}  missing: {p}")
@@ -526,11 +666,12 @@ def main() -> int:
             # zero-shot is scored first (ARMS lists it first in every
             # benchmark) so its per-item correctness is available as the
             # reference side of the paired McNemar test below.
+            is_ref = label == args.reference
             s = rescore(path, cmap, abst,
-                        want_correct_ids=(label == "zero-shot"),
-                        ref_correct=(None if label == "zero-shot" else zs_correct),
-                        settings=smap)
-            if label == "zero-shot":
+                        want_correct_ids=is_ref,
+                        ref_correct=(None if is_ref else zs_correct),
+                        settings=smap, skip_ids=skip)
+            if is_ref:
                 zs_correct = s.pop("correct_ids", None)
             s.pop("correct_ids", None)
             s["expected_n"] = len(cmap)
@@ -596,9 +737,23 @@ def main() -> int:
             report[bench] = {"arms": {}, "partial": {k: v["n"] for k, v in partial.items()}}
             continue
 
+        if args.reference not in arms:
+            raise SystemExit(f"ERROR: --reference {args.reference!r} is not a complete "
+                             f"arm for {bench} (partial or unscorable)")
+        REF = args.reference
+        print(f"reference arm: {REF}")
+        for a, st in arms.items():
+            st["_paired_reference"] = REF
+        cross = sorted(a for a in arms if model_family(a) != ref_family)
+        if cross:
+            print(f"WARNING: {len(cross)} {('mistral' if ref_family == 'llama' else 'llama')}-"
+                  f"family arm(s) are paired against the {ref_family} reference {REF!r}; "
+                  f"their deltas/McNemar are cross-model and not meaningful: "
+                  + ", ".join(cross))
         # Compare the NEWEST arm present against the two references, so this
         # keeps working as cycles are added without editing the formatting.
-        new = next((c for c in ("v6d-vllm", "v7c-vllm", "v7-vllm", "v6-vllm", "v6", "v5", "v4")
+        new = next((c for c in ("v11-best", "v10-glm-vllm", "v9-glm-vllm", "v6d-vllm",
+                                "v7c-vllm", "v7-vllm", "v6-vllm", "v6", "v5", "v4")
                       if c in arms), next(iter(arms)))
         cats = sorted(arms[new]["by_category"],
                       key=lambda c: -arms[new]["by_category"][c]["n"])
@@ -615,7 +770,7 @@ def main() -> int:
                 row += f"{acc[a]:10.1f}%" if e else f"{'—':>11s}"
             ref = 'v3-corr' if 'v3-corr' in acc else new
             print(row + f"{acc[new] - acc[ref]:+8.1f}"
-                        f"{acc[new] - acc['zero-shot']:+9.1f}")
+                        f"{acc[new] - acc[REF]:+9.1f}")
         # Generation categories, reported ADDITIONALLY — never folded into the
         # headline. Exact match gives 0.00% for every arm here, which is a
         # metric artifact; token-F1 says what the arms actually do.
@@ -646,9 +801,9 @@ def main() -> int:
         print(row
               + (f"{arms[new]['v5_pct'] - arms['v3-corr']['v5_pct']:+8.2f}"
                  if has_v3 else f"{'—':>8s}")
-              + f"{arms[new]['v5_pct'] - arms['zero-shot']['v5_pct']:+9.2f}")
+              + f"{arms[new]['v5_pct'] - arms[REF]['v5_pct']:+9.2f}")
 
-        nw, zs = arms[new], arms["zero-shot"]
+        nw, zs = arms[new], arms[REF]
         if has_v3:
             v3 = arms["v3-corr"]
             print(f"\n{new} vs v3-corrected: z = "
@@ -667,7 +822,7 @@ def main() -> int:
         print(f"\n{'arm':12s}{'headline':>10s}{'no-abstain':>12s}"
               f"{'d(headline)':>13s}{'d(no-abst)':>12s}{'McNemar z':>11s}")
         for a, st in arms.items():
-            if a == "zero-shot":
+            if a == REF:
                 continue
             mcn = ""
             if zs_correct is not None and st.get("_paired") is not None:
@@ -681,14 +836,14 @@ def main() -> int:
         # ---- per evaluation condition (TIME only) ------------------------
         conds = sorted({c for a in arms.values() for c in a.get("by_setting", {})})
         if conds:
-            zsb = arms["zero-shot"]["by_setting"]
+            zsb = arms[REF]["by_setting"]
             print(f"\nby retrieval setting, abstain bucket EXCLUDED "
                   f"(delta vs zero-shot):")
             print(f"{'arm':12s}" + "".join(f"{c:>12s}" for c in conds))
             print(f"{'zero-shot':12s}"
                   + "".join(f"{zsb[c]['no_abstain_pct']:11.2f}%" for c in conds))
             for a, st in arms.items():
-                if a == "zero-shot":
+                if a == REF:
                     continue
                 row = f"{a:12s}"
                 for c in conds:

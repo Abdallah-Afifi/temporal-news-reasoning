@@ -1,0 +1,26 @@
+{
+ "version": "v13",
+ "dir": "data/combined_80_20_v13",
+ "train_rows": 24870,
+ "val_rows": 6376,
+ "synthetic_pct": 79.3,
+ "general_rehearsal_pct": 0.0,
+ "composition": {
+  "AUG_PROG": 9985,
+  "AUG_GLM2": 5024,
+  "TimeQA": 4297,
+  "AUG_TPL3": 3288,
+  "AUG_SEQ": 1019,
+  "TLQA": 855,
+  "AUG_GLM": 402
+ },
+ "story": "v12 (minus 207 TimeQA rows whose gold the CoT pass found contradicted or unsupported by the passage) + AUG_TPL3: agent-written Python template/builder rows (scripts/glm_v13_build/; NOT GLM-5.2 chat, despite the plan -- audit_2026_10_04 \u00a71.1) for relation, nli, dialogue, storytelling (gold-longer share balanced to 50%), extract, timeline, computation, relative/duration/order compare + AUG_PROG programmatic math/temporal data (deliberately non-LLM, kept), with the audit's quality filters applied (counts in data/manifest.json).",
+ "results": "pending",
+ "results_dir": null,
+ "size_mb": 100.3,
+ "sha256": {
+  "train.jsonl": "6306de6290a45de8d91aec5ed5b8577fb45f6f13f21f985166f60f98eb5991ff",
+  "val.jsonl": "9a881c06a4814c14dabf04a9baca11615a3036f4be6a1e7dee1a5afec596cbad",
+  "manifest.json": "ea68044d6c477436e9ca0dfca9dd6d8d4ef316b0d9b38df570d3a2f234c21e4a"
+ }
+}

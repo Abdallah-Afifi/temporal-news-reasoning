@@ -1,0 +1,56 @@
+{
+  "source": "/home/g2/Mohamed/temporal-news-reasoning/results/rescored/v11_test_minus_dev.json",
+  "benchmarks": {
+    "time": {
+      "zs_pinned": 41.15010156195279,
+      "seeds": {
+        "v11-best": 46.79954772411171,
+        "v11-best-s43": 45.95403195949529,
+        "v11-best-s44": 46.50937071613684
+      },
+      "mean": 46.42098346658128,
+      "sd": 0.4296317684561062,
+      "delta_mean": 5.270881904628496,
+      "mcnemar_z_seed42": 39.050461922351495,
+      "delta_macro_seed42": 5.326361300584573,
+      "delta_no_abstain_seed42": 5.050701628597771,
+      "n": 99939,
+      "seeds_complete": true,
+      "verdict": "BEATS zero-shot"
+    },
+    "timebench": {
+      "zs_pinned": 44.82907133243607,
+      "seeds": {
+        "v11-best": 46.48183041722746,
+        "v11-best-s43": 46.578734858681024,
+        "v11-best-s44": 45.85195154777927
+      },
+      "mean": 46.30417227456258,
+      "sd": 0.39462045941977864,
+      "delta_mean": 1.4751009421265096,
+      "mcnemar_z_seed42": 4.205479452054795,
+      "delta_macro_seed42": 0.6728002301076899,
+      "delta_no_abstain_seed42": 1.6527590847913842,
+      "n": 18575,
+      "seeds_complete": true,
+      "verdict": "BEATS zero-shot"
+    },
+    "tram": {
+      "zs_pinned": 46.5538799363077,
+      "seeds": {
+        "v11-best": 53.73955370072447,
+        "v11-best-s43": 52.38104556718487,
+        "v11-best-s44": 53.17153456831576
+      },
+      "mean": 53.09737794540837,
+      "sd": 0.6822832921624891,
+      "delta_mean": 6.5434980091006665,
+      "mcnemar_z_seed42": 138.5026708194077,
+      "delta_macro_seed42": 4.9850509144690776,
+      "delta_no_abstain_seed42": 7.185585570739384,
+      "n": 970918,
+      "seeds_complete": true,
+      "verdict": "BEATS zero-shot"
+    }
+  }
+}

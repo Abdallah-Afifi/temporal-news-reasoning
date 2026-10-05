@@ -1,0 +1,43 @@
+{
+  "source": "data/combined_80_20_v10_glm",
+  "shingle": {
+    "k": 25,
+    "stride": 6,
+    "guaranteed_run": 30,
+    "template_min_items": 20
+  },
+  "splits": {
+    "train": {
+      "in": 12003,
+      "out": 11446,
+      "removed": {
+        "contaminated:TimeQA": 459,
+        "label_space:relation": 78,
+        "label_space:ordering": 20
+      },
+      "by_source": {
+        "TimeQA": 4504,
+        "AUG_GLM2": 4666,
+        "TLQA": 855,
+        "AUG_SEQ": 1019,
+        "AUG_GLM": 402
+      }
+    },
+    "val": {
+      "in": 2997,
+      "out": 2869,
+      "removed": {
+        "label_space:ordering": 4,
+        "contaminated:TimeQA": 102,
+        "label_space:relation": 22
+      },
+      "by_source": {
+        "AUG_GLM2": 1164,
+        "TimeQA": 1138,
+        "AUG_SEQ": 254,
+        "TLQA": 213,
+        "AUG_GLM": 100
+      }
+    }
+  }
+}

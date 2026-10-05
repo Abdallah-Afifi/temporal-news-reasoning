@@ -1,0 +1,84 @@
+{
+  "seed": 20260923,
+  "created": "2026-09-23 15:35:38",
+  "trials": [
+    {
+      "learning_rate": 0.000462258900102083,
+      "num_train_epochs": 3,
+      "lora_r": 32,
+      "aug_fraction": 1.0,
+      "id": "t00",
+      "note": "anchor: v10 hyperparameters, parity prompt"
+    },
+    {
+      "id": "t01",
+      "learning_rate": 3.86e-05,
+      "num_train_epochs": 2,
+      "lora_r": 16,
+      "aug_fraction": 0.0
+    },
+    {
+      "id": "t02",
+      "learning_rate": 5.2e-05,
+      "num_train_epochs": 1,
+      "lora_r": 8,
+      "aug_fraction": 1.0
+    },
+    {
+      "id": "t03",
+      "learning_rate": 1.14e-05,
+      "num_train_epochs": 1,
+      "lora_r": 32,
+      "aug_fraction": 1.0
+    },
+    {
+      "id": "t04",
+      "learning_rate": 1.25e-05,
+      "num_train_epochs": 1,
+      "lora_r": 8,
+      "aug_fraction": 0.5
+    },
+    {
+      "id": "t05",
+      "learning_rate": 0.000364,
+      "num_train_epochs": 1,
+      "lora_r": 32,
+      "aug_fraction": 0.5
+    },
+    {
+      "id": "t06",
+      "learning_rate": 3.78e-05,
+      "num_train_epochs": 1,
+      "lora_r": 32,
+      "aug_fraction": 1.0
+    },
+    {
+      "id": "t07",
+      "learning_rate": 0.000121,
+      "num_train_epochs": 2,
+      "lora_r": 32,
+      "aug_fraction": 0.5
+    },
+    {
+      "id": "t08",
+      "learning_rate": 9.11e-05,
+      "num_train_epochs": 2,
+      "lora_r": 32,
+      "aug_fraction": 0.0
+    },
+    {
+      "id": "t09",
+      "learning_rate": 0.000177,
+      "num_train_epochs": 1,
+      "lora_r": 16,
+      "aug_fraction": 1.0
+    },
+    {
+      "id": "t10",
+      "learning_rate": 7.29e-05,
+      "num_train_epochs": 1,
+      "lora_r": 16,
+      "aug_fraction": 0.0
+    }
+  ]
+}

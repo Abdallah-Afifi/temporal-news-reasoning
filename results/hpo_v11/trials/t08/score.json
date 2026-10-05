@@ -1,0 +1,83 @@
+{
+  "trial": {
+    "id": "t08",
+    "learning_rate": 9.11e-05,
+    "num_train_epochs": 2,
+    "lora_r": 32,
+    "aug_fraction": 0.0
+  },
+  "objective": 3.0133333333333354,
+  "objective_se_pp": 0.42242685099842364,
+  "benchmarks": {
+    "time": {
+      "n": 5000,
+      "v5_pct": 45.04,
+      "macro_pct": 44.537080193996765,
+      "no_abstain_pct": 45.6984842277755,
+      "by_setting": {
+        "bm25": {
+          "v5_pct": 53.17,
+          "n": 993,
+          "no_abstain_pct": 54.82,
+          "no_abstain_n": 954
+        },
+        "vector": {
+          "v5_pct": 53.47,
+          "n": 993,
+          "no_abstain_pct": 54.98,
+          "no_abstain_n": 953
+        },
+        "hybrid": {
+          "v5_pct": 53.37,
+          "n": 993,
+          "no_abstain_pct": 54.64,
+          "no_abstain_n": 959
+        },
+        "base": {
+          "v5_pct": 32.81,
+          "n": 2021,
+          "no_abstain_pct": 32.74,
+          "no_abstain_n": 2016
+        }
+      },
+      "mcnemar_b_c": [
+        295,
+        491
+      ],
+      "delta_se_pp": 0.5607138307550474,
+      "d_v5_pct": 3.9200000000000017,
+      "d_macro_pct": 4.709775294994458,
+      "d_no_abstain_pct": 4.854567800081931
+    },
+    "timebench": {
+      "n": 2500,
+      "v5_pct": 48.6,
+      "macro_pct": 48.51143752283942,
+      "no_abstain_pct": 48.6,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        279,
+        399
+      ],
+      "delta_se_pp": 1.0415373253033229,
+      "d_v5_pct": 4.800000000000004,
+      "d_macro_pct": 4.476515092961648,
+      "d_no_abstain_pct": 4.800000000000004
+    },
+    "tram": {
+      "n": 10000,
+      "v5_pct": 47.39,
+      "macro_pct": 47.43577673515396,
+      "no_abstain_pct": 47.384738473847385,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        1018,
+        1050
+      ],
+      "delta_se_pp": 0.4547526800360829,
+      "d_v5_pct": 0.3200000000000003,
+      "d_macro_pct": 1.3733205317624808,
+      "d_no_abstain_pct": 0.32003200320031766
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "source": "data/combined_80_20_v11 + data/manual_aug_glm_v12",
+  "dropped": [
+    "AUG_GLM2/storytelling"
+  ],
+  "splits": {
+    "train": {
+      "from_v11": 11446,
+      "dropped": 117,
+      "added": 475,
+      "out": 11804,
+      "added_by_category": {
+        "duration": 101,
+        "ordering": 82,
+        "relation": 90,
+        "storytelling": 118,
+        "temporal_dialogue": 84
+      }
+    },
+    "val": {
+      "from_v11": 2869,
+      "dropped": 33,
+      "added": 135,
+      "out": 2971,
+      "added_by_category": {
+        "duration": 19,
+        "ordering": 18,
+        "relation": 30,
+        "storytelling": 32,
+        "temporal_dialogue": 36
+      }
+    }
+  }
+}

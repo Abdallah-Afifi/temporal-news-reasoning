@@ -1,0 +1,392 @@
+"""Build the v13 mixture: v12 (minus wrong TimeQA golds) + AUG_TPL3 + AUG_PROG.
+
+Provenance, stated honestly (docs/audit_2026_10_04.md §1.1): the rows in
+data/manual_aug_glm_v13/ were NOT written by GLM-5.2 chat. They were produced
+by Python template generators / builders written by the GLM-backed coding
+agent (scripts/glm_v13_build/). They are relabelled here:
+
+    source_dataset "AUG_TPL3", provenance "agent-template"
+    AUG_PROG rows keep "AUG_PROG",  provenance "programmatic"
+
+(the raw files keep "AUG_GLM2" because ingest_glm_batch.check() requires it;
+the gate is run on the raw rows before relabelling). The programmatic math
+data (AUG_PROG) is deliberately non-LLM and is kept in full except for the
+two defective generators below.
+
+Quality filters (all deterministic, each counted in manifest.json):
+  - storytelling (TPL3): gold-longer share forced to 50% -- keep every row
+    whose gold ending is not the longer one, plus a seeded equal-size subset
+    of gold-longer rows (audit §2.1: 83% gold-longer, a length shortcut);
+  - relation (TPL3): BEFORE/AFTER/SIMULTANEOUS/INCLUDES/IS_INCLUDED
+    recomputed from the parsed dates (event-event and event-to-time); rows
+    whose label disagrees are DROPPED, not flipped -- their rationales are
+    reversed too (audit §2.2);
+  - duration (TPL3): drop the broken "How long did it take the X to
+    take/last?" template and rows whose options share one number and differ
+    only by unit (audit §2.3);
+  - prog_timeline: drop rows where a year-only fact shares its year with
+    another fact -- the order is decided by hidden day-level dates
+    (audit §2.5);
+  - prog_duration_compare: drop the event-named rows whose context dates
+    only one event per pair (audit §2.5);
+  - TimeQA (v12 base): drop the rows the CoT pass documented as SKIP
+    (passage contradicts / does not support the gold, `# SKIP gNNNN:` lines
+    in data/cot_raw/), matched by (question, context) via
+    data/cot_packets/answer_key.json (audit §2.6). combined_80_20_v12
+    itself is not modified.
+
+New rows split 80/20 by the same stable sha1(question) rule as before.
+
+Manifest keys: "template_rows" is the honest count of AUG_TPL3 rows;
+"glm_rows" is kept with the SAME value only for backward compatibility with
+run_schedule_v13.sh's non-provisional gate (it reads glm_rows > 0).
+
+Usage: venv/bin/python scripts/build_v13_training_data.py [--allow-no-template]
+"""
+from __future__ import annotations
+
+import argparse
+import calendar
+import datetime as dt
+import glob
+import hashlib
+import json
+import os
+import random
+import re
+import subprocess
+import sys
+from collections import Counter
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "scripts"))
+
+SRC = ROOT / "data" / "combined_80_20_v12"
+TPL_NEW = ROOT / "data" / "manual_aug_glm_v13"
+PROG = ROOT / "data" / "prog_aug_v13"
+OUT = ROOT / "data" / "combined_80_20_v13"
+COT_RAW = ROOT / "data" / "cot_raw"
+ANSWER_KEY = ROOT / "data" / "cot_packets" / "answer_key.json"
+STORY_SEED = 20261005
+
+# ---------------------------------------------------------------------------
+# parsing helpers
+# ---------------------------------------------------------------------------
+_MONTHS = {m: i + 1 for i, m in enumerate(
+    ["january", "february", "march", "april", "may", "june", "july",
+     "august", "september", "october", "november", "december"])}
+_MONTHS.update({k[:3]: v for k, v in list(_MONTHS.items())})
+_MONTHS["sept"] = 9
+_DMY = re.compile(r"\b(\d{1,2})\s+([A-Za-z]+)\.?\s+(\d{4})\b")
+_MDY = re.compile(r"\b([A-Za-z]+)\.?\s+(\d{1,2}),\s*(\d{4})\b")
+_OPT = re.compile(r"^([A-E])\.\s+(.*)$", re.M)
+
+
+def parse_dates(s: str) -> list[dt.date]:
+    """Full dates (D Month YYYY / Month D, YYYY) in order of appearance."""
+    found = []
+    for m in _DMY.finditer(s):
+        mo = _MONTHS.get(m.group(2).lower())
+        if mo:
+            try:
+                found.append((m.start(), dt.date(int(m.group(3)), mo, int(m.group(1)))))
+            except ValueError:
+                pass
+    for m in _MDY.finditer(s):
+        mo = _MONTHS.get(m.group(1).lower())
+        if mo:
+            try:
+                found.append((m.start(), dt.date(int(m.group(3)), mo, int(m.group(2)))))
+            except ValueError:
+                pass
+    return [d for _, d in sorted(found)]
+
+
+def options(q: str) -> list[str]:
+    tail = q.split("Choices:")[-1] if "Choices:" in q else q
+    return [m.group(2).strip() for m in _OPT.finditer(tail)]
+
+
+def _time_span(t: str):
+    t = t.strip()
+    d = parse_dates(t)
+    if d:
+        return d[0], d[0]
+    m = re.fullmatch(r"([A-Za-z]+)\s+(\d{4})", t)
+    if m and _MONTHS.get(m.group(1).lower()):
+        y, mo = int(m.group(2)), _MONTHS[m.group(1).lower()]
+        return dt.date(y, mo, 1), dt.date(y, mo, calendar.monthrange(y, mo)[1])
+    if re.fullmatch(r"\d{4}", t):
+        return dt.date(int(t), 1, 1), dt.date(int(t), 12, 31)
+    return None
+
+
+def computed_relation(q: str) -> str | None:
+    """Relation of the first-mentioned event to the second (or to the time),
+    from parsed dates; None when the row's shape can't be parsed reliably."""
+    body = q.split("What is the relationship")[0]
+    m = re.search(r"and the time '([^']+)'", q)
+    if m:                                             # event-to-time
+        ev, sp = parse_dates(body), _time_span(m.group(1))
+        if len(ev) != 1 or not sp:
+            return None
+        p, (lo, hi) = ev[0], sp
+        if lo == hi:
+            return "BEFORE" if p < lo else "AFTER" if p > lo else "SIMULTANEOUS"
+        return "BEFORE" if p < lo else "AFTER" if p > hi else "IS_INCLUDED"
+    sents = [s for s in re.split(r"(?<=\d)\.\s+", body.strip()) if s.strip()]
+    if len(sents) != 2:
+        return None
+    e1, e2 = parse_dates(sents[0]), parse_dates(sents[1])
+    if len(e1) == 1 and len(e2) == 1:
+        a, b = e1[0], e2[0]
+        return "BEFORE" if a < b else "AFTER" if a > b else "SIMULTANEOUS"
+    if len(e1) == 2 and len(e2) == 1:
+        lo, hi = sorted(e1)
+        p = e2[0]
+        return "INCLUDES" if lo <= p <= hi else ("AFTER" if p < lo else "BEFORE")
+    if len(e1) == 1 and len(e2) == 2:
+        lo, hi = sorted(e2)
+        p = e1[0]
+        return "IS_INCLUDED" if lo <= p <= hi else ("BEFORE" if p < lo else "AFTER")
+    if len(e1) == 2 and len(e2) == 2:
+        a, b = sorted(e1)
+        c, d = sorted(e2)
+        if (a, b) == (c, d):
+            return None
+        if c <= a and b <= d:
+            return "IS_INCLUDED"
+        if a <= c and d <= b:
+            return "INCLUDES"
+        if b < c:
+            return "BEFORE"
+        if a > d:
+            return "AFTER"
+    return None
+
+
+_BROKEN_DURATION = re.compile(r"How long did it take the .+? to (take|last)\?")
+_UNIT = r"(seconds?|minutes?|hours?|days?|weeks?|months?|years?|decades?|centur(?:y|ies))"
+
+
+def duration_unit_only(q: str) -> bool:
+    """All options are the same number with only the unit changing."""
+    opts = options(q)
+    if len(opts) < 2:
+        return False
+    stems = set()
+    for o in opts:
+        m = re.fullmatch(r"(.+?)\s+" + _UNIT, o.strip().rstrip("."), re.I)
+        if not m:
+            return False
+        stems.add(m.group(1).lower())
+    return len(stems) == 1
+
+
+def timeline_underdetermined(q: str) -> bool:
+    """A year-only fact ('... in 1947.') shares its year with another fact."""
+    facts = [m.group(2) for m in _OPT.finditer(q)]
+    years, year_only = [], []
+    for f in facts:
+        ys = re.findall(r"\b(1[5-9]\d\d|20\d\d)\b", f)
+        years.append(ys[-1] if ys else None)
+        year_only.append(bool(re.search(r"\bin \d{4}\.$", f.strip())))
+    return any(year_only[i] and years[i] is not None and
+               any(years[j] == years[i] for j in range(len(facts)) if j != i)
+               for i in range(len(facts)))
+
+
+def duration_compare_incoherent(r: dict) -> bool:
+    q = r["question"]
+    return ("*Duration 1:* Between the " in q or "*Duration 2:* Between the " in q)
+
+
+def story_gold_longer(r: dict) -> bool | None:
+    opts, gold = options(r["question"]), r["targets"][0]
+    others = [o for o in opts if o != gold]
+    if len(opts) != 2 or len(others) != 1:
+        return None
+    return len(gold) > len(others[0])
+
+
+def cot_skip_keys(cot_raw: Path = COT_RAW, answer_key: Path = ANSWER_KEY):
+    """{(question, context)} of TimeQA rows the CoT pass documented as SKIP."""
+    if not answer_key.exists():
+        return set(), {}
+    key = json.loads(answer_key.read_text(encoding="utf-8"))
+    skips = {}
+    for f in sorted(glob.glob(str(cot_raw / "*.txt"))):
+        for line in open(f, encoding="utf-8"):
+            m = re.match(r"\s*#\s*SKIP\s+(g\d+)\s*[:\-]?\s*(.*)", line)
+            if m:
+                skips.setdefault(m.group(1), m.group(2).strip())
+    keys = {(key[g]["question"], key[g]["context"]) for g in skips if g in key}
+    return keys, skips
+
+
+# ---------------------------------------------------------------------------
+# filters
+# ---------------------------------------------------------------------------
+def filter_template_rows(rows: list[dict], counts: Counter) -> list[dict]:
+    keep, story_long, story_rest = [], [], []
+    for r in rows:
+        cat = r.get("category")
+        if cat == "relation":
+            c = computed_relation(r["question"])
+            if c is not None and c != r["targets"][0]:
+                counts["tpl_relation_label_disagrees_with_dates"] += 1
+                continue
+        elif cat == "duration":
+            if _BROKEN_DURATION.search(r["question"]):
+                counts["tpl_duration_broken_template"] += 1
+                continue
+            if duration_unit_only(r["question"]):
+                counts["tpl_duration_options_differ_only_by_unit"] += 1
+                continue
+        elif cat == "storytelling":
+            longer = story_gold_longer(r)
+            (story_long if longer else story_rest).append(r)
+            continue
+        keep.append(r)
+    rng = random.Random(STORY_SEED)
+    k = min(len(story_rest), len(story_long))
+    sampled = rng.sample(story_long, k) if k else []
+    counts["tpl_storytelling_gold_longer_dropped_for_50pct_balance"] += len(story_long) - k
+    if len(story_rest) > len(story_long):        # never the case today; keep balance anyway
+        counts["tpl_storytelling_gold_shorter_dropped_for_balance"] += len(story_rest) - k
+        story_rest = rng.sample(story_rest, k)
+    keep.extend(story_rest + sampled)
+    return keep
+
+
+def filter_prog_rows(rows: list[dict], counts: Counter) -> list[dict]:
+    keep = []
+    for r in rows:
+        cat = r.get("category")
+        if cat == "prog_timeline" and timeline_underdetermined(r["question"]):
+            counts["prog_timeline_year_only_collision"] += 1
+            continue
+        if cat == "prog_duration_compare" and duration_compare_incoherent(r):
+            counts["prog_duration_compare_event_named_incoherent"] += 1
+            continue
+        keep.append(r)
+    return keep
+
+
+def filter_base_rows(rows: list[dict], skip_keys: set, counts: Counter, split: str) -> list[dict]:
+    keep = []
+    for r in rows:
+        if r.get("source_dataset") == "TimeQA" and \
+                (r.get("question"), r.get("context", "")) in skip_keys:
+            counts[f"timeqa_cot_skip_wrong_gold_{split}"] += 1
+            continue
+        keep.append(r)
+    return keep
+
+
+def split_of(r: dict) -> str:
+    h = int(hashlib.sha1(r["question"].encode()).hexdigest(), 16)
+    return "val" if h % 5 == 0 else "train"
+
+
+def main() -> int:
+    from build_v11_parity_data import bench_index, contaminated
+    from ingest_glm_batch import check as gate_check
+
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--allow-no-template", "--allow-no-glm", dest="allow_empty",
+                    action="store_true",
+                    help="build without AUG_TPL3 rows (pipeline validation only)")
+    args = ap.parse_args()
+    counts: Counter = Counter()
+
+    # --- AUG_TPL3 (agent-written template rows) -------------------------
+    tpl = []
+    if TPL_NEW.exists():
+        tpl = [json.loads(l) for f in sorted(TPL_NEW.glob("*.jsonl"))
+               for l in open(f, encoding="utf-8") if l.strip()]
+    if not tpl and not args.allow_empty and not os.environ.get("V13_ALLOW_NO_GLM"):
+        raise SystemExit(f"FATAL: no rows in {TPL_NEW}, or pass --allow-no-template "
+                         f"for a provisional pipeline-validation build.")
+    bad = [r for r in tpl if gate_check(r)]
+    if bad:
+        raise SystemExit(f"FATAL: {len(bad)} banked rows fail the gate, e.g. {gate_check(bad[0])}")
+    for r in tpl:
+        r["source_dataset"] = "AUG_TPL3"
+        r["provenance"] = "agent-template"
+    tpl_in = len(tpl)
+    tpl = filter_template_rows(tpl, counts)
+
+    # --- AUG_PROG ---------------------------------------------------------
+    audit = json.loads((PROG / "audit.json").read_text())
+    if audit.get("errors"):
+        raise SystemExit(f"FATAL: prog generator audit recorded {len(audit['errors'])} error(s)")
+    prog = [json.loads(l) for f in sorted(PROG.glob("prog_*.jsonl"))
+            for l in open(f, encoding="utf-8") if l.strip()]
+    for r in prog:
+        r["provenance"] = "programmatic"
+    prog_in = len(prog)
+    prog = filter_prog_rows(prog, counts)
+
+    new_rows = tpl + prog
+    idx = bench_index()
+    clean = [r for r in new_rows if not contaminated(r, *idx)]
+    counts["contaminated_dropped"] = len(new_rows) - len(clean)
+    skip_keys, skips = cot_skip_keys()
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    manifest = {
+        "source": "data/combined_80_20_v12 (minus CoT-flagged wrong TimeQA golds) + "
+                  "data/manual_aug_glm_v13 relabelled AUG_TPL3 (agent-written Python "
+                  "templates, NOT GLM chat) + data/prog_aug_v13 (AUG_PROG, programmatic)",
+        "template_rows_in": tpl_in,
+        "template_rows": sum(r["source_dataset"] == "AUG_TPL3" for r in clean),
+        "prog_rows_in": prog_in,
+        "prog_rows": sum(r["source_dataset"] == "AUG_PROG" for r in clean),
+        "cot_skip_ids_used": len(skips),
+        "filters": {},
+        "provisional": not tpl,
+        "splits": {}}
+    manifest["glm_rows"] = manifest["template_rows"]
+    manifest["glm_rows_note"] = ("backward-compatible alias of template_rows for "
+                                 "run_schedule_v13.sh; these rows are NOT GLM-authored")
+    for split in ("train", "val"):
+        base_all = [json.loads(l) for l in open(SRC / f"{split}.jsonl", encoding="utf-8")]
+        base = filter_base_rows(base_all, skip_keys, counts, split)
+        added = [r for r in clean if split_of(r) == split]
+        rows = base + added
+        with open(OUT / f"{split}.jsonl", "w", encoding="utf-8") as f:
+            for r in rows:
+                f.write(json.dumps(r, ensure_ascii=False) + "\n")
+        manifest["splits"][split] = {
+            "from_v12": len(base_all), "v12_kept": len(base), "added": len(added),
+            "out": len(rows),
+            "added_by_source": dict(Counter(r.get("source_dataset") for r in added)),
+            "added_by_category": dict(sorted(Counter(r.get("category") for r in added).items())),
+            "out_by_source": dict(Counter(r.get("source_dataset") for r in rows))}
+        print(split, manifest["splits"][split]["out"], manifest["splits"][split]["out_by_source"])
+    manifest["filters"] = dict(sorted(counts.items()))
+    print("filters:", manifest["filters"])
+    (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "make_version_folder.py"),
+                    "v13", "data/combined_80_20_v13", "--story",
+                    "v12 (minus 207 TimeQA rows whose gold the CoT pass found contradicted "
+                    "or unsupported by the passage) + AUG_TPL3: agent-written Python "
+                    "template/builder rows (scripts/glm_v13_build/; NOT GLM-5.2 chat, "
+                    "despite the plan -- audit_2026_10_04 §1.1) for relation, nli, "
+                    "dialogue, storytelling (gold-longer share balanced to 50%), extract, "
+                    "timeline, computation, relative/duration/order compare + AUG_PROG "
+                    "programmatic math/temporal data (deliberately non-LLM, kept), with "
+                    "the audit's quality filters applied (counts in data/manifest.json)."],
+                   check=True)
+    if not tpl:
+        print("\nNOTE: provisional build (no template rows). The schedule refuses it "
+              "unless V13_ALLOW_NO_GLM=1 is exported.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

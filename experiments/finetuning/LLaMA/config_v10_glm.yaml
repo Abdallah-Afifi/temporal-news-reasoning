@@ -1,5 +1,10 @@
-# LLaMA-3.2-3B-Instruct LoRA Fine-Tuning Configuration — V9 CYCLE
+# LLaMA-3.2-3B-Instruct LoRA Fine-Tuning Configuration — V10-GLM
 # ================================================================
+# SUPERSEDED 2026-09-23 BEFORE IT WAS EVER TRAINED. It uses the legacy prompt
+# (not the one evaluation uses) and data/combined_80_20_v10_glm, which holds
+# 561 benchmark-contaminated TimeQA rows (docs/audit_2026_09_23.md §1, §7).
+# Replaced by config_v11_parity.yaml. The notes below are kept as written.
+#
 # The synthetic-swap arm (docs/synthetic_data_ruleset.md). Data-only bundle:
 # hyperparameters IDENTICAL to v2..v7 — only train_data, val_data and
 # output_dir change, so v9 stays comparable to every earlier arm.
@@ -13,9 +18,12 @@
 #   real-data arm (also lost, -8.25pp TRAM), so this was never purely a data-
 #   quality question. Two things ARE different about this data specifically
 #   and are worth testing:
-#     (a) AUG_GLM2 doubles from 3,000 to 6,000 rows (the ruleset's original
-#         plan; round 1 was half of it) -- roughly doubling its share of the
-#         12,002-row train split.
+#     (a) AUG_GLM2 grows from 3,000 to 5,954 rows (round 1 was 3,000; round 2
+#         reached the ruleset's 6,000-row plan almost exactly -- 6,077 were
+#         generated, 123 quarantined for verified defects, see DATA QUALITY
+#         below). Its share of the 12,003-row train split rises from 20.0%
+#         (v9-glm) to 39.7% (this build, data/combined_80_20_v10_glm/
+#         manifest.json) -- close to the full doubling originally planned.
 #     (b) The `news` shape's noisy-retrieval mechanism changes: round 1 only
 #         taught "recognise when the answer is cleanly ABSENT" (1 in 5 rows).
 #         TIME's own Setting field is 59.6% retriever-supplied context, and
@@ -34,6 +42,45 @@
 # existing evidence behind its value. Motivation: a more heterogeneous,
 # larger-share synthetic mixture may be capacity-constrained by a small
 # adapter. Nothing else changed vs config_v9_glm.yaml.
+#
+# DATA QUALITY (round 2, final pass 2026-09-23): manifest.json's build note
+# echoes the audit's bare "Overall: FAIL" -- same as round 1, two of the
+# remaining fails are known tooling-artifact gates (in-category near-dup
+# detector; a recomputer built for the old template generator's date
+# phrasing, not GLM's prose), not a data defect -- see AUDIT.md's header note
+# and config_v9_glm.yaml's round-1 precedent. The GLM-format-aware gates
+# (ingest_glm_batch.py's check_arithmetic/check_timeline/
+# check_duration_compare/check_order_compare/check_co_temporality, plus a
+# full-corpus exact-duplicate and rationale-leak scan) pass all 5,954 rows
+# clean.
+#
+# Four REAL defects were found and corrected during round 2, all verified
+# against the category cards' own explicit rules, not just gate output:
+#   - Co_temporality: 19/300 rows (ct_lib.py) asserted two tenures "overlapped"
+#     when the stated dates prove a gap of up to ~7 years. Purged. Added
+#     check_co_temporality to ingest_glm_batch.py so this can't recur.
+#   - Order_Compare: a round-2 batch put gold on "Fact 1 earlier" 47/50 times
+#     (94%), pushing the category to 64% vs the card's stated 38% shortcut-
+#     probe cap. Fixed by a 70-row corrective batch forced toward Fact-2/
+#     near-tie (0 more Fact-1 rows) -- researcher's explicit choice over
+#     quarantining, since generation was cheap here.
+#   - Duration_Compare (batch09, 69 rows) and Relative_Reasoning (batch13, 47
+#     rows): same shortcut-cap violation pattern (round-1 data was fine in
+#     both; the skew was 100% round-2). Fixed by quarantining the excess
+#     majority-gold rows from the most-skewed batches first -- researcher's
+#     explicit choice over regenerating, since both categories had headroom
+#     above their floors.
+#   - Timeline: the k=5 (5-fact sort) permutation "C,E,A,D,B" recurred 13/65
+#     times against an expected ~0.5, spread across 6 unrelated batches (not
+#     one bad file) -- not the trivial ascending-order shortcut, but still
+#     overconcentrated. Trimmed 17 rows (mostly k=5) to restore the Poisson-
+#     bound coverage gate.
+# A slice-tag metadata bug (475 rows, 6 categories carrying "slice":"A"
+# instead of their correct B/C) was also found and fixed; confirmed inert for
+# training (never read by build_v9_training_data.py, only by the unused old
+# template generator) but corrected for hygiene. scripts/audit_v9_aug.py's
+# ccnews-provenance header line was also fixed to describe GLM chat
+# generation instead of the old corpus-grounded pipeline.
 #
 # ATTRIBUTION WARNING: three things changed from v9-glm at once (data volume,
 # data content via the near-miss mechanism, LoRA capacity). If v10-glm's

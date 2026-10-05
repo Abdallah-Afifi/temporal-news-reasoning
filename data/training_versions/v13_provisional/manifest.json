@@ -1,0 +1,25 @@
+{
+ "version": "v13_provisional",
+ "dir": "data/training_versions/v13_provisional/data",
+ "train_rows": 22314,
+ "val_rows": 5660,
+ "synthetic_pct": 76.0,
+ "general_rehearsal_pct": 0.0,
+ "composition": {
+  "AUG_PROG": 10510,
+  "AUG_GLM2": 5024,
+  "TimeQA": 4504,
+  "AUG_SEQ": 1019,
+  "TLQA": 855,
+  "AUG_GLM": 402
+ },
+ "story": "PROVISIONAL: v12 + AUG_PROG only, 0 template/GLM rows -- the data behind the v13-prog pilot (+11.26pp dev, results/hpo_v13_pilot/score.json). Snapshotted 2026-10-05 before the real v13 rebuild overwrote data/combined_80_20_v13; the copy in data/ is now the ONLY copy and is authoritative. The 5,024 'AUG_GLM2' rows are v12's own AUG_GLM2 corpus, not a v13 wave (audit_2026_10_04 \u00a76.3).",
+ "results": "v13-prog pilot (dev only, not quotable): objective +11.26pp vs zs; see results/hpo_v13_pilot/score.json",
+ "results_dir": null,
+ "size_mb": 94.5,
+ "sha256": {
+  "train.jsonl": "101cc4993585c188ce49bfd0120320a702694772ebe5005bdd0013758e6df50c",
+  "val.jsonl": "1f773a1327a0d77c95a033507cd7d65aa29394706edd4884985cc292f9460b81",
+  "manifest.json": "f1d9db00f7505e400788ddc30f83ac1f243c1850d07408e9b1368c481898f361"
+ }
+}

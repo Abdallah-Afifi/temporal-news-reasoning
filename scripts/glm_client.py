@@ -27,7 +27,8 @@ import time
 
 import requests
 
-API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
+API_URL = os.environ.get(
+    "GLM_API_URL", "https://open.bigmodel.cn/api/paas/v4/chat/completions")
 DEFAULT_MODEL = "glm-4.5-flash"
 
 # Paid-tier models, in preference order, tried by --model auto.

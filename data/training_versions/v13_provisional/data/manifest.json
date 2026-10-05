@@ -1,0 +1,49 @@
+{
+  "source": "data/combined_80_20_v12 + data/manual_aug_glm_v13 (AUG_GLM3) + data/prog_aug_v13 (AUG_PROG)",
+  "glm_rows": 0,
+  "prog_rows": 13200,
+  "contaminated_dropped": 1,
+  "provisional": true,
+  "splits": {
+    "train": {
+      "from_v12": 11804,
+      "added": 10510,
+      "out": 22314,
+      "added_by_source": {
+        "AUG_PROG": 10510
+      },
+      "added_by_category": {
+        "prog_arith_clock": 1191,
+        "prog_arith_month": 1181,
+        "prog_computation": 1182,
+        "prog_duration_compare": 651,
+        "prog_extract": 1206,
+        "prog_order_compare": 633,
+        "prog_ordering_seq": 623,
+        "prog_ordering_tf": 643,
+        "prog_relation": 1598,
+        "prog_timeline": 1602
+      }
+    },
+    "val": {
+      "from_v12": 2971,
+      "added": 2689,
+      "out": 5660,
+      "added_by_source": {
+        "AUG_PROG": 2689
+      },
+      "added_by_category": {
+        "prog_arith_clock": 308,
+        "prog_arith_month": 319,
+        "prog_computation": 318,
+        "prog_duration_compare": 149,
+        "prog_extract": 294,
+        "prog_order_compare": 167,
+        "prog_ordering_seq": 177,
+        "prog_ordering_tf": 157,
+        "prog_relation": 402,
+        "prog_timeline": 398
+      }
+    }
+  }
+}

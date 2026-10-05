@@ -95,6 +95,11 @@ results_rerun/
 !results/**/.gitkeep
 !results/rescored/*.json
 !results/overlap_audit_fullzip.json
+# v11 HPO: the pre-registered plan, per-trial scores and the selection are the
+# evidence that hyperparameters were chosen on dev only -- keep them tracked.
+!results/hpo_v11/plan.json
+!results/hpo_v11/best.json
+!results/hpo_v11/trials/*/score.json
 
 # ----- Logs -----
 logs/
@@ -122,6 +127,11 @@ experiments/finetuning/**/logs/
 
 # ----- Local-only CoT / manual annotation working files -----
 data/cot/
+data/cot_raw/
+data/cot_verified/*.jsonl
+data/cot_verified/_rejected.jsonl
+data/cot_packets/ORDERS_grounded.txt
+data/cot_packets/answer_key.json
 
 # ----- Internal working notes (not for publication) -----
 #
@@ -184,3 +194,19 @@ data/manual_aug_glm/.ingested.json
 # avoids a file that silently lies about what is still needed.
 data/glm_raw/
 data/glm_packets/
+# v12 corrected-card corpus (docs/v12_plan.md) -- same convention as v11's
+data/manual_aug_glm_v12/*.jsonl
+data/manual_aug_glm_v12/.ingested.json
+data/glm_raw_v12/
+data/glm_packets_v12/
+# v13 corpora (docs/v13_plan.md, audit_2026_10_04) -- same convention as v12.
+# AUG_TPL3 rows (agent-written templates, scripts/glm_v13_build/ is versioned)
+data/manual_aug_glm_v13/*.jsonl
+data/manual_aug_glm_v13/.ingested.json
+data/glm_raw_v13/
+data/glm_packets_v13/
+# AUG_PROG: regenerable from scripts/generate_v13_prog_data.py; audit.json stays
+data/prog_aug_v13*/*.jsonl
+# CoT packet orders beyond the first batch (answer_key.json is excluded above)
+data/cot_packets/ORDERS_grounded_b*.txt
+# training_versions/**/*.jsonl is already excluded above; manifests stay versioned

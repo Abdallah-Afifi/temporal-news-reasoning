@@ -1,0 +1,47 @@
+# v13-r32: v13 data, LoRA r=32 / alpha=64 (single variable vs
+# v13-base; Notes.md anticipated a higher rank once data grew).
+# Pre-registered in docs/v13_plan.md §1. Base: config_v13_base.yaml.
+
+model_path: models/Llama-3.2-3B-Instruct
+seed: 42
+dtype: bfloat16
+prompt_format: eval_parity
+train_data: data/combined_80_20_v13/train.jsonl
+val_data: data/combined_80_20_v13/val.jsonl
+max_seq_length: 2048
+learning_rate: 0.000177
+num_train_epochs: 1
+warmup_ratio: 0.08185086660174143
+weight_decay: 0.010909498032426036
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+gradient_checkpointing: true
+attn_implementation: sdpa
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+tf32: true
+logging_steps: 10
+eval_strategy: 'no'
+save_strategy: 'no'
+load_best_model_at_end: false
+early_stopping_patience: 0
+final_eval: false
+lora_r: 32
+lora_alpha: 64
+lora_dropout: 0.05
+target_modules:
+- q_proj
+- k_proj
+- v_proj
+- o_proj
+- gate_proj
+- up_proj
+- down_proj
+load_in_4bit: false
+output_dir: checkpoints/llama_v13_r32
+progress_dir: experiments/finetuning/LLaMA/Progress
+report_to: []

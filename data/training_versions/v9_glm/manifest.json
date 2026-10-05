@@ -1,0 +1,24 @@
+{
+ "version": "v9_glm",
+ "dir": "data/combined_80_20_v9_glm",
+ "train_rows": 12002,
+ "val_rows": 2998,
+ "synthetic_pct": 31.8,
+ "general_rehearsal_pct": 0.0,
+ "composition": {
+  "TimeQA": 4963,
+  "TLQA": 3218,
+  "AUG_GLM2": 2400,
+  "AUG_SEQ": 1019,
+  "AUG_GLM": 402
+ },
+ "story": "Synthetic-swap arm with GENUINE GLM-chat AUG_GLM2 (3,000 rows, replacing the template-generated v9 slice). LEGACY prompt: trained on a different prompt from the evaluation prompt (audit 2026-09-23 \u00a71); TimeQA pool carries the 561 contaminated rows (\u00a77).",
+ "results": "TIME 40.79 / TimeBench 45.05 / TRAM 44.45 (vLLM, full pools, legacy prompt) \u2014 below zero-shot on all three.",
+ "results_dir": "results/corrected/v9_glm_vllm",
+ "size_mb": 80.3,
+ "sha256": {
+  "train.jsonl": "5328a119078e15c96b8c5b0280544a1e63589189f9db54fd52b8d3389cd58674",
+  "val.jsonl": "271d13c91194f56b9112242cfa2257cfd23a2b2dfb0701b9c0feacc5b5b84122",
+  "manifest.json": "ae97290e6fc0d8578bd823088983b19714ba6589a5ddd4669a63dde97d8041ce"
+ }
+}

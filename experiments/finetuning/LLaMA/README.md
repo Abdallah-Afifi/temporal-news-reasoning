@@ -3,6 +3,20 @@
 This directory contains the complete LoRA fine-tuning pipeline for
 **meta-llama/Llama-3.2-3B-Instruct** on the temporal-news-reasoning curriculum.
 
+> **Current arm: v11 — `config_v11_parity.yaml` (2026-09-23).** Every earlier
+> config trains with `prompt_format: legacy` (the default): a custom system
+> prompt and "Context:/Question:" with options inside the question — which is
+> NOT the prompt `scripts/run_eval_vllm.py` evaluates with. `prompt_format:
+> eval_parity` trains on the exact evaluation prompt
+> (`../shared/eval_parity.py`: no system message, separate `Choices:` block,
+> TRAM's Premise/Hypothesis layout for NLI, template date pinned to
+> 26 Jul 2024). A parity arm MUST be evaluated with
+> `run_eval_vllm.py --system-prompt none --date-string "26 Jul 2024"`.
+> Hyperparameters for v11 are chosen on a held-out dev split by
+> `scripts/hpo_v11.py`, not by `hyperparameter_search.py` (superseded — it
+> optimised val loss on an older dataset; see `docs/audit_2026_09_23.md` §5).
+> Protocol: `docs/hpo_v11_protocol.md`.
+
 ---
 
 ## Directory Structure

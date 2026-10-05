@@ -27,6 +27,46 @@ result and its attribution: fine-tuning on Wikipedia-style temporal QA moves
 only the categories the synthetic slices directly target, and costs broad
 temporal ability everywhere else.
 
+**2026-09-23 audit — that reading needs a correction.** Every fine-tuned arm
+was trained on a different prompt from the one it was evaluated on (custom
+system prompt + bare Context/Question at training; the zero-shot instruction
+prompt with a separate Choices block and an NLI Premise/Hypothesis layout at
+evaluation), so the deltas above measure fine-tuning *plus a prompt switch*.
+The audit also found benchmark contamination through shared TimeQA/TimeBench
+passages and a wall-clock date stamped into every prompt. Details:
+[`docs/audit_2026_09_23.md`](docs/audit_2026_09_23.md). The fixed arm, **v11**
+(train/eval prompt parity, decontaminated data, hyperparameters selected on a
+held-out dev split and reported on test-minus-dev only), is specified in
+[`docs/hpo_v11_protocol.md`](docs/hpo_v11_protocol.md) and runs with
+`scripts/run_schedule_v11.sh`. **Result (test-minus-dev, same
+prompt/engine/date as zero-shot, three seeds): v11 beats zero-shot on all
+three benchmarks, with every seed** — mean TIME +5.27pp (±0.43), TimeBench
++1.48pp (±0.39), TRAM +6.54pp (±0.68); seed 42 McNemar z = +39 / +4.2 /
++139. The first arm in the campaign to do so, and in every TIME retrieval
+setting. It still regresses on some categories (TimeBench temporal_dialogue
+−18, TRAM storytelling −11), addressed in v12. Details:
+`docs/results_and_methodology.md` §10.
+
+**v12 (2026-09-28)** tested three single-variable fixes against v11-best
+(2 epochs; corrected storytelling/relation/ordering/temporal_dialogue/
+duration training cards; +4096 context). All three still beat zero-shot
+on all three benchmarks. Measured against v11's three-seed mean (not the
+lucky seed 42), **2 epochs is a clean win** (TimeBench +2.97pp, TRAM
++2.29pp, TIME neutral); the card fixes and longer context give only
+marginal gains. Details: `docs/results_and_methodology.md` §11 and
+`docs/audit_2026_10_04.md` §5.1.
+
+**Mistral-7B-Instruct-v0.3 (2026-10-02)** — the same audit fixes and
+protocol, ported to a second base model. HPO-lite search (re-run from
+scratch rather than reusing LLaMA's hyperparameters) picked a learning
+rate ~5x lower than LLaMA's winner, confirming that choice. **Beats
+zero-shot on all three benchmarks with every seed** (42/43/44, mean ± sd):
+TIME +8.53pp (±0.40), TimeBench +10.41pp (±0.40), TRAM +4.61pp (±0.35),
+every seed McNemar z > 28. This is a model-internal result only —
+Mistral's and LLaMA's zero-shot baselines differ in both directions
+across benchmarks, so no LLaMA-vs-Mistral ranking is licensed. Details:
+`docs/results_and_methodology.md` §12.
+
 **2. The RAG system** (`temporal_rag/`, `src/rag/`, `src/temporal/`,
 `src/pipeline/`) — FAISS indexing, temporal filtering, a Neo4j temporal
 knowledge graph, GLiNER entity extraction, and a Gradio UI. It is a
@@ -45,14 +85,22 @@ evaluated chain**: no number in the results tables passes through it.
 
 ### Not claimed
 
-- **No large-model comparison exists in this repository.** There is no GPT-4 /
-  Claude / 70B baseline and no cost or latency comparison, so the project does
-  not and cannot claim to "approach large model performance at a fraction of
-  the cost".
-- **One model, one seed.** Every corrected number is LLaMA-3.2-3B-Instruct
-  with seed 42, single run, greedy decoding, no confidence intervals. Qwen and
-  Mistral artifacts exist in `results/` but predate the frozen protocol and
-  are not comparable.
+- **No like-for-like large-model comparison exists.** GPT-4/GPT-3.5/70B were
+  never run under this project's protocol. The benchmark papers' own published
+  GPT numbers are set beside v11 in `docs/results_and_methodology.md` §10.4,
+  with the reasons they are not comparable (different prompts, samples and
+  metrics): on TRAM and TimeBench v11 is ~20–28pp below GPT-4. So the project
+  does not claim to "approach large model performance at a fraction of the
+  cost".
+- **Mostly one model, one exception.** Every number through v12 is
+  LLaMA-3.2-3B-Instruct, greedy decoding. Arms v1–v10 are single runs
+  (seed 42, no confidence intervals); v11 is three seeds (42/43/44), sd
+  0.4–0.7pp; v12 is a single seed per arm, borrowing v11's noise floor
+  (§11.3). Mistral-7B-Instruct-v0.3 **is** under the frozen protocol as of
+  2026-10-02 (`docs/results_and_methodology.md` §12) — three seeds, sd
+  0.35–0.40pp, not directly comparable to LLaMA's numbers (different zero-shot
+  baselines), only comparable to its own zero-shot. Qwen artifacts in
+  `results/` still predate the frozen protocol and are not comparable.
 
 ### Key Components
 

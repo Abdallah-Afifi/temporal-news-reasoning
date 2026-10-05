@@ -9,6 +9,25 @@ TimeBench 21,075 · TRAM 980,918.
 
 ---
 
+> **READ FIRST — 2026-09-23 audit ([`audit_2026_09_23.md`](audit_2026_09_23.md)).**
+> Every fine-tuned arm in this document (v1 → v9-glm) was **trained on one
+> prompt and evaluated on another**: training used a custom system prompt and
+> "Context:/Question:" with options inside the question; evaluation used
+> `run_baselines._build_zero_shot_prompt` — three instruction lines, a
+> separate `Choices:` block with a letter instruction, and a Premise/
+> Hypothesis layout for NLI — which zero-shot follows natively and the
+> fine-tuned models never saw. Every "fine-tuned vs zero-shot" delta below
+> therefore measures **fine-tuning + a prompt switch**, not fine-tuning. The
+> numbers are correct as measured; that is how they must be read.
+> Also found: the chat template stamps the run day's date into every prompt;
+> 561 TimeQA training rows share passages with TimeBench test items (298 with
+> the identical gold, up to ~1.4pp of fine-tuned TimeBench); TIME/TimeBench
+> "zero-shot" is the HF run while fine-tuned arms are vLLM (use `zs-vllm`);
+> TRAM counts each NLI pair twice (MCQ + SAQ). The fixed arm is **v11**
+> (parity prompt, decontaminated data, dev-selected hyperparameters):
+> [`hpo_v11_protocol.md`](hpo_v11_protocol.md). v11 numbers are quoted only
+> on test-minus-dev (`results/rescored/v11_test_minus_dev.json`).
+
 ## 1. Headline table
 
 (**TRAM column re-run 2026-09-13** after the prompt-content bug — the figures
@@ -685,3 +704,267 @@ what n does and does not mean here):
    demonstrated twice.
 4. v1's mild fine-tune is the best TRAM arm — the mildest intervention
    costs the least off-domain. Dose-responsive at the extremes.
+
+---
+
+## 10. v11 — the prompt-parity arm (2026-09-25)
+
+Protocol: [`hpo_v11_protocol.md`](hpo_v11_protocol.md) (pre-registered). Fixes
+from [`audit_2026_09_23.md`](audit_2026_09_23.md): train/eval prompt parity,
+pinned template date, decontaminated data, hyperparameters selected on a
+held-out dev split. Every number below is on **test-minus-dev** (the 17,500
+dev items removed from every arm alike), vLLM, date pinned, paired against
+`zs-vllm-pinned` — the base model under the identical prompt and engine.
+
+### 10.1 Selection
+
+11 pre-registered trials (`results/hpo_v11/plan.json`); 10 of 11 beat
+zero-shot on dev. Winner **t09**: lr 1.77e-4, 1 epoch, LoRA r=16/alpha=32,
+100% of AUG_GLM2 (dev objective +5.48pp; AUG_GLM2's authorship is not
+confirmed GLM chat — 15% script-built, most of the rest written by the
+GLM-backed coding agent, see `data/manual_aug_glm/PROVENANCE.md`; the
+measured gains are unaffected). The anchor t00 (v10's never-searched
+lr 4.62e-4 × 3 epochs) is the only loser (−2.00): the old recipe overtrained.
+
+### 10.2 Final verdict — three seeds (2026-09-26, `scripts/summarize_v11.py`)
+
+Pre-registered rule (§9 of the protocol): seed-42 above zero-shot, McNemar
+z > 1.96, and the three-seed mean above zero-shot. **All three hold on all
+three benchmarks**, and every individual seed is above zero-shot everywhere.
+
+| Benchmark | zs-vllm-pinned | seed 42 | seed 43 | seed 44 | mean ± sd | Δ mean |
+|---|---|---|---|---|---|---|
+| TIME | 41.15 | 46.80 | 45.95 | 46.51 | 46.42 ± 0.43 | **+5.27** |
+| TimeBench | 44.83 | 46.48 | 46.58 | 45.85 | 46.30 ± 0.39 | **+1.48** |
+| TRAM | 46.55 | 53.74 | 52.38 | 53.17 | 53.10 ± 0.68 | **+6.54** |
+
+Seed-to-seed sd (0.4–0.7pp) is the noise floor used by `v12_plan.md` §6.
+Source: `results/rescored/v11_test_minus_dev.json` + `_verdict.json`.
+
+### 10.2a Seed 42 in detail
+
+| Benchmark | n | zs-vllm-pinned | v11-best | Δ | McNemar z | Δ macro | Δ no-abstain |
+|---|---|---|---|---|---|---|---|
+| TIME | 99,939 | 41.15 | 46.80 | **+5.65** | +39.05 | +5.33 | **+5.05** |
+| TimeBench | 18,575 | 44.83 | 46.48 | **+1.65** | +4.21 | +0.67 | +1.65 |
+| TRAM | 970,918 | 46.55 | 53.74 | **+7.19** | +138.5 | **+4.99** | +7.19 |
+
+TIME gains hold in every retrieval setting (no-abstain Δ: base +5.06, bm25
++5.52, hybrid +5.04, vector +4.56) — the gold-vs-retrieved sign flip that
+cancelled every earlier arm (§1.0) is gone. Read TIME via the no-abstain
+column: ~0.6pp of the headline comes from the abstain-option bucket (§1.1;
+v11 85.4% vs zero-shot 54.4% on those 2,427 items). TRAM significance is
+overstated by the MCQ/SAQ NLI duplication; its macro (+4.99) is the safer
+effect size.
+
+**Not a scorer artifact.** Zero-shot leans on the answer-extraction rescue
+rules far more than v11 does (rule credit: TIME 0.98 vs 0.23pp, TimeBench
+10.95 vs 0.02, TRAM 27.49 vs 0.11). Scored strictly on the model's first
+line, with no rules, the v11 lead widens: +6.42 / +12.93 / +34.55.
+
+### 10.3 Where v11 is WORSE than zero-shot (real regressions)
+
+| Category | zs | v11 | Δ | Mechanism (measured) |
+|---|---|---|---|---|
+| TimeBench temporal_dialogue | 78.18 | 59.73 | −18.45 | on-list-but-wrong 31.4% vs 22.3%; 8.4% off-list, largely paraphrases ("48 hours" vs option "forty-eight hours") |
+| TRAM storytelling | 76.67 | 65.36 | −11.31 | on-list-but-wrong 34.4% vs 23.1% — a choice error, not format. Likely cause: the AUG_GLM2 storytelling card teaches "the wrong ending contradicts a stated date", while TRAM's endings are commonsense plausibility (ROCStories) — a different decision rule |
+| TimeBench duration | 77.80 | 70.06 | −7.74 | on-list-but-wrong 25.5% vs 20.9%; 3.9% off-list incl. learned abstention |
+| TIME Extract | 9.59 | 6.95 | −2.64 | multi-select golds ("B  C"); no training analogue (audit §11) |
+
+Largest gains: TIME Computation +30.63, TIME Counterfactual +10.82, TRAM
+ambiguity +13.49, TRAM NLI +10.21, TimeBench temporal_qa +12.78.
+
+### 10.4 Versus published GPT results (NOT a like-for-like comparison)
+
+GPT was not run under this protocol. The numbers below are the benchmark
+papers' own, with different prompts, item samples and metrics — they bound
+the picture, they do not support a "beats GPT" or "loses to GPT by X" claim.
+
+| Benchmark | Published (paper's protocol) | v11-best (this protocol) |
+|---|---|---|
+| TRAM (macro over 10 tasks; paper samples 300/task) | GPT-4 zero-shot 80.1, 5-shot CoT 84.4; GPT-3.5 zero-shot 69.4; Llama-2-70B 61.4; human 95.2 | 52.44 macro |
+| TimeBench (paper mixes accuracy and option-level EM/F1) | GPT-4 zero-shot 68.3; GPT-3.5 57.4; LLaMA2-70B 44.1, 13B 42.6, 7B 34.3; human 91.5 (few-shot) | 46.48 EM (45.78 macro) |
+| TIME (paper: GPT-4o zero-shot on TIME-Lite, F1) | GPT-4o mean of 11 task scores ≈ 60.3 | 45.16 macro EM on full TIME |
+
+Reading: on TRAM and TimeBench v11 is well below GPT-4 and GPT-3.5, and the
+gap (≈20–28pp) is too large for metric differences to plausibly close. On
+TimeBench it sits numerically above the paper's LLaMA2-70B zero-shot figure,
+but the metrics differ. On TIME, per-task results are mixed against GPT-4o
+(nominally higher on Computation, Order_Reasoning, Co_temporality,
+Counterfactual, Timeline; much lower on Localization, Order_Compare,
+Explicit_Reasoning, Duration_Compare, Extract) — but TIME-Lite is a different,
+manually verified subset scored with F1, so no ranking is claimed. A valid
+comparison needs GPT run on the same items with the same prompt and scorer
+(e.g. a stratified sample of test-minus-dev), or v11 evaluated on TIME-Lite
+with the paper's F1. Sources: TRAM arXiv:2310.00835, TimeBench
+arXiv:2311.17667, TIME arXiv:2505.12891 (PDFs also in `/home/g2/Thesis/Papers`).
+The thesis proposal's "GPT-4 ~75% on TIME-News" is a planning estimate, not a
+measured figure.
+
+### 10.5 Known protocol weakness (both arms alike)
+
+56.8% of TIME prompts are longer than the 2,048-token training window, so v11
+is evaluated on context lengths it never trained on; ~4.9% exceed the
+4,096-token eval window and are left-truncated, which cuts the instruction
+lines and chat header. Identical for both arms, so the comparison is fair,
+but a next cycle should train at a longer max_seq_length or truncate the
+context rather than the whole prompt.
+
+---
+
+## 11. v12 — three single-variable arms vs v11-best (2026-09-28)
+
+Protocol: [`v12_plan.md`](v12_plan.md) (pre-registered). Three single-variable
+arms, each changing exactly one thing from its control, same v11 protocol
+otherwise (test-minus-dev, vLLM, pinned date `26 Jul 2024`, paired against
+`zs-vllm-pinned`):
+
+- **v11-2ep** — v11's own data/recipe, 2 epochs instead of 1. Control: v11-best.
+- **v12-data** — t09 recipe, corrected storytelling/relation/ordering/
+  temporal_dialogue/duration cards (the arms chasing v11's §10.3 regressions).
+  Control: v11-best.
+- **v12-ctx** — v12-data + `max_seq_length` 2048→4096. Control: v12-data.
+
+### 11.1 Versus zero-shot — all three win everywhere
+
+| Benchmark | zs-vllm-pinned | v11-best | v11-2ep | v12-data | v12-ctx |
+|---|---|---|---|---|---|
+| TIME | 41.15 | 46.80 (+5.65) | 46.12 (+4.97) | 46.31 (+5.16) | 46.04 (+4.89) |
+| TimeBench | 44.83 | 46.48 (+1.65) | 49.27 (+4.44) | 46.93 (+2.10) | 47.77 (+2.94) |
+| TRAM | 46.55 | 53.74 (+7.19) | 55.39 (+8.83) | 54.05 (+7.49) | 54.17 (+7.61) |
+
+McNemar z on every cell exceeds +34 (TIME), +4.2 (TimeBench) and +138
+(TRAM) — all four arms clear zero-shot by a wide margin, same as v11.
+Source: `results/rescored/v12_test_minus_dev.json`.
+
+### 11.2 Versus each arm's own control (corrected 2026-10-04, `audit_2026_10_04.md` §5.1)
+
+Beating zero-shot was already true of v11-best; the question v12 asks is
+whether each change beats its *own* control past v11's seed noise.
+
+**The control is the v11 three-seed mean (46.42 / 46.30 / 53.10), not seed
+42.** Seed 42 is the HPO winner reused directly and the best of the three
+seeds on TIME and TRAM, so comparing against it alone is biased against
+every v12 arm. A first version of this section did exactly that and
+reported a "real TIME loss" for v11-2ep that is an artifact of the lucky
+seed. Noise for a single run vs a 3-seed mean ≈ sd·√(4/3): 0.50 / 0.45 /
+0.79pp; for single run vs single run ≈ sd·√2: 0.61 / 0.55 / 0.96pp.
+
+| Arm vs control | TIME | TimeBench | TRAM |
+|---|---|---|---|
+| v11-2ep vs v11 mean | −0.30 (noise) | **+2.97** | **+2.29** |
+| v12-data vs v11 mean | −0.11 (noise) | +0.63 (marginal) | +0.95 (marginal) |
+| v12-ctx vs v12-data | −0.27 (noise) | +0.84 (marginal) | +0.12 (noise) |
+
+- **v11-2ep is a clean win**: real TimeBench and TRAM gains, TIME neutral
+  (46.12 sits inside the v11 seed range 45.95–46.80).
+- **v12-data**: the targeted TRAM categories moved the right way
+  (storytelling −11.3→−8.1pp vs zero-shot, ordering −0.5→+1.9pp), pooled
+  gains are marginal (≈1.2–1.4× noise), TIME neutral.
+- **v12-ctx**: a marginal further TimeBench gain over v12-data, nothing on
+  TIME or TRAM.
+- No arm moves TIME; the epoch change is the only clearly effective one.
+
+### 11.3 Known caveat
+
+v12 ran one seed per arm (seed 42, like v1–v10) and borrows v11's
+three-seed noise floor rather than measuring its own — the "past noise" /
+"within noise" calls above assume v12's run-to-run variance resembles
+v11's. Not independently verified.
+
+---
+
+## 12. Mistral-7B-Instruct-v0.3 — same protocol, second model (2026-10-02)
+
+Protocol: [`mistral_plan.md`](mistral_plan.md). The v11 audit fixes (prompt
+parity via `eval_parity`, the `seed=` Trainer fix, external dev-selected
+checkpoints) ported to `experiments/finetuning/Mistral/`; no date-pin fix
+needed — Mistral-7B-Instruct-v0.3's chat template carries no date field at
+all, so audit §2 is inapplicable rather than unfixed.
+
+**The standing "Mistral banned from vLLM" restriction (D46/D53) was
+resolved, not worked around.** The original 2026-09-03 parity check
+compared vLLM's zero-shot output against a *different* (fine-tuned)
+model's HF predictions — a broken `--reference` path in
+`logs/vllm_parity_chain.sh`, not an engine bug (matching D57's 2026-09-09
+leading theory, never GPU-confirmed until now). Re-checked against the
+correct reference: 95.18% agreement, −0.051pp delta — engine-consistent.
+`zs-vllm-mistral` and `mistral-best` are now first-class arms in
+`rescore_v5_protocol.py`.
+
+### 12.1 HPO-lite selection (dev split, 6 pre-registered trials)
+
+Reduced-scope HPO vs v11's 11 trials (no `aug_fraction` knob, fixed seed
+20260928, anchor = LLaMA's t09 hyperparameters transplanted):
+
+| id | lr | epochs | r | objective ± SE | ΔTIME | ΔTimeBench | ΔTRAM | Δmacro |
+|---|---|---|---|---|---|---|---|---|
+| **m05 (winner)** | 3.72e-05 | 1 | 16 | **+7.84** ± 0.42 | +7.82 | +10.88 | +4.81 | +9.51 |
+| m02 | 2.18e-04 | 1 | 8 | +7.78 ± 0.44 | +9.84 | +8.36 | +5.13 | +8.89 |
+| m00 (anchor) | 1.77e-04 | 1 | 16 | +5.40 ± 0.45 | +8.10 | +4.68 | +3.41 | +7.31 |
+| m01 | 1.47e-04 | 2 | 32 | +5.29 ± 0.45 | +6.42 | +6.08 | +3.36 | +5.67 |
+| m03 | 4.07e-04 | 2 | 16 | −5.05 ± 0.49 | −0.08 | −9.24 | −5.82 | −4.31 |
+| m04 | 3.57e-04 | 1 | 32 | −5.26 ± 0.49 | −4.32 | −2.96 | −8.50 | −4.25 |
+
+**m05 and m02 are within 2 SE of each other on dev** — the ranking between
+them is not resolved by this dev set; m05 was taken as the winner per the
+pre-registered argmax rule, not because the difference is established.
+Notably, m05's learning rate (3.72e-5) is ~5x *lower* than LLaMA's winning
+t09 (1.77e-4) — confirms the decision to re-search Mistral's hyperparameters
+from scratch rather than transplant LLaMA's was the right call; the anchor
+(m00, LLaMA's recipe verbatim) placed third. Source: `results/hpo_mistral/`.
+
+### 12.2 Final verdict — one seed (test-minus-dev)
+
+The winning trial's own adapter was reused directly for the full-test eval
+(no retrain — same trick `hpo_v11.py`'s final-config step uses).
+
+| Benchmark | n | zs-vllm-mistral | mistral-best | Δ | McNemar z | Δ macro | Δ no-abstain |
+|---|---|---|---|---|---|---|---|
+| TIME | 99,939 | 37.25 | 45.34 | **+8.09** | +52.07 | +7.38 | +7.82 |
+| TimeBench | 18,575 | 45.40 | 55.84 | **+10.44** | +28.72 | +12.10 | +10.44 |
+| TRAM | 970,918 | 52.13 | 56.55 | **+4.42** | +96.32 | +7.32 | +4.42 |
+
+Beats zero-shot on all three benchmarks, by a wide McNemar margin on
+every one — the same verdict pattern v11 established for LLaMA.
+Source: `results/rescored/mistral_test_minus_dev.json`.
+
+### 12.2a Three seeds (2026-10-05)
+
+Seeds 43/44 of the exact m05 recipe (seed the only variable;
+`scripts/run_mistral_seeds.sh`). Same pre-registered rule as v11 (§10.2):
+every seed above zero-shot, McNemar z > 1.96, mean above zero-shot —
+**all three hold on all three benchmarks.**
+
+| Benchmark | zs-vllm-mistral | seed 42 | seed 43 | seed 44 | mean ± sd | Δ mean |
+|---|---|---|---|---|---|---|
+| TIME | 37.25 | 45.34 | 45.88 | 46.11 | 45.78 ± 0.40 | **+8.53** |
+| TimeBench | 45.40 | 55.84 | 55.40 | 56.19 | 55.81 ± 0.40 | **+10.41** |
+| TRAM | 52.13 | 56.55 | 57.14 | 56.52 | 56.73 ± 0.35 | **+4.61** |
+
+McNemar z per seed: TIME +52.1 / +55.7 / +57.7, TimeBench +28.7 / +28.0 /
++29.0, TRAM +96.3 / +113.8 / +98.2. Seed sd (0.35–0.40pp) is Mistral's own
+noise floor, slightly tighter than LLaMA's (0.4–0.7pp). Seed 42 — the HPO
+winner, quoted alone until now — sits within 0.5pp of the mean everywhere,
+so unlike v11 it was not a notably lucky draw.
+
+### 12.3 Not a LLaMA-vs-Mistral comparison
+
+Mistral's own zero-shot differs from LLaMA's zero-shot in *both*
+directions across benchmarks (TIME 37.25 vs 41.15, TimeBench 45.40 vs
+44.83, TRAM 52.13 vs 46.55) — different base models internalize the same
+prompt differently, and no shared item-level pairing was computed between
+the two models' predictions. This result licenses only a model-internal
+claim: the identical fine-tuning methodology that helped LLaMA also helps
+Mistral. It does not license any claim about which base model is better,
+or by how much.
+
+### 12.4 Known caveats
+
+- **Reading the results file.** Read Mistral arms only from
+  `results/rescored/mistral_test_minus_dev.json` — that file pairs *every*
+  arm, LLaMA included, against Mistral's zero-shot.
+- **QLoRA→fp16.** Adapters are trained against the 4-bit NF4 base and
+  evaluated merged into the fp16 base (consistently for HPO, every seed, and
+  the fp16 zero-shot), so the deltas are valid but measure "fp16 base +
+  QLoRA adapter", not the trained 4-bit model.

@@ -1,0 +1,83 @@
+{
+  "trial": {
+    "id": "t01",
+    "learning_rate": 3.86e-05,
+    "num_train_epochs": 2,
+    "lora_r": 16,
+    "aug_fraction": 0.0
+  },
+  "objective": 1.9133333333333364,
+  "objective_se_pp": 0.39894304801005814,
+  "benchmarks": {
+    "time": {
+      "n": 5000,
+      "v5_pct": 43.7,
+      "macro_pct": 42.7819551792216,
+      "no_abstain_pct": 44.44899631298648,
+      "by_setting": {
+        "bm25": {
+          "v5_pct": 51.56,
+          "n": 993,
+          "no_abstain_pct": 53.14,
+          "no_abstain_n": 954
+        },
+        "vector": {
+          "v5_pct": 53.27,
+          "n": 993,
+          "no_abstain_pct": 55.19,
+          "no_abstain_n": 953
+        },
+        "hybrid": {
+          "v5_pct": 51.16,
+          "n": 993,
+          "no_abstain_pct": 52.45,
+          "no_abstain_n": 959
+        },
+        "base": {
+          "v5_pct": 31.47,
+          "n": 2021,
+          "no_abstain_pct": 31.45,
+          "no_abstain_n": 2016
+        }
+      },
+      "mcnemar_b_c": [
+        309,
+        438
+      ],
+      "delta_se_pp": 0.546626014748658,
+      "d_v5_pct": 2.5800000000000054,
+      "d_macro_pct": 2.9546502802192904,
+      "d_no_abstain_pct": 3.605079885292909
+    },
+    "timebench": {
+      "n": 2500,
+      "v5_pct": 47.88,
+      "macro_pct": 48.288555334534614,
+      "no_abstain_pct": 47.88,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        236,
+        338
+      ],
+      "delta_se_pp": 0.9583318840568751,
+      "d_v5_pct": 4.080000000000005,
+      "d_macro_pct": 4.25363290465684,
+      "d_no_abstain_pct": 4.080000000000005
+    },
+    "tram": {
+      "n": 10000,
+      "v5_pct": 46.15,
+      "macro_pct": 47.77119843790785,
+      "no_abstain_pct": 46.144614461446146,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        1122,
+        1030
+      ],
+      "delta_se_pp": 0.46389654018972803,
+      "d_v5_pct": -0.9200000000000017,
+      "d_macro_pct": 1.7087422345163716,
+      "d_no_abstain_pct": -0.9200920092009213
+    }
+  }
+}

@@ -29,6 +29,10 @@ if str(_REPO_ROOT) not in sys.path:
 
 from experiments.finetuning.shared.prompt_templates import build_chat_messages
 from experiments.finetuning.shared.utils import setup_logger, read_jsonl
+from experiments.finetuning.shared.eval_parity import (
+    PINNED_DATE, render_prompt, row_to_example, with_context,
+)
+from scripts.run_baselines import _build_zero_shot_prompt
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -263,6 +267,69 @@ def tokenize_example(
     }
 
 
+def tokenize_example_parity(
+    record: dict,
+    example: dict,
+    tokenizer: AutoTokenizer,
+    max_length: int = 2048,
+) -> tuple[Optional[dict], str]:
+    """Tokenise with the EXACT evaluation prompt (see shared/eval_parity.py).
+
+    Returns (tokenised, reason); tokenised is None when the row is dropped.
+    Context is truncated by tokens from the end, never the question or the
+    instructions. A row whose extractive gold sits in the dropped part of its
+    context is DROPPED rather than trained on: the legacy path kept 432 such
+    TimeQA rows in v10's train split, teaching the model to answer without
+    evidence (audit 2026-09-23 §3). No " [truncated]" marker is appended --
+    evaluation contexts never carry one.
+    """
+    ex = row_to_example(record, example["question"], example["context"],
+                        example["answer"])
+    answer = example["answer"]
+
+    def render(e):
+        prompt = render_prompt(tokenizer, e)
+        full = tokenizer.apply_chat_template(
+            [{"role": "user", "content": _build_zero_shot_prompt(e)},
+             {"role": "assistant", "content": answer}],
+            tokenize=False, add_generation_prompt=False, date_string=PINNED_DATE)
+        return prompt, full
+
+    prompt_text, full_text = render(ex)
+    full_ids = tokenizer(full_text, add_special_tokens=False)["input_ids"]
+    if len(full_ids) > max_length:
+        if not ex.context:
+            return None, "too_long"
+        over = len(full_ids) - max_length
+        ctx_ids = tokenizer(ex.context, add_special_tokens=False)["input_ids"]
+        keep = len(ctx_ids) - over - 16  # margin for boundary re-tokenisation
+        if keep < 32:
+            return None, "too_long"
+        ctx = tokenizer.decode(ctx_ids[:keep])
+        cut = ctx.rfind(". ")
+        if cut > len(ctx) // 2:
+            ctx = ctx[: cut + 1]
+        parts = example.get("answer_parts") or [answer]
+        full_ctx = ex.context.lower()
+        if any(p and p.lower() in full_ctx and p.lower() not in ctx.lower()
+               for p in parts):
+            return None, "gold_truncated"
+        ex = with_context(ex, ctx)
+        prompt_text, full_text = render(ex)
+        full_ids = tokenizer(full_text, add_special_tokens=False)["input_ids"]
+        if len(full_ids) > max_length:
+            return None, "too_long"
+
+    prompt_ids = tokenizer(prompt_text, add_special_tokens=False)["input_ids"]
+    if full_ids[: len(prompt_ids)] != prompt_ids:
+        return None, "prefix_mismatch"
+    labels = [-100] * len(prompt_ids) + full_ids[len(prompt_ids):]
+    if sum(1 for l in labels if l != -100) < 2:
+        return None, "empty_answer"
+    return {"input_ids": full_ids, "attention_mask": [1] * len(full_ids),
+            "labels": labels}, "ok"
+
+
 # ---------------------------------------------------------------------------
 # Bulk loading
 # ---------------------------------------------------------------------------
@@ -272,11 +339,16 @@ def normalize_and_tokenize(
     tokenizer: AutoTokenizer,
     max_length: int = 2048,
     logger: logging.Logger | None = None,
+    prompt_format: str = "legacy",
 ) -> Dataset:
     """Normalise raw JSONL records, tokenise, and return a HF Dataset.
 
     Skips Temprel and any record that cannot be converted.
+    ``prompt_format``: "legacy" (every arm up to v10-glm) or "eval_parity"
+    (train on the exact evaluation prompt; shared/eval_parity.py).
     """
+    if prompt_format not in ("legacy", "eval_parity"):
+        raise ValueError(f"unknown prompt_format {prompt_format!r}")
     log = logger or setup_logger("llama.data_loader")
     skipped_by_source: dict[str, int] = {}
     total_by_source: dict[str, int] = {}
@@ -290,7 +362,14 @@ def normalize_and_tokenize(
             skipped_by_source[src] = skipped_by_source.get(src, 0) + 1
             continue
 
-        tok = tokenize_example(norm, tokenizer, max_length)
+        if prompt_format == "eval_parity":
+            tok, why = tokenize_example_parity(rec, norm, tokenizer, max_length)
+            if tok is None:
+                key = f"parity_{why}"
+                skipped_by_source[key] = skipped_by_source.get(key, 0) + 1
+                continue
+        else:
+            tok = tokenize_example(norm, tokenizer, max_length)
         if tok is None:
             skipped_by_source["tokenize_error"] = skipped_by_source.get("tokenize_error", 0) + 1
             continue
@@ -305,7 +384,7 @@ def normalize_and_tokenize(
     # entire TLQA slice (3,253 rows) while the log showed only a benign-
     # looking "tokenize_error" count.
     for src, count in sorted(skipped_by_source.items()):
-        if src in SKIPPED_DATASETS or src == "tokenize_error":
+        if src in SKIPPED_DATASETS or src == "tokenize_error" or src.startswith("parity_"):
             continue
         total = total_by_source.get(src, 0)
         if total and count / total > 0.05:
@@ -329,6 +408,7 @@ def load_flat_datasets(
     tokenizer: AutoTokenizer,
     max_length: int = 2048,
     logger: logging.Logger | None = None,
+    prompt_format: str = "legacy",
 ) -> tuple[Dataset, Dataset]:
     """Load and tokenise train + val JSONL files for flat training.
 
@@ -342,9 +422,11 @@ def load_flat_datasets(
     val_records = read_jsonl(val_path)
 
     log.info("--- Training set ---")
-    train_ds = normalize_and_tokenize(train_records, tokenizer, max_length, log)
+    train_ds = normalize_and_tokenize(train_records, tokenizer, max_length, log,
+                                      prompt_format=prompt_format)
     log.info("--- Validation set ---")
-    val_ds = normalize_and_tokenize(val_records, tokenizer, max_length, log)
+    val_ds = normalize_and_tokenize(val_records, tokenizer, max_length, log,
+                                    prompt_format=prompt_format)
 
     return train_ds, val_ds
 

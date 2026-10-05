@@ -34,14 +34,37 @@ NO_CONTEXT = {"relation", "ordering", "duration"}
 LABELS = {
     "nli_saq": {"entailment", "neutral", "contradiction"},
     "nli_mcq": {"entailment", "neutral", "contradiction"},
-    "relation": {"IDENTITY", "BEFORE", "DURING"},
-    "ordering": {"TRUE", "Undetermined", "FALSE"},
+    # Corrected 2026-09-25 (audit 2026-09-23 §8). The old sets were
+    # {IDENTITY, BEFORE, DURING} and {TRUE, Undetermined, FALSE}: DURING,
+    # IDENTITY and Undetermined occur on TRAM only as DISTRACTORS, never as a
+    # gold, so the gate itself certified rows that taught a wrong option.
+    # These are TRAM's gold label spaces (the task definition, not its
+    # frequencies). Distractors may use the wider RELATION_VOCAB.
+    "relation": {"BEFORE", "AFTER", "IS_INCLUDED", "SIMULTANEOUS", "INCLUDES"},
+    "ordering": {"TRUE", "FALSE"},
 }
+RELATION_VOCAB = {"BEFORE", "AFTER", "IS_INCLUDED", "SIMULTANEOUS", "INCLUDES",
+                  "DURING", "IDENTITY", "IMMEDIATELY BEFORE", "IMMEDIATELY AFTER",
+                  "BEGINS", "ENDS", "BEGUN_BY", "ENDED_BY"}
+# TRAM's second ordering shape: "Arrange the following events in
+# chronological order: (1) ... (2) ..." with permutations as the options.
+SEQ_RE = re.compile(r"\(\d\)(?:, \(\d\))+")
+# Narrator-style storytelling endings ("The story ends with ...") -- the
+# AUG_GLM2 storytelling card produced these; TRAM's endings are plain story
+# sentences judged on commonsense plausibility.
+META_ENDING_RE = re.compile(r"(?i)^\s*(the story|in the closing lines|the story's)\b")
 # Categories that must carry a Choices block, and how many options.
+# v13: `extract` (TIME Extract analog, docs/v13_plan.md §3.4) carries a
+# variable 4-5 options and a MULTI-LETTER gold ("B  C", two-space joined,
+# exactly as TIME prints it) -- handled specially in check().
+# v13: `relation` and `ordering` may now ALSO be BARE (no options) -- TRAM's
+# actual eval surface asks them bare, and the v13 relation card's
+# event-to-time shape uses it. MCQ shape (3 options) stays valid too.
 MCQ_OPTS = {"Timeline": None, "Duration_Compare": 3, "Order_Compare": 3,
-            "nli_mcq": 3, "relation": 3, "ordering": 3, "duration": 4,
-            "storytelling": 2}
+            "nli_mcq": 3, "duration": 4, "storytelling": 2, "extract": None}
+OPTIONAL_MCQ = {"relation": 3, "ordering": 3}
 NEVER_MCQ = {"Computation", "Localization", "nli_saq", "longform_free"}
+_EXTRACT_GOLD_RE = re.compile(r"^[A-E](?:  [A-E])*$")
 OPT_RE = re.compile(r"^\s*([A-Z])\.\s+(.*\S)\s*$")
 FURNITURE = re.compile(r"Related Stories|Post navigation|Read More|Share this|"
                        r"Sign up for|Getty Images|answer in digits|\| Published:",
@@ -276,6 +299,39 @@ def check_order_compare(r: dict) -> list[str]:
     return []
 
 
+def check_co_temporality(r: dict) -> list[str]:
+    """Recompute whether the two stated tenures actually overlap.
+
+    Found 2026-09-23 auditing files 263-270 (ct_lib.py): 19/150 rows (12.7%)
+    had the rationale assert "the posts overlapped" for two date ranges that
+    do not overlap -- e.g. 1939-1951 vs 1957-1964, a 6-year gap. The category
+    card is unambiguous ("Requires two overlapping intervals", no tolerance
+    given, unlike Duration_Compare/Order_Compare's explicit near-tie zones),
+    so this is checked as a hard boolean, not banded. Exactly the failure
+    class check_duration_compare/check_timeline/check_order_compare already
+    close for their categories -- Co_temporality had no such gate until now.
+    Silent unless the rationale states exactly two "from DATE to DATE" spans.
+    """
+    if r.get("category") != "Co_temporality":
+        return []
+    try:
+        from dateutil import parser as _dp
+    except ImportError:
+        return []
+    rat = str(r.get("rationale", ""))
+    dates = _DATE_RE.findall(rat)
+    if len(dates) != 4:
+        return []
+    try:
+        a1, a2, b1, b2 = (_dp.parse(d).date() for d in dates)
+    except Exception:
+        return []
+    if a1 <= b2 and b1 <= a2:
+        return []
+    return [f"Co_temporality: rationale claims overlap but the spans are "
+            f"{a1}-{a2} vs {b1}-{b2}, a {min(abs((b1-a2).days), abs((a1-b2).days))}-day gap (§7.4)"]
+
+
 def options(question: str) -> list[str]:
     if "Choices:" not in question:
         return []
@@ -313,11 +369,37 @@ def check(r: dict) -> list[str]:
         e.append(f"rationale must be a plain string, got {type(r.get('rationale')).__name__}")
     opts = options(q)
 
+    # --- v13 extract: multi-select gold before the single-gold paths ---
+    if cat == "extract":
+        if not opts or not (4 <= len(opts) <= 5):
+            e.append(f"extract expects 4-5 options, parsed {len(opts)}")
+        elif not _EXTRACT_GOLD_RE.fullmatch(gold):
+            e.append(f"extract gold must be letters two-space joined "
+                     f"('B  C'), got {gold!r}")
+        else:
+            letters = gold.split("  ")
+            if letters != sorted(set(letters)):
+                e.append("extract gold letters must be unique and ascending")
+            if not all(ord(L) - 65 < len(opts) for L in letters):
+                e.append("extract gold names a letter with no option")
+            # correct options must appear verbatim in the context; wrong
+            # options must not (the same two-sided rule the prog generator
+            # enforces by construction)
+            for L in letters:
+                if opts[ord(L) - 65] not in ctx:
+                    e.append(f"extract correct option {L} not found in context")
+            for i, o in enumerate(opts):
+                if chr(65 + i) not in letters and o in ctx:
+                    e.append(f"extract distractor {chr(65 + i)} appears in "
+                             f"context")
+
     # --- §3 / §2 MCQ structure ---
     if cat in NEVER_MCQ and opts:
         e.append(f"{cat} must be free text but carries a Choices block")
-    want_n = MCQ_OPTS.get(cat, "any")
-    if cat in MCQ_OPTS and not opts:
+    want_n = MCQ_OPTS.get(cat)
+    if cat in OPTIONAL_MCQ:
+        want_n = OPTIONAL_MCQ[cat] if opts else None   # bare is also valid
+    if cat in MCQ_OPTS and cat not in OPTIONAL_MCQ and not opts:
         e.append(f"{cat} must carry a Choices block")
     if opts:
         if isinstance(want_n, int) and len(opts) != want_n:
@@ -327,18 +409,45 @@ def check(r: dict) -> list[str]:
         if cat == "Timeline":
             if not re.fullmatch(r"[A-Z](,[A-Z])+", gold):
                 e.append(f"Timeline gold must be a letter sequence, got {gold!r}")
+        elif cat == "ordering" and SEQ_RE.fullmatch(gold):
+            base = sorted(re.findall(r"\(\d\)", gold))
+            if gold not in opts:
+                e.append("ordering sequence gold is not one of the options")
+            if any(sorted(re.findall(r"\(\d\)", o)) != base or not SEQ_RE.fullmatch(o)
+                   for o in opts):
+                e.append("ordering sequence options must all be permutations of the same (1)..(k)")
         elif cat in LABELS:
             if gold not in LABELS[cat]:
                 e.append(f"{cat} gold must be one of {sorted(LABELS[cat])}, got {gold!r}")
+            if cat == "relation":
+                bad = [o for o in opts if o not in RELATION_VOCAB]
+                if bad:
+                    e.append(f"relation options outside TRAM's label vocabulary: {bad}")
+                if gold not in opts:
+                    e.append("relation gold is not one of the options")
+            if cat == "ordering" and set(opts) != {"TRUE", "FALSE", "Undetermined"}:
+                e.append("ordering true/false options must be exactly TRUE, FALSE, Undetermined")
+        elif cat == "extract":
+            pass  # validated in the extract-specific block above
         elif gold not in opts:
             e.append("gold is not CHARACTER-IDENTICAL to any option (§2)")
         if len(gold) == 1 and gold.isalpha():
             e.append("gold is a bare letter (§8)")
+        if cat == "storytelling" and any(META_ENDING_RE.match(o) for o in opts):
+            e.append("storytelling endings must be plain story sentences, not "
+                     "narrator descriptions ('The story ends with ...')")
     elif cat in LABELS and gold not in LABELS[cat]:
         e.append(f"{cat} gold must be one of {sorted(LABELS[cat])}, got {gold!r}")
 
     # --- context ---
-    if cat in NO_CONTEXT:
+    # duration has two shapes since 2026-09-25: world-knowledge spans (no
+    # context, TRAM-style) and commonsense typical durations with a context
+    # sentence (TimeBench DurationQA/McTaco-style). Either is valid.
+    # temporal_dialogue's masked-span shape carries the dialogue in the
+    # question with an empty context, exactly as TimeBench's TimeDial loads.
+    if cat == "duration" or (cat == "temporal_dialogue" and "<MASK>" in q):
+        pass
+    elif cat in NO_CONTEXT:
         if ctx.strip():
             e.append(f"{cat} is a no-context category but context is non-empty")
     else:
@@ -378,6 +487,7 @@ def check(r: dict) -> list[str]:
     e += check_timeline(r)
     e += check_duration_compare(r)
     e += check_order_compare(r)
+    e += check_co_temporality(r)
     # The pilot produced a "question" that stated two facts and stopped, with
     # no interrogative at all -- unanswerable as posed. Only enforced where
     # there is no Choices block: with options present the task is explicit, and
@@ -411,7 +521,7 @@ ALLOC_NAMES = {
     "Duration_Compare", "Relative_Reasoning", "Order_Reasoning",
     "Co_temporality", "Explicit_Reasoning", "Order_Compare", "nli_saq",
     "nli_mcq", "relation", "ordering", "temporal_dialogue", "duration",
-    "storytelling", "longform_free",
+    "storytelling", "longform_free", "extract",
 }
 
 

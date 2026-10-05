@@ -1,0 +1,83 @@
+{
+  "trial": {
+    "id": "t04",
+    "learning_rate": 1.25e-05,
+    "num_train_epochs": 1,
+    "lora_r": 8,
+    "aug_fraction": 0.5
+  },
+  "objective": 0.6733333333333343,
+  "objective_se_pp": 0.39078269039340924,
+  "benchmarks": {
+    "time": {
+      "n": 5000,
+      "v5_pct": 40.66,
+      "macro_pct": 39.414036323187204,
+      "no_abstain_pct": 41.00778369520688,
+      "by_setting": {
+        "bm25": {
+          "v5_pct": 46.32,
+          "n": 993,
+          "no_abstain_pct": 47.48,
+          "no_abstain_n": 954
+        },
+        "vector": {
+          "v5_pct": 48.74,
+          "n": 993,
+          "no_abstain_pct": 49.74,
+          "no_abstain_n": 953
+        },
+        "hybrid": {
+          "v5_pct": 47.03,
+          "n": 993,
+          "no_abstain_pct": 47.76,
+          "no_abstain_n": 959
+        },
+        "base": {
+          "v5_pct": 30.78,
+          "n": 2021,
+          "no_abstain_pct": 30.61,
+          "no_abstain_n": 2016
+        }
+      },
+      "mcnemar_b_c": [
+        476,
+        453
+      ],
+      "delta_se_pp": 0.6095900261651268,
+      "d_v5_pct": -0.46000000000000085,
+      "d_macro_pct": -0.4132685758151027,
+      "d_no_abstain_pct": 0.16386726751331082
+    },
+    "timebench": {
+      "n": 2500,
+      "v5_pct": 45.72,
+      "macro_pct": 45.01115303822786,
+      "no_abstain_pct": 45.72,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        228,
+        276
+      ],
+      "delta_se_pp": 0.897997772825746,
+      "d_v5_pct": 1.9200000000000017,
+      "d_macro_pct": 0.976230608350086,
+      "d_no_abstain_pct": 1.9200000000000017
+    },
+    "tram": {
+      "n": 10000,
+      "v5_pct": 47.63,
+      "macro_pct": 48.60916682464253,
+      "no_abstain_pct": 47.624762476247625,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        954,
+        1010
+      ],
+      "delta_se_pp": 0.4431703961232068,
+      "d_v5_pct": 0.5600000000000023,
+      "d_macro_pct": 2.5467106212510515,
+      "d_no_abstain_pct": 0.5600560056005577
+    }
+  }
+}

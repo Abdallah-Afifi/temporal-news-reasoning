@@ -311,55 +311,85 @@ Balance the three labels within 30-37% each.""",
 
 "relation": """MODE B -- invent the events freely; no source article. Internal consistency
 is all that is required.
-One sentence describing two events (or an interval and a point inside it),
-with explicit dates, then an EXPLICIT interrogative such as
+One or two sentences describing two events (or an interval and an event
+inside it) with explicit dates, then an EXPLICIT interrogative such as
 `What is the relationship between the events?`
-Choices block, exactly:
-A. IDENTITY
-B. BEFORE
-C. DURING
-GOLD is the bare label. Balance the three labels within 30-37% each.
-Use varied invented actors (a port authority, a chamber of commerce, a
-software studio) and a wide range of years.""",
+Choices block with exactly THREE labels. The GOLD must be one of TRAM's gold
+labels: BEFORE, AFTER, IS_INCLUDED, SIMULTANEOUS, INCLUDES (relation of the
+FIRST-mentioned event to the SECOND). The two distractors are other labels
+from this vocabulary: BEFORE, AFTER, IS_INCLUDED, SIMULTANEOUS, INCLUDES,
+DURING, IDENTITY, IMMEDIATELY BEFORE, IMMEDIATELY AFTER. DURING and IDENTITY
+may appear ONLY as distractors -- never as the gold (corrected 2026-09-25: an
+earlier card made them golds, which trained the model to pick TRAM's
+distractors). Rotate which label is gold across all five gold labels; do not
+make BEFORE dominant. Use varied invented actors and a wide range of years.""",
 
-"ordering": """MODE B -- invent the events freely; no source article.
-Two sentences, each with an explicit date, joined as a claim, then the explicit `- True/False?`
-Choices block, exactly:
-A. TRUE
-B. Undetermined
-C. FALSE
-GOLD is the bare label. NOT a uniform three-way split: roughly TRUE 36%,
-FALSE 40%, Undetermined 24%. The ruleset's own target is "Undetermined ~25%,
-or the model learns a binary where the benchmark has three classes" -- not a
-third. TRUE also sits under the shortcut probe's 38% always-A cap (it is
-option A), the same constraint that shaped Duration_Compare and Order_Compare.
-`Undetermined` rows are genuinely undecidable from the two stated dates and
-the claim's wording -- not simply rare -- so write real ambiguity into them
-(e.g. the claim's ordering word is vague, or a date is stated to a coarser
-precision that leaves the comparison unresolved), never an artificially
-suppressed TRUE/FALSE.""",
+"ordering": """MODE B -- invent the events freely; no source article. Two shapes, about
+half each:
+(1) TRUE/FALSE claim. Two sentences, each with an explicit date, then a claim
+about their order ending `- True/False?`. Choices block with exactly these
+three options in any order: TRUE, FALSE, Undetermined. GOLD is TRUE or FALSE
+only -- `Undetermined` is a distractor and is NEVER the gold (corrected
+2026-09-25: TRAM never uses it as a gold). Mix TRUE and FALSE; do not make
+either one dominant.
+(2) Sequence. `Arrange the following events in chronological order: (1) ...
+(2) ... (3) ...` with 2-4 numbered events whose dates are stated or clearly
+implied. Choices block with exactly THREE different permutations written like
+`(2), (3), (1)`; GOLD is the correct permutation, character-identical. Do not
+list the events already in chronological order more than about a third of
+the time.""",
 
-"temporal_dialogue": """A dated conversation transcript, then a question about it.
-Context shape: sessions with headers like
+"temporal_dialogue": """Two shapes, about half each.
+(1) DATED TRANSCRIPT: sessions with headers like
 `Session 1 happened at 4:20 pm on 15 December, 2021.` followed by turns
-`Casey: ...` / `Alex: ...` that state dates in conversation.
-Ask which session something was discussed in, or on what date an event happened.
-MCQ (4 options) for most rows.
-DO NOT pad the transcript with a repeated filler line -- a previous generation
-repeated one exchange up to 76 times. Every turn must carry content.""",
+`Casey: ...` / `Alex: ...` that state dates in conversation. Ask which session
+something was discussed in, or on what date an event happened. MCQ (4 options).
+(2) MASKED SPAN: a short two-speaker exchange written as
+`A: ... B: ... A: ...` in the QUESTION field (context empty), where one
+temporal span is replaced by `<MASK>`, e.g. `B: The repair will take <MASK>,
+so you can pick it up on Friday.` The model must choose the span that fits.
+Choices block with 4 durations/times at clearly different scales; write about
+HALF of all options with number WORDS (`forty-eight hours`, `about five
+years`) and half with digits (`48 hours`). GOLD is the one option that fits,
+character-identical -- including its number-word form. (Added 2026-09-25: the
+v11 model answered `48 hours` where the option read `forty-eight hours`.)
+DO NOT pad any transcript with a repeated filler line. Every turn must carry
+content.""",
 
-"duration": """MODE B -- invent freely; no source article. World-knowledge duration lookup.
-Shape: `The <thing> ran from <year> to <year>. How long did it last in total?`
-or `How long did <well-known event> last?`
-Choices block with 4 plausible durations. GOLD is the full option text,
-e.g. `about 54 years`. Distractors must be the same TYPE and granularity.""",
+"duration": """Two shapes, about half each.
+(1) MODE B world-knowledge span, NO context: `The <thing> ran from <year> to
+<year>. How long did it last in total?` or `How long did <well-known event>
+last?` Choices block with 4 plausible durations, GOLD the full option text,
+e.g. `about 54 years`.
+(2) COMMONSENSE TYPICAL DURATION, with a one-sentence everyday CONTEXT
+(added 2026-09-25): context like `She walked to the station before her morning
+train.`, question `How long did it take her to walk to the station?`. Choices
+block with 4 options at clearly different SCALES (seconds / minutes / days /
+years), GOLD the one typical duration. Use number words in about a third of
+options (`two hours`).
+Either way distractors are the same TYPE, and the gold is character-identical
+to its option.""",
 
-"storytelling": """Plausible-ending selection. Question, verbatim:
+"storytelling": """Plausible-ending selection over an EVERYDAY STORY (corrected 2026-09-25).
+Context: a 4-5 sentence everyday story in plain prose -- a person, a small
+problem, what they did -- like a short children's-reader story. Dates are NOT
+required and must not be the deciding cue.
+Question, verbatim:
 `Which of the two endings is the most plausible correct ending to the story?`
 then a Choices block with exactly TWO options, A. and B.
-One ending is consistent with the passage's dates; the other contradicts them
-in a single, specific way (a wrong count, a wrong year, an impossible order).
-GOLD is the full text of the correct ending.""",
+Both endings are plain story sentences in the same voice as the story (e.g.
+`He finally felt proud of the garden.`). One follows plausibly from what the
+characters did; the other is fluent but does not fit (wrong emotion, an
+unmotivated turn, contradicts an earlier sentence). NEVER write a narrator
+description such as "The story ends with ..." -- the ingest gate rejects it.
+GOLD is the full text of the plausible ending. Balance the gold across A/B.
+BALANCE THE TONE (added 2026-09-25 after batch 1): in about HALF of the rows
+the plausible ending is the sad, costly or disappointing one (the story
+builds toward a loss, a mistake, a regret) and the implausible ending is the
+cheerful one. Batch 1 made the wrong ending the negative one 75% of the time,
+which teaches 'reject the downbeat ending' instead of 'judge the fit'. Keep
+stories short and plain: 4-5 simple sentences, about 40-60 words (batch 1
+averaged 90 words of literary prose; TRAM's stories are short everyday ones).""",
 
 "longform_free": """Free-text summary over a window: "What developments does the passage report
 between <date> and <date>?" or "Describe what happened between X and Y."
@@ -558,7 +588,16 @@ automatically.
 If the ordered category is `relation`, `ordering` or `duration`, write NO
 passages: those rows are self-contained. Set `"context":""`, `"passage":""`,
 `"provenance":"none"`, and invent the events freely — they need only be
-internally consistent.
+internally consistent. Exception: a `duration` row in the COMMONSENSE shape
+puts its one-sentence everyday context directly in `"context"`.
+
+If the order says `shape=story` (storytelling) write NO passages: each row
+carries its own 4-5 sentence story directly in `"context"`, with
+`"passage":""` and `"provenance":"none"`.
+
+If the order says `shape=masked` (temporal_dialogue) write NO passages: put
+the `A: ... B: ...` exchange with its `<MASK>` in `"question"` above the
+Choices block, and set `"context":""`, `"passage":""`, `"provenance":"dial"`.
 
 Output the passages, then the rows, and nothing else.
 

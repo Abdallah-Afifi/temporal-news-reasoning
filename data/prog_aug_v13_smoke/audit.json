@@ -1,0 +1,184 @@
+{
+ "seed": 42,
+ "caps": {
+  "prog_arith_clock": 12,
+  "prog_arith_month": 12,
+  "prog_computation": 12,
+  "prog_timeline": 12,
+  "prog_relation": 12,
+  "prog_ordering_tf": 12,
+  "prog_ordering_seq": 12,
+  "prog_duration_compare": 12,
+  "prog_order_compare": 12,
+  "prog_extract": 12
+ },
+ "summary": {
+  "prog_arith_clock": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "08:47",
+     1
+    ],
+    [
+     "06:15",
+     1
+    ],
+    [
+     "00:39",
+     1
+    ]
+   ]
+  },
+  "prog_arith_month": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "Dec, 2061",
+     1
+    ],
+    [
+     "Sep, 1251",
+     1
+    ],
+    [
+     "Mar, 1631",
+     1
+    ]
+   ]
+  },
+  "prog_computation": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "2 years 10 months 4 days",
+     1
+    ],
+    [
+     "27 years 26 days",
+     1
+    ],
+    [
+     "July 11, 1911",
+     1
+    ]
+   ]
+  },
+  "prog_timeline": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "A,C,B",
+     4
+    ],
+    [
+     "C,A,B",
+     2
+    ],
+    [
+     "C,A,D,B",
+     1
+    ]
+   ]
+  },
+  "prog_relation": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "AFTER",
+     4
+    ],
+    [
+     "BEFORE",
+     4
+    ],
+    [
+     "IS_INCLUDED",
+     2
+    ]
+   ]
+  },
+  "prog_ordering_tf": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "TRUE",
+     6
+    ],
+    [
+     "FALSE",
+     6
+    ]
+   ]
+  },
+  "prog_ordering_seq": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "(2), (3), (1)",
+     2
+    ],
+    [
+     "(2), (1)",
+     2
+    ],
+    [
+     "(1), (2), (3)",
+     2
+    ]
+   ]
+  },
+  "prog_duration_compare": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "The two durations are approximately the same length.",
+     5
+    ],
+    [
+     "Duration 2 is longer.",
+     4
+    ],
+    [
+     "Duration 1 is longer.",
+     3
+    ]
+   ]
+  },
+  "prog_order_compare": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "Fact 2 happened earlier.",
+     5
+    ],
+    [
+     "Fact 1 happened earlier.",
+     4
+    ],
+    [
+     "They happen at almost the same time.",
+     3
+    ]
+   ]
+  },
+  "prog_extract": {
+   "rows": 12,
+   "gold_top3": [
+    [
+     "A  C  D",
+     3
+    ],
+    [
+     "A",
+     2
+    ],
+    [
+     "A  D",
+     2
+    ]
+   ]
+  }
+ },
+ "errors": []
+}

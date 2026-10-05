@@ -1,0 +1,87 @@
+# Mistral-7B-Instruct-v0.3 LoRA fine-tuning -- prompt-parity arm
+# ================================================================
+# Ports the audit_2026_09_23 fixes (originally applied to LLaMA as v11) to
+# Mistral, 2026-09-28. This is the BASE_CFG for scripts/hpo_mistral.py --
+# each trial overrides learning_rate / num_train_epochs / lora_r / seed /
+# output_dir; everything else here is fixed across trials.
+#
+# What changed vs the original experiments/finetuning/Mistral/config.yaml:
+#   1. prompt_format: eval_parity -- train on the exact evaluation prompt
+#      (experiments/finetuning/shared/eval_parity.py), not the old
+#      build_chat_messages format the model was never evaluated on.
+#   2. train_data/val_data -> data/combined_80_20_v12 (decontaminated,
+#      corrected TRAM relation/ordering label spaces, fixed storytelling /
+#      temporal_dialogue / duration cards -- the most-fixed data available;
+#      see docs/v12_plan.md). No date pin needed: Mistral-7B-Instruct-v0.3's
+#      chat template has no "Today Date" field (verified 2026-09-28), unlike
+#      Llama-3.2's -- eval_parity.py's date_string kwarg is a harmless no-op
+#      here, not a fix that had to be ported.
+#   3. eval_strategy/save_strategy: "no", load_best_model_at_end: false,
+#      early_stopping_patience: 0 -- selection happens externally, across
+#      whole trial configs (incl. epoch count) via dev-split benchmark
+#      accuracy, not via in-loop eval_loss (audit §5; the old default here
+#      picked the epoch-2 checkpoint by eval_loss on the training
+#      distribution itself).
+#   4. seed now actually reaches the Trainer (train.py fix, audit §4) --
+#      this file's `seed:` was silently ignored before.
+
+# ── Model ──────────────────────────────────────────────
+model_path: models/Mistral-7B-Instruct-v0.3
+seed: 42
+dtype: bfloat16
+prompt_format: eval_parity
+
+# ── Data ───────────────────────────────────────────────
+train_data: data/combined_80_20_v12/train.jsonl
+val_data: data/combined_80_20_v12/val.jsonl
+max_seq_length: 2048
+
+# ── Training (per-trial overrides: learning_rate, num_train_epochs, lora_r) ──
+learning_rate: 2.0e-4
+num_train_epochs: 1
+warmup_ratio: 0.1
+weight_decay: 0.01
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+
+# ── Speed / memory (RTX 3090 24GB -- see config.yaml's own budget notes) ──
+gradient_checkpointing: true
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8    # effective batch = 2 x 8 = 16
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+tf32: true
+
+# ── Checkpoint selection: external (dev-split benchmark accuracy), not
+#    in-loop eval_loss -- audit §5. ──────────────────────
+eval_strategy: "no"
+save_strategy: "no"
+load_best_model_at_end: false
+early_stopping_patience: 0
+
+# ── LoRA (lora_alpha = 2 x lora_r, set per-trial) ─────
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# ── Quantization ───────────────────────────────────────
+# 7B is more than double LLaMA-3.2-3B's footprint; 4-bit QLoRA keeps this
+# arm inside the same 24GB budget the base config.yaml documents.
+load_in_4bit: true
+
+# ── Output ───────────────────────────────────────────
+output_dir: checkpoints/mistral_parity
+progress_dir: experiments/finetuning/Mistral/Progress
+
+# ── Reporting ────────────────────────────────────────
+report_to: []

@@ -1,0 +1,83 @@
+{
+  "trial": {
+    "id": "t03",
+    "learning_rate": 1.14e-05,
+    "num_train_epochs": 1,
+    "lora_r": 32,
+    "aug_fraction": 1.0
+  },
+  "objective": 2.393333333333333,
+  "objective_se_pp": 0.3839270764090493,
+  "benchmarks": {
+    "time": {
+      "n": 5000,
+      "v5_pct": 42.98,
+      "macro_pct": 41.33107664610703,
+      "no_abstain_pct": 42.257271609995904,
+      "by_setting": {
+        "bm25": {
+          "v5_pct": 51.26,
+          "n": 993,
+          "no_abstain_pct": 50.73,
+          "no_abstain_n": 954
+        },
+        "vector": {
+          "v5_pct": 52.97,
+          "n": 993,
+          "no_abstain_pct": 52.15,
+          "no_abstain_n": 953
+        },
+        "hybrid": {
+          "v5_pct": 50.76,
+          "n": 993,
+          "no_abstain_pct": 49.74,
+          "no_abstain_n": 959
+        },
+        "base": {
+          "v5_pct": 30.18,
+          "n": 2021,
+          "no_abstain_pct": 30.01,
+          "no_abstain_n": 2016
+        }
+      },
+      "mcnemar_b_c": [
+        405,
+        498
+      ],
+      "delta_se_pp": 0.6009991680526687,
+      "d_v5_pct": 1.8599999999999994,
+      "d_macro_pct": 1.5037717471047216,
+      "d_no_abstain_pct": 1.4133551823023325
+    },
+    "timebench": {
+      "n": 2500,
+      "v5_pct": 46.16,
+      "macro_pct": 46.10167399706458,
+      "no_abstain_pct": 46.16,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        212,
+        271
+      ],
+      "delta_se_pp": 0.8790904390334364,
+      "d_v5_pct": 2.3599999999999994,
+      "d_macro_pct": 2.066751567186806,
+      "d_no_abstain_pct": 2.3599999999999994
+    },
+    "tram": {
+      "n": 10000,
+      "v5_pct": 50.03,
+      "macro_pct": 49.305738999900015,
+      "no_abstain_pct": 50.025002500250025,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        815,
+        1111
+      ],
+      "delta_se_pp": 0.4388621651498338,
+      "d_v5_pct": 2.960000000000001,
+      "d_macro_pct": 3.243282796508538,
+      "d_no_abstain_pct": 2.960296029602958
+    }
+  }
+}

@@ -1,0 +1,47 @@
+# v12-data: t09's exact recipe; the ONLY change is the data (v11 + corrected-
+# card rows, old storytelling dropped). Compare against v11-best.
+# Pre-registered in docs/v12_plan.md. Base: results/hpo_v11/trials/t09/config.yaml.
+
+model_path: models/Llama-3.2-3B-Instruct
+seed: 42
+dtype: bfloat16
+prompt_format: eval_parity
+train_data: data/combined_80_20_v12/train.jsonl
+val_data: data/combined_80_20_v12/val.jsonl
+max_seq_length: 2048
+learning_rate: 0.000177
+num_train_epochs: 1
+warmup_ratio: 0.08185086660174143
+weight_decay: 0.010909498032426036
+lr_scheduler_type: cosine
+bf16: true
+fp16: false
+gradient_checkpointing: true
+attn_implementation: sdpa
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 8
+dataloader_num_workers: 4
+dataloader_pin_memory: true
+tf32: true
+logging_steps: 10
+eval_strategy: 'no'
+save_strategy: 'no'
+load_best_model_at_end: false
+early_stopping_patience: 0
+final_eval: false
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+- q_proj
+- k_proj
+- v_proj
+- o_proj
+- gate_proj
+- up_proj
+- down_proj
+load_in_4bit: false
+output_dir: checkpoints/llama_v12_data
+progress_dir: experiments/finetuning/LLaMA/Progress
+report_to: []

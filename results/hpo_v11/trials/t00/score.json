@@ -1,0 +1,84 @@
+{
+  "trial": {
+    "learning_rate": 0.000462258900102083,
+    "num_train_epochs": 3,
+    "lora_r": 32,
+    "aug_fraction": 1.0,
+    "id": "t00",
+    "note": "anchor: v10 hyperparameters, parity prompt"
+  },
+  "objective": -2.0,
+  "objective_se_pp": 0.517214763044435,
+  "benchmarks": {
+    "time": {
+      "n": 5000,
+      "v5_pct": 37.32,
+      "macro_pct": 35.92719649050694,
+      "no_abstain_pct": 37.54608766898812,
+      "by_setting": {
+        "bm25": {
+          "v5_pct": 44.61,
+          "n": 993,
+          "no_abstain_pct": 45.7,
+          "no_abstain_n": 954
+        },
+        "vector": {
+          "v5_pct": 45.22,
+          "n": 993,
+          "no_abstain_pct": 46.17,
+          "no_abstain_n": 953
+        },
+        "hybrid": {
+          "v5_pct": 48.84,
+          "n": 993,
+          "no_abstain_pct": 49.22,
+          "no_abstain_n": 959
+        },
+        "base": {
+          "v5_pct": 24.2,
+          "n": 2021,
+          "no_abstain_pct": 24.06,
+          "no_abstain_n": 2016
+        }
+      },
+      "mcnemar_b_c": [
+        772,
+        582
+      ],
+      "delta_se_pp": 0.7359347797189639,
+      "d_v5_pct": -3.799999999999997,
+      "d_macro_pct": -3.9001084084953703,
+      "d_no_abstain_pct": -3.2978287587054496
+    },
+    "timebench": {
+      "n": 2500,
+      "v5_pct": 38.48,
+      "macro_pct": 38.34517851061428,
+      "no_abstain_pct": 38.48,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        560,
+        427
+      ],
+      "delta_se_pp": 1.2566622457924006,
+      "d_v5_pct": -5.32,
+      "d_macro_pct": -5.689743919263492,
+      "d_no_abstain_pct": -5.32
+    },
+    "tram": {
+      "n": 10000,
+      "v5_pct": 50.19,
+      "macro_pct": 47.33727869085312,
+      "no_abstain_pct": 50.19501950195019,
+      "by_setting": {},
+      "mcnemar_b_c": [
+        1278,
+        1590
+      ],
+      "delta_se_pp": 0.5355371135598355,
+      "d_v5_pct": 3.1199999999999974,
+      "d_macro_pct": 1.2748224874616412,
+      "d_no_abstain_pct": 3.1303130313031247
+    }
+  }
+}

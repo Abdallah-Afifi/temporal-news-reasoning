@@ -1,0 +1,24 @@
+{
+ "version": "v11",
+ "dir": "data/combined_80_20_v11",
+ "train_rows": 11446,
+ "val_rows": 2869,
+ "synthetic_pct": 53.2,
+ "general_rehearsal_pct": 0.0,
+ "composition": {
+  "AUG_GLM2": 4666,
+  "TimeQA": 4504,
+  "AUG_SEQ": 1019,
+  "TLQA": 855,
+  "AUG_GLM": 402
+ },
+ "story": "Prompt-parity arm: v10-glm's mixture minus 561 contaminated TimeQA rows and 124 relation/ordering rows outside TRAM's gold label space; trained with prompt_format eval_parity (the exact evaluation prompt, date pinned); hyperparameters chosen on a held-out dev split (winner t09: lr 1.77e-4, 1 epoch, LoRA r16). Parity tokenisation drops a further 306 gold-truncated TimeQA rows.",
+ "results": "seed 42, test-minus-dev vs zs-vllm-pinned: TIME 46.80 (+5.65; +5.05 no-abstain), TimeBench 46.48 (+1.65), TRAM 53.74 (+7.19 micro / +4.99 macro) \u2014 first arm to beat zero-shot on all three. Seeds 43/44 pending. docs/results_and_methodology.md \u00a710.",
+ "results_dir": "results/corrected/v11_best_vllm",
+ "size_mb": 85.6,
+ "sha256": {
+  "train.jsonl": "aec49603c9441e6362740f6549d7c1d2403b0cb6f6d5036433e346085a6ab878",
+  "val.jsonl": "8901bb17ceea6ad2548caaf93c93fd1e183b0ec3134a5c5e580c08aec08428c7",
+  "manifest.json": "f0f0ac640ae08dfb60a6a919a7217c3c82368240ed72b44e50f526952a44ad2e"
+ }
+}

@@ -119,11 +119,11 @@ def test_nli_saq_rejects_a_non_label_gold() -> None:
 def test_no_context_category_must_have_empty_context() -> None:
     q = ("The inquiry ran from May 12, 1980 to September 9, 1980, and the port "
          "authority approved the budget on July 11, 1980, in the middle of it. "
-         "What is the relationship?\nChoices:\nA. IDENTITY\nB. BEFORE\nC. DURING")
+         "What is the relationship?\nChoices:\nA. BEFORE\nB. INCLUDES\nC. AFTER")
     assert check(row(category="relation", slice="B", provenance="none",
-                     question=q, context="", targets=["DURING"])) == []
+                     question=q, context="", targets=["INCLUDES"])) == []
     assert check(row(category="relation", slice="B", provenance="none",
-                     question=q, context=CTX, targets=["DURING"]))
+                     question=q, context=CTX, targets=["INCLUDES"]))
 
 
 # --- §9 answer style, the gate the template build kept failing ---------------
@@ -468,3 +468,123 @@ def test_list_wrapped_rationale_is_rejected() -> None:
 
 def test_string_rationale_still_passes() -> None:
     assert check(row(rationale="The passage states the drive opened on March 4, 2016.")) == []
+
+
+def _cotemp(rationale: str) -> dict:
+    return {"category": "Co_temporality", "rationale": rationale, "targets": ["chief engineer"]}
+
+
+def test_non_overlapping_tenures_are_rejected() -> None:
+    from ingest_glm_batch import check_co_temporality
+    r = _cotemp("Ada held the post from March 15, 1939 to October 20, 1951, and Iris "
+                "held the post from June 9, 1957 to November 8, 1964; the posts overlapped.")
+    assert check_co_temporality(r)
+
+
+def test_overlapping_tenures_pass() -> None:
+    from ingest_glm_batch import check_co_temporality
+    r = _cotemp("Ada held the post from March 15, 1939 to October 20, 1951, and Edwin "
+                "held the post from January 8, 1940 to November 26, 1958.")
+    assert check_co_temporality(r) == []
+
+
+# --- TRAM label spaces (corrected 2026-09-25, audit 2026-09-23 §8) ----------
+
+_REL_Q = ("The audit ran from May 12, 1980 to September 9, 1980, and the budget "
+          "was approved on July 11, 1980. What is the relationship between the "
+          "events?\nChoices:\nA. {0}\nB. {1}\nC. {2}")
+
+
+def _rel(opts, gold):
+    return row(category="relation", slice="B", provenance="none", context="",
+               question=_REL_Q.format(*opts), targets=[gold])
+
+
+def test_relation_distractor_labels_are_never_valid_golds() -> None:
+    for bad in ("DURING", "IDENTITY"):
+        errs = check(_rel(("BEFORE", bad, "AFTER"), bad))
+        assert any("gold must be one of" in e for e in errs)
+
+
+def test_relation_gold_from_tram_label_space_passes() -> None:
+    assert check(_rel(("BEFORE", "IS_INCLUDED", "DURING"), "IS_INCLUDED")) == []
+
+
+def test_relation_option_outside_tram_vocabulary_is_rejected() -> None:
+    errs = check(_rel(("BEFORE", "LATER-ISH", "AFTER"), "BEFORE"))
+    assert any("vocabulary" in e for e in errs)
+
+
+def _ord(q, opts, gold):
+    body = q + "\nChoices:\n" + "\n".join(f"{chr(65+i)}. {o}" for i, o in enumerate(opts))
+    return row(category="ordering", slice="B", provenance="none", context="",
+               question=body, targets=[gold])
+
+
+_TF_Q = ("The dam opened on May 6, 1961. The bridge opened on June 1, 1970. Claim: "
+         "the dam opened before the bridge - True/False?")
+
+
+def test_ordering_undetermined_is_never_a_gold() -> None:
+    errs = check(_ord(_TF_Q, ["TRUE", "Undetermined", "FALSE"], "Undetermined"))
+    assert any("gold must be one of" in e for e in errs)
+
+
+def test_ordering_true_false_passes() -> None:
+    assert check(_ord(_TF_Q, ["TRUE", "Undetermined", "FALSE"], "TRUE")) == []
+
+
+_SEQ_Q = ("Arrange the following events in chronological order: (1) The shop "
+          "opened. (2) The owner was born. (3) The shop won an award.")
+
+
+def test_ordering_sequence_shape_passes() -> None:
+    assert check(_ord(_SEQ_Q, ["(2), (1), (3)", "(1), (2), (3)", "(3), (2), (1)"],
+                      "(2), (1), (3)")) == []
+
+
+def test_ordering_sequence_options_must_be_permutations() -> None:
+    errs = check(_ord(_SEQ_Q, ["(2), (1), (3)", "(1), (2)", "(3), (2), (1)"],
+                      "(2), (1), (3)"))
+    assert any("permutations" in e for e in errs)
+
+
+def test_storytelling_narrator_endings_are_rejected() -> None:
+    q = ("Which of the two endings is the most plausible correct ending to the story?"
+         "\nChoices:\nA. The story ends with the family moving house.\n"
+         "B. The story ends with the family staying put.")
+    errs = check(row(category="storytelling", slice="C", provenance="news",
+                     question=q, targets=["The story ends with the family moving house."]))
+    assert any("plain story sentences" in e for e in errs)
+
+
+def test_storytelling_plain_endings_pass() -> None:
+    q = ("Which of the two endings is the most plausible correct ending to the story?"
+         "\nChoices:\nA. She finally passed her driving test.\n"
+         "B. She sold her car to a dragon.")
+    assert check(row(category="storytelling", slice="C", provenance="news",
+                     question=q, targets=["She finally passed her driving test."],
+                     rationale="Practising daily makes passing plausible.")) == []
+
+
+def test_duration_may_carry_a_context_sentence_or_none() -> None:
+    q = "How long did it take her to walk to the station?\nChoices:\nA. 15 minutes\nB. 15 days\nC. 15 years\nD. 15 seconds"
+    for ctx in ("", "She walked to the station before her morning train."):
+        assert check(row(category="duration", slice="C", provenance="none",
+                         question=q, context=ctx, targets=["15 minutes"],
+                         rationale="Walking to a station takes minutes.")) == []
+
+
+def test_masked_dialogue_may_have_empty_context() -> None:
+    q = ("A: How long is the repair? B: It will take <MASK>, so collect it Friday.\n"
+         "Choices:\nA. forty-eight hours\nB. 48 years\nC. two seconds\nD. 9 months")
+    assert check(row(category="temporal_dialogue", slice="C", provenance="dial",
+                     question=q, context="", targets=["forty-eight hours"],
+                     rationale="A repair collected on Friday takes about two days.")) == []
+
+
+def test_unmasked_dialogue_still_needs_context() -> None:
+    q = "Which session mentions the vote?\nChoices:\nA. Session 1\nB. Session 2\nC. Session 3\nD. Session 4"
+    errs = check(row(category="temporal_dialogue", slice="C", provenance="dial",
+                     question=q, context="", targets=["Session 2"]))
+    assert any("empty context" in e for e in errs)

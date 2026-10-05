@@ -1,0 +1,24 @@
+{
+ "version": "v12",
+ "dir": "data/combined_80_20_v12",
+ "train_rows": 11804,
+ "val_rows": 2971,
+ "synthetic_pct": 54.6,
+ "general_rehearsal_pct": 0.0,
+ "composition": {
+  "AUG_GLM2": 5024,
+  "TimeQA": 4504,
+  "AUG_SEQ": 1019,
+  "TLQA": 855,
+  "AUG_GLM": 402
+ },
+ "story": "v11 minus the old AUG_GLM2 storytelling rows, plus rows written to the corrected relation / ordering / storytelling / temporal_dialogue / duration cards (docs/v12_plan.md).",
+ "results": "pending",
+ "results_dir": null,
+ "size_mb": 85.5,
+ "sha256": {
+  "train.jsonl": "ce9e1e700460ad0621ab1bfb0e41940097d89b37227e3297b900e758da905f70",
+  "val.jsonl": "3ca110aa452cf8276e68b88d41375f1d9fe4b2d605a0dfdaea4d736b2ef3daf6",
+  "manifest.json": "21db168cabdea8d793eb89f57231669a5ae6a8f0a95a435f6138c5ed617cb3a3"
+ }
+}
