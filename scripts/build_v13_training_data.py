@@ -35,6 +35,16 @@ Quality filters (all deterministic, each counted in manifest.json):
     data/cot_packets/answer_key.json (audit §2.6). combined_80_20_v12
     itself is not modified.
 
+Template-source rule (researcher decision 2026-10-05): rows that were meant
+to be LLM-written but were produced by the agent's templates/builders are
+REMOVED unless they are math (date arithmetic / comparison with mechanically
+checkable golds, MATH_CATEGORIES). This applies to every AUG_TPL3 row and to
+the v12-base AUG_GLM2 rows that came from the script-built glm_raw files
+271-313 (data/manual_aug_glm/PROVENANCE.md). Math rows are kept and must
+also pass the independent re-verification in
+data/v13_verify/failed_questions.json (scripts/verify_v13_math.py), whose
+failures are dropped.
+
 New rows split 80/20 by the same stable sha1(question) rule as before.
 
 Manifest keys: "template_rows" is the honest count of AUG_TPL3 rows;
@@ -70,6 +80,34 @@ OUT = ROOT / "data" / "combined_80_20_v13"
 COT_RAW = ROOT / "data" / "cot_raw"
 ANSWER_KEY = ROOT / "data" / "cot_packets" / "answer_key.json"
 STORY_SEED = 20261005
+GLM_RAW = ROOT / "data" / "glm_raw"
+SCRIPT_BUILT_FILES = range(271, 314)   # PROVENANCE.md: built by agent Python builders
+VERIFY_FAILED = ROOT / "data" / "v13_verify" / "failed_questions.json"
+MATH_CATEGORIES = {"Computation", "Timeline", "Duration_Compare", "Order_Compare",
+                   "Relative_Reasoning"}
+
+
+def script_built_questions(raw: Path = GLM_RAW) -> dict[str, str]:
+    """question -> category for every row in the script-built glm_raw files."""
+    out = {}
+    for n in SCRIPT_BUILT_FILES:
+        p = raw / f"{n:03d}.txt"
+        if not p.exists():
+            continue
+        for line in open(p, encoding="utf-8"):
+            line = line.strip()
+            if line.startswith("{"):
+                try:
+                    r = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if "question" in r:
+                    out[r["question"].strip()] = r.get("category")
+    return out
+
+
+def verify_failed(path: Path = VERIFY_FAILED) -> set[str]:
+    return set(json.loads(path.read_text())) if path.exists() else set()
 
 # ---------------------------------------------------------------------------
 # parsing helpers
@@ -229,10 +267,17 @@ def cot_skip_keys(cot_raw: Path = COT_RAW, answer_key: Path = ANSWER_KEY):
 # ---------------------------------------------------------------------------
 # filters
 # ---------------------------------------------------------------------------
-def filter_template_rows(rows: list[dict], counts: Counter) -> list[dict]:
+def filter_template_rows(rows: list[dict], counts: Counter,
+                         failed: set[str] = frozenset()) -> list[dict]:
     keep, story_long, story_rest = [], [], []
     for r in rows:
         cat = r.get("category")
+        if cat not in MATH_CATEGORIES:
+            counts[f"tpl_non_math_template_removed_{cat}"] += 1
+            continue
+        if r["question"].strip() in failed:
+            counts[f"tpl_math_failed_independent_verify_{cat}"] += 1
+            continue
         if cat == "relation":
             c = computed_relation(r["question"])
             if c is not None and c != r["targets"][0]:
@@ -261,10 +306,14 @@ def filter_template_rows(rows: list[dict], counts: Counter) -> list[dict]:
     return keep
 
 
-def filter_prog_rows(rows: list[dict], counts: Counter) -> list[dict]:
+def filter_prog_rows(rows: list[dict], counts: Counter,
+                     failed: set[str] = frozenset()) -> list[dict]:
     keep = []
     for r in rows:
         cat = r.get("category")
+        if r["question"].strip() in failed:
+            counts[f"prog_failed_independent_verify_{cat}"] += 1
+            continue
         if cat == "prog_timeline" and timeline_underdetermined(r["question"]):
             counts["prog_timeline_year_only_collision"] += 1
             continue
@@ -275,13 +324,29 @@ def filter_prog_rows(rows: list[dict], counts: Counter) -> list[dict]:
     return keep
 
 
-def filter_base_rows(rows: list[dict], skip_keys: set, counts: Counter, split: str) -> list[dict]:
+def filter_base_rows(rows: list[dict], skip_keys: set, counts: Counter, split: str,
+                     scripted: dict[str, str] | None = None,
+                     failed: set[str] = frozenset()) -> list[dict]:
+    scripted = scripted or {}
     keep = []
     for r in rows:
         if r.get("source_dataset") == "TimeQA" and \
                 (r.get("question"), r.get("context", "")) in skip_keys:
             counts[f"timeqa_cot_skip_wrong_gold_{split}"] += 1
             continue
+        q = r.get("question", "").strip()
+        if q in failed and q not in scripted:
+            counts[f"v12_failed_verify_or_review_{r.get('source_dataset')}_{split}"] += 1
+            continue
+        if r.get("source_dataset") == "AUG_GLM2" and q in scripted:
+            cat = r.get("category")
+            if cat not in MATH_CATEGORIES:
+                counts[f"v12_script_built_non_math_removed_{split}"] += 1
+                continue
+            if q in failed:
+                counts[f"v12_script_built_math_failed_verify_{split}"] += 1
+                continue
+            r["provenance"] = "agent-template"
         keep.append(r)
     return keep
 
@@ -318,7 +383,9 @@ def main() -> int:
         r["source_dataset"] = "AUG_TPL3"
         r["provenance"] = "agent-template"
     tpl_in = len(tpl)
-    tpl = filter_template_rows(tpl, counts)
+    failed = verify_failed()
+    scripted = script_built_questions()
+    tpl = filter_template_rows(tpl, counts, failed)
 
     # --- AUG_PROG ---------------------------------------------------------
     audit = json.loads((PROG / "audit.json").read_text())
@@ -329,7 +396,7 @@ def main() -> int:
     for r in prog:
         r["provenance"] = "programmatic"
     prog_in = len(prog)
-    prog = filter_prog_rows(prog, counts)
+    prog = filter_prog_rows(prog, counts, failed)
 
     new_rows = tpl + prog
     idx = bench_index()
@@ -355,7 +422,7 @@ def main() -> int:
                                  "run_schedule_v13.sh; these rows are NOT GLM-authored")
     for split in ("train", "val"):
         base_all = [json.loads(l) for l in open(SRC / f"{split}.jsonl", encoding="utf-8")]
-        base = filter_base_rows(base_all, skip_keys, counts, split)
+        base = filter_base_rows(base_all, skip_keys, counts, split, scripted, failed)
         added = [r for r in clean if split_of(r) == split]
         rows = base + added
         with open(OUT / f"{split}.jsonl", "w", encoding="utf-8") as f:
@@ -374,13 +441,15 @@ def main() -> int:
     subprocess.run([sys.executable, str(ROOT / "scripts" / "make_version_folder.py"),
                     "v13", "data/combined_80_20_v13", "--story",
                     "v12 (minus 207 TimeQA rows whose gold the CoT pass found contradicted "
-                    "or unsupported by the passage) + AUG_TPL3: agent-written Python "
-                    "template/builder rows (scripts/glm_v13_build/; NOT GLM-5.2 chat, "
-                    "despite the plan -- audit_2026_10_04 §1.1) for relation, nli, "
-                    "dialogue, storytelling (gold-longer share balanced to 50%), extract, "
-                    "timeline, computation, relative/duration/order compare + AUG_PROG "
-                    "programmatic math/temporal data (deliberately non-LLM, kept), with "
-                    "the audit's quality filters applied (counts in data/manifest.json)."],
+                    "or unsupported by the passage, and minus the non-math rows that came "
+                    "from the agent's script-built glm_raw files 271-313) + AUG_TPL3 MATH "
+                    "ONLY: agent-written Python template rows (scripts/glm_v13_build/; NOT "
+                    "GLM-5.2 chat -- audit_2026_10_04 §1.1) for Computation, Timeline, "
+                    "Relative_Reasoning, Duration_Compare, Order_Compare; every non-math "
+                    "template row removed by researcher decision + AUG_PROG programmatic "
+                    "math/temporal data (deliberately non-LLM, kept). Every kept math row "
+                    "passed an independent re-verification (scripts/verify_v13_math.py); "
+                    "filter counts in data/manifest.json."],
                    check=True)
     if not tpl:
         print("\nNOTE: provisional build (no template rows). The schedule refuses it "

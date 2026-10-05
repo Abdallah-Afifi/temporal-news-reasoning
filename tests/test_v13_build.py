@@ -24,17 +24,6 @@ def story(gold: str, other: str) -> dict:
             "question": f"Which ending?\nChoices:\nA. {gold}\nB. {other}"}
 
 
-def test_relation_point_point_reversed_label_is_dropped():
-    bad = rel("The union ratified its deal on 6 December 2018. "
-              "Talks began on 11 September 2018.", "BEFORE")
-    good = rel("The union ratified its deal on 6 December 2018. "
-               "Talks began on 11 September 2018.", "AFTER")
-    c = Counter()
-    kept = b.filter_template_rows([bad, good], c)
-    assert kept == [good]
-    assert c["tpl_relation_label_disagrees_with_dates"] == 1
-
-
 def test_relation_interval_and_event_to_time():
     assert b.computed_relation(
         "The campaign ran from 4 January 2016 to 29 April 2016. "
@@ -44,40 +33,6 @@ def test_relation_interval_and_event_to_time():
         "between the event 'collected' and the time 'March 2016'?") == "BEFORE"
     assert b.computed_relation(
         "On 3 August 2019 two things happened the same day. What is the relationship") is None
-
-
-def test_relation_unparseable_rows_are_kept():
-    r = rel("Two things happened on the same day.", "SIMULTANEOUS")
-    assert b.filter_template_rows([r], Counter()) == [r]
-
-
-def test_duration_broken_template_and_unit_only_options():
-    broken = {"category": "duration", "targets": ["ten minutes"],
-              "question": "How long did it take the speech to last?\nChoices:\n"
-                          "A. ten minutes\nB. two hours"}
-    unit_only = {"category": "duration", "targets": ["ten minutes"],
-                 "question": "How long to read the letter?\nChoices:\nA. ten minutes\n"
-                             "B. ten seconds\nC. ten hours\nD. ten years"}
-    fine = {"category": "duration", "targets": ["eight years"],
-            "question": "The partnership ran from 2006 to 2014. How long?\nChoices:\n"
-                        "A. eight years\nB. nine years\nC. seven years"}
-    c = Counter()
-    assert b.filter_template_rows([broken, unit_only, fine], c) == [fine]
-    assert c["tpl_duration_broken_template"] == 1
-    assert c["tpl_duration_options_differ_only_by_unit"] == 1
-
-
-def test_storytelling_gold_longer_share_forced_to_half():
-    longer = [story(f"a much longer and more detailed ending number {i}", "short")
-              for i in range(10)]
-    shorter = [story("short", f"a much longer and more detailed distractor {i}")
-               for i in range(3)]
-    c = Counter()
-    kept = b.filter_template_rows(longer + shorter, c)
-    assert len(kept) == 6
-    assert sum(b.story_gold_longer(r) for r in kept) == 3
-    assert c["tpl_storytelling_gold_longer_dropped_for_50pct_balance"] == 7
-    assert kept == b.filter_template_rows(longer + shorter, Counter())  # deterministic
 
 
 def test_prog_timeline_year_only_collision_and_duration_compare():
@@ -129,3 +84,54 @@ def test_build_refuses_without_template_rows(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["build_v13_training_data.py"])
     with pytest.raises(SystemExit, match="FATAL: no rows"):
         b.main()
+
+
+# --- template-source rule (researcher decision 2026-10-05) -------------------
+def test_non_math_template_rows_are_removed_math_kept():
+    rows = [{"category": c, "targets": ["x"], "question": f"q {c}"}
+            for c in ("relation", "storytelling", "duration", "nli_saq", "extract",
+                      "Computation", "Timeline", "Order_Compare")]
+    c = Counter()
+    kept = b.filter_template_rows(rows, c)
+    assert {r["category"] for r in kept} == {"Computation", "Timeline", "Order_Compare"}
+    assert c["tpl_non_math_template_removed_relation"] == 1
+    assert c["tpl_non_math_template_removed_storytelling"] == 1
+
+
+def test_math_template_rows_failing_independent_verify_are_dropped():
+    ok = {"category": "Computation", "targets": ["24 days"], "question": "good"}
+    bad = {"category": "Computation", "targets": ["25 days"], "question": "bad"}
+    c = Counter()
+    assert b.filter_template_rows([ok, bad], c, failed={"bad"}) == [ok]
+    assert c["tpl_math_failed_independent_verify_Computation"] == 1
+
+
+def test_script_built_base_rows_non_math_removed_math_tagged():
+    scripted = {"s-nli": "nli_mcq", "s-oc": "Order_Compare", "s-bad": "Duration_Compare"}
+    rows = [{"source_dataset": "AUG_GLM2", "category": "nli_mcq", "question": "s-nli"},
+            {"source_dataset": "AUG_GLM2", "category": "Order_Compare", "question": "s-oc"},
+            {"source_dataset": "AUG_GLM2", "category": "Duration_Compare", "question": "s-bad"},
+            {"source_dataset": "AUG_GLM2", "category": "nli_mcq", "question": "llm-written"}]
+    c = Counter()
+    kept = b.filter_base_rows(rows, set(), c, "train", scripted, failed={"s-bad"})
+    assert [r["question"] for r in kept] == ["s-oc", "llm-written"]
+    assert kept[0]["provenance"] == "agent-template"
+    assert c["v12_script_built_non_math_removed_train"] == 1
+    assert c["v12_script_built_math_failed_verify_train"] == 1
+
+
+def test_prog_rows_failing_independent_verify_are_dropped():
+    rows = [{"category": "prog_computation", "question": "p1"},
+            {"category": "prog_computation", "question": "p2"}]
+    c = Counter()
+    assert [r["question"] for r in b.filter_prog_rows(rows, c, failed={"p2"})] == ["p1"]
+
+
+
+def test_any_base_row_failing_verify_is_dropped():
+    rows = [{"source_dataset": "AUG_SEQ", "question": "seq-bad"},
+            {"source_dataset": "TimeQA", "question": "tq-ok", "context": ""}]
+    c = Counter()
+    kept = b.filter_base_rows(rows, set(), c, "val", {}, failed={"seq-bad"})
+    assert [r["question"] for r in kept] == ["tq-ok"]
+    assert c["v12_failed_verify_or_review_AUG_SEQ_val"] == 1

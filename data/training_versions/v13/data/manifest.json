@@ -1,74 +1,78 @@
 {
   "source": "data/combined_80_20_v12 (minus CoT-flagged wrong TimeQA golds) + data/manual_aug_glm_v13 relabelled AUG_TPL3 (agent-written Python templates, NOT GLM chat) + data/prog_aug_v13 (AUG_PROG, programmatic)",
   "template_rows_in": 4519,
-  "template_rows": 4118,
+  "template_rows": 1549,
   "prog_rows_in": 13200,
-  "prog_rows": 12560,
-  "cot_skip_ids_used": 207,
+  "prog_rows": 12258,
+  "cot_skip_ids_used": 233,
   "filters": {
     "contaminated_dropped": 1,
-    "prog_duration_compare_event_named_incoherent": 412,
-    "prog_timeline_year_only_collision": 227,
-    "timeqa_cot_skip_wrong_gold_train": 207,
-    "tpl_duration_broken_template": 102,
-    "tpl_duration_options_differ_only_by_unit": 20,
-    "tpl_relation_label_disagrees_with_dates": 16,
-    "tpl_storytelling_gold_longer_dropped_for_50pct_balance": 263
+    "prog_failed_independent_verify_prog_duration_compare": 412,
+    "prog_failed_independent_verify_prog_extract": 51,
+    "prog_failed_independent_verify_prog_relation": 251,
+    "prog_failed_independent_verify_prog_timeline": 227,
+    "timeqa_cot_skip_wrong_gold_train": 233,
+    "tpl_math_failed_independent_verify_Relative_Reasoning": 1,
+    "tpl_non_math_template_removed_duration": 250,
+    "tpl_non_math_template_removed_extract": 317,
+    "tpl_non_math_template_removed_nli_mcq": 250,
+    "tpl_non_math_template_removed_nli_saq": 401,
+    "tpl_non_math_template_removed_ordering": 250,
+    "tpl_non_math_template_removed_relation": 700,
+    "tpl_non_math_template_removed_storytelling": 401,
+    "tpl_non_math_template_removed_temporal_dialogue": 400,
+    "tpl_storytelling_gold_longer_dropped_for_50pct_balance": 0,
+    "v12_failed_verify_or_review_AUG_GLM2_train": 12,
+    "v12_failed_verify_or_review_AUG_GLM2_val": 3,
+    "v12_script_built_non_math_removed_train": 452,
+    "v12_script_built_non_math_removed_val": 111
   },
   "provisional": false,
   "splits": {
     "train": {
       "from_v12": 11804,
-      "v12_kept": 11597,
-      "added": 13273,
-      "out": 24870,
+      "v12_kept": 11107,
+      "added": 10986,
+      "out": 22093,
       "added_by_source": {
-        "AUG_TPL3": 3288,
-        "AUG_PROG": 9985
+        "AUG_TPL3": 1238,
+        "AUG_PROG": 9748
       },
       "added_by_category": {
         "Computation": 247,
         "Duration_Compare": 247,
         "Order_Compare": 153,
-        "Relative_Reasoning": 280,
+        "Relative_Reasoning": 279,
         "Timeline": 312,
-        "duration": 102,
-        "extract": 245,
-        "nli_mcq": 208,
-        "nli_saq": 323,
-        "ordering": 206,
         "prog_arith_clock": 1191,
         "prog_arith_month": 1181,
         "prog_computation": 1182,
         "prog_duration_compare": 313,
-        "prog_extract": 1206,
+        "prog_extract": 1166,
         "prog_order_compare": 633,
         "prog_ordering_seq": 623,
         "prog_ordering_tf": 643,
-        "prog_relation": 1598,
-        "prog_timeline": 1415,
-        "relation": 533,
-        "storytelling": 119,
-        "temporal_dialogue": 313
+        "prog_relation": 1401,
+        "prog_timeline": 1415
       },
       "out_by_source": {
-        "TimeQA": 4297,
-        "AUG_GLM2": 5024,
+        "TimeQA": 4271,
+        "AUG_GLM2": 4560,
         "TLQA": 855,
         "AUG_SEQ": 1019,
         "AUG_GLM": 402,
-        "AUG_TPL3": 3288,
-        "AUG_PROG": 9985
+        "AUG_TPL3": 1238,
+        "AUG_PROG": 9748
       }
     },
     "val": {
       "from_v12": 2971,
-      "v12_kept": 2971,
-      "added": 3405,
-      "out": 6376,
+      "v12_kept": 2857,
+      "added": 2821,
+      "out": 5678,
       "added_by_source": {
-        "AUG_TPL3": 830,
-        "AUG_PROG": 2575
+        "AUG_TPL3": 311,
+        "AUG_PROG": 2510
       },
       "added_by_category": {
         "Computation": 53,
@@ -76,36 +80,28 @@
         "Order_Compare": 47,
         "Relative_Reasoning": 70,
         "Timeline": 88,
-        "duration": 26,
-        "extract": 72,
-        "nli_mcq": 42,
-        "nli_saq": 78,
-        "ordering": 44,
         "prog_arith_clock": 308,
         "prog_arith_month": 319,
         "prog_computation": 318,
         "prog_duration_compare": 75,
-        "prog_extract": 294,
+        "prog_extract": 283,
         "prog_order_compare": 167,
         "prog_ordering_seq": 177,
         "prog_ordering_tf": 157,
-        "prog_relation": 402,
-        "prog_timeline": 358,
-        "relation": 151,
-        "storytelling": 19,
-        "temporal_dialogue": 87
+        "prog_relation": 348,
+        "prog_timeline": 358
       },
       "out_by_source": {
-        "AUG_GLM2": 1266,
+        "AUG_GLM2": 1152,
         "TimeQA": 1138,
         "AUG_SEQ": 254,
         "TLQA": 213,
         "AUG_GLM": 100,
-        "AUG_TPL3": 830,
-        "AUG_PROG": 2575
+        "AUG_TPL3": 311,
+        "AUG_PROG": 2510
       }
     }
   },
-  "glm_rows": 4118,
+  "glm_rows": 1549,
   "glm_rows_note": "backward-compatible alias of template_rows for run_schedule_v13.sh; these rows are NOT GLM-authored"
 }

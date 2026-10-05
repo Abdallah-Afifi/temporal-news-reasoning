@@ -210,3 +210,4 @@ data/prog_aug_v13*/*.jsonl
 # CoT packet orders beyond the first batch (answer_key.json is excluded above)
 data/cot_packets/ORDERS_grounded_b*.txt
 # training_versions/**/*.jsonl is already excluded above; manifests stay versioned
+data/v13_verify/review_packets/

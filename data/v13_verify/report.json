@@ -1,0 +1,741 @@
+{
+ "method": "Independent re-verification of every math / programmatic row v13 keeps.",
+ "thresholds": {
+  "order_compare_same_max_days": 14,
+  "duration_compare_hard_same": [
+   0.03,
+   14
+  ],
+  "duration_compare_hard_diff": [
+   0.2,
+   90
+  ]
+ },
+ "failed_total": 957,
+ "by_source_category": {
+  "AUG_PROG/prog_arith_clock": {
+   "checked": 1500,
+   "passed": 1500,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {}
+  },
+  "AUG_PROG/prog_arith_month": {
+   "checked": 1500,
+   "passed": 1500,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {}
+  },
+  "AUG_PROG/prog_computation": {
+   "checked": 1500,
+   "passed": 1500,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {}
+  },
+  "AUG_PROG/prog_duration_compare": {
+   "checked": 800,
+   "passed": 388,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 412,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {
+    "undeterminable": [
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the opening of the highland technical college and the conference of the municipal shipping line. *Duration 2:* Between the opening of the federal hospital trust and the restoration of the municipal savings bank.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "'conference of the municipal shipping line' never dated in the context"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the bankruptcy of the rural technical college and the reopening of the southern shipping line. *Duration 2:* Between the tournament of the federal harbour office and the reopening of the rural water board.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 1 is longer.",
+      "detail": "'reopening of the southern shipping line' never dated in the context"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the referendum of the highland textile mill and the founding of the highland opera house. *Duration 2:* Between the restoration of the provincial hospital trust and the founding of the southern technical college.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "'founding of the highland opera house' never dated in the context"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the summit of the federal planning commission and the audit of the border chamber of commerce. *Duration 2:* Between the closure of the coastal port and the bankruptcy of the border broadcasting service.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "'audit of the border chamber of commerce' never dated in the context"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the conservation order of the eastern miners union and the referendum of the eastern rail operator. *Duration 2:* Between the festival of the urban chamber of commerce and the strike of the northern grain exchange.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "'referendum of the eastern rail operator' never dated in the context"
+     }
+    ]
+   }
+  },
+  "AUG_PROG/prog_extract": {
+   "checked": 1500,
+   "passed": 1449,
+   "failed_wrong_gold": 51,
+   "failed_undeterminable": 0,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {
+    "wrong": [
+     {
+      "question": "Which of the following are time expressions mentioned in the context? (Note: There may be one or more correct options. And the time expressions are mentioned directly or indirectly in the context.)\nChoices:\nA. 21.06.2021\nB. 18.01.2021\nC. 19 January, 2021\nD. 19.06.2021",
+      "gold": "B  D",
+      "detail": "expected 'B  C  D'"
+     },
+     {
+      "question": "Which of the following are time expressions mentioned in the context? (Note: There may be one or more correct options. And the time expressions are mentioned directly or indirectly in the context.)\nChoices:\nA. 01.01.2022\nB. 2 September, 2022\nC. 02.01.2022\nD. 30 June, 2023",
+      "gold": "B  D",
+      "detail": "expected 'B  C  D'"
+     },
+     {
+      "question": "Which of the following are time expressions mentioned in the context? (Note: There may be one or more correct options. And the time expressions are mentioned directly or indirectly in the context.)\nChoices:\nA. 31.05.2023\nB. 26.11.2023\nC. 22.04.2023\nD. 26 October, 2022\nE. 30 May, 2023",
+      "gold": "C  E",
+      "detail": "expected 'B  C  E'"
+     },
+     {
+      "question": "Which of the following are time expressions mentioned in the context? (Note: There may be one or more correct options. And the time expressions are mentioned directly or indirectly in the context.)\nChoices:\nA. 15.09.2024\nB. 26.08.2024\nC. 27.11.2024\nD. 27.08.2024\nE. 15 September, 2024",
+      "gold": "C  D",
+      "detail": "expected 'A  C  D  E'"
+     },
+     {
+      "question": "Which of the following are time expressions mentioned in the context? (Note: There may be one or more correct options. And the time expressions are mentioned directly or indirectly in the context.)\nChoices:\nA. 06.05.2023\nB. 6 June, 2023\nC. 18.08.2023\nD. 5 May, 2023\nE. 08.05.2023",
+      "gold": "A",
+      "detail": "expected 'A  E'"
+     }
+    ]
+   }
+  },
+  "AUG_PROG/prog_order_compare": {
+   "checked": 800,
+   "passed": 800,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {}
+  },
+  "AUG_PROG/prog_ordering_seq": {
+   "checked": 800,
+   "passed": 800,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {}
+  },
+  "AUG_PROG/prog_ordering_tf": {
+   "checked": 800,
+   "passed": 800,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {}
+  },
+  "AUG_PROG/prog_relation": {
+   "checked": 2000,
+   "passed": 1749,
+   "failed_wrong_gold": 251,
+   "failed_undeterminable": 0,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {
+    "wrong": [
+     {
+      "question": "The renaming of the national library service ran from June 14, 1917 to 7 December 1917, the longest in the authority's records. DUBLIN, July 26, 1917 (AP). What is the relationship between the event 'ran' and the time 'July 26, 1917'?",
+      "gold": "IS_INCLUDED",
+      "detail": "expected 'INCLUDES'"
+     },
+     {
+      "question": "The exhibition of the western fisheries office ran from July 29, 2009 to Oct 8, 2009, the longest in the authority's records. VIENNA, August 14, 2009 (AP). What is the relationship between the event 'ran' and the time 'August 14, 2009'?",
+      "gold": "IS_INCLUDED",
+      "detail": "expected 'INCLUDES'"
+     },
+     {
+      "question": "The conservation order of the district housing association ran from Dec 22, 1953 to 10 May 1954, the longest in the authority's records. SUVA, January 20, 1954 (TASS). What is the relationship between the event 'ran' and the time 'January 20, 1954'?",
+      "gold": "IS_INCLUDED",
+      "detail": "expected 'INCLUDES'"
+     },
+     {
+      "question": "The opening of the island grain exchange ran from December 27, 2018 to Aug 8, 2019, the longest in the authority's records. TAIPEI, June 8, 2019 (dpa). What is the relationship between the event 'ran' and the time 'June 8, 2019'?",
+      "gold": "IS_INCLUDED",
+      "detail": "expected 'INCLUDES'"
+     },
+     {
+      "question": "The takeover of the federal planning commission ran from February 25, 1985 to October 23, 1985, the longest in the authority's records. KUALA LUMPUR, July 8, 1985 (EFE). What is the relationship between the event 'ran' and the time 'July 8, 1985'?",
+      "gold": "IS_INCLUDED",
+      "detail": "expected 'INCLUDES'"
+     }
+    ]
+   }
+  },
+  "AUG_PROG/prog_timeline": {
+   "checked": 2000,
+   "passed": 1773,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 227,
+   "unparsed": 0,
+   "unparsed_pct": 0.0,
+   "examples": {
+    "undeterminable": [
+     {
+      "question": "Sort the following 3 facts from earliest to latest. Reply with only the letters in order, comma separated, e.g. 'B,A,C'.\nA. The highland opera house recorded its survey in 1947.\nB. The expansion of the northern library service on Oct 8, 1953.\nC. The highland rail operator recorded its inspection in 1947.",
+      "gold": "C,A,B",
+      "detail": "facts A/C overlap or tie: (datetime.date(1947, 1, 1), datetime.date(1947, 12, 31)) vs (datetime.date(1947, 1, 1), datetime.date(1947, 12, 31))"
+     },
+     {
+      "question": "Below are 5 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The northern grain exchange recorded its conservation order in 1926.\nB. The apprentice scheme took place on the 5th of May, 1922.\nC. The state chamber of commerce recorded its tournament",
+      "gold": "B,A,D,C,E",
+      "detail": "facts A/D overlap or tie: (datetime.date(1926, 1, 1), datetime.date(1926, 12, 31)) vs (datetime.date(1926, 7, 20), datetime.date(1926, 7, 20))"
+     },
+     {
+      "question": "Below are 5 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The metropolitan library service recorded its closure in 2019.\nB. The nationalisation took place on the 14th of May, 2011.\nC. The opening of the coastal water board on 17 July 2012.\nD. T",
+      "gold": "B,D,C,E,A",
+      "detail": "facts D/B overlap or tie: (datetime.date(2011, 1, 1), datetime.date(2011, 12, 31)) vs (datetime.date(2011, 5, 14), datetime.date(2011, 5, 14))"
+     },
+     {
+      "question": "Sort the following 3 facts from earliest to latest. Reply with only the letters in order, comma separated, e.g. 'B,A,C'.\nA. The festival took place on the 24th of August, 1967.\nB. The district museum recorded its inauguration in 1974.\nC. The reopening took place on the 13th of May, 1974.",
+      "gold": "A,C,B",
+      "detail": "facts B/C overlap or tie: (datetime.date(1974, 1, 1), datetime.date(1974, 12, 31)) vs (datetime.date(1974, 5, 13), datetime.date(1974, 5, 13))"
+     },
+     {
+      "question": "Below are 5 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The district harbour office recorded its survey in 1948.\nB. The recruitment drive of the river power utility on April 24, 1948.\nC. The opening took place on the 9th of February, 1942.\nD.",
+      "gold": "C,E,D,A,B",
+      "detail": "facts A/B overlap or tie: (datetime.date(1948, 1, 1), datetime.date(1948, 12, 31)) vs (datetime.date(1948, 4, 24), datetime.date(1948, 4, 24))"
+     }
+    ]
+   }
+  },
+  "AUG_TPL3/Computation": {
+   "checked": 300,
+   "passed": 288,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 12,
+   "unparsed_pct": 4.0,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "How long did the Vale co-op's first specialist oat intake round last? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "24 days",
+      "detail": "computation shape"
+     },
+     {
+      "question": "How long did the Vale egg pool's winter round run? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "24 days",
+      "detail": "computation shape"
+     },
+     {
+      "question": "How long passed between the mobile dairy clinic's two visits to the vale? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "3 months",
+      "detail": "computation shape"
+     },
+     {
+      "question": "How long did the subscription vegetable scheme take to reach its membership capacity? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "2 months 15 days",
+      "detail": "computation shape"
+     },
+     {
+      "question": "How long after the seed library opened its drawers did its ten-thousandth loan occur? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "3 years",
+      "detail": "computation shape"
+     }
+    ]
+   }
+  },
+  "AUG_TPL3/Duration_Compare": {
+   "checked": 300,
+   "passed": 277,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 23,
+   "unparsed_pct": 7.7,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the opening of the design competition and the plan approval. *Duration 2:* Between the start of site work and the civic centre's opening.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "The two durations are approximately the same length.",
+      "detail": "cannot locate 'start of site work'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the mounting and closing of the plans exhibition. *Duration 2:* Between the start of site clearance and the opening of the design competition.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "cannot locate 'closing of the plans exhibition'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the start of site clearance and the opening of the design competition. *Duration 2:* Between the inquiry's opening and its report.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 1 is longer.",
+      "detail": "cannot locate 'start of site clearance'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the inquiry's opening and its report. *Duration 2:* Between the start of site work and the civic centre's opening.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "cannot locate 'start of site work'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the opening of the design competition and the plan approval. *Duration 2:* Between the mounting and closing of the plans exhibition.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 1 is longer.",
+      "detail": "cannot locate 'closing of the plans exhibition'"
+     }
+    ]
+   }
+  },
+  "AUG_TPL3/Order_Compare": {
+   "checked": 200,
+   "passed": 177,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 23,
+   "unparsed_pct": 11.5,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "For Fact1: Rovers won their cup tie against the division leaders and Fact2: the promotion parade toured the town, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 1 happened earlier.",
+      "detail": "cannot locate 'rovers won their cup tie against the division leaders'"
+     },
+     {
+      "question": "For Fact1: Kalle Roon signed for the Meridian team and Fact2: Roon rode his first race for the squad, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 1 happened earlier.",
+      "detail": "cannot locate 'roon rode his first race for the squad'"
+     },
+     {
+      "question": "For Fact1: Roon fractured his collarbone at the Flemish classic and Fact2: Roon's contract extension was announced, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 1 happened earlier.",
+      "detail": "cannot locate 'roon's contract extension was announced'"
+     },
+     {
+      "question": "For Fact1: the federation published the stadium plans and Fact2: ground was broken on the stadium site, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 1 happened earlier.",
+      "detail": "cannot locate 'ground was broken on the stadium site'"
+     },
+     {
+      "question": "For Fact1: Rowan Rovers' season resumed behind closed doors and Fact2: the cup tie against the division leaders was won, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 1 happened earlier.",
+      "detail": "cannot locate 'rowan rovers' season resumed behind closed doors'"
+     }
+    ]
+   }
+  },
+  "AUG_TPL3/Relative_Reasoning": {
+   "checked": 350,
+   "passed": 328,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 1,
+   "unparsed": 21,
+   "unparsed_pct": 6.0,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "What happened immediately after the tunnel broke through at Corriefell?\nChoices:\nA. The first turbine began spinning\nB. The enabling act received assent\nC. Dam work began\nD. The official opening took place",
+      "gold": "The first turbine began spinning",
+      "detail": "cannot locate 'tunnel broke through at corriefell'"
+     },
+     {
+      "question": "What immediately followed the first turbine beginning to spin?\nChoices:\nA. The tunnel broke through\nB. Dam work began\nC. The scheme was fully commissioned\nD. The survey was published",
+      "gold": "The scheme was fully commissioned",
+      "detail": "cannot locate 'first turbine beginning to spin'"
+     },
+     {
+      "question": "What came next after the chimney was rebuilt?\nChoices:\nA. The interconnector survey was dispatched\nB. The interconnector was energised\nC. The scrubbers were fitted\nD. The conversion was announced",
+      "gold": "The interconnector survey was dispatched",
+      "detail": "cannot locate 'interconnector survey was dispatched'"
+     },
+     {
+      "question": "What happened immediately after the blackout struck?\nChoices:\nA. The wind pilot was erected\nB. The inquiry opened\nC. The report was published\nD. The recommendations were implemented",
+      "gold": "The inquiry opened",
+      "detail": "cannot locate 'wind pilot was erected'"
+     },
+     {
+      "question": "Which event came soonest after the inquiry report was published?\nChoices:\nA. The blackout struck\nB. The inquiry opened\nC. The recommendations were implemented\nD. The wind pilot first fed the grid",
+      "gold": "The recommendations were implemented",
+      "detail": "cannot locate 'wind pilot first fed the grid'"
+     }
+    ],
+    "undeterminable": [
+     {
+      "question": "What came immediately after the expansion study was commissioned?",
+      "gold": "The passage does not say.",
+      "detail": "nothing dated after the anchor"
+     }
+    ]
+   }
+  },
+  "AUG_TPL3/Timeline": {
+   "checked": 400,
+   "passed": 374,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 26,
+   "unparsed_pct": 6.5,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "Below are 3 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The basin's final smallpox case was detected\nB. The mass vaccination drive got under way\nC. A grain reward for reporting cases was introduced",
+      "gold": "B,C,A",
+      "detail": "cannot locate 'basin's final smallpox case was detected'"
+     },
+     {
+      "question": "Below are 3 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. Epidemiologists organised a central surveillance unit\nB. The international certification commission convened\nC. A containment team was flown to the city outbreak",
+      "gold": "A,C,B",
+      "detail": "cannot locate 'epidemiologists organised a central surveillance unit'"
+     },
+     {
+      "question": "Below are 4 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. Eradication of the disease was formally declared\nB. The mass vaccination drive got under way\nC. Routine weekly surveillance was stood down\nD. A containment team was flown to the city out",
+      "gold": "B,D,A,C",
+      "detail": "cannot locate 'eradication of the disease was formally declared'"
+     },
+     {
+      "question": "Below are 3 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. A grain reward for reporting cases was introduced\nB. The international certification commission convened\nC. Eradication of the disease was formally declared",
+      "gold": "A,B,C",
+      "detail": "cannot locate 'eradication of the disease was formally declared'"
+     },
+     {
+      "question": "Below are 3 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The basin's final smallpox case was detected\nB. Eradication of the disease was formally declared\nC. Epidemiologists organised a central surveillance unit",
+      "gold": "C,A,B",
+      "detail": "cannot locate 'basin's final smallpox case was detected'"
+     }
+    ]
+   }
+  },
+  "v12_glm2/Computation": {
+   "checked": 800,
+   "passed": 567,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 233,
+   "unparsed_pct": 29.1,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "How long did the Ellergill Mutual's emergency payment scheme run from the claims line opening to the scheme being closed? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "1 year 5 months 18 days",
+      "detail": "cannot locate 'scheme being closed'"
+     },
+     {
+      "question": "How long after the dialysis unit opened did the first home-dialysis training session take place? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "There is no answer.",
+      "detail": "computation shape"
+     },
+     {
+      "question": "What date was 10 months before the appeal was dismissed on March 17, 1987? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "May 17, 1986",
+      "detail": "computation shape"
+     },
+     {
+      "question": "What date was 8 months before the housing repairs roster agreement was reached on May 26, 2020? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "September 26, 2019",
+      "detail": "computation shape"
+     },
+     {
+      "question": "How long after the first strike day was the union's regrading review report published? (Hint: Please answer in the form of Month Day, Year. e.g. 1 year 2 months 3days, or 2 days, or 9 months, or 3 months 15 days.)",
+      "gold": "There is no answer.",
+      "detail": "computation shape"
+     }
+    ]
+   }
+  },
+  "v12_glm2/Duration_Compare": {
+   "checked": 333,
+   "passed": 99,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 234,
+   "unparsed_pct": 70.3,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the launch of the streaming series and the resumption of the tour. *Duration 2:* Between the resumption of the tour and the opening of the youth academy.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 1 is longer.",
+      "detail": "cannot locate 'resumption of the tour'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the incorporation of the Harwood Cotton Mill and the declaration of the mill's first profit. *Duration 2:* Between the incorporation of the Harwood Cotton Mill and the completion of the merger with Ridgeway's.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "cannot locate 'incorporation of the harwood cotton mill'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the network year celebration and the network map's publication. *Duration 2:* Between the club's anniversary and the map's publication.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 1 is longer.",
+      "detail": "cannot locate 'network map's publication'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the crane order's winning and the crane's delivery. *Duration 2:* Between the merger's agreement and the crane order's winning.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "cannot locate 'crane order's winning'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the appeal's dismissal and turbine two's erection. *Duration 2:* Between the windfarm's completion and the fund's first grants.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "The two durations are approximately the same length.",
+      "detail": "cannot locate 'appeal's dismissal'"
+     }
+    ]
+   }
+  },
+  "v12_glm2/Order_Compare": {
+   "checked": 50,
+   "passed": 36,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 14,
+   "unparsed_pct": 28.0,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "For Fact1: the turbine hall's first sod was cut and Fact2: the first synchronisation to the grid came, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 1 happened earlier.",
+      "detail": "cannot locate 'turbine hall's first sod was cut'"
+     },
+     {
+      "question": "For Fact1: the first synchronisation to the grid came and Fact2: the official opening ceremony was held, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "They happen at almost the same time.",
+      "detail": "cannot locate 'official opening ceremony was held'"
+     },
+     {
+      "question": "For Fact1: the east quay reopened and Fact2: the first ship berthed at the reopened quay, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "They happen at almost the same time.",
+      "detail": "cannot locate 'first ship berthed at the reopened quay'"
+     },
+     {
+      "question": "For Fact1: the almshouses restoration was finished and Fact2: the tramways passed to the corporation, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 2 happened earlier.",
+      "detail": "cannot locate 'almshouses restoration was finished'"
+     },
+     {
+      "question": "For Fact1: the new east wing took its first patients and Fact2: the first surgery was performed in the new wing, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "They happen at almost the same time.",
+      "detail": "cannot locate 'first surgery was performed in the new wing'"
+     }
+    ]
+   }
+  },
+  "v12_glm2/Relative_Reasoning": {
+   "checked": 444,
+   "passed": 60,
+   "failed_wrong_gold": 14,
+   "failed_undeterminable": 1,
+   "unparsed": 369,
+   "unparsed_pct": 83.1,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "Which amenity opening followed the first tenants meeting most recently?",
+      "gold": "the opening of the clinic",
+      "detail": "cannot locate 'first tenants meeting most recently'"
+     },
+     {
+      "question": "Immediately after the march through the town, what was the next ward change in the passage's account?\nChoices:\nA. The closure of the west wing\nB. The opening of the new atrium\nC. The opening of the day surgery unit\nD. The opening of the temporary ward",
+      "gold": "The opening of the temporary ward",
+      "detail": "cannot locate 'march through the town, what was the next ward change in the passage's account'"
+     },
+     {
+      "question": "What came after Marie's retirement?",
+      "gold": "The passage does not say.",
+      "detail": "cannot locate 'marie's retirement'"
+     },
+     {
+      "question": "Of the published reports recorded after the uptake report, which came most recently?\nChoices:\nA. The follow-up survey\nB. The uptake report\nC. The county health audit\nD. The ministerial review",
+      "gold": "The follow-up survey",
+      "detail": "cannot locate 'uptake report, which came most recently'"
+     },
+     {
+      "question": "Which bridge completion followed the opening of the glasshouse quarter most recently?",
+      "gold": "the completion of the tide bridge",
+      "detail": "cannot locate 'opening of the glasshouse quarter most recently'"
+     }
+    ],
+    "wrong": [
+     {
+      "question": "What was the most recent event after the hall's construction began?\nChoices:\nA. The library's opening\nB. The steelwork's completion\nC. The hall's opening to the public\nD. The final account's closing",
+      "gold": "The final account's closing",
+      "detail": "expected \"The library's opening\""
+     },
+     {
+      "question": "What was the most recent tramway event after the heritage status was granted?\nChoices:\nA. The first heritage service\nB. The full service's restoration\nC. The centenary of the first electric car\nD. The rescue campaign's launch",
+      "gold": "The centenary of the first electric car",
+      "detail": "expected 'The first heritage service'"
+     },
+     {
+      "question": "Which exchange event was the most recent after direct dialling was enabled?\nChoices:\nA. The hall's doubling\nB. The telex introduction\nC. The automation programme's completion\nD. The peacetime restoration",
+      "gold": "The automation programme's completion",
+      "detail": "expected 'The peacetime restoration'"
+     },
+     {
+      "question": "Which event was most recent after Saturday opening returned?\nChoices:\nA. The fraud system's installation\nB. The rate saver's launch\nC. The video adviser service's start\nD. The community hub's opening",
+      "gold": "The community hub's opening",
+      "detail": "expected \"The fraud system's installation\""
+     },
+     {
+      "question": "Which banking event was the most recent after the mobile app launched?\nChoices:\nA. The contactless limit's raising\nB. The community hub's opening\nC. The fraud system's installation\nD. The video adviser service's start",
+      "gold": "The community hub's opening",
+      "detail": "expected \"The contactless limit's raising\""
+     }
+    ],
+    "undeterminable": [
+     {
+      "question": "Which clinic opening came first after the second confirmed case?",
+      "gold": "the opening of the second catch-up clinic",
+      "detail": "tie for the next event"
+     }
+    ]
+   }
+  },
+  "v12_glm2/Timeline": {
+   "checked": 633,
+   "passed": 424,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 209,
+   "unparsed_pct": 33.0,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "Below are 3 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The design competition was won.\nB. The compulsory purchase order was confirmed.\nC. Construction work began.",
+      "gold": "A,B,C",
+      "detail": "cannot locate 'compulsory purchase order was confirmed'"
+     },
+     {
+      "question": "Below are 3 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The reservoir grant was awarded.\nB. The record temperature was set.\nC. The burst main was repaired.",
+      "gold": "C,B,A",
+      "detail": "cannot locate 'reservoir grant was awarded'"
+     },
+     {
+      "question": "Below are 4 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The reservoir was refilled.\nB. The drought watch was declared.\nC. The leak-reduction drive was launched.\nD. The record temperature was set.",
+      "gold": "C,A,B,D",
+      "detail": "cannot locate 'drought watch was declared'"
+     },
+     {
+      "question": "Below are 4 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The first tenants moved in.\nB. The topping-out ceremony was held.\nC. The tower cranes were erected.\nD. The foundations were poured.",
+      "gold": "D,C,B,A",
+      "detail": "cannot locate 'topping-out ceremony was held'"
+     },
+     {
+      "question": "Below are 4 facts. You need to sort these facts in chronological order. Requirements: You must output a sequence of uppercase letters separated by commas, such as 'A,B,C', without any other characters.\nChoices:\nA. The final judgment was delivered.\nB. The Divisional Court heard the case.\nC. The conviction was quashed.\nD. The costs order was made.",
+      "gold": "C,B,A,D",
+      "detail": "cannot locate 'final judgment was delivered'"
+     }
+    ]
+   }
+  },
+  "v12_script_built/Duration_Compare": {
+   "checked": 31,
+   "passed": 17,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 14,
+   "unparsed_pct": 45.2,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the opening of the new stand and the winning of the trophy. *Duration 2:* Between the winning of the trophy and the purchase of the training ground.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "cannot locate 'winning of the trophy'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the arrival of the tractor and the replanting of the orchards. *Duration 2:* Between the replanting of the orchards and the purchase of the small farms.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "The two durations are approximately the same length.",
+      "detail": "cannot locate 'arrival of the tractor'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the adoption of the carbon target and the splitting of the shares. *Duration 2:* Between the opening of the northern hub and the signing of the apprenticeship pledge.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "The two durations are approximately the same length.",
+      "detail": "cannot locate 'splitting of the shares'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the completion of the first drainage scheme and the registration of the dairy herd. *Duration 2:* Between the founding of the ploughing match and the arrival of the tractor.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "cannot locate 'arrival of the tractor'"
+     },
+     {
+      "question": "Which of the following two durations is longer? *Duration 1:* Between the opening of the northern hub and the splitting of the shares. *Duration 2:* Between the signing of the apprenticeship pledge and the announcement of the founder's retirement.\nChoices:\nA. Duration 1 is longer.\nB. Duration 2 is longer.\nC. The two durations are approximately the same length.",
+      "gold": "Duration 2 is longer.",
+      "detail": "cannot locate 'splitting of the shares'"
+     }
+    ]
+   }
+  },
+  "v12_script_built/Order_Compare": {
+   "checked": 120,
+   "passed": 112,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 8,
+   "unparsed_pct": 6.7,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "For Fact1: the centenary match was played and Fact2: the centenary statue was unveiled, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. They happen at almost the same time.\nC. Fact 2 happened earlier.",
+      "gold": "They happen at almost the same time.",
+      "detail": "cannot locate 'centenary statue was unveiled'"
+     },
+     {
+      "question": "For Fact1: the first drill was held and Fact2: the rescue brigade was founded, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. They happen at almost the same time.\nC. Fact 2 happened earlier.",
+      "gold": "They happen at almost the same time.",
+      "detail": "cannot locate 'first drill was held'"
+     },
+     {
+      "question": "For Fact1: the centenary statue was unveiled and Fact2: the community ownership was completed, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. Fact 2 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 1 happened earlier.",
+      "detail": "cannot locate 'centenary statue was unveiled'"
+     },
+     {
+      "question": "For Fact1: the ground was reopened and Fact2: the centenary statue was unveiled, which one happened earlier?\nChoices:\nA. Fact 2 happened earlier.\nB. Fact 1 happened earlier.\nC. They happen at almost the same time.",
+      "gold": "Fact 1 happened earlier.",
+      "detail": "cannot locate 'centenary statue was unveiled'"
+     },
+     {
+      "question": "For Fact1: the founding donors were registered and Fact2: the library trust was founded, which one happened earlier?\nChoices:\nA. Fact 1 happened earlier.\nB. They happen at almost the same time.\nC. Fact 2 happened earlier.",
+      "gold": "They happen at almost the same time.",
+      "detail": "cannot locate 'founding donors were registered'"
+     }
+    ]
+   }
+  },
+  "v12_seq/None": {
+   "checked": 1273,
+   "passed": 1267,
+   "failed_wrong_gold": 0,
+   "failed_undeterminable": 0,
+   "unparsed": 6,
+   "unparsed_pct": 0.5,
+   "examples": {
+    "unparsed": [
+     {
+      "question": "Below are 3 facts. Put them in chronological order, earliest first. Answer with the option letters separated by commas and nothing else, for example 'A,B,C'.\nA. Inter Milan began in 2012.\nB. Genoa CFC began in 2010.\nC. Bologna F.C. 1909 began in 2017.",
+      "gold": "B,A,C",
+      "detail": "seq item year"
+     },
+     {
+      "question": "Arrange these 3 events in the order they happened, starting with the earliest. Output nothing but the letters separated by commas, such as 'C,A,B'.\nA. Bologna F.C. 1909 began in 2015.\nB. Montpellier Hérault Sport Club began in 2012.\nC. OGC Nice began in 2010.",
+      "gold": "C,B,A",
+      "detail": "seq item year"
+     },
+     {
+      "question": "Order the 3 statements below chronologically. Your entire answer must be the option letters in order, separated by commas.\nA. Villarreal CF began in 2011.\nB. Carpi FC 1909 began in 2016.\nC. Swansea City A.F.C. began in 2012.",
+      "gold": "A,C,B",
+      "detail": "seq item year"
+     },
+     {
+      "question": "Arrange these 3 events in the order they happened, starting with the earliest. Output nothing but the letters separated by commas, such as 'C,A,B'.\nA. TSG 1899 Hoffenheim began in 2010.\nB. Chelsea F.C. began in 2013.\nC. Beşiktaş J.K. began in 2014.",
+      "gold": "A,B,C",
+      "detail": "seq item year"
+     },
+     {
+      "question": "Order the 3 statements below chronologically. Your entire answer must be the option letters in order, separated by commas.\nA. Cruz Azul began in 2015.\nB. Parma Calcio 1913 began in 2010.\nC. Italy national association football team began in 2011.",
+      "gold": "B,C,A",
+      "detail": "seq item year"
+     }
+    ]
+   }
+  }
+ }
+}
