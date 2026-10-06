@@ -1,3 +1,104 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:47f3e403ed71411959cdf5a8adeaa07c8ca7320ea31b0cdf137ddbc947d3e65d
-size 15964
+{"rid": "a83f0e31f74e", "verdict": "AMBIGUOUS", "reason": "ES Setif stint undated; only dated facts are 2006-08; 2002-05 tenure unsupported either way."}
+{"rid": "ab813fe23798", "verdict": "AMBIGUOUS", "reason": "Two titles conferred in 1977 (Woman Grandmaster and International Arbiter); gold picks one arbitrarily."}
+{"rid": "03c3801825ff", "verdict": "AMBIGUOUS", "reason": "Context never mentions a chair; Peccei shown only as founder; window unverifiable."}
+{"rid": "c8339cd6c357", "verdict": "AMBIGUOUS", "reason": "Academie des Technologies fellowship undated; no May 2008 anywhere in context."}
+{"rid": "f7f0866cd7cd", "verdict": "AMBIGUOUS", "reason": "Context cuts off in the 1990s; no UNASUR role mentioned; Feb-Jun 2009 position unverifiable."}
+{"rid": "227b70bb1131", "verdict": "WRONG", "reason": "1927-1935 he held flag rank (rear admiral); 'Commander' as rank contradicted and vice admiral came later."}
+{"rid": "98b648b114d4", "verdict": "AMBIGUOUS", "reason": "Los Gatos work only 'around this time' (~1924); 1925 filled by NYC show, Texas wedding, world travels."}
+{"rid": "ecdf81801141", "verdict": "CORRECT", "reason": "After 1991-92 Valencia, career in lower leagues 'mainly Elche CF (three seasons)' \u2014 matches the 1992-95 window."}
+{"rid": "8654953fce01", "verdict": "CORRECT", "reason": "Signed for Queensland Roar for the 2005 season; New Zealand Knights only for the 2006 season."}
+{"rid": "e42bad8c0587", "verdict": "CORRECT", "reason": "Koln held him into the 1989-90 season (three matches) before the 1989 PSV move; covers part of window."}
+{"rid": "9d9f2dc4bfb6", "verdict": "AMBIGUOUS", "reason": "No leadership or chair history in context; honorary-member years do not date a chairmanship."}
+{"rid": "5e029c0010cb", "verdict": "AMBIGUOUS", "reason": "No 'hub' or its board approval appears in the passage; the anchor event is missing."}
+{"rid": "0d6324dc53f1", "verdict": "AMBIGUOUS", "reason": "Passage has clock tower and water tower; 'the tower's shadow' does not specify the town hall's clock tower."}
+{"rid": "4a82bec4f174", "verdict": "AMBIGUOUS", "reason": "From 1989 he worked 'in Miami and Sarasota', then LA, undated; Nov 1991 could be either city."}
+{"rid": "73eed00c4a5d", "verdict": "AMBIGUOUS", "reason": "Hadlazy only 'elected to LMP's leadership' (2015); Szel equally defensible head for Apr 2017."}
+{"rid": "47856b04cc1d", "verdict": "AMBIGUOUS", "reason": "Meadows called 'caucus chair' (undated), Biggs 'currently'; 2019 handover timing unstated."}
+{"rid": "21fea8b850b6", "verdict": "AMBIGUOUS", "reason": "By May 2005 listed on both Commonwealth Heritage List (2004) and NSW Register (1999); two valid answers."}
+{"rid": "c223e6911bbe", "verdict": "CORRECT", "reason": "Walkout began Aug 8, 2022; crews returned 'early September' \u2014 approximately one month."}
+{"rid": "8a0f764b2ddd", "verdict": "AMBIGUOUS", "reason": "Fellowship undated; no May 2008 date anywhere in context."}
+{"rid": "a56c568636c4", "verdict": "AMBIGUOUS", "reason": "Signed for Glenafton Sept 2010; Rob Roy move undated; May 2011 could be either club."}
+{"rid": "66a597ad8e61", "verdict": "AMBIGUOUS", "reason": "Nothing about 1716-1717; Hispanic Monarchy mentions are 16th-17th century; insufficient."}
+{"rid": "1cb6695fe086", "verdict": "AMBIGUOUS", "reason": "Residence never stated; high school in Culm vs family in Eastern Pomerania both possible for 1909."}
+{"rid": "27dfd55c2052", "verdict": "AMBIGUOUS", "reason": "Principal dancer 1964-68, but first choreographic work also premiered 1967; Jun 1967 fits both."}
+{"rid": "a11aca196a34", "verdict": "WRONG", "reason": "Passage says last symbolic coal train only 'planned' for 30 June 2000; running never confirmed \u2014 neutral, not entailment."}
+{"rid": "34fb3532d2f2", "verdict": "CORRECT", "reason": "A three-year gap ending in 1961 started in 1958."}
+{"rid": "696bb698c814", "verdict": "AMBIGUOUS", "reason": "No marriage dates given; Voronin (first husband) plausible but the window is unverified."}
+{"rid": "49202bd710f6", "verdict": "AMBIGUOUS", "reason": "'Autumn 2022' spans Sep-Nov; 5 months fits September only; October or November give 6-7 months."}
+{"rid": "ce1795ff66d8", "verdict": "CORRECT", "reason": "Context states 'from 1909 to 1917 at Imperial School of Jurisprudence' \u2014 exact match."}
+{"rid": "eec0bf9cc0d5", "verdict": "CORRECT", "reason": "Post-Inter sequence Parma, Panathinaikos, Espanyol ends with summer 2002 retirement; Panathinaikos falls around 2000-01."}
+{"rid": "3e7a788e19b3", "verdict": "AMBIGUOUS", "reason": "Passage self-contradicts: 'since 2014' vs 'since the end of 2014' ownership; Jul 2014 unresolved."}
+{"rid": "d269da1954d9", "verdict": "AMBIGUOUS", "reason": "Prime and Julius Berger both pre-2007 with no dates; 2005-06 could be either."}
+{"rid": "47b102605a98", "verdict": "AMBIGUOUS", "reason": "Worked 'primarily in Milan from 1954'; NYC projects of the 1960s undated; Jun-Oct 1969 either."}
+{"rid": "6bf6f3d71731", "verdict": "AMBIGUOUS", "reason": "Pulsar detection only 'logged in the new year'; no date \u2014 1 month is one reading among several."}
+{"rid": "bfc8d1fcb3ea", "verdict": "CORRECT", "reason": "After Doxa (Apr 2017) and before APOEL (Jan 2021) only Nea Salamis is mentioned; May 2018 falls inside."}
+{"rid": "6695df0b8e65", "verdict": "CORRECT", "reason": "Lead states living and working in Amsterdam; Shanghai only part-time 2011-13; Amsterdam is the clear post-2012 base."}
+{"rid": "0109b7707b47", "verdict": "AMBIGUOUS", "reason": "TfL financing/operation described as current, undated; Jul 2001 ownership not established."}
+{"rid": "f42d5dfd3731", "verdict": "AMBIGUOUS", "reason": "No 1911 heatwave exists in the passage; only heatwave is 1901 \u2014 Duration 2 undefined."}
+{"rid": "a616a43d9b09", "verdict": "CORRECT", "reason": "Unpad bachelor's earned 'three years later' (1968); enrolled by 1965-66, so Aug 1966 falls within attendance."}
+{"rid": "8de5df474e0e", "verdict": "AMBIGUOUS", "reason": "Geneva studies then Passau PhD, none dated; Dec 1993 could be either."}
+{"rid": "4e09236a1111", "verdict": "AMBIGUOUS", "reason": "Context never states present-day status; dual gold 'Ukrainian | Russian' mirrors the unresolved dispute."}
+{"rid": "f085ce97dba2", "verdict": "AMBIGUOUS", "reason": "Context is a stub; only a citation title links Renzi to PD; late-2000s membership undated."}
+{"rid": "d0121dde0020", "verdict": "AMBIGUOUS", "reason": "Renaming history stops at 1921/1951; the 1955-57 name never appears in the context."}
+{"rid": "3ae849e142ad", "verdict": "AMBIGUOUS", "reason": "DSK listed only as 'former mayor of Sarcelles'; no dates \u2014 1995-97 mayoralty unverifiable from context."}
+{"rid": "2e7f61a6d062", "verdict": "WRONG", "reason": "Passage states no duration for recording a find; 'one hour' is wholly unsupported."}
+{"rid": "d9b46bd8f66b", "verdict": "AMBIGUOUS", "reason": "Clubs listed without dates; Jul 1991 (transfer window) could be Estrela da Amadora or Guimaraes."}
+{"rid": "048d20fef1c2", "verdict": "CORRECT", "reason": "Premise gives no timing of the historian's account relative to the accord; neutral is the correct relation."}
+{"rid": "7031fa9e0427", "verdict": "AMBIGUOUS", "reason": "Lycee Descartes (Rabat) and lycee Chaptal (Paris) both undated; May 1969-Mar 1970 could be either."}
+{"rid": "ec85e7aa9c91", "verdict": "WRONG", "reason": "Context's CEO list gives Eskew 2008-2014 and Davis 2014-2020; early 2010s CEO is Eskew, not Davis."}
+{"rid": "c625a560a9a2", "verdict": "CORRECT", "reason": "Rejoined Olympiakos December 2009 on a six-month contract \u2014 inside the 2009-2010 window."}
+{"rid": "af2e5ef0cd83", "verdict": "AMBIGUOUS", "reason": "Stanford, MIT, Harvard degrees all undated; Nov 1988 could fall in any of them."}
+{"rid": "f549a3a0c885", "verdict": "AMBIGUOUS", "reason": "Playing dates absent; Osters (215 matches) then Varnamo (20) \u2014 1984-86 placement not stated."}
+{"rid": "c4cffd2569ef", "verdict": "AMBIGUOUS", "reason": "Tennis Borussia Berlin and FC Koln both precede 1996 Copenhagen, undated; May 1994 either."}
+{"rid": "1df12e835a65", "verdict": "AMBIGUOUS", "reason": "Non-league move undated; Kingstonian and Hayes both plausibly the club after Jan 2000."}
+{"rid": "571e6a84034a", "verdict": "WRONG", "reason": "Passenger record was set the same day as the centenary, not before; last prior event is the 2000 franchise."}
+{"rid": "ae1159926628", "verdict": "AMBIGUOUS", "reason": "Lax appears only in a professors list; a 1972-80 directorship is nowhere stated."}
+{"rid": "5aecbeb2e69b", "verdict": "AMBIGUOUS", "reason": "Tram power station operating in 1932 could have lit streets without trams; entailment vs neutral genuinely torn."}
+{"rid": "61de96f3a357", "verdict": "AMBIGUOUS", "reason": "reCAPTCHA sold to Google in 2009, but Google employment of von Ahn is never stated."}
+{"rid": "615e21cd99a4", "verdict": "CORRECT", "reason": "Premise mentions only the accord's signing date, nothing about the strike ballot; neutral holds."}
+{"rid": "08c72cbe310e", "verdict": "AMBIGUOUS", "reason": "'Terminal' never appears in the passage; Duration 1's endpoint is undefined."}
+{"rid": "e297f8635721", "verdict": "CORRECT", "reason": "Claims filed Nov 24, 2020; settlement 'reached in the late spring' (late May 2021) is about six months."}
+{"rid": "0b32a2421dc4", "verdict": "CORRECT", "reason": "Ten working days from Nov 4, skipping weekends and observing the Nov 10 holiday, lands on Nov 19."}
+{"rid": "e74702517447", "verdict": "WRONG", "reason": "Born Oct 1973 \u2014 Dec 1990 (age 17) is his high-school senior year; Bucks CC came after graduation."}
+{"rid": "79e38fbf9415", "verdict": "CORRECT", "reason": "At Derby from 1968, 'left Derby in 1971' \u2014 Dec 1970 through 1971 partly at Derby."}
+{"rid": "56818af692d7", "verdict": "AMBIGUOUS", "reason": "Braintree signing and the Maidenhead/Hayes/Slough loans all undated; Mar 2014 could be any."}
+{"rid": "8c8618719d14", "verdict": "AMBIGUOUS", "reason": "Five marriages listed in order without dates; 1934-35 Sebastian tenure plausible but unverified."}
+{"rid": "ee8acc107d60", "verdict": "WRONG", "reason": "Passage gives no duration for reading and checking the bills; 'one hour' is unsupported."}
+{"rid": "1a6e76bfa230", "verdict": "AMBIGUOUS", "reason": "Paris (Renoir) and Rome (Visconti) work both 1930s, undated; 1935-36 could be either city."}
+{"rid": "84e67dabd334", "verdict": "AMBIGUOUS", "reason": "Liverpool lecturing dated only 'in 1907'; Oct-Dec 1906 start unconfirmed; Manchester also possible."}
+{"rid": "606efe04d5cb", "verdict": "CORRECT", "reason": "First award after the June 1992 Feldbach twinning is the parks' national trophy (Sep 12, 1995), the Britain in Bloom."}
+{"rid": "9d02269ffd85", "verdict": "CORRECT", "reason": "Moved to London in 1852 and prospered there; Paris came later \u2014 London held from the window's start."}
+{"rid": "6cc1b5232f7c", "verdict": "CORRECT", "reason": "Tonbridge until the 2001 translation, Edinburgh 2001-2011; both components overlap the 2001-2002 window."}
+{"rid": "357b471a7e15", "verdict": "AMBIGUOUS", "reason": "SpaceX, Tesla, OpenAI all active Dec 2015-Dec 2016; a single-employer gold is under-determined."}
+{"rid": "75460a032ddd", "verdict": "CORRECT", "reason": "Apostolic Nuncio to France 1936-1944 overlaps the Nov 1943-Dec 1945 window."}
+{"rid": "bfc8874d403e", "verdict": "AMBIGUOUS", "reason": "No coaching history in context; Bekdik is never mentioned."}
+{"rid": "219b61d008fb", "verdict": "AMBIGUOUS", "reason": "Masiulis leader until May 2016, but his start date is absent; early-2010s chair unverifiable."}
+{"rid": "377b87407fca", "verdict": "AMBIGUOUS", "reason": "Speelman sold it in 1971, but acquisition date unstated; 1969-70 ownership likely yet unproven."}
+{"rid": "b2566284060b", "verdict": "CORRECT", "reason": "After Erhard resigned (1966), Kiesinger led the CDU through the window per the context."}
+{"rid": "803d6b104304", "verdict": "AMBIGUOUS", "reason": "'In 2001' lacks a month; if appointed mid-2001, she was still Vice Foreign Minister before May 2001."}
+{"rid": "9a550f583851", "verdict": "AMBIGUOUS", "reason": "'Approved in the summer of 2014's anticipation' is contorted; summer 2013 and summer 2014 readings both defensible."}
+{"rid": "67488cc5bdd8", "verdict": "CORRECT", "reason": "Imperial School of Jurisprudence tenure 1909-1917 explicitly stated; covers the early 1910s."}
+{"rid": "1cd47ce42cd6", "verdict": "WRONG", "reason": "Born Mar 1967; Jul-Sep 1989 is his Baylor undergraduate era, long after Jersey Village High School."}
+{"rid": "6272adf183ce", "verdict": "CORRECT", "reason": "Pellham reopened June 12, 2000; Carrow opened autumn 2000 (~October) \u2014 about four months."}
+{"rid": "28fad8d18515", "verdict": "CORRECT", "reason": "Born 1976, high school ~1994, then Collin College before SMU; Jan-Sep 1995 falls at Collin."}
+{"rid": "c59088ae54fb", "verdict": "CORRECT", "reason": "Only event that can follow the (undated) memorial unveiling is the final account's closing (Mar 1, 1949)."}
+{"rid": "6ae72a73bee2", "verdict": "CORRECT", "reason": "Leyton Orient from Jul 5, 2005 to January 2006 release \u2014 inside the 2005-2006 window."}
+{"rid": "9ef93f5aee6f", "verdict": "AMBIGUOUS", "reason": "Oak Ridge 'then' Los Alamos assignments undated; the Jun 1944-Jan 1945 split is unverifiable."}
+{"rid": "7032aac36558", "verdict": "AMBIGUOUS", "reason": "Reserve bid discussed in Session 3 (approach) and Session 4 (results); both defensible."}
+{"rid": "40ba0bca63fb", "verdict": "AMBIGUOUS", "reason": "Station rebuilding and 'third ninety' absent from this passage; Duration 2 undefined."}
+{"rid": "aea9b7b6a2a9", "verdict": "AMBIGUOUS", "reason": "Leader list undated and unordered; Dec 2007 chairman not determinable from context."}
+{"rid": "4a297dcc492f", "verdict": "AMBIGUOUS", "reason": "Kubel named without tenure dates; context gives no 1970-76 minister-president timeline."}
+{"rid": "49ceeeb53dd2", "verdict": "CORRECT", "reason": "Shadow Welsh Secretary 2010-2012; year-precision range covers Feb 2012."}
+{"rid": "e39f9eab97fe", "verdict": "AMBIGUOUS", "reason": "Four clubs listed without dates; Oct 1943 team unverifiable."}
+{"rid": "6fe81c482ab9", "verdict": "CORRECT", "reason": "Elected for Unity Party in 1922, defecting only in 1923 \u2014 held during part of the 1922-24 window."}
+{"rid": "7f59ad69c49b", "verdict": "CORRECT", "reason": "Postdoctoral fellow at Weizmann Institute of Science 1966-7 \u2014 exact match."}
+{"rid": "56f835d32fc9", "verdict": "AMBIGUOUS", "reason": "Hub's first year report never appears in the passage; anchor event missing."}
+{"rid": "ee4ca30b2408", "verdict": "AMBIGUOUS", "reason": "SpaceX and Tesla both active Apr 2013-Oct 2014; single-employer gold under-determined."}
+{"rid": "d9bfb47d8e17", "verdict": "CORRECT", "reason": "Career sequence begins at Hodd; born 1953, capped from 1976 \u2014 the Hodd era covers 1970-75."}
+{"rid": "1a5e4cc2b057", "verdict": "AMBIGUOUS", "reason": "After the 1958 split the class ran under both UTA and CIE; gold names only CIE."}
+{"rid": "eaabadbc8970", "verdict": "CORRECT", "reason": "Only club between East Stirlingshire (2011) and Albion Rovers (May 2014) is Annan Athletic."}
+{"rid": "3b7c6d750640", "verdict": "AMBIGUOUS", "reason": "No referral date and no final-settlement payment date in the passage; the precise gold is unverifiable."}
+{"rid": "73bef4d40f1f", "verdict": "CORRECT", "reason": "Latest twinning after the Bloom trophy is the third twin (May 14, 2002), the Channel town Braye."}
+{"rid": "ed3309fba153", "verdict": "AMBIGUOUS", "reason": "Left TVE in 1973, but his newspaper employers (Pueblo, Informaciones) are undated."}
+{"rid": "3dae07d7a6ee", "verdict": "AMBIGUOUS", "reason": "Liberal Party join date unstated ('later' than 1970s Young Labor); Oct 1984 could precede it."}
+{"rid": "73680a210a6a", "verdict": "AMBIGUOUS", "reason": "Context covers his playing career only; no coaching record; 2019-20 unverifiable."}

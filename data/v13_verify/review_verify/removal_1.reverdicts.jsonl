@@ -1,3 +1,180 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a94d6f363246c4b482e7603e0d851e89bd60c8190af0486c2bacd9af4293f2da
-size 20011
+{"rid": "45b033e79478", "verdict": "AMBIGUOUS", "reason": "context insufficient"}
+{"rid": "42d2623106de", "verdict": "WRONG", "reason": "fortnight ended Jan 27, 2002; gold's begin date has wrong year 2012"}
+{"rid": "b333f78a2161", "verdict": "WRONG", "reason": "he was Minister of State at MAFF, not Secretary of State"}
+{"rid": "c80a494073ed", "verdict": "WRONG", "reason": "Apr 2002 he was at Middlesbrough; Sheffield Wednesday loan began 2002-03 season"}
+{"rid": "e499ad3b371f", "verdict": "MALFORMED", "reason": "World's Strongest Man is a contest title, not an occupation"}
+{"rid": "86a17a9c87a8", "verdict": "WRONG", "reason": "Nov 8, 2002 is the plan adoption date; attendance counting never dated then"}
+{"rid": "69badf79e99e", "verdict": "WRONG", "reason": "elected Deputy Leader on 2 June 1970, after March 1970"}
+{"rid": "da97ebae4e29", "verdict": "CORRECT", "reason": "married French Stewart on May 19, 1998"}
+{"rid": "a2efc9eb8d28", "verdict": "MALFORMED", "reason": "country given where a position is asked"}
+{"rid": "77d566449e36", "verdict": "WRONG", "reason": "July 2, 1973 is second half of 1973; relation is contradiction"}
+{"rid": "84e6a323f5a5", "verdict": "WRONG", "reason": "per lineage it stayed 1st Bombardment Division until 1955 redesignation"}
+{"rid": "055f6e9bcb0b", "verdict": "WRONG", "reason": "after April 1939 he refused cabinet; Commerce resumed only after coalition reconstituted"}
+{"rid": "42de74448275", "verdict": "WRONG", "reason": "passage states the engineer of 1911 opened the extension; entailment, not neutral"}
+{"rid": "057c455fccca", "verdict": "WRONG", "reason": "before June 1928 he played for Bayonne Rovers; Newark signed September 1928"}
+{"rid": "6b9729dedde8", "verdict": "WRONG", "reason": "Windjammer operated the ship from 1982; in 1981 still research vessel Vema"}
+{"rid": "0be1dd91e9f5", "verdict": "WRONG", "reason": "Carlos II component (~1700) contradicted for Nov 1515"}
+{"rid": "f49e8331ae6a", "verdict": "WRONG", "reason": "late 2000s at Bristol Rovers; Forest Green only Feb 2006 loan"}
+{"rid": "67e72170c508", "verdict": "WRONG", "reason": "fragment found 29 Aug 1967, after August bank holiday; contradiction, not entailment"}
+{"rid": "084701c9927b", "verdict": "MALFORMED", "reason": "'Pneumologists' is not a head of the society"}
+{"rid": "c207604d65ec", "verdict": "MALFORMED", "reason": "clipped fragment; the position is never stated"}
+{"rid": "6ad2aa1049b1", "verdict": "MALFORMED", "reason": "gold is a sentence fragment, not a school"}
+{"rid": "166ceaaea2c7", "verdict": "MALFORMED", "reason": "player's own surname given as team; he was at Wolfsburg"}
+{"rid": "2dedb68f6344", "verdict": "WRONG", "reason": "May 2010 unattached; Fleetwood from Jul 2010, Altrincham from Nov 2010"}
+{"rid": "0f48ef08b480", "verdict": "CORRECT", "reason": "Political State Secretary from 1997 for almost two years covers Jun 1998"}
+{"rid": "538dc5adecc1", "verdict": "AMBIGUOUS", "reason": "context insufficient"}
+{"rid": "555e1a18d3d6", "verdict": "MALFORMED", "reason": "operator given for a country-of-registry question"}
+{"rid": "440718184e60", "verdict": "WRONG", "reason": "context says he remained with Disney only until May 17, 1933"}
+{"rid": "bc1f023396db", "verdict": "AMBIGUOUS", "reason": "context insufficient"}
+{"rid": "35212732ed2b", "verdict": "WRONG", "reason": "named tests run drop, abort, night recovery; abort test is second"}
+{"rid": "fc8dda7b2c03", "verdict": "WRONG", "reason": "in 1967 he was still in New York; England from 1972"}
+{"rid": "4d4901da4f56", "verdict": "CORRECT", "reason": "Park School covered 2015 to mid-2016, part of window"}
+{"rid": "a262d96268ce", "verdict": "WRONG", "reason": "bypass 1978, electrification 1981: different decades; contradiction"}
+{"rid": "bbd4e958999b", "verdict": "MALFORMED", "reason": "championship competition named as a conferred title"}
+{"rid": "147a324555b2", "verdict": "MALFORMED", "reason": "House of Commons body given as position; she was MP"}
+{"rid": "a1fbc367fa94", "verdict": "WRONG", "reason": "deprived of his see October 1646; imprisoned until 1660"}
+{"rid": "75d0d588f193", "verdict": "WRONG", "reason": "elected to National Academy of Sciences in 2003, not 2002"}
+{"rid": "1f425cf343ce", "verdict": "MALFORMED", "reason": "freelance-writer occupation given as employer"}
+{"rid": "b0cf603caad1", "verdict": "WRONG", "reason": "option A matches passage: sponsorship lasted until 2012 storm"}
+{"rid": "7230b7ba1202", "verdict": "CORRECT", "reason": "he taught at Paris Dauphine from 1968, covering Aug 1969"}
+{"rid": "ce16d9366f0b", "verdict": "WRONG", "reason": "option B matches passage: week after merger vote, both chairmen"}
+{"rid": "a9a2f3a40ee3", "verdict": "WRONG", "reason": "Go Digital was the original name before 2011; window was Click only"}
+{"rid": "9443c0d80575", "verdict": "MALFORMED", "reason": "truncated mid-name (York South\u2014Weston) and garbled phrase"}
+{"rid": "779a540e9521", "verdict": "WRONG", "reason": "July 2006 at Nottingham Forest; Northwich Victoria loan from Nov 2006"}
+{"rid": "8c19e7b70abd", "verdict": "WRONG", "reason": "Norman (1920s) and Niarchos (1972) components outside late 1890s"}
+{"rid": "364ddee2df78", "verdict": "WRONG", "reason": "wells closed 1954, a year after reservoir opened 1953; entailment"}
+{"rid": "1cc860acb10c", "verdict": "CORRECT", "reason": "about 92 vs 130 days; within two-month tolerance"}
+{"rid": "9fbfb4f3bb61", "verdict": "MALFORMED", "reason": "plural 'legislators' set given as his personal position"}
+{"rid": "ae4755dbfe7b", "verdict": "MALFORMED", "reason": "'under-20 level' is not a team"}
+{"rid": "9df10cbed63c", "verdict": "MALFORMED", "reason": "committee body given as position; he was a member"}
+{"rid": "2951fcc62e4b", "verdict": "MALFORMED", "reason": "truncated club name; Sheffield alone ambiguous"}
+{"rid": "0b9d7a3ef6e7", "verdict": "WRONG", "reason": "Kings signed July 23, 2015; June 2012 he was traded to Bucks"}
+{"rid": "fa98069831b3", "verdict": "CORRECT", "reason": "Chancellorship resumed in 1895 covers July 1895"}
+{"rid": "264c8f428bcd", "verdict": "WRONG", "reason": "photograph tied to the winter-1963 freeze; a date is recoverable"}
+{"rid": "0a7446a02d83", "verdict": "WRONG", "reason": "passage states hut was bought at auction in 1966"}
+{"rid": "c4efe3026af2", "verdict": "WRONG", "reason": "first chairman was Anders Klarstr\u00f6m; Leif Zeilon never mentioned"}
+{"rid": "329deb87ecd7", "verdict": "MALFORMED", "reason": "airline's own historic name given as owner; circular"}
+{"rid": "d96c687c79c1", "verdict": "WRONG", "reason": "Colchester loan came in 1987-88 season; Jan 1987 at Ipswich"}
+{"rid": "25aad7e7c811", "verdict": "MALFORMED", "reason": "'under-17 team' fragment; not a valid team"}
+{"rid": "299b7cd55a1e", "verdict": "MALFORMED", "reason": "'under-19 team' is a level, not a club"}
+{"rid": "e71a606b318a", "verdict": "MALFORMED", "reason": "House of Representatives body given as position"}
+{"rid": "0b87881f1d8d", "verdict": "MALFORMED", "reason": "seminary institution given as a position component"}
+{"rid": "ae6fca73d122", "verdict": "WRONG", "reason": "he married Donna Peele on Sept 3, 1995, after the window"}
+{"rid": "fc59b000ee48", "verdict": "WRONG", "reason": "passage states academy was opened in 1978"}
+{"rid": "33337510187a", "verdict": "MALFORMED", "reason": "'C.F' truncation is not a team name"}
+{"rid": "d2ca468b6ecb", "verdict": "WRONG", "reason": "he became Deputy Prime Minister Sept 23, 2015; Tsipras was PM"}
+{"rid": "1fbad95fd643", "verdict": "WRONG", "reason": "club ceased operations Dec 2019; never played 2020-21"}
+{"rid": "32834fb60991", "verdict": "WRONG", "reason": "the class was LSWR-operated; only one sold loco passed to GWR"}
+{"rid": "94c0584c4939", "verdict": "MALFORMED", "reason": "GP2 Series is a competition, not a sport"}
+{"rid": "2f781e3fcaab", "verdict": "CORRECT", "reason": "emerged as P&O's Pacific Eden late 2015, within window"}
+{"rid": "e21153075d01", "verdict": "WRONG", "reason": "Revolution trial ended Feb 2014, outside May-Jul 2014"}
+{"rid": "48c578ec85be", "verdict": "WRONG", "reason": "Palazzo Vecchio only from 1864; window was Palazzo Madama"}
+{"rid": "b7ad66e34783", "verdict": "MALFORMED", "reason": "own university abbreviation 'PFW'; circular, not an organization joined"}
+{"rid": "9d1d54dc596c", "verdict": "WRONG", "reason": "London only from 1632, outside Feb 1611"}
+{"rid": "0ce3e1d94d50", "verdict": "WRONG", "reason": "omits in-window Nov 29, 1974 siren use"}
+{"rid": "3c362ee3028a", "verdict": "WRONG", "reason": "July 2004 at Herediano; Chicago Fire from late 2004"}
+{"rid": "6fdb9be86077", "verdict": "MALFORMED", "reason": "House of Representatives body given as position"}
+{"rid": "a4998546bbcb", "verdict": "CORRECT", "reason": "matches actual passage account: fortnight, houses warm"}
+{"rid": "88e6883c1633", "verdict": "CORRECT", "reason": "designated Provincial Heritage Property in 1984, spans window"}
+{"rid": "1512b3b5ec0a", "verdict": "MALFORMED", "reason": "Senate body given as position; she was state senator"}
+{"rid": "0ee468f4fff0", "verdict": "WRONG", "reason": "listed on National Register since 2007; historic district never mentioned"}
+{"rid": "ed7206381396", "verdict": "WRONG", "reason": "Chadwick School years precede 1997 Manchester United signing"}
+{"rid": "6cfcbd8c2b53", "verdict": "MALFORMED", "reason": "Diet of Bosnia is a legislature, not a political party"}
+{"rid": "e81184d38a2b", "verdict": "WRONG", "reason": "Feb-Apr 2010 third keeper at Modena; Chievo from Aug 2010"}
+{"rid": "54f74f23cc59", "verdict": "CORRECT", "reason": "context says he spent those seasons with the B team, Segunda Liga"}
+{"rid": "29e2ea883573", "verdict": "WRONG", "reason": "transferred to DPMM under-21 in 2007; QAF earlier"}
+{"rid": "d0701565e925", "verdict": "WRONG", "reason": "still Luton in Jan 1975; Cardiff after that season (~summer 1975)"}
+{"rid": "85437695e628", "verdict": "WRONG", "reason": "Feb 1968 at Barnsley; Kidderminster came later"}
+{"rid": "a228426c7d2e", "verdict": "CORRECT", "reason": "21 vs 77 days; 56-day gap within two-month tolerance"}
+{"rid": "a9be652ea864", "verdict": "MALFORMED", "reason": "'seats' fragment, not a position"}
+{"rid": "0acf02e647e3", "verdict": "WRONG", "reason": "move to corn exchange was 1963, after 1961 festival; contradiction"}
+{"rid": "035dc7414f90", "verdict": "WRONG", "reason": "he left Edinburgh only in 1829; Jun 1828 in Edinburgh"}
+{"rid": "533a141365b4", "verdict": "WRONG", "reason": "University of Chicago decades later; Rahway High until 1928"}
+{"rid": "a9b8f2c1b7a6", "verdict": "WRONG", "reason": "by late 2000s in USL Second Division; Pro Soccer League was 2004"}
+{"rid": "2ba5435fb7b6", "verdict": "MALFORMED", "reason": "Senate body given as position"}
+{"rid": "768db2f18f90", "verdict": "WRONG", "reason": "Senator only from 1967, not early 1960s"}
+{"rid": "6740b8aaa102", "verdict": "WRONG", "reason": "Crewe (Mar 2013) and Southport (Oct 2013) outside Dec 2012"}
+{"rid": "b5a36c28a6af", "verdict": "WRONG", "reason": "Jan 17, 2013 is upgrade completion; outage repair is undated eleven hours"}
+{"rid": "fc5e0659fd03", "verdict": "WRONG", "reason": "May 2003 at Cheltenham Town; Northern Ireland is national side"}
+{"rid": "6af1fb85ce53", "verdict": "WRONG", "reason": "Feb 2015 at Boston Breakers; FKC trade Oct 2015"}
+{"rid": "8499d148d663", "verdict": "CORRECT", "reason": "signed for West Ham July 2006, inside Jan-Sep window"}
+{"rid": "9e6270260bd6", "verdict": "WRONG", "reason": "option C matches passage: still with heritage board"}
+{"rid": "d788248999c6", "verdict": "WRONG", "reason": "Feb 2010 at Inter Baku; Qarabag from 2010-11 season"}
+{"rid": "16d94a60a09d", "verdict": "WRONG", "reason": "Jan 1978 still in high school; Brown from ~1979"}
+{"rid": "f93754e15e92", "verdict": "WRONG", "reason": "June 14 article says award received 'last night', i.e. June 13"}
+{"rid": "0560439f5324", "verdict": "WRONG", "reason": "ceded to Soviet Union; Soviet from the 1944 armistice"}
+{"rid": "a01ea87a6620", "verdict": "WRONG", "reason": "high school until 1987; Wabash 1987-1991"}
+{"rid": "a15cf07894a9", "verdict": "WRONG", "reason": "Auxiliary Bishop was 1917-20, outside window"}
+{"rid": "e1e76983404b", "verdict": "WRONG", "reason": "collection held at El Escorial, Spain; only microfilms went to Morocco"}
+{"rid": "7c34ce586fd6", "verdict": "WRONG", "reason": "Leyton Orient from July 5, 2005; April 2005 released"}
+{"rid": "8967e00ac04c", "verdict": "MALFORMED", "reason": "World Cup squad reference, not a club"}
+{"rid": "d47567dc1b21", "verdict": "MALFORMED", "reason": "Lok Sabha body-term given as position"}
+{"rid": "850f0c930111", "verdict": "WRONG", "reason": "clinic starts 'next week' after Jan 25 article, i.e. February 2018"}
+{"rid": "e9745191600d", "verdict": "WRONG", "reason": "Melbourne 1999-2006, outside May 2010-May 2017"}
+{"rid": "c76ee1fa8795", "verdict": "MALFORMED", "reason": "city fragment; manager is Kaliningrad State Technical University"}
+{"rid": "0f8e9c1054f3", "verdict": "MALFORMED", "reason": "airline's own historic name given as owner; circular"}
+{"rid": "a351b1b88716", "verdict": "WRONG", "reason": "Everton then Bolton; Atlanta Chiefs loan was 1981"}
+{"rid": "51b6fc6f43b6", "verdict": "WRONG", "reason": "June 2016 joined 1860 Munich; Guimaraes loan ended May"}
+{"rid": "efac40058db3", "verdict": "WRONG", "reason": "Plymouth ended May 1971; then Bath City player-manager"}
+{"rid": "bb88b9f274bf", "verdict": "MALFORMED", "reason": "ruling dynasty given as a capital"}
+{"rid": "e09b164c8624", "verdict": "MALFORMED", "reason": "organization given where a position is asked"}
+{"rid": "9dcf75de3b60", "verdict": "WRONG", "reason": "he was MP for West Waterford; Mid-Cork was Sheehan's seat"}
+{"rid": "82c3b88d73ee", "verdict": "WRONG", "reason": "chronological order is B (Jul 25), C (Aug 3), A (Sep 12) 2019"}
+{"rid": "6c40116a7413", "verdict": "WRONG", "reason": "centre opened Oct 2018, after March 2018 ballot; contradiction"}
+{"rid": "7fddbdbde7e5", "verdict": "CORRECT", "reason": "Preston from Sept 1, 2008, inside Jan-Sep window"}
+{"rid": "3d4713648845", "verdict": "CORRECT", "reason": "completed June 5, 2009, a spring date"}
+{"rid": "5eb6f718036b", "verdict": "WRONG", "reason": "Ipswich (pre-1999) and West Ham (2007+) both outside window"}
+{"rid": "a52ea8e3ba91", "verdict": "CORRECT", "reason": "Hinckley loan Oct-Nov 2008 falls within 2008-2009"}
+{"rid": "71403dcc3a44", "verdict": "WRONG", "reason": "all three positions predate 1997; Foreign Minister from 1997"}
+{"rid": "f45369a21484", "verdict": "WRONG", "reason": "passage says he lived in California 1849-1854"}
+{"rid": "4695f1b997d6", "verdict": "WRONG", "reason": "Levante from summer 2013; Orduspor until then"}
+{"rid": "ac5ac1c2d9c7", "verdict": "MALFORMED", "reason": "House of Representatives body given as position"}
+{"rid": "06b6f9c5fa19", "verdict": "CORRECT", "reason": "Prime Minister again from late Nov 2009, inside window"}
+{"rid": "97af747f111f", "verdict": "WRONG", "reason": "Harrogate released May 2011; only Stamford fits window"}
+{"rid": "b721d24336f6", "verdict": "WRONG", "reason": "widow rang the bell, so founder was dead; contradiction"}
+{"rid": "8586a63711bc", "verdict": "WRONG", "reason": "priest since 1994; deacon only 1991-94"}
+{"rid": "47085ceaa928", "verdict": "MALFORMED", "reason": "clipped fragment; the position is never stated"}
+{"rid": "e807d1d9d59c", "verdict": "WRONG", "reason": "context says he remained with Disney only until 1933"}
+{"rid": "eb0898081f0b", "verdict": "WRONG", "reason": "Carlos II (~1700) contradicted; owner was Mary of Hungary"}
+{"rid": "51fc0dee9220", "verdict": "MALFORMED", "reason": "directorship given where an employer is asked"}
+{"rid": "7658cf4a12b4", "verdict": "CORRECT", "reason": "only 1939 requisition dated; arrival date never given"}
+{"rid": "c85ade860814", "verdict": "WRONG", "reason": "UNC Press published his book; employer was Indiana University"}
+{"rid": "a05da880e560", "verdict": "MALFORMED", "reason": "Senate body given as position"}
+{"rid": "24b4458833a2", "verdict": "MALFORMED", "reason": "municipal okrug given as a capital; circular"}
+{"rid": "468eb4de6f83", "verdict": "CORRECT", "reason": "joined Melbourne Heart Feb 2013, within window"}
+{"rid": "ad4d95c16346", "verdict": "MALFORMED", "reason": "House body given as position; he was a representative"}
+{"rid": "937b786c2089", "verdict": "WRONG", "reason": "naturalized US citizen June 23, 1944; earlier Czechoslovak"}
+{"rid": "83f20a1d203e", "verdict": "WRONG", "reason": "SED only from April 1946"}
+{"rid": "cb0134f37a16", "verdict": "WRONG", "reason": "Feb 1938 at Tottenham; Brentford from Aug 1938"}
+{"rid": "d868a06721ae", "verdict": "WRONG", "reason": "employer was Renault; Ghosn was his chairman, not employer"}
+{"rid": "a3383268700f", "verdict": "WRONG", "reason": "omits in-window Jan 25, 1982 storm review"}
+{"rid": "f9aec8a337f2", "verdict": "WRONG", "reason": "released by Stevenage in May 2012; Macclesfield a month later"}
+{"rid": "0814c29b8ef4", "verdict": "WRONG", "reason": "'hospital's first handrails' means none before; entailment"}
+{"rid": "58ff2d46a9a2", "verdict": "WRONG", "reason": "Frances Beaufort marriage was 1798, outside window"}
+{"rid": "6f4cd603c639", "verdict": "WRONG", "reason": "Farenyuk held the post exactly in that window"}
+{"rid": "e2fca533a83a", "verdict": "WRONG", "reason": "Poulsen was president 1980-1994"}
+{"rid": "4e2d771988ac", "verdict": "WRONG", "reason": "building transferred to London Residuary Body in 1990"}
+{"rid": "d5a1a449679a", "verdict": "AMBIGUOUS", "reason": "context insufficient"}
+{"rid": "678b4db3b417", "verdict": "WRONG", "reason": "auxiliary bishop was Wojtyla's role; Kominek was titular archbishop"}
+{"rid": "ed5d9dbbbc3c", "verdict": "MALFORMED", "reason": "answer repeats the subject's own name; circular"}
+{"rid": "2fff6cf6cd38", "verdict": "WRONG", "reason": "Margaret of Austria owned it 1516-1530"}
+{"rid": "17f776bca95e", "verdict": "MALFORMED", "reason": "election event phrase, not a position"}
+{"rid": "18ac0cda8356", "verdict": "WRONG", "reason": "1992 at Binghamton; Georgetown degree 1994"}
+{"rid": "5475acf53ae3", "verdict": "AMBIGUOUS", "reason": "context insufficient"}
+{"rid": "16625be2eb65", "verdict": "WRONG", "reason": "Nuncio ended 1944; Prefect from Jan 1953"}
+{"rid": "32a992c34415", "verdict": "WRONG", "reason": "Darlington from Sept 2012; earlier in USA"}
+{"rid": "397d39eae660", "verdict": "MALFORMED", "reason": "government-type descriptor, not an organization"}
+{"rid": "646735743981", "verdict": "WRONG", "reason": "Saglam's tenure was mid-2000s, far outside 2018"}
+{"rid": "9d668ad08f2d", "verdict": "WRONG", "reason": "Porto e Santa Rufina was consecrator Chigi's see"}
+{"rid": "9d386fb3ee47", "verdict": "WRONG", "reason": "House seat was 1844; by 1848 he was in the Senate"}
+{"rid": "457f9a6317bc", "verdict": "MALFORMED", "reason": "party leadership role given as organization"}
+{"rid": "1e805d16053f", "verdict": "MALFORMED", "reason": "operator given for a country-of-registry question"}
+{"rid": "0e9feef703c5", "verdict": "MALFORMED", "reason": "'parliament' fragment, not a position"}
+{"rid": "abb25753387c", "verdict": "MALFORMED", "reason": "aircraft type given as official name"}
+{"rid": "01a9e7e53d43", "verdict": "MALFORMED", "reason": "'Psychiatry in London' clipped fragment of institute name"}
+{"rid": "2cf81b5e7d3d", "verdict": "WRONG", "reason": "Niblo's Garden appearance was Jan 1870, outside window"}
+{"rid": "7bd820beb2cb", "verdict": "AMBIGUOUS", "reason": "context insufficient"}
+{"rid": "516d41afc671", "verdict": "CORRECT", "reason": "New England acquired him early 2014, within window"}
+{"rid": "5880766f23bd", "verdict": "WRONG", "reason": "planted 'the same week' as June 7, 1924 unveiling"}
+{"rid": "5885241b0b26", "verdict": "WRONG", "reason": "Home Rule League was earlier; by 1886 IPP member"}
+{"rid": "1c4b754082a9", "verdict": "WRONG", "reason": "Plymouth loan from Aug 2011; June 2011 at Hull"}

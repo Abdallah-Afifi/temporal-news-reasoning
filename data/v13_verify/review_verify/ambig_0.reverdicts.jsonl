@@ -1,3 +1,105 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:062da5303852550fddbabb08417d5f612bd03d8a029ff286309158b459cff976
-size 13213
+{"rid": "b15ddd823769", "verdict": "CORRECT", "reason": "BITEF artistic director 1967-2014 covers whole 1967-85 window; supported"}
+{"rid": "dffdba0befef", "verdict": "CORRECT", "reason": "209 vs 266 days: within ~2-month tolerance and similar scale; approximately same"}
+{"rid": "7cb27c4bf876", "verdict": "CORRECT", "reason": "Rotherham 1988-89 season overlaps end of 1986-88 window"}
+{"rid": "52198e4c9903", "verdict": "AMBIGUOUS", "reason": "No dates tie Glasgow (vs Vienna/Paris) studies to Jul 1885"}
+{"rid": "a61f0e617a3a", "verdict": "WRONG", "reason": "Network map publication never dated in passage; Duration 2 unverifiable"}
+{"rid": "ecd719272c3e", "verdict": "AMBIGUOUS", "reason": "Context truncated before Feb 1990 chair election; Boehme shown only as manager"}
+{"rid": "8962b061fea3", "verdict": "AMBIGUOUS", "reason": "UNH attendance undated; in 1970 she could still be in high school"}
+{"rid": "1abf939893bd", "verdict": "CORRECT", "reason": "Iberoamericana the only school before 1984 career start; age fits 1982"}
+{"rid": "9d5631d2a68c", "verdict": "WRONG", "reason": "Vinery opened on time for promised 1959 season; plum yard was late one; contradiction unsupported"}
+{"rid": "738ff0237459", "verdict": "CORRECT", "reason": "Exact match: Rabindra Bharati University 1969-1973"}
+{"rid": "e48c33c52204", "verdict": "WRONG", "reason": "'The county's forty-two practices joining' denotes all county practices; entailment not neutral"}
+{"rid": "2bfdbc34684d", "verdict": "AMBIGUOUS", "reason": "Jul-Oct 2013 could be Levante B or La Hoya; clubs undated"}
+{"rid": "df59f47864fc", "verdict": "CORRECT", "reason": "Joined Penarol Aug 2005, within Apr-Nov 2005 window"}
+{"rid": "5509cd0e205d", "verdict": "CORRECT", "reason": "Wycombe loan Aug 2018-Jan 2019 overlaps Mar-Dec 2018 window"}
+{"rid": "55ee00e3c52c", "verdict": "AMBIGUOUS", "reason": "Directors list: Pepin 1974-77 vs McGetchin 1977-79; McGetchin start month unknown"}
+{"rid": "4c460aeaaebf", "verdict": "CORRECT", "reason": "Derby career from 1970 (324 apps, 1971-72 title); Dec 1970 at Derby"}
+{"rid": "e57fe90fe2ba", "verdict": "CORRECT", "reason": "Penn professor since 2007 PhD; publications from 2008; only employer shown"}
+{"rid": "68b12cf2add1", "verdict": "WRONG", "reason": "Declaration Jul 2020 predates assembly (chosen Mar 2021); budget not assembly-written, so contradiction"}
+{"rid": "06c9976c8959", "verdict": "AMBIGUOUS", "reason": "Sep 2004 club undated among Villarreal B, Moralo, Cacereno etc."}
+{"rid": "864761bb9598", "verdict": "CORRECT", "reason": "Kaiserslautern return in 1993 covers Jul-Nov 93; national team spans 1992-94"}
+{"rid": "183927072b44", "verdict": "WRONG", "reason": "Wording dispute, judgment and appeal never appear in the passages"}
+{"rid": "1513dd260b6f", "verdict": "WRONG", "reason": "Thieulin presided around 2013-2016; Babinet absent, his term ended ~2012"}
+{"rid": "ad8be34b3d90", "verdict": "WRONG", "reason": "Jun-Jul 1999 he was 17, pre-Hearts (2000); senior Black Stars caps came later"}
+{"rid": "a2e6a5689347", "verdict": "WRONG", "reason": "Cruise terminal never mentioned; Duration 2 endpoint absent"}
+{"rid": "4d91212776ce", "verdict": "CORRECT", "reason": "Timetables recut to fleet's turn of speed, frequency doubled: faster, so contradiction holds"}
+{"rid": "f45fda7bdb9e", "verdict": "CORRECT", "reason": "Logbooks gave array its first comparisons, i.e., baseline predating 1993 commissioning: entailment"}
+{"rid": "be1857dbb739", "verdict": "AMBIGUOUS", "reason": "Five marriages listed, none dated; Aug 1922 wife indeterminate"}
+{"rid": "6c23ea530ec8", "verdict": "WRONG", "reason": "Kokubunji section explicitly the Kokubunji Line, not a Shinjuku Line terminus"}
+{"rid": "d62f0b72ca6b", "verdict": "CORRECT", "reason": "Gottingen only school mentioned; born 1824, fits 1842-43"}
+{"rid": "167c09bce859", "verdict": "AMBIGUOUS", "reason": "Article truncated at 2003; Oct-Nov 2005 position unverifiable"}
+{"rid": "e116afe85471", "verdict": "WRONG", "reason": "Jun 1991 = high school graduation; Kings came after community college, BA 1996"}
+{"rid": "1a6d27f5e155", "verdict": "WRONG", "reason": "Jan 2017 inspection and report publication date absent from passages"}
+{"rid": "aa6cb3d1a3ef", "verdict": "AMBIGUOUS", "reason": "2001-02 could be Belisce or Osijek; no club dates given"}
+{"rid": "eea79ebfdde3", "verdict": "CORRECT", "reason": "Loaned to Sarajevo Feb 2014 until season end, within window"}
+{"rid": "3cb5716c8f33", "verdict": "CORRECT", "reason": "Necas led ODS Jun 2010-2013, most of window; Fiala only from 2014"}
+{"rid": "d6af609dbc55", "verdict": "AMBIGUOUS", "reason": "Passage itself says historians disagree about 1577 Flanders return"}
+{"rid": "f193d422fd15", "verdict": "WRONG", "reason": "Meeting absent from passage; rebuild fund only 'opened in the spring'"}
+{"rid": "fd64c6bc80bb", "verdict": "CORRECT", "reason": "'Former mayor of Lima' by 1912, presidency from 1912; mayoralty fits 1909-12"}
+{"rid": "f055aa5a20d1", "verdict": "AMBIGUOUS", "reason": "Two mayors (former/current) listed without term dates"}
+{"rid": "2aaf13d48700", "verdict": "WRONG", "reason": "1905 he left as Friends Foreign Missionary Association missionary; WCUU he co-founded, not joined"}
+{"rid": "089045061a14", "verdict": "CORRECT", "reason": "Augsburg BA mid-1959; Minnesota grad studies from fall 1959 within window"}
+{"rid": "e0296b8de9ad", "verdict": "CORRECT", "reason": "Slovenia team explicitly began 1993 as Yugoslavia successor"}
+{"rid": "8092fab93851", "verdict": "WRONG", "reason": "Meeting absent; treaty renewal undated (schedule only shown printed by Jul 31)"}
+{"rid": "8c25ecd4724c", "verdict": "AMBIGUOUS", "reason": "West Ham stint undated; 'before Apr 1998' unverifiable"}
+{"rid": "d89230864156", "verdict": "CORRECT", "reason": "Renamed for Abu Ali ibn Sina July 2006, before Jul 2007 window"}
+{"rid": "79d9e1f33ebf", "verdict": "AMBIGUOUS", "reason": "All academy memberships undated; no 1961 event in passage"}
+{"rid": "a6e939f1b80b", "verdict": "CORRECT", "reason": "Fife the only stated residence; nothing contradicts 2017"}
+{"rid": "5d01a5fc13a0", "verdict": "AMBIGUOUS", "reason": "Italy stop undated; flight timing from Crimea unclear"}
+{"rid": "80986121ce50", "verdict": "AMBIGUOUS", "reason": "Academy memberships listed without any dates"}
+{"rid": "d74d8ec7612e", "verdict": "CORRECT", "reason": "Sequence Turrialba 1992, Alajuelense sold summer 1995 puts 1993-94 at Carmelita"}
+{"rid": "f9626f7e8618", "verdict": "WRONG", "reason": "Plans lodged 26 Feb, 16 days after 10 Feb announcement, not a month"}
+{"rid": "03d29713dc18", "verdict": "WRONG", "reason": "Market hall absent; pedestrian square only 'finished in the spring'"}
+{"rid": "1f5a168cc10c", "verdict": "CORRECT", "reason": "Career began as German Parliament assistant before 1988; only pre-1988 employer"}
+{"rid": "cf70103cc6a1", "verdict": "AMBIGUOUS", "reason": "'Currently in charge' undated; Dec 2002-2003 tenure not established"}
+{"rid": "cc128b84d8d6", "verdict": "CORRECT", "reason": "Year book is borough's own record, not county historians': contradiction holds"}
+{"rid": "ab588c490783", "verdict": "WRONG", "reason": "'Open day' never mentioned; Duration 1 endpoint absent"}
+{"rid": "0ad78435316e", "verdict": "CORRECT", "reason": "Primavera two-year deal from 2012-13 season into June 2014, within window"}
+{"rid": "7538e4972589", "verdict": "AMBIGUOUS", "reason": "After Aug 1970 both Cougars and Squires plausible; ABA teams undated"}
+{"rid": "be03a0902b13", "verdict": "AMBIGUOUS", "reason": "Passage contains no rector information at all"}
+{"rid": "18aeca1a0592", "verdict": "CORRECT", "reason": "BA 1931, brief masters, then Clark doctorate spanning mid-1930s; window fits Clark"}
+{"rid": "e968dcf796cc", "verdict": "AMBIGUOUS", "reason": "Passage gives NHL designation in both 1978 and 1989: self-contradicts"}
+{"rid": "7ce0147cb619", "verdict": "CORRECT", "reason": "New Museum twelve years from 2005 ends ~2017; Hessel role current from then"}
+{"rid": "538856fa3527", "verdict": "WRONG", "reason": "Settlement only 'reached in the autumn'; exact duration unverifiable"}
+{"rid": "9a2957509b58", "verdict": "CORRECT", "reason": "Chaptal the final lycee before ENS; fits 1969-71"}
+{"rid": "3aec83eebfd4", "verdict": "AMBIGUOUS", "reason": "2001 loans to Lyn and Rosenborg both undated"}
+{"rid": "34761cb1f47f", "verdict": "CORRECT", "reason": "Gagnaux initiated and led WCBS from its 1992 formation"}
+{"rid": "a55ff8ab8886", "verdict": "CORRECT", "reason": "'From 1942, as a member of the Mittwochsgesellschaft': explicit"}
+{"rid": "1d11a865d34f", "verdict": "WRONG", "reason": "Return to flight only 'in the spring'; exact duration unverifiable"}
+{"rid": "a7abbaa9c25b", "verdict": "CORRECT", "reason": "Retired from Southport Apr 1958; Bath City followed that summer"}
+{"rid": "cf981d9cd397", "verdict": "WRONG", "reason": "1980-84 undergrad at Saint Peter's; Middlebury MA only from 1985"}
+{"rid": "b200f40023fc", "verdict": "CORRECT", "reason": "Scott became acting president 29 Oct 2014, within Oct 2014 window"}
+{"rid": "17da4f98687e", "verdict": "CORRECT", "reason": "Passage: count certified with that pen 'a year before' the PFI signing: entailment"}
+{"rid": "610ea962efe0", "verdict": "MALFORMED", "reason": "Oblast given as 'capital' of a city; inverted administrative relation, invalid form"}
+{"rid": "b088086bfa0d", "verdict": "CORRECT", "reason": "Mr. Bungle the only pre-1990s association; he was 17 in 1985"}
+{"rid": "35ea9c00dfd7", "verdict": "AMBIGUOUS", "reason": "Three marriages listed, none dated; Jul 1932 indeterminate"}
+{"rid": "3f22d58256f5", "verdict": "WRONG", "reason": "62 vs 117 days, nearly double; not approximately the same"}
+{"rid": "6599f0d5dbd2", "verdict": "CORRECT", "reason": "Baltimore Blast indoor 2011-12 (and 2012-13) seasons within window"}
+{"rid": "4287a3bc15d6", "verdict": "AMBIGUOUS", "reason": "Passage never mentions the CEO"}
+{"rid": "7363a81dee09", "verdict": "CORRECT", "reason": "First twenty under Modernisation Plan; Darlington's first only 1960: 1958 = Derby"}
+{"rid": "c7acb3c53bca", "verdict": "AMBIGUOUS", "reason": "Seven clubs, career section empty, zero dates"}
+{"rid": "74cb097ed1a8", "verdict": "AMBIGUOUS", "reason": "Baylor end (1989 vs 1990) indeterminate; 1990 could be seminary years"}
+{"rid": "0b531ee23dd0", "verdict": "AMBIGUOUS", "reason": "Spartaku was career-close club but move date from Partizani unknown"}
+{"rid": "5fe165ad2e4b", "verdict": "WRONG", "reason": "Cruise terminal absent; Duration 1 endpoint missing"}
+{"rid": "a6f9631fec24", "verdict": "AMBIGUOUS", "reason": "Three schools, zero dates; 1973-74 could be Wellesley or MIT"}
+{"rid": "1b12fc8b09cb", "verdict": "MALFORMED", "reason": "Chetak is an aircraft type, not an operator; wrong entity type for question"}
+{"rid": "b26e3d4c1297", "verdict": "AMBIGUOUS", "reason": "Late-90s clubs (Huddersfield, Notts County) undated"}
+{"rid": "fae1b5647a1e", "verdict": "WRONG", "reason": "Age 22-23; high school long over by 1989; JD-2000 timeline contradicts"}
+{"rid": "e39afe3778e1", "verdict": "CORRECT", "reason": "GUST for both degrees; 2009-10 fits MBA era, the only school"}
+{"rid": "749113acf4da", "verdict": "AMBIGUOUS", "reason": "Passage says historians disagree on Flanders return; registrations may be the Younger"}
+{"rid": "209231fdf647", "verdict": "CORRECT", "reason": "Caldervale 1992, Thornwood 1995, Skerr 1999: Skerr is third"}
+{"rid": "43e5aa8f0375", "verdict": "CORRECT", "reason": "Scott acting president 29-31 Oct 2014, within the month window"}
+{"rid": "f35e75344aad", "verdict": "CORRECT", "reason": "Career began at Khimik before 1990 Lokomotiv move; fits 1987-88"}
+{"rid": "e50316a7d3d6", "verdict": "CORRECT", "reason": "Inverness Jan-Jun 2009 within 2009-10 window"}
+{"rid": "c87e98c34f81", "verdict": "CORRECT", "reason": "Wakefield signed 26 Jun 2015, within 2015-16 window"}
+{"rid": "ed7cc9c36662", "verdict": "CORRECT", "reason": "Fusion era premiered 28 May 2015, within Jan-Aug 2015"}
+{"rid": "e9a4b0597b77", "verdict": "CORRECT", "reason": "Lokomotiv Plovdiv Jan 2011 to end of 2011/12 season, within window"}
+{"rid": "3245eddcb131", "verdict": "CORRECT", "reason": "Calderoli replaced Negri around 1995, led into 1996 election; overlaps window"}
+{"rid": "436ad283aa94", "verdict": "CORRECT", "reason": "Limouzy the only named Castres mayor; no contradiction for 1973-74"}
+{"rid": "bb4ad3e0625e", "verdict": "CORRECT", "reason": "Kabardino-Balkaria lay within Russia (RSFSR) in 1991"}
+{"rid": "3534b62a38be", "verdict": "WRONG", "reason": "Last emergency glazing date absent from this row's passages"}
+{"rid": "a96b498cbfb7", "verdict": "CORRECT", "reason": "OCU Law degree 1976 within 1967-76 window (Baylor also overlaps)"}
+{"rid": "addacb17df1f", "verdict": "AMBIGUOUS", "reason": "Izmail Oblast fact cut off by '[...]' truncation"}
+{"rid": "0f8e5e5ab7c7", "verdict": "WRONG", "reason": "Passage states 'twenty-five days in the field', not three weeks"}
+{"rid": "473fd84321ca", "verdict": "CORRECT", "reason": "Panionios loan preceded 2010 Castilla move; spans late 2009"}
+{"rid": "432b79b17251", "verdict": "AMBIGUOUS", "reason": "Renaming chronology undated; either name plausible for 2000-06"}
