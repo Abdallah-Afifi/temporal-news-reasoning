@@ -1,10 +1,3 @@
-# ---------------------------------------------------------------------------
-# Per-version data records via Git LFS (2026-10-06): every training split,
-# generation input/output and review artifact for each version V is now
-# versioned with LFS (see .gitattributes). Third-party sources (data/raw,
-# data/corpus, data/benchmarks) stay out for licensing; bulk eval outputs and
-# weights stay out for size.
-# ---------------------------------------------------------------------------
 # ============================================================
 # Temporal News Reasoning - .gitignore
 # ============================================================
@@ -74,7 +67,10 @@ data/rehearsal/
 # PRIMARY DATA, not derived data, and exist only in this working copy.
 # The manifests are small and are tracked so the mixture of every arm stays
 # in version control even while the rows themselves do not.
+data/combined_80_20_v*/*
+!data/combined_80_20_v*/manifest.json
 data/letter_format/
+data/manual_aug/
 
 # ----- Model Weights (local copies from the training repo) -----
 models/
@@ -131,6 +127,11 @@ experiments/finetuning/**/logs/
 
 # ----- Local-only CoT / manual annotation working files -----
 data/cot/
+data/cot_raw/
+data/cot_verified/*.jsonl
+data/cot_verified/_rejected.jsonl
+data/cot_packets/ORDERS_grounded.txt
+data/cot_packets/answer_key.json
 
 # ----- Internal working notes (not for publication) -----
 #
@@ -172,6 +173,9 @@ data/.v9_cache/
 # new policy: `data/manual_aug/` and `data/combined_80_20_v*/` were already
 # excluded, `data/manual_aug_v9/` and `data/training_versions/` simply did not
 # match, and `.corrupt_backup` dodged the `results/**/*.jsonl` rule.
+data/training_versions/**/*.jsonl
+data/manual_aug_v9/*.jsonl
+data/synthetic/*.jsonl
 results/**/*.corrupt_backup
 results/**/*.jsonl.bak
 
@@ -179,21 +183,39 @@ results/**/*.jsonl.bak
 # Same policy: the row data is bulk and regenerable in principle (though not
 # cheaply -- it took a full session of chat-driven generation); AUDIT.md and
 # the generation summary document its state and are small, so they stay.
+data/manual_aug_glm/*.jsonl
 # Ledger of which glm_raw/ reply files are ingested, keyed by their content
 # hash -- meaningless without those replies, which are excluded below.
+data/manual_aug_glm/.ingested.json
 # Raw GLM chat replies and the generated prompt packets/orders -- inputs and
 # intermediate artifacts of the generation process, not its output. Fully
 # reproducible from scripts/make_glm_packets.py given the same args; ORDERS.txt
 # in particular goes stale the moment the ledger changes, so keeping it out
 # avoids a file that silently lies about what is still needed.
+data/glm_raw/
+data/glm_packets/
 # v12 corrected-card corpus (docs/v12_plan.md) -- same convention as v11's
+data/manual_aug_glm_v12/*.jsonl
+data/manual_aug_glm_v12/.ingested.json
+data/glm_raw_v12/
+data/glm_packets_v12/
 # v13 corpora (docs/v13_plan.md, audit_2026_10_04) -- same convention as v12.
 # AUG_TPL3 rows (agent-written templates, scripts/glm_v13_build/ is versioned)
+data/manual_aug_glm_v13/*.jsonl
+data/manual_aug_glm_v13/.ingested.json
+data/glm_raw_v13/
+data/glm_packets_v13/
 # AUG_PROG: regenerable from scripts/generate_v13_prog_data.py; audit.json stays
+data/prog_aug_v13*/*.jsonl
 # CoT packet orders beyond the first batch (answer_key.json is excluded above)
+data/cot_packets/ORDERS_grounded_b*.txt
 # training_versions/**/*.jsonl is already excluded above; manifests stay versioned
-# v13 reading review: derivable intermediates (outcomes live in review/*.verdicts.jsonl
-# and review_verify/*.reverdicts.jsonl; these inputs can be rebuilt from
-# review_packets/ + combined_80_20_v12 contexts + the verdict files):
-#   second-look inputs: python scripts/review_v13/make_second_look_inputs.py (see REVIEWER_LOG)
-# blind-verification input chunks (re-verdicts are kept)
+data/v13_verify/review_packets/
+
+# ----- v13 reading review: derivable intermediates (outcomes live in
+# review/*.verdicts.jsonl and review_verify/*.reverdicts.jsonl, both tracked;
+# these inputs can be rebuilt from review_packets/ + combined_80_20_v12
+# contexts + the verdict files) -----
+data/v13_verify/review_second_look/
+data/v13_verify/review_verify/removal_*.jsonl
+data/v13_verify/review_verify/ambig_*.jsonl
