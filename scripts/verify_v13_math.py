@@ -698,7 +698,7 @@ def main() -> int:
     rows = load_rows()
     stats = defaultdict(Counter)
     examples = defaultdict(lambda: defaultdict(list))
-    failed = []
+    failed, unparsed = [], []
     for source, r in rows:
         key = f"{source}/{r.get('category')}"
         verdict, detail = verify_row(r, source)
@@ -706,12 +706,17 @@ def main() -> int:
         stats[key][verdict] += 1
         if verdict in ("wrong", "undeterminable"):
             failed.append(r["question"].strip())
+        elif verdict == "unparsed":
+            unparsed.append(r["question"].strip())
         if verdict != "pass" and len(examples[key][verdict]) < 5:
             examples[key][verdict].append({"question": r["question"][:400],
                                            "gold": gold_of(r), "detail": detail})
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     failed = sorted(set(failed))
     (OUT_DIR / "failed_questions.json").write_text(json.dumps(failed, indent=1, ensure_ascii=False))
+    # rows this parser could not read go to the human-style review (make_review_packets.py)
+    (OUT_DIR / "unparsed_questions.json").write_text(
+        json.dumps(sorted(set(unparsed)), indent=1, ensure_ascii=False))
     report = {"method": __doc__.split("\n\n")[0],
               "thresholds": {"order_compare_same_max_days": OC_SAME_MAX,
                              "duration_compare_hard_same": DC_SAME_HARD,

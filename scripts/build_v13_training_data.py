@@ -1,17 +1,19 @@
 """Build the v13 mixture: v12 (minus wrong TimeQA golds) + AUG_TPL3 + AUG_PROG.
 
-Provenance, stated honestly (docs/audit_2026_10_04.md §1.1): the rows in
-data/manual_aug_glm_v13/ were NOT written by GLM-5.2 chat. They were produced
-by Python template generators / builders written by the GLM-backed coding
-agent (scripts/glm_v13_build/). They are relabelled here:
+Provenance (docs/audit_2026_10_04.md §1.1, corrected 2026-10-05): the v13
+wave in data/manual_aug_glm_v13/ was produced by the GLM model working
+through the opencode agent, in two ways:
 
-    source_dataset "AUG_TPL3", provenance "agent-template"
-    AUG_PROG rows keep "AUG_PROG",  provenance "programmatic"
+    AUG_GLM3, provenance "glm-agent"      -- rows written one by one by the
+        model (the first-sitting packets and the parts/ / build_* files, which
+        only format text the model wrote);
+    AUG_TPL3, provenance "agent-template" -- rows from random slot-filling
+        generators (gen_rel, gen_dialogue, gen_stories, gen_reasoning,
+        build105/106).
 
-(the raw files keep "AUG_GLM2" because ingest_glm_batch.check() requires it;
-the gate is run on the raw rows before relabelling). The programmatic math
-data (AUG_PROG) is deliberately non-LLM and is kept in full except for the
-two defective generators below.
+AUG_PROG keeps "AUG_PROG", provenance "programmatic". The raw files keep
+"AUG_GLM2" because ingest_glm_batch.check() requires it; the gate runs on the
+raw rows before relabelling.
 
 Quality filters (all deterministic, each counted in manifest.json):
   - storytelling (TPL3): gold-longer share forced to 50% -- keep every row
@@ -35,21 +37,17 @@ Quality filters (all deterministic, each counted in manifest.json):
     data/cot_packets/answer_key.json (audit §2.6). combined_80_20_v12
     itself is not modified.
 
-Template-source rule (researcher decision 2026-10-05): rows that were meant
-to be LLM-written but were produced by the agent's templates/builders are
-REMOVED unless they are math (date arithmetic / comparison with mechanically
-checkable golds, MATH_CATEGORIES). This applies to every AUG_TPL3 row and to
-the v12-base AUG_GLM2 rows that came from the script-built glm_raw files
-271-313 (data/manual_aug_glm/PROVENANCE.md). Math rows are kept and must
-also pass the independent re-verification in
-data/v13_verify/failed_questions.json (scripts/verify_v13_math.py), whose
-failures are dropped.
+Template-source rule (researcher decision 2026-10-05): template-generated
+rows are REMOVED unless they are math (MATH_CATEGORIES). This applies to
+AUG_TPL3 and to the v12-base rows from glm_raw 296/297/309 (syn_gen.py);
+GLM-written rows are kept. Every row must also survive the independent math
+re-verification (data/v13_verify/failed_questions.json) and the human-style
+review (data/v13_verify/review_removed.json: WRONG / AMBIGUOUS / MALFORMED).
 
 New rows split 80/20 by the same stable sha1(question) rule as before.
 
-Manifest keys: "template_rows" is the honest count of AUG_TPL3 rows;
-"glm_rows" is kept with the SAME value only for backward compatibility with
-run_schedule_v13.sh's non-provisional gate (it reads glm_rows > 0).
+Manifest keys: glm3_rows / template_rows count the two v13 wave sources;
+glm_rows mirrors glm3_rows for older readers.
 
 Usage: venv/bin/python scripts/build_v13_training_data.py [--allow-no-template]
 """
@@ -81,16 +79,58 @@ COT_RAW = ROOT / "data" / "cot_raw"
 ANSWER_KEY = ROOT / "data" / "cot_packets" / "answer_key.json"
 STORY_SEED = 20261005
 GLM_RAW = ROOT / "data" / "glm_raw"
-SCRIPT_BUILT_FILES = range(271, 314)   # PROVENANCE.md: built by agent Python builders
+# glm_raw files written by a random slot-filling generator (scripts/glm_v13_build/
+# syn_gen.py). Every other file in 271-313 was written row by row by the GLM
+# model (via the opencode agent) and only formatted by the build_*/ *_lib.py
+# scripts, so it is GLM-authored data, not template output.
+SCRIPT_BUILT_FILES = (296, 297, 309)
+V13_RAW = ROOT / "data" / "glm_raw_v13"
+V13_PLAN = ROOT / "data" / "glm_packets_v13" / "_plan.json"
+REVIEW_REMOVED = ROOT / "data" / "v13_verify" / "review_removed.json"
+# v13 packets written by random slot-filling generators (gen_rel / gen_dialogue /
+# gen_stories / build105-106); gen_reasoning's packets are added from the plan.
+TEMPLATE_V13_PACKETS = {"003", "004", "005", "006", "033", "034", "035",
+                        "037", "038", "039", "105", "106"}
+GEN_REASONING_SKIPPED = {"041", "057", "069", "083", "095"}   # GLM-written first sitting
+
+
+def template_packets(plan: Path = V13_PLAN) -> set[str]:
+    out = set(TEMPLATE_V13_PACKETS)
+    if plan.exists():
+        out |= {x["packet"][:3] for x in json.loads(plan.read_text())["plan"]
+                if x["category"] in MATH_CATEGORIES and x["packet"][:3] not in GEN_REASONING_SKIPPED}
+    return out
+
+
+def v13_question_packets(raw: Path = V13_RAW) -> dict[str, str]:
+    """question -> 3-digit packet id, from the raw v13 replies."""
+    out = {}
+    for p in sorted(raw.glob("*.txt")):
+        for line in open(p, encoding="utf-8"):
+            line = line.strip()
+            if line.startswith("{"):
+                try:
+                    r = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if "question" in r:
+                    out[r["question"].strip()] = p.name[:3]
+    return out
+
+
+def review_removed(path: Path = REVIEW_REMOVED) -> set[str]:
+    """Questions the human-style review judged WRONG / AMBIGUOUS / MALFORMED."""
+    return set(json.loads(path.read_text())) if path.exists() else set()
 VERIFY_FAILED = ROOT / "data" / "v13_verify" / "failed_questions.json"
 MATH_CATEGORIES = {"Computation", "Timeline", "Duration_Compare", "Order_Compare",
                    "Relative_Reasoning"}
 
 
-def script_built_questions(raw: Path = GLM_RAW) -> dict[str, str]:
-    """question -> category for every row in the script-built glm_raw files."""
+def script_built_questions(raw: Path = GLM_RAW, files=SCRIPT_BUILT_FILES) -> dict[str, str]:
+    """question -> category for every row in the given glm_raw files
+    (default: the template-generated ones)."""
     out = {}
-    for n in SCRIPT_BUILT_FILES:
+    for n in files:
         p = raw / f"{n:03d}.txt"
         if not p.exists():
             continue
@@ -272,7 +312,7 @@ def filter_template_rows(rows: list[dict], counts: Counter,
     keep, story_long, story_rest = [], [], []
     for r in rows:
         cat = r.get("category")
-        if cat not in MATH_CATEGORIES:
+        if r.get("source_dataset") == "AUG_TPL3" and cat not in MATH_CATEGORIES:
             counts[f"tpl_non_math_template_removed_{cat}"] += 1
             continue
         if r["question"].strip() in failed:
@@ -287,10 +327,13 @@ def filter_template_rows(rows: list[dict], counts: Counter,
             if _BROKEN_DURATION.search(r["question"]):
                 counts["tpl_duration_broken_template"] += 1
                 continue
-            if duration_unit_only(r["question"]):
+            # easy is not wrong: the unit-only rule applies to template rows only
+            if r.get("source_dataset") == "AUG_TPL3" and duration_unit_only(r["question"]):
                 counts["tpl_duration_options_differ_only_by_unit"] += 1
                 continue
-        elif cat == "storytelling":
+        elif cat == "storytelling" and r.get("source_dataset") == "AUG_TPL3":
+            # length-shortcut balancing is a template-data fix; GLM-written
+            # stories are kept unless the review finds them wrong
             longer = story_gold_longer(r)
             (story_long if longer else story_rest).append(r)
             continue
@@ -379,11 +422,15 @@ def main() -> int:
     bad = [r for r in tpl if gate_check(r)]
     if bad:
         raise SystemExit(f"FATAL: {len(bad)} banked rows fail the gate, e.g. {gate_check(bad[0])}")
+    q2p, tpl_packets = v13_question_packets(), template_packets()
     for r in tpl:
-        r["source_dataset"] = "AUG_TPL3"
-        r["provenance"] = "agent-template"
+        if q2p.get(r["question"].strip()) in tpl_packets:
+            r["source_dataset"], r["provenance"] = "AUG_TPL3", "agent-template"
+        else:   # written row by row by the GLM model (opencode), incl. first-sitting math
+            r["source_dataset"], r["provenance"] = "AUG_GLM3", "glm-agent"
     tpl_in = len(tpl)
-    failed = verify_failed()
+    removed_by_review = review_removed()
+    failed = verify_failed() | removed_by_review
     scripted = script_built_questions()
     tpl = filter_template_rows(tpl, counts, failed)
 
@@ -406,20 +453,22 @@ def main() -> int:
 
     OUT.mkdir(parents=True, exist_ok=True)
     manifest = {
-        "source": "data/combined_80_20_v12 (minus CoT-flagged wrong TimeQA golds) + "
-                  "data/manual_aug_glm_v13 relabelled AUG_TPL3 (agent-written Python "
-                  "templates, NOT GLM chat) + data/prog_aug_v13 (AUG_PROG, programmatic)",
-        "template_rows_in": tpl_in,
+        "source": "data/combined_80_20_v12 (minus CoT-flagged wrong TimeQA golds, minus "
+                  "the template-generated non-math rows of glm_raw 296/297/309) + "
+                  "data/manual_aug_glm_v13 split by authorship: AUG_GLM3 (written row by "
+                  "row by the GLM model via the opencode agent) and AUG_TPL3 (random "
+                  "slot-filling generators; math only) + data/prog_aug_v13 (AUG_PROG)",
+        "v13_wave_rows_in": tpl_in,
+        "glm3_rows": sum(r["source_dataset"] == "AUG_GLM3" for r in clean),
         "template_rows": sum(r["source_dataset"] == "AUG_TPL3" for r in clean),
+        "review_removed_questions": len(removed_by_review),
         "prog_rows_in": prog_in,
         "prog_rows": sum(r["source_dataset"] == "AUG_PROG" for r in clean),
         "cot_skip_ids_used": len(skips),
         "filters": {},
         "provisional": not tpl,
         "splits": {}}
-    manifest["glm_rows"] = manifest["template_rows"]
-    manifest["glm_rows_note"] = ("backward-compatible alias of template_rows for "
-                                 "run_schedule_v13.sh; these rows are NOT GLM-authored")
+    manifest["glm_rows"] = manifest["glm3_rows"]
     for split in ("train", "val"):
         base_all = [json.loads(l) for l in open(SRC / f"{split}.jsonl", encoding="utf-8")]
         base = filter_base_rows(base_all, skip_keys, counts, split, scripted, failed)

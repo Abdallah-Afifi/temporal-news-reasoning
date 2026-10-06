@@ -1,0 +1,125 @@
+{"rid": "71bb3a58e4a7", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "9bca36d22272", "verdict": "CORRECT", "reason": "Both events stated to share the same date/hour; SIMULTANEOUS.", "reviewer": "ai"}
+{"rid": "7d07f573088a", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "e94e9f506009", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "02b7e49412ca", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "b08dcb6eb358", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "e3bdb5881375", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "8d92e8d2c089", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "f5c04b6368bb", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "51f20bc04afb", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "065af5a8591b", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "92287ded707c", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "786ea1d4dd8a", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "b55f84347983", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "37b41f007c2b", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "0b23d319de19", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "13e5fdbc1c06", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "96d3dfcdb8c7", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "831e81d76c61", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "c123833555ff", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "981c61df3058", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "d42f9e124eb3", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "abf6062c4fe0", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "077216bb07c8", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "0320f7c96412", "verdict": "CORRECT", "reason": "Dismissed 15 June 1973 on the limitation rule.", "reviewer": "ai"}
+{"rid": "c644ae589ef1", "verdict": "CORRECT", "reason": "Trial awarded eleven thousand, not fifty.", "reviewer": "ai"}
+{"rid": "974fbf10fe4f", "verdict": "CORRECT", "reason": "Sentence was suspended, not immediate.", "reviewer": "ai"}
+{"rid": "60d4a798a2e5", "verdict": "CORRECT", "reason": "Lords held the estate liable on 11 May 1984.", "reviewer": "ai"}
+{"rid": "29af0543a9b3", "verdict": "CORRECT", "reason": "Snow began 5 Feb; last train ran on the 8th.", "reviewer": "ai"}
+{"rid": "6dad48d78a08", "verdict": "CORRECT", "reason": "Nine hundred lost became six hundred after finds.", "reviewer": "ai"}
+{"rid": "0dd5b133cef6", "verdict": "CORRECT", "reason": "Peak stood a hand breadth above the 1866 line.", "reviewer": "ai"}
+{"rid": "d4220761ae2d", "verdict": "CORRECT", "reason": "Wells delivered a THIRD, not a quarter.", "reviewer": "ai"}
+{"rid": "cece1b359326", "verdict": "CORRECT", "reason": "Loan repayment date never stated.", "reviewer": "ai"}
+{"rid": "84572a09c726", "verdict": "CORRECT", "reason": "Lodged 14 September 2015.", "reviewer": "ai"}
+{"rid": "dff61a005cb0", "verdict": "CORRECT", "reason": "Panels laid through summer 2017.", "reviewer": "ai"}
+{"rid": "2d6a82063d8f", "verdict": "CORRECT", "reason": "Judicial review DISMISSED 12 January 2018.", "reviewer": "ai"}
+{"rid": "63bbafbdfd7c", "verdict": "CORRECT", "reason": "Runways kept as the panels foundations.", "reviewer": "ai"}
+{"rid": "230c56acf182", "verdict": "CORRECT", "reason": "Compensation average not stated.", "reviewer": "ai"}
+{"rid": "29d9af0c214a", "verdict": "CORRECT", "reason": "Outage lasted six hours, not two days.", "reviewer": "ai"}
+{"rid": "523afaa737b4", "verdict": "CORRECT", "reason": "Fix authorship not stated.", "reviewer": "ai"}
+{"rid": "8553a2edcb9b", "verdict": "CORRECT", "reason": "Launched on the NO-subscription model.", "reviewer": "ai"}
+{"rid": "b1732011467e", "verdict": "CORRECT", "reason": "Chip-and-PIN reached tills 3 February 2004.", "reviewer": "ai"}
+{"rid": "4ed2b8325aa1", "verdict": "CORRECT", "reason": "PIN pad manufacture location not stated.", "reviewer": "ai"}
+{"rid": "a00fccff084f", "verdict": "CORRECT", "reason": "Wool exporters 1940 petition not stated.", "reviewer": "ai"}
+{"rid": "3fed3eb79f1e", "verdict": "CORRECT", "reason": "Report authorship not stated.", "reviewer": "ai"}
+{"rid": "cda623ba11de", "verdict": "CORRECT", "reason": "April 2020 down nineteen per cent on the year.", "reviewer": "ai"}
+{"rid": "cb1f4899aa52", "verdict": "CORRECT", "reason": "First walkout 7 August 2023, not the 17th.", "reviewer": "ai"}
+{"rid": "10367fd6e07b", "verdict": "CORRECT", "reason": "Debentures disposal not stated.", "reviewer": "ai"}
+{"rid": "f1b6316cd187", "verdict": "CORRECT", "reason": "Pleaded guilty 11 February 1907.", "reviewer": "ai"}
+{"rid": "7722d8afbeab", "verdict": "CORRECT", "reason": "Formes remain in court custody; sale not stated.", "reviewer": "ai"}
+{"rid": "8359e8adea75", "verdict": "CORRECT", "reason": "Verdict returned 4 March 1920.", "reviewer": "ai"}
+{"rid": "7a4174d0df52", "verdict": "CORRECT", "reason": "Rest-centre staffing not stated.", "reviewer": "ai"}
+{"rid": "22bb608fa7e0", "verdict": "CORRECT", "reason": "Barrier approved in principle 18 June 2018.", "reviewer": "ai"}
+{"rid": "86a4db9fb64b", "verdict": "CORRECT", "reason": "Tourist season not mentioned.", "reviewer": "ai"}
+{"rid": "ac318aa2d355", "verdict": "CORRECT", "reason": "Campfire theory official; lightning ruled out.", "reviewer": "ai"}
+{"rid": "01ed014707fc", "verdict": "CORRECT", "reason": "Firefighter injuries not stated.", "reviewer": "ai"}
+{"rid": "e91d1da680a5", "verdict": "CORRECT", "reason": "Dual-firing conversion announced 11 March 1994.", "reviewer": "ai"}
+{"rid": "121e6460e3d8", "verdict": "CORRECT", "reason": "Eight million UNDER budget.", "reviewer": "ai"}
+{"rid": "4e56d8f941b1", "verdict": "CORRECT", "reason": "Coal contract ran since 1968.", "reviewer": "ai"}
+{"rid": "a2bc40561c88", "verdict": "CORRECT", "reason": "Rambers withdrew; the BIRD CLUB appealed.", "reviewer": "ai"}
+{"rid": "968737c0ad27", "verdict": "CORRECT", "reason": "Delay was access-road appeals and a boggy winter.", "reviewer": "ai"}
+{"rid": "84ee7a70b8f9", "verdict": "CORRECT", "reason": "Restoration took ninety-one hours.", "reviewer": "ai"}
+{"rid": "69bbcf659407", "verdict": "CORRECT", "reason": "Full power resumed 10 March 1958.", "reviewer": "ai"}
+{"rid": "6bed633bab33", "verdict": "CORRECT", "reason": "Purchase approved 24 September 1962.", "reviewer": "ai"}
+{"rid": "2652d8cc55ca", "verdict": "CORRECT", "reason": "Payroll first ran 6 March 1964.", "reviewer": "ai"}
+{"rid": "0acc09a32430", "verdict": "CORRECT", "reason": "Inflation was 4.8 per cent, twice target.", "reviewer": "ai"}
+{"rid": "1f8547b2d5b6", "verdict": "CORRECT", "reason": "Administration came the SAME day as the run.", "reviewer": "ai"}
+{"rid": "bc6ecf7af59e", "verdict": "CORRECT", "reason": "Evidence described as candid, not evasive.", "reviewer": "ai"}
+{"rid": "b6ace6212540", "verdict": "CORRECT", "reason": "First at target since March 2021.", "reviewer": "ai"}
+{"rid": "dacfcc60cc69", "verdict": "CORRECT", "reason": "Locks date from 1909, not 1929.", "reviewer": "ai"}
+{"rid": "bb4ae1c2d9d5", "verdict": "CORRECT", "reason": "Geotextile weaver not stated.", "reviewer": "ai"}
+{"rid": "d9e2f7f2f2e6", "verdict": "CORRECT", "reason": "Straddles deferred indefinitely per the review.", "reviewer": "ai"}
+{"rid": "b3fcfc0fe2b8", "verdict": "CORRECT", "reason": "Worker transfers destination not stated.", "reviewer": "ai"}
+{"rid": "6be7b1e6932c", "verdict": "CORRECT", "reason": "Subsidy raised a third, index-linked.", "reviewer": "ai"}
+{"rid": "bbe6a6e42472", "verdict": "CORRECT", "reason": "Third cut took the rate to 4.5, not below four.", "reviewer": "ai"}
+{"rid": "801356b04cb1", "verdict": "CORRECT", "reason": "Scheduled 5 July 1968, bypass opened the 6th.", "reviewer": "ai"}
+{"rid": "a6631256abf4", "verdict": "CORRECT", "reason": "Contract went to the ROAD realignment firm, not the diggers.", "reviewer": "ai"}
+{"rid": "e2266a8730a3", "verdict": "CORRECT", "reason": "Barrow first scheduled 1936.", "reviewer": "ai"}
+{"rid": "9dc5b2b4c2f8", "verdict": "CORRECT", "reason": "Heritage centre opened 10 June 1988; farmer cut ribbon.", "reviewer": "ai"}
+{"rid": "8218307d0079", "verdict": "CORRECT", "reason": "Profits were forty-one thousand against sixty promised.", "reviewer": "ai"}
+{"rid": "52c38785fa9d", "verdict": "CORRECT", "reason": "Conductor numbers not stated.", "reviewer": "ai"}
+{"rid": "dc9c6a3ad3f0", "verdict": "CORRECT", "reason": "Feeder routes ran to the tram termini.", "reviewer": "ai"}
+{"rid": "280edd04eb97", "verdict": "CORRECT", "reason": "Eight hundred notices on 3 November 1930.", "reviewer": "ai"}
+{"rid": "c1419c24ed8c", "verdict": "CORRECT", "reason": "Pension amount not stated.", "reviewer": "ai"}
+{"rid": "82ec9a4cd797", "verdict": "CORRECT", "reason": "Other yards location not stated.", "reviewer": "ai"}
+{"rid": "4979e7a2dfcd", "verdict": "CORRECT", "reason": "Admitted 17 October 2016, four months late and thirty million over.", "reviewer": "ai"}
+{"rid": "56df02246529", "verdict": "CORRECT", "reason": "Ceremony rescheduling not stated.", "reviewer": "ai"}
+{"rid": "4cd97cbd6515", "verdict": "CORRECT", "reason": "Lease expired 2021, not 2018.", "reviewer": "ai"}
+{"rid": "6926b9e2a6fa", "verdict": "CORRECT", "reason": "First match won before 7,800.", "reviewer": "ai"}
+{"rid": "4f476c4f12a9", "verdict": "CORRECT", "reason": "Final building opened 6 October 2000.", "reviewer": "ai"}
+{"rid": "509711c617ba", "verdict": "CORRECT", "reason": "Review reported 9 February 2001, no misconduct.", "reviewer": "ai"}
+{"rid": "54cf5ea9e6a9", "verdict": "CORRECT", "reason": "Citation counts after 2002 not stated.", "reviewer": "ai"}
+{"rid": "590fd1da1ad8", "verdict": "CORRECT", "reason": "All four diocesan schools were reprieved.", "reviewer": "ai"}
+{"rid": "84fcfb0088ed", "verdict": "CORRECT", "reason": "Collections began 4 March 1938.", "reviewer": "ai"}
+{"rid": "5f1be7d2882a", "verdict": "CORRECT", "reason": "Fordsons arrived 15 September 1940.", "reviewer": "ai"}
+{"rid": "a233cebfa64e", "verdict": "CORRECT", "reason": "Text says forty an acre without currency.", "reviewer": "ai"}
+{"rid": "254030742396", "verdict": "CORRECT", "reason": "Manager stayed on two years.", "reviewer": "ai"}
+{"rid": "e0240ff381c1", "verdict": "CORRECT", "reason": "Transformation completed 4 January 2021.", "reviewer": "ai"}
+{"rid": "82aa4d436a31", "verdict": "CORRECT", "reason": "Royalty terms agreed 11 December 2020.", "reviewer": "ai"}
+{"rid": "cda0ea287c26", "verdict": "CORRECT", "reason": "Returned 23 July 2021 at full capacity.", "reviewer": "ai"}
+{"rid": "7596ada26cae", "verdict": "CORRECT", "reason": "Enabling scheduled 31 August 2009.", "reviewer": "ai"}
+{"rid": "949a8b5e4bc0", "verdict": "CORRECT", "reason": "Trigger passed by the school bulk registration.", "reviewer": "ai"}
+{"rid": "bfb74672203e", "verdict": "CORRECT", "reason": "Contract promises ninety per cent at 24Mb by 2015.", "reviewer": "ai"}
+{"rid": "2ec1f6ac97da", "verdict": "CORRECT", "reason": "Switched on 4 September 2007.", "reviewer": "ai"}
+{"rid": "bf6719431f1a", "verdict": "CORRECT", "reason": "Fund doubled to ten thousand in the 2013 deal.", "reviewer": "ai"}
+{"rid": "119b7b3740a1", "verdict": "CORRECT", "reason": "Forty forecast employed by 2014.", "reviewer": "ai"}
+{"rid": "8598ee68246b", "verdict": "CORRECT", "reason": "Won 21 February 1974 by 2,400 votes.", "reviewer": "ai"}
+{"rid": "175d211d14de", "verdict": "CORRECT", "reason": "Government candidate fell to THIRD.", "reviewer": "ai"}
+{"rid": "58d68860f180", "verdict": "CORRECT", "reason": "Cake type not stated.", "reviewer": "ai"}
+{"rid": "18b41b0530ac", "verdict": "CORRECT", "reason": "Defeated 3 May 1979 by 1,100 votes.", "reviewer": "ai"}
+{"rid": "26b894c9de63", "verdict": "CORRECT", "reason": "Three seats to two proposed 10 December 1982.", "reviewer": "ai"}
+{"rid": "26de062cd50a", "verdict": "CORRECT", "reason": "Majority was none at the order reading.", "reviewer": "ai"}
+{"rid": "99718008c48f", "verdict": "CORRECT", "reason": "Sanatorium land provenance not stated.", "reviewer": "ai"}
+{"rid": "2309065be419", "verdict": "CORRECT", "reason": "Fallen by a third per the 15 March 1920 report.", "reviewer": "ai"}
+{"rid": "242b52b78b07", "verdict": "CORRECT", "reason": "Confirmed 1 October 1919, not 1918.", "reviewer": "ai"}
+{"rid": "762af73178ba", "verdict": "CORRECT", "reason": "Purchase funding source not stated.", "reviewer": "ai"}
+{"rid": "627013bb92d2", "verdict": "CORRECT", "reason": "First birth: the midwife niece, 18 May 1926.", "reviewer": "ai"}
+{"rid": "ce541814c039", "verdict": "CORRECT", "reason": "Reserve was eleven months at collapse; two months at purchase.", "reviewer": "ai"}
+{"rid": "df45a6f0d93b", "verdict": "CORRECT", "reason": "The bondholders receivership price, not equity holders.", "reviewer": "ai"}
+{"rid": "ff7fa031a61e", "verdict": "CORRECT", "reason": "1.6 million passengers and two-million surplus.", "reviewer": "ai"}
+{"rid": "9162aed9a85b", "verdict": "CORRECT", "reason": "Sixty thousand travellers a week, not six thousand.", "reviewer": "ai"}
+{"rid": "c2611e003a9d", "verdict": "CORRECT", "reason": "Fleet size change not stated.", "reviewer": "ai"}
+{"rid": "d574f69606cf", "verdict": "CORRECT", "reason": "First bi-mode entered service 8 December 2019.", "reviewer": "ai"}
+{"rid": "9a594a9d1b93", "verdict": "CORRECT", "reason": "Fleet cost not stated.", "reviewer": "ai"}
+{"rid": "71a44ebe71c0", "verdict": "CORRECT", "reason": "Lawfulness of the spending not stated.", "reviewer": "ai"}

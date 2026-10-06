@@ -11,9 +11,18 @@ Two slices that no script can verify from the visible text:
                reviewer can judge it. A NOT_FOUND verdict is NOT a removal: it
                goes to a second, full-passage round.
 
-Mechanically checkable rows (math, sorting) are handled by
-scripts/verify_v13_math.py, and the script-built non-math rows are removed by
-the build outright, so neither appears here.
+  math_text -- math/date rows the mechanical verifier could not parse
+               (data/v13_verify/unparsed_questions.json: free-text v12 GLM
+               math, a few template rows) plus AUG_GLM2 Co_temporality; the
+               reviewer derives the answer from the context.
+  short     -- short no-context rows: AUG_GLM (arithmetic/time word problems)
+               and AUG_GLM2 bare relation / ordering rows.
+
+Rows the mechanical verifier parsed are already settled
+(scripts/verify_v13_math.py), the script-built non-math rows are removed by
+the build outright, and TLQA (no context: list answers from the external
+TLQA dataset) cannot be checked against any text in the row, so none of
+those appear here.
 
 Each packet row: {"rid", "slice", "source_dataset", "category", "question",
 "context" | "evidence", "gold"}. rid = sha1(question)[:12], stable.
@@ -29,14 +38,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
-from build_v13_training_data import MATH_CATEGORIES, script_built_questions  # noqa: E402
+from build_v13_training_data import (MATH_CATEGORIES, SCRIPT_BUILT_FILES,  # noqa: E402
+                                     script_built_questions)
 
 SRC = ROOT / "data" / "combined_80_20_v12"
 OUT = ROOT / "data" / "v13_verify" / "review_packets"
 LANG = {"Counterfactual", "Explicit_Reasoning", "Localization", "Order_Reasoning",
         "duration", "longform_free", "nli_mcq", "nli_saq", "storytelling",
         "temporal_dialogue"}
-PER_PACKET = {"glm2_lang": 125, "timeqa": 250}
+PER_PACKET = {"glm2_lang": 125, "timeqa": 250, "math_text": 125, "short": 400,
+              "restored": 125, "glm3": 125}
+V13 = ROOT / "data" / "combined_80_20_v13"
 EVIDENCE_CAP = 2200
 _SENT = re.compile(r"(?<=[.!?])\s+")
 _YEAR = re.compile(r"\b(1[5-9]\d\d|20\d\d)\b")
@@ -80,8 +92,14 @@ def evidence(question: str, context: str, gold: str) -> str:
 def main() -> int:
     reviewed = {(v["question"], v["context"]) for v in
                 json.loads((ROOT / "data/cot_packets/answer_key.json").read_text()).values()}
-    scripted = script_built_questions()
-    slices: dict[str, list[dict]] = {"glm2_lang": [], "timeqa": []}
+    # the original four slices exclude every glm_raw 271-313 row (kept as-is so
+    # their packets stay byte-identical); those rows are GLM-written except the
+    # syn_gen template files and get their own "restored" slice below.
+    scripted = script_built_questions(files=range(271, 314))
+    template_files = script_built_questions(files=SCRIPT_BUILT_FILES)
+    unparsed = set(json.loads((ROOT / "data/v13_verify/unparsed_questions.json").read_text()))
+    slices: dict[str, list[dict]] = {"glm2_lang": [], "timeqa": [], "math_text": [], "short": [],
+                                     "restored": [], "glm3": []}
     seen = set()
     for split in ("train", "val"):
         for line in open(SRC / f"{split}.jsonl", encoding="utf-8"):
@@ -99,6 +117,44 @@ def main() -> int:
             elif src == "TimeQA" and (r["question"], r.get("context", "")) not in reviewed:
                 slices["timeqa"].append({**base, "slice": "timeqa",
                                          "evidence": evidence(q, r.get("context", ""), base["gold"])})
+            elif q in scripted:
+                if q not in template_files and (cat not in MATH_CATEGORIES or q in unparsed):
+                    slices["restored"].append({**base, "slice": "restored",
+                                               "context": r.get("context", "")})
+                continue
+            elif q in unparsed or (src == "AUG_GLM2" and cat == "Co_temporality"):
+                slices["math_text"].append({**base, "slice": "math_text",
+                                            "context": r.get("context", "")})
+            elif src == "AUG_GLM" or (src == "AUG_GLM2" and cat in ("relation", "ordering")):
+                slices["short"].append({**base, "slice": "short",
+                                        "context": r.get("context", "")})
+    # template math rows the verifier could not parse (they live outside the v12 base)
+    for f in sorted((ROOT / "data/manual_aug_glm_v13").glob("*.jsonl")):
+        for line in open(f, encoding="utf-8"):
+            if not line.strip():
+                continue
+            r = json.loads(line)
+            q = r["question"].strip()
+            if q in unparsed and q not in seen and r.get("category") in MATH_CATEGORIES:
+                seen.add(q)
+                slices["math_text"].append({"rid": rid(q), "slice": "math_text",
+                                            "source_dataset": "AUG_TPL3",
+                                            "category": r.get("category"),
+                                            "question": r["question"], "gold": gold_of(r),
+                                            "context": r.get("context", "")})
+    # GLM-written v13 rows, as built (math rows only if the verifier couldn't parse them)
+    for split in ("train", "val"):
+        for line in open(V13 / f"{split}.jsonl", encoding="utf-8"):
+            r = json.loads(line)
+            q = r["question"].strip()
+            if r.get("source_dataset") != "AUG_GLM3" or q in seen:
+                continue
+            if r.get("category") in MATH_CATEGORIES and q not in unparsed:
+                continue
+            seen.add(q)
+            slices["glm3"].append({"rid": rid(q), "slice": "glm3", "source_dataset": "AUG_GLM3",
+                                   "category": r.get("category"), "question": r["question"],
+                                   "gold": gold_of(r), "context": r.get("context", "")})
     OUT.mkdir(parents=True, exist_ok=True)
     for name, rows in slices.items():
         k = PER_PACKET[name]

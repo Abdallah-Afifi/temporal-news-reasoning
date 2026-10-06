@@ -68,3 +68,52 @@ name. Judge:
   different entity for the whole window. Name the right one in the reason.
 - `NOT_FOUND` if the excerpt doesn't settle it.
 - `MALFORMED` if the gold is a fragment / not a valid answer to the question.
+
+## math_text slice (date arithmetic / comparison written in free text)
+
+Rows a parser could not read. Work the answer out yourself from the context
+(dates in the passage), then compare with the gold:
+- Computation: elapsed time between two dated events; the gold must equal
+  the calendar difference (e.g. "1 year 2 months 3 days"; "24 days").
+- Timeline: the letters in chronological order of the facts, each fact
+  dated somewhere in the context. If a fact is never dated, or two facts
+  can't be ordered from the text, AMBIGUOUS.
+- Duration_Compare: compare the two spans; "approximately the same" is
+  right only when the spans are within ~10% (or ~2 months) of each other;
+  if the gap is borderline, AMBIGUOUS.
+- Order_Compare: which of two events happened first / same time.
+- Relative_Reasoning: "most recent X after Y" / "immediately after Y" means
+  the NEXT event after Y (the TIME benchmark's convention), not the latest
+  one overall; "most recent before T" means the closest before T.
+- Co_temporality: which event happened at the same time / during another.
+A gold that the text gives no way to reach is AMBIGUOUS, not CORRECT.
+
+## short slice (no or tiny context)
+
+- AUG_GLM: short arithmetic / clock / calendar word problems. Recompute the
+  answer; WRONG if it differs, AMBIGUOUS if the wording allows two answers.
+- AUG_GLM2 relation (BEFORE/AFTER/INCLUDES/IS_INCLUDED/SIMULTANEOUS) and
+  ordering rows: check the label against the dates/facts stated in the
+  question itself. For "relationship between the event E and the time T":
+  E INCLUDES T when E's span contains T; E IS_INCLUDED when E falls inside
+  T's span.
+
+
+## restored slice and glm3 slice (GLM-written rows)
+
+Rows the GLM model wrote one by one (older corpus files and the v13 wave).
+Apply the same per-category rules as the glm2_lang slice (and the math_text
+rules for any Computation / Timeline / Duration_Compare / Order_Compare /
+Relative_Reasoning row). Extra categories here:
+- relation: the label must match the dates in the question/context
+  (see the short-slice note on INCLUDES vs IS_INCLUDED).
+- extract (multi-select): the gold lists, two-space separated (e.g. "B  C"),
+  exactly the options that are time expressions mentioned in the context,
+  directly or indirectly (a date written in another format still counts).
+  A missing or extra letter is WRONG.
+- Explicit_Reasoning: a fact or date read directly off the passage.
+
+## Resuming
+
+If your verdicts file already has lines, keep them and continue from the
+first rid in the packet that is not yet in the file.

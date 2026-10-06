@@ -1,0 +1,250 @@
+{"rid": "287563c005d5", "verdict": "CORRECT", "reason": "Managing Board list: Kaske 1981-1992, von Pierer 1992-2005; Jul 1992 covered by both at year precision.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "a1818f250233", "verdict": "CORRECT", "reason": "MSP from the 1999 opening of the Scottish Parliament until standing down in 2011; covers window.", "reviewer": "ai"}
+{"rid": "5cdd54f930fa", "verdict": "CORRECT", "reason": "Signed for Sheffield United September 1990; sold to Chelsea 30 Aug 1991.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "e1d75d52a7e3", "verdict": "MALFORMED", "reason": "Gold 'CAF Super Cup' is a competition, not a team; he played for Al Ahly.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "937cb90e55fb", "verdict": "CORRECT", "reason": "Craig Ferguson hosted 2005-14; covers Mar 2005-Dec 2007.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "e5337fb3e01d", "verdict": "CORRECT", "reason": "Leader of Fianna Fail from 1992 to 1994; year range covers Feb 1992.", "reviewer": "ai"}
+{"rid": "d91dc201fad8", "verdict": "WRONG", "reason": "Freiburg (PhD 1978) and Pantheon-Assas (1977) fit; Paris Institute of Criminology diploma is dated 1979, outside window.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "0794df607c3a", "verdict": "CORRECT", "reason": "Music director of the Orchestre Symphonique de Liege 1964-1967.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "68ef4f572c54", "verdict": "CORRECT", "reason": "Leader of the Liberal Democrats from 1988 (the party formed that year); covers Feb 1988.", "reviewer": "ai"}
+{"rid": "582abc41c169", "verdict": "CORRECT", "reason": "Full international debut 22 Dec 2010 and still playing for North Macedonia; covers Mar-Apr 2011.", "reviewer": "ai"}
+{"rid": "9750be4e4aad", "verdict": "CORRECT", "reason": "Stepped up to the Formula 3 Euro Series in 2012; falls within 2012-2013.", "reviewer": "ai"}
+{"rid": "0f8005fee88e", "verdict": "AMBIGUOUS", "reason": "Blind re-verification rescued: He was Parliamentary Under-Secretary of State (DCMS) until 28 June 2007, within the late 2000s.", "reviewer": "ai", "verify": "disagreed-kept"}
+{"rid": "a53c7b16eb9f", "verdict": "CORRECT", "reason": "Renamed Lamar College in 1932; no later rename shown in excerpt; covers early 1940s.", "reviewer": "ai"}
+{"rid": "4be6f9aada76", "verdict": "CORRECT", "reason": "In 1984 he was elected to the National Academy of Engineering.", "reviewer": "ai"}
+{"rid": "bdbcea27a5bd", "verdict": "CORRECT", "reason": "Published by Editora Abril 1970-1986; covers before Nov 1983.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "f0790923f2fc", "verdict": "CORRECT", "reason": "Partnership at the New Park Theatre from April 1874; no other 1874-75 engagement named.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "5475acf53ae3", "verdict": "AMBIGUOUS", "reason": "Re-verification: context insufficient: context insufficient", "reviewer": "ai", "secondpass": "full-passage", "verify": "context-insufficient"}
+{"rid": "35203aac12f1", "verdict": "CORRECT", "reason": "Bought by the National Gallery in London in 1842; covers Jul-Nov 1842.", "reviewer": "ai"}
+{"rid": "bdd7fd2fd631", "verdict": "WRONG", "reason": "1989-1992 she was in Kenya gathering doctorate data (Hebrew University 1993); Tel Aviv was 1985 and 1994+.", "reviewer": "ai", "secondpass": "full-passage", "verify": "confirmed"}
+{"rid": "34c174edc791", "verdict": "CORRECT", "reason": "Studied at Art Students League of New York 1913-15 and assisted at Roslyn, New York studio c.1913.", "reviewer": "ai"}
+{"rid": "70e7297f9c3f", "verdict": "CORRECT", "reason": "Attended Highland Park College and Cummins Art College after 1905, before the University of Iowa; covers 1907-1908.", "reviewer": "ai"}
+{"rid": "8f72729b869f", "verdict": "CORRECT", "reason": "Serves as MEP for Dublin since the 2019 European election; covers Feb 2020-Feb 2021.", "reviewer": "ai"}
+{"rid": "61479a7e8b47", "verdict": "CORRECT", "reason": "Opened 1969 as International Hotel, known for many years as the Las Vegas Hilton; covers late 1970s.", "reviewer": "ai"}
+{"rid": "9ab84f623b8b", "verdict": "CORRECT", "reason": "Elected MP at the December 1918 general election and again in 1922; covers window.", "reviewer": "ai"}
+{"rid": "47f0261d29bf", "verdict": "CORRECT", "reason": "Elected Speaker 4 May 1993, held until the 1996 Howard government election; MP throughout.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "fd808e1174f3", "verdict": "CORRECT", "reason": "Six excellent seasons at Charlton from summer 2000; Norwich loan only January 2006; covers window.", "reviewer": "ai"}
+{"rid": "431d9c6583fe", "verdict": "CORRECT", "reason": "First cartoon for the World Sep 16 1894; Yellow Kid debuted there Jan 13 1895.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "546038c753ce", "verdict": "AMBIGUOUS", "reason": "Re-verification: context insufficient: context insufficient", "reviewer": "ai", "verify": "context-insufficient"}
+{"rid": "7d260efa505c", "verdict": "CORRECT", "reason": "Attended the University of Sussex, Brighton, 1973-1974; covers window.", "reviewer": "ai"}
+{"rid": "2b69903b46ed", "verdict": "CORRECT", "reason": "Signed for Watford October 1948, first-choice keeper through 1950-51; Southend only mid-1951-52.", "reviewer": "ai"}
+{"rid": "af6bee4b6237", "verdict": "MALFORMED", "reason": "Gold 'Faculty of Science' is a faculty he was Dean of, not an employer; employer was the University of Malaya.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "90857684f6d6", "verdict": "CORRECT", "reason": "Appointed Titular Bishop of Limyra in 1837, consecrated 22 July 1838; held through window.", "reviewer": "ai"}
+{"rid": "0a4b4b320d58", "verdict": "CORRECT", "reason": "United Kingdoms Ambassador to Paris from 1954 to 1960; matches window.", "reviewer": "ai"}
+{"rid": "de6c7afc5ad4", "verdict": "CORRECT", "reason": "Michigan, Johns Hopkins and Amsterdam stints all preceded his 1963 move to Rockefeller University.", "reviewer": "ai"}
+{"rid": "043a728d93d0", "verdict": "CORRECT", "reason": "Member of the Parliament of Finland representing the Socialist Electoral Organisation 1927-1930.", "reviewer": "ai"}
+{"rid": "46a8d1c1e053", "verdict": "CORRECT", "reason": "List: Sir Keith Whitson (1998-2003), matching the window.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "a9ff3c08224b", "verdict": "CORRECT", "reason": "WCBS presidents: Dupont 2010-2015, Ferguson 2015-2017; year precision covers Mar 2015.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "0ca513be0534", "verdict": "CORRECT", "reason": "Prime Minister of Jamaica from 1972 to 1980 after winning the 1972 election; covers window.", "reviewer": "ai"}
+{"rid": "d868a06721ae", "verdict": "MALFORMED", "reason": "Gold names his boss (Carlos Ghosn, Renault's CEO); the employer organization was Renault.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "2ac18f8e10be", "verdict": "WRONG", "reason": "In 1983-1987 he was in KISZ, the Organisation of Young Communists; MSZP appears only from 2004 context.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "24c1e4a747cc", "verdict": "CORRECT", "reason": "From 1925 the family was at the Bauhaus in Dessau (daughter born 1926, house 1927); covers 1925-1929.", "reviewer": "ai"}
+{"rid": "27d90e355683", "verdict": "CORRECT", "reason": "Family moved to Madison, Indiana 1817; moved to New York in 1851; both in window.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "823398c6563c", "verdict": "CORRECT", "reason": "Managed Parma from the 1996 season until sacked at the end of 1997-98.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "b9343dfbd497", "verdict": "CORRECT", "reason": "Married to Reynald of Marash until his death at the Battle of Inab in 1149; covers window.", "reviewer": "ai"}
+{"rid": "4042d26b4471", "verdict": "CORRECT", "reason": "Married Lew Ayres in 1934; no divorce noted before 1940 in the passage.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "1f0808044d11", "verdict": "CORRECT", "reason": "Minister of Home Affairs 2018-2020, appointed after the May 2018 election.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "5d014d45247f", "verdict": "CORRECT", "reason": "Product of Spartak Pleven's youth academy and began his career there; covers before Apr 2006.", "reviewer": "ai"}
+{"rid": "2cd2f5a0992d", "verdict": "CORRECT", "reason": "Resigned from Pangu and became an independent in 1988, rejoined only in 1994.", "reviewer": "ai"}
+{"rid": "873f6068378e", "verdict": "WRONG", "reason": "Justice and Policing fit (2014-2016); Minister of State for the Armed Forces began only in 2016.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "964287adb8f4", "verdict": "WRONG", "reason": "Jul-Sep 2009 still at Al-Arabi (from Jul 2008); rejoined Olympiakos only in December 2009.", "reviewer": "ai", "secondpass": "full-passage", "verify": "confirmed"}
+{"rid": "372842c65479", "verdict": "CORRECT", "reason": "Signed for Concord Rangers in June 2014 after leaving Dartford; covers latter part of window.", "reviewer": "ai"}
+{"rid": "15a4ddadfeb4", "verdict": "MALFORMED", "reason": "Gold 'Italian squad' is a descriptive phrase, not a team name (Italy; club side was AC Milan).", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "36da15d16506", "verdict": "MALFORMED", "reason": "Position question; gold 'Knesset' is a legislative body, not a position.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "9a015d669242", "verdict": "CORRECT", "reason": "Married Afdera Franchetti in 1957; divorced 1961; covers late 1950s.", "reviewer": "ai"}
+{"rid": "ba9a6712bdcd", "verdict": "CORRECT", "reason": "Elected MSP for Glasgow at the May 2011 election; before Oct 2011 she held the seat.", "reviewer": "ai"}
+{"rid": "c3100725a3db", "verdict": "CORRECT", "reason": "Member of St Johns College, completed Economics Tripos at Cambridge in 1957; covers Dec 1956-1957.", "reviewer": "ai"}
+{"rid": "0719d6e31b05", "verdict": "CORRECT", "reason": "Owners list: purchased by Thomas Read Kemp 1807; purchased for John Gillon 1819.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "0d0e34906e7f", "verdict": "CORRECT", "reason": "Order: South Coast (1969 title), then St George, before 1973 Safeway return; St George spans 1970-71.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "d5c937304ec6", "verdict": "CORRECT", "reason": "President list: Ugo La Malfa 1975-1979; covers Nov 1976-Oct 1978.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "a9be652ea864", "verdict": "MALFORMED", "reason": "Gold 'seats in the French National Assembly' is a plural fragment, not a position.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "a363f16a6aaf", "verdict": "CORRECT", "reason": "The year after the March 1973 transfer (i.e., 1974) the area was designated a National Natural Landmark.", "reviewer": "ai"}
+{"rid": "bb0f07162c27", "verdict": "CORRECT", "reason": "Designated a City of St. John's Heritage Building in 1989; covers Jul 1989.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "60921cf9e58e", "verdict": "CORRECT", "reason": "Won the World Heavyweight Championship at Unforgiven on 21 September 2003.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "dd47376b7afc", "verdict": "CORRECT", "reason": "Saloth Sar (Pol Pot) was CPK general secretary leading the DK regime through 1975-79.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "b292aa3050d7", "verdict": "CORRECT", "reason": "Manager of FC Nantes from 8 Dec 2016 until quitting 6 June 2017; matches window.", "reviewer": "ai"}
+{"rid": "d15d585fa14a", "verdict": "CORRECT", "reason": "Masters-General list: Fredrik Magnus Cronberg 1728-1740; matches window.", "reviewer": "ai"}
+{"rid": "2b74d4e01653", "verdict": "CORRECT", "reason": "Chancellor of the Duchy of Lancaster from 2014 to 2016; covers Jul 2014-Mar 2015.", "reviewer": "ai"}
+{"rid": "2b95be86870f", "verdict": "CORRECT", "reason": "Kinney bought Warner Bros.-Seven Arts in 1969; no ownership change shown before Mar 1971.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "ab8176025f33", "verdict": "CORRECT", "reason": "Career started 1994 with Cortulua, Deportivo Cali only in 1998; covers Aug 1995.", "reviewer": "ai"}
+{"rid": "fef8d1b8a83f", "verdict": "CORRECT", "reason": "Left to NEC in the summer of 2012; covers Nov-Dec 2012.", "reviewer": "ai"}
+{"rid": "090f36833128", "verdict": "CORRECT", "reason": "Signed for Stevenage July 2012; Bradford/Bolton moves later and undated; covers Aug-Dec 2013.", "reviewer": "ai"}
+{"rid": "bf08f8a65a92", "verdict": "CORRECT", "reason": "Richard Gough acquired the map in 1774 and bequeathed it in 1809; owns it throughout window.", "reviewer": "ai"}
+{"rid": "6de61aa7fb59", "verdict": "CORRECT", "reason": "Dartford from August 2013 until the June 2014 Concord move; covers most of 2013-2014.", "reviewer": "ai"}
+{"rid": "87c264b743f9", "verdict": "MALFORMED", "reason": "School question; gold is an ROTC-cadet role phrase at Scranton (pre-1998), not a school name.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "9d02ec193800", "verdict": "CORRECT", "reason": "Markus Anfang appointed ahead of the 2018-19 season; let go in April 2019.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "1a62a8d83bc5", "verdict": "CORRECT", "reason": "Sold to Henry Plumer McIlhenny in 1949; collection bequeathed only on his 1986 death.", "reviewer": "ai"}
+{"rid": "163c0345d4d4", "verdict": "CORRECT", "reason": "Became Bishop of Oxford in 1737, St Pauls deanship only in 1750; covers late 1730s.", "reviewer": "ai"}
+{"rid": "a83f0e31f74e", "verdict": "AMBIGUOUS", "reason": "ES Setif stint undated; first dated fact is the 2006-07 triumph; 2002-05 unsettleable.", "reviewer": "ai", "secondpass": "full-passage", "verify": "stays-ambiguous"}
+{"rid": "d32beb6c7792", "verdict": "CORRECT", "reason": "MP for Westbury from 1964 to 1992; covers Dec 1970-Jul 1971.", "reviewer": "ai"}
+{"rid": "5ae03ce684d8", "verdict": "CORRECT", "reason": "Transferred to Emory University in 1930; Columbia graduate school only from 1931.", "reviewer": "ai"}
+{"rid": "85437695e628", "verdict": "WRONG", "reason": "Feb 1968 he was at Barnsley (1967-68 promotion season); Kidderminster Harriers came later, non-league.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "721bbeb9bcdb", "verdict": "CORRECT", "reason": "Appointed chief of His Majesty's Military Staff in 1924; no end noted before his Feb 1944 death.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "7c42f7161797", "verdict": "CORRECT", "reason": "Married Martha Else Meyer in 1933; divorced 1938; matches window.", "reviewer": "ai"}
+{"rid": "240d3e868cd9", "verdict": "CORRECT", "reason": "Soviet-era section: Bolshevik control from 1917 apart from 1919 and 1941-43 occupation; 1953 is Soviet.", "reviewer": "ai"}
+{"rid": "de5643957c45", "verdict": "CORRECT", "reason": "Presidents list: Musca to Feb 2009, Wieser March 2009-March 2011; Wieser covers most of Jan-Oct 2009.", "reviewer": "ai"}
+{"rid": "f755b1d925c3", "verdict": "CORRECT", "reason": "Snapped up by Alloa Athletic in January 2010 (instead of Stirling); covers Feb 2010.", "reviewer": "ai"}
+{"rid": "c5e7f59abdb4", "verdict": "CORRECT", "reason": "Married Felipe de Alba April 13-14, 1983 (annulled); falls within April 1983.", "reviewer": "ai"}
+{"rid": "61731d1bdaed", "verdict": "CORRECT", "reason": "Under Castile/Leon-Castile rule (Alfonso VI of Leon and Castile, Court of Castile) before Habsburg Spain.", "reviewer": "ai"}
+{"rid": "ec48a26e5145", "verdict": "CORRECT", "reason": "Leeds Rhinos Super League debut Aug 1997; Gateshead loan came in the 1999 season, after Feb 1999.", "reviewer": "ai"}
+{"rid": "1ede49b9b0f4", "verdict": "CORRECT", "reason": "Rebel Rock imprint from 2006 and Atlantic joint venture from 2008; no change shown through 2012-2013.", "reviewer": "ai"}
+{"rid": "4a7dd6ac9b33", "verdict": "CORRECT", "reason": "Member of the Landtag of Brandenburg from October 1990; covers the pre-2000 window.", "reviewer": "ai"}
+{"rid": "697b9f277918", "verdict": "CORRECT", "reason": "Elected to both the Academie des sciences and Royal Swedish Academy of Sciences in 1907.", "reviewer": "ai"}
+{"rid": "b403c0c5d8fe", "verdict": "CORRECT", "reason": "Earned Victorian Institute of Sport scholarship in 2004; within 2004-2005 window.", "reviewer": "ai"}
+{"rid": "c7e90692f1d5", "verdict": "CORRECT", "reason": "Okzhetpes contract from February 2016 until June 2017 Aktobe move; covers after Nov 2016.", "reviewer": "ai"}
+{"rid": "4bc63712c2e7", "verdict": "CORRECT", "reason": "Mayors list: Horst-Dieter Weyrauch, CDU, 1991 to 1994.", "reviewer": "ai"}
+{"rid": "e04a7bf6ed79", "verdict": "CORRECT", "reason": "M.A. from UT Austin completed 1973; covers the after-Dec-1972 window.", "reviewer": "ai"}
+{"rid": "fd0fe7fad0fc", "verdict": "CORRECT", "reason": "Rangers debut Dec 2006, prolific for their under-19s in 2006-07, contract Dec 2007.", "reviewer": "ai"}
+{"rid": "799508d8f3ce", "verdict": "CORRECT", "reason": "Designated a city landmark by the LPC in 1965; NRHP only from 1972; covers window.", "reviewer": "ai"}
+{"rid": "e9df6a960060", "verdict": "CORRECT", "reason": "Zietlow hosts since season 1; Hartwich joined from season 7, the January 2012 run after Bach's death.", "reviewer": "ai"}
+{"rid": "e116afe85471", "verdict": "AMBIGUOUS", "reason": "Schools undated; King's BA came in 1996, suggesting enrolment ~1992; Jun 1991 unsettleable.", "reviewer": "ai", "secondpass": "full-passage", "verify": "leans-bad"}
+{"rid": "47ee48b27842", "verdict": "CORRECT", "reason": "Married Blanche of Burgundy in 1308; annulled only after he assumed the throne in 1322.", "reviewer": "ai"}
+{"rid": "ca2ac088c74f", "verdict": "CORRECT", "reason": "Appointed titular archbishop of Thelepte on 8 January 2011; held during 2011.", "reviewer": "ai"}
+{"rid": "bf8a30c89d9d", "verdict": "MALFORMED", "reason": "Gold 'Yokohama F' truncates 'Yokohama F. Marinos' and is ambiguous with Yokohama FC.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "084701c9927b", "verdict": "MALFORMED", "reason": "Gold 'Pneumologists' is a fragment of 'Federal Association of Pneumologists'; no DGP heads listed.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "297603eaffd1", "verdict": "CORRECT", "reason": "Treasurer under Stanley Bruce from 1923 to 1929; covers Sep 1926.", "reviewer": "ai"}
+{"rid": "363256a3dda7", "verdict": "CORRECT", "reason": "Worked as an inventor at the National Cash Register Company 1912-16.", "reviewer": "ai"}
+{"rid": "ff1e609737bb", "verdict": "CORRECT", "reason": "Elected Senate President in 1966; ouster by Puyat came after twelve months, i.e. 1967.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "24e6fcbfa01c", "verdict": "CORRECT", "reason": "Association founded and legally registered in Leiden in 1998; no relocation mentioned.", "reviewer": "ai"}
+{"rid": "e132d20ede16", "verdict": "CORRECT", "reason": "Signed with Atlantic Records and imprint Rebel Rock; still with Atlantic in Dec 2015.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "7fc4ee4eada5", "verdict": "CORRECT", "reason": "MP for Dunkley from 1996, retiring only at the 2016 federal election; covers after May 2016.", "reviewer": "ai"}
+{"rid": "ddd05cba74ec", "verdict": "CORRECT", "reason": "Entered the Norwegian Academy of Technological Sciences in 1995.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "7d3dea9992c3", "verdict": "CORRECT", "reason": "Enosis loan in 2009, then APOEL move with the August 2009 Cypriot Super Cup; Jul-Aug 2009 spans both.", "reviewer": "ai"}
+{"rid": "cc9f6d46f67c", "verdict": "CORRECT", "reason": "Governor of Oklahoma from 2011 to 2019; covers May 2015.", "reviewer": "ai"}
+{"rid": "89b614ce082c", "verdict": "CORRECT", "reason": "Directors list: Gunther Maihold 1999-2004; covers Oct-Nov 2003.", "reviewer": "ai"}
+{"rid": "c37f8657aa28", "verdict": "CORRECT", "reason": "Ashok Leyland ownership from October 2006; 2013 production move still under Ashok Leyland brands.", "reviewer": "ai"}
+{"rid": "3aec83eebfd4", "verdict": "AMBIGUOUS", "reason": "Monaco loans to Lyn and Rosenborg undated; only 2002-03 at Monaco is dated; Sep-Dec 2001 unsettleable.", "reviewer": "ai", "secondpass": "full-passage", "verify": "stays-ambiguous"}
+{"rid": "f6dce9ec4d90", "verdict": "CORRECT", "reason": "Under Russian rule since the 1552 conquest; 1760-1917 is the Russian Imperial era per text.", "reviewer": "ai"}
+{"rid": "430db6c9bee5", "verdict": "CORRECT", "reason": "Remained Prime Minister until 15 Sep 2004 under the agreed handover; covers Jun-Aug 2004.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "3d97ee68d8b2", "verdict": "CORRECT", "reason": "Senator 1969-1993, Democratic Whip 1977-1991, 1984 presidential bid; all within window.", "reviewer": "ai"}
+{"rid": "548edddf1353", "verdict": "CORRECT", "reason": "Rafal Grzyb became the club's assistant coach in January 2019, coaching there through Dec 2019.", "reviewer": "ai"}
+{"rid": "5de550e0b664", "verdict": "CORRECT", "reason": "Became Cheltenham Town manager 26 Nov 2014, within the Sep-Dec 2014 window.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "d7f00f29a5db", "verdict": "CORRECT", "reason": "SLD caucus chairman 1997-2001 and Minister of Internal Affairs in 1997; year precision covers Jan 1997.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "5eb6f718036b", "verdict": "WRONG", "reason": "Sep 2002-Feb 2004 he was at Newcastle (1999-2007); Ipswich ended 1999, West Ham only 2007.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "56915360e025", "verdict": "CORRECT", "reason": "From 1948 on he worked at the University of Manchester; Berlin research post from 1952.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "58c953bc48bb", "verdict": "CORRECT", "reason": "The Piotr Nowak era 2010-12; Hackworth took over in June 2012.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "cc6fc58fb420", "verdict": "CORRECT", "reason": "Left for British Guiana in 1885 to become Lieutenant-Governor, continuing until 1893.", "reviewer": "ai"}
+{"rid": "56c4e8891766", "verdict": "CORRECT", "reason": "In 1990 Florian Fischer-Fabian and Heidi Schuller presented the show before being replaced.", "reviewer": "ai"}
+{"rid": "246e9caae7f4", "verdict": "CORRECT", "reason": "After losing the 1965 contest to Heath, served as Deputy Leader under Heath; year covers Jul 1965.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "729cf979a2ee", "verdict": "MALFORMED", "reason": "Position question; gold 'Michigan Senate' is a chamber, not a position (state senator).", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "d484a4382b87", "verdict": "MALFORMED", "reason": "Gold 'died' is not a position; he was Vicar Apostolic until his death on 15 July 1867.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "808178cf00ae", "verdict": "MALFORMED", "reason": "Gold 'member' is a truncated fragment (member of the Richmond City Council).", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "e4737f8bf470", "verdict": "CORRECT", "reason": "MP for South Northamptonshire since 2010; covers May 2015.", "reviewer": "ai"}
+{"rid": "75b5d78ee6a7", "verdict": "CORRECT", "reason": "Count of Tripoli 1187-1233 and Prince of Antioch 1201-1216; both held in Jan 1211.", "reviewer": "ai"}
+{"rid": "4a1328f13a39", "verdict": "WRONG", "reason": "Malmo FF youth from 2006; the BK Skjold loan came in the 2007-08 season, after Feb 2007.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "afd3f29d2ad3", "verdict": "WRONG", "reason": "From July 2004 he was auxiliary bishop of Philadelphia; USCCB membership is never stated.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "af38809f03b7", "verdict": "CORRECT", "reason": "Transferred to Rad in the 2006 winter window; Partizan only from 18 June 2008.", "reviewer": "ai"}
+{"rid": "13231fa75b00", "verdict": "CORRECT", "reason": "President of the American Institute of Biological Sciences 1954-1956; covers Mar-Oct 1955.", "reviewer": "ai"}
+{"rid": "61e8d79148fe", "verdict": "CORRECT", "reason": "Signed with Copenhagen 23 Jun 2010; departure announced 10 Jun 2013.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "123581abf89d", "verdict": "CORRECT", "reason": "Named to head the Federal Foreign Office April 1992; Foreign Minister 1992-1998.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "c6dab3025b2d", "verdict": "CORRECT", "reason": "Flint succeeded Gulliver as Group Chief Executive 21 Feb 2018, within February.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "d8090b5cb07a", "verdict": "CORRECT", "reason": "Married Peter Allen 3 Mar 1967; divorced 24 Jul 1974.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "02ac2c643c1c", "verdict": "CORRECT", "reason": "Renamed Dixie Junior College in 1923; no later rename shown until the Dixie College era.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "242f610a308f", "verdict": "CORRECT", "reason": "Mayors list: Liv Kari Eskeland (H) 2007-2015, the mayor immediately before Jan 2010.", "reviewer": "ai"}
+{"rid": "aca1bc4e1abc", "verdict": "CORRECT", "reason": "Lieutenant governor of Virginia from 2002 to 2006; covers Dec 2002-Apr 2005.", "reviewer": "ai"}
+{"rid": "a13dc2effb8a", "verdict": "CORRECT", "reason": "Minister of the Interior 2004-2005; covers Oct 2004-Mar 2005.", "reviewer": "ai"}
+{"rid": "8fdce2320028", "verdict": "CORRECT", "reason": "Kramp-Karrenbauer federal chairwoman from 7 Dec 2018; resigned Feb 2020.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "ad01a625206d", "verdict": "CORRECT", "reason": "Elected MP for Monmouth Boroughs in 1886, holding the seat until 1892.", "reviewer": "ai"}
+{"rid": "238791f6f10c", "verdict": "CORRECT", "reason": "First director was Victor Jongeneel, until Feytmans began in 2001; covers most of 1998-2002.", "reviewer": "ai"}
+{"rid": "73dc422f45c2", "verdict": "CORRECT", "reason": "In 1981 Ernst Happel was appointed as Zebec's permanent replacement at HSV.", "reviewer": "ai"}
+{"rid": "fc9528d10ca2", "verdict": "CORRECT", "reason": "Employed by Sperry Gyroscope from 1955 to 1958; covers Oct 1956.", "reviewer": "ai"}
+{"rid": "86a863d32c94", "verdict": "WRONG", "reason": "Halifax loan ended with the 2000-01 season (from March 2001); Aug 2001 he was on the York City loan.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "376405f02067", "verdict": "CORRECT", "reason": "Apprentice at Queens Park Rangers from 1996, five-year stay; covers late 1990s.", "reviewer": "ai"}
+{"rid": "78162747ab74", "verdict": "WRONG", "reason": "Became Sassuolo head coach in August 2007; in Jul 2007 he was between clubs after the Grosseto sacking.", "reviewer": "ai", "secondpass": "full-passage", "verify": "confirmed"}
+{"rid": "70b7835a4171", "verdict": "CORRECT", "reason": "Previous Group Chief Executives list: Stuart Gulliver (2011-2018).", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "a70dd0f931fa", "verdict": "CORRECT", "reason": "Estate left to Mary Custis Lee in 1857 for her lifetime; 1864 confiscation later ruled illegal.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "eba8c966d190", "verdict": "CORRECT", "reason": "CNRS heads list: Antoine Petit since 24 January 2018.", "reviewer": "ai"}
+{"rid": "81c0fdc3928a", "verdict": "CORRECT", "reason": "Served as Minister of Energy and Mines in the early 1980s; covers Mar-Aug 1982.", "reviewer": "ai"}
+{"rid": "13b4f9d035eb", "verdict": "CORRECT", "reason": "Chief executives list reads '2002-2007, Michael L. Mike Eskew'; exact window.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "abb4f30b7b12", "verdict": "CORRECT", "reason": "Presidents list: Xavier Musca November 2005 - February 2009.", "reviewer": "ai"}
+{"rid": "3169f1ffa8b4", "verdict": "WRONG", "reason": "Feb-Mar 1977 he was at Southport (17 goals in 1976-77); the Wigan switch came for 1977-78.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "308448b8c15b", "verdict": "CORRECT", "reason": "Sworn in as president 17 Mar 2003; re-elected Feb 2008; still president in May 2009.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "df967296fa2b", "verdict": "CORRECT", "reason": "Joined Clermont Auvergne in 2004, Scarlets only in 2006; covers 2004-2005.", "reviewer": "ai"}
+{"rid": "3bef50768a43", "verdict": "CORRECT", "reason": "Hertha BSC signing loaned to Zaglebie Lubin; the 2006-07 Ekstraklasa spans Nov 2006.", "reviewer": "ai"}
+{"rid": "55ca87de2767", "verdict": "CORRECT", "reason": "Chair and Managing Director of the IMF July 2011 to September 2019; covers Feb 2018.", "reviewer": "ai"}
+{"rid": "e6565f0841ac", "verdict": "CORRECT", "reason": "Reassigned to the 2nd U-boat Flotilla 1 Jan 1940; to the 26th Flotilla 1 May 1941.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "7e1c32e35723", "verdict": "CORRECT", "reason": "Institute released him in summer 2008 and the Derry City spell follows; covers 2008-2009.", "reviewer": "ai"}
+{"rid": "1194631dfa43", "verdict": "WRONG", "reason": "Hartel managed 1 Jul 2006 - 7 Oct 2007, after May 2005-Feb 2006 (Piepenburg preceded him).", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "d5298ff87b82", "verdict": "CORRECT", "reason": "Dominican Republic debut 2006; 20-goal international career running into 2013; window within span.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "ed5d9dbbbc3c", "verdict": "MALFORMED", "reason": "Gold is the group's own current name (circular); no 1992-era alternate name in excerpt.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "d2e22406c59e", "verdict": "CORRECT", "reason": "Eastleigh Jan-Sep 2012, sold to Dover Athletic September 2012, Ebbsfleet June 2013; both in window.", "reviewer": "ai"}
+{"rid": "227b70bb1131", "verdict": "AMBIGUOUS", "reason": "Rank rose from flag-rank rear admiral (1927) toward vice admiral (~1935, undated); gold mixes rank and command-post terms.", "reviewer": "ai", "verify": "leans-bad"}
+{"rid": "ed3309fba153", "verdict": "AMBIGUOUS", "reason": "Pueblo tied only to a 1964 first drawing; by 1973 he had left TVE for humour magazines; employer unsettleable.", "reviewer": "ai", "secondpass": "full-passage", "verify": "stays-ambiguous"}
+{"rid": "51acdcace6d2", "verdict": "WRONG", "reason": "Jan 2000 he was a Livingston player (Sep 1999-Jul 2000); East Fife only from November 2000.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "ebe5cbd0aa01", "verdict": "CORRECT", "reason": "Stations list: Sioux Falls AAFld, South Dakota, 3 Jul-28 Aug 1945; covers Jul 1945.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "92ee5b811baa", "verdict": "CORRECT", "reason": "Professional list: Macquarie University, Future Fellow, 2010-present; year covers Jun 2010.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "fa2e2651badc", "verdict": "CORRECT", "reason": "Joined Carmarthen Town in 1996, captain at 20; Cardiff move came June 1998; covers before May 1997.", "reviewer": "ai"}
+{"rid": "f4d960c238b1", "verdict": "CORRECT", "reason": "Under Herrera Atletico won La Liga 1950 and 1951; he departed in 1953.", "reviewer": "ai"}
+{"rid": "bed996b395ad", "verdict": "CORRECT", "reason": "Appointed Titular Archbishop of Drizipara and Coadjutor Archbishop of Dhaka in 1965; covers Jun 1966.", "reviewer": "ai"}
+{"rid": "ed0482875b55", "verdict": "CORRECT", "reason": "Enrolled at Columbia University graduate school 1931, M.A. 1932.", "reviewer": "ai"}
+{"rid": "f50235994af4", "verdict": "WRONG", "reason": "Woodstock (to 1907) and MIT (from ~1908) fit; the Philadelphia job began only by 1912, outside the late 1900s.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "da04e5ae873d", "verdict": "CORRECT", "reason": "78th Training Brigade from 1 Oct 2009; 78th Training Division from 1 Oct 2010.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "9fbaec3c2a8b", "verdict": "CORRECT", "reason": "Presidents list: Solange Troisier 1976-91; covers Mar 1979-Jul 1982.", "reviewer": "ai"}
+{"rid": "ee1b64247afe", "verdict": "CORRECT", "reason": "Two college seasons for the Butler Bulldogs (2008-10) before the 2010 draft.", "reviewer": "ai"}
+{"rid": "74553fb6f73d", "verdict": "CORRECT", "reason": "Minister of Housing, Spatial Planning and the Environment 22 Jul 2002 to 12 Dec 2002; covers Sep 2002.", "reviewer": "ai"}
+{"rid": "12f1d6da594d", "verdict": "CORRECT", "reason": "Joined Monaco in July 2012 after Auxerre's relegation; covers the Jul-Sep 2012 part of window.", "reviewer": "ai"}
+{"rid": "35ff7674712b", "verdict": "CORRECT", "reason": "Head coach of Estudiantes from 18 May 2006; title won 13 Dec 2006.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "ab813fe23798", "verdict": "AMBIGUOUS", "reason": "Two titles conferred in 1977: Woman Grandmaster and International Arbiter; gold picks one arbitrarily.", "reviewer": "ai", "verify": "stays-ambiguous"}
+{"rid": "f5a9f5f94ad7", "verdict": "CORRECT", "reason": "Move to McClellan Airfield began September 2010; McClellan hosts most of Aug-Nov 2010.", "reviewer": "ai"}
+{"rid": "8f69f53548ee", "verdict": "CORRECT", "reason": "Joined Bath City in June 2015, inside the open 'after Apr 2015' window.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "67ac005ae006", "verdict": "CORRECT", "reason": "Won the presidential run-off in January 2003; President from 2003 to 2004; covers Apr 2003.", "reviewer": "ai"}
+{"rid": "24cf523f583f", "verdict": "CORRECT", "reason": "Moved to the University of Chicago in 1983; next dated move 1988.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "2d8d61448627", "verdict": "CORRECT", "reason": "Little Women (1868) is set in the family home, Orchard House, Concord; the family home in the 1860s.", "reviewer": "ai"}
+{"rid": "8d731f3ba3e5", "verdict": "CORRECT", "reason": "Auxerre youth 1998 through first team until the 2007 Arsenal move; covers 2002-2006.", "reviewer": "ai"}
+{"rid": "7fd8fbf062f0", "verdict": "CORRECT", "reason": "Came through Vikingur Reykjavik's academy; first-team debut 25 Aug 2001; before Aug 2001 a Vikingur youth.", "reviewer": "ai"}
+{"rid": "298a8219ccd1", "verdict": "CORRECT", "reason": "Signed with Dijon 21 May 2002, left for Le Mans June 2007; matches window.", "reviewer": "ai"}
+{"rid": "29c82301ffce", "verdict": "CORRECT", "reason": "Joined the Solomon R. Guggenheim Museum in 1995, working with its director until end of 2000.", "reviewer": "ai"}
+{"rid": "e53639d62820", "verdict": "CORRECT", "reason": "Became Chancellor with the May 1979 election victory, the window's final month; earlier he was Shadow Chancellor.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "38d9623a1bc9", "verdict": "CORRECT", "reason": "Superintendent of the Highland Railway 19 June 1865 until the 1870 LB&SCR appointment.", "reviewer": "ai"}
+{"rid": "ccb360594874", "verdict": "CORRECT", "reason": "Bishop of Oleno from Aug 1825; Vicar Apostolic until the 1829 Diocese of Mobile creation.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "0ee468f4fff0", "verdict": "MALFORMED", "reason": "Gold is a historic district (a site), not a designation; per text it was NRHP-listed since 2007.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "bfef7e39e4eb", "verdict": "CORRECT", "reason": "Called up to Italy under-19 on 22 Sep 2010, within 2010-2011.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "cd82021fc2b2", "verdict": "CORRECT", "reason": "Moved headquarters back to San Francisco in 2009; Foster City consolidation only from Oct 2012.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "316b5184e0ec", "verdict": "CORRECT", "reason": "Erkin Alptekin first president from 2004, serving until 2006.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "0e91ca59e4d9", "verdict": "CORRECT", "reason": "Married Igor Troubetzkoy in spring 1948; divorced 1951; covers Dec 1949.", "reviewer": "ai"}
+{"rid": "277cf290912f", "verdict": "CORRECT", "reason": "Freed 5 Apr 1993 and deported to the Czech Republic.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "a035309d9635", "verdict": "CORRECT", "reason": "Taught at University of Maine from 1911, associate professor to 1918; covers most of window.", "reviewer": "ai"}
+{"rid": "1b4dc7e8305b", "verdict": "CORRECT", "reason": "Promotions from the fifth tier up to Liga II; the undefeated Liga III season is the 2018-19 rung.", "reviewer": "ai"}
+{"rid": "3d01a234ad30", "verdict": "CORRECT", "reason": "MSP for Cunninghame North since 2007; covers Jul 2016.", "reviewer": "ai"}
+{"rid": "d19da0ff8255", "verdict": "CORRECT", "reason": "First married to Melissa Babish from 1972-73.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "7aaf773cbcb4", "verdict": "CORRECT", "reason": "In the 1970s Erbakan chaired the National Salvation Party; covers 1973-1981 party era.", "reviewer": "ai"}
+{"rid": "2acd4ba2dc08", "verdict": "CORRECT", "reason": "Enrolled at MIT in 1888 after his bachelors; withdrew upon return in 1889.", "reviewer": "ai"}
+{"rid": "9d5f957abcef", "verdict": "CORRECT", "reason": "Minister of First Methodist Church, Brandon from 1913; 1919 pulpit reference implies still there.", "reviewer": "ai"}
+{"rid": "f53d41b664e3", "verdict": "CORRECT", "reason": "Joined Northwich Victoria early in the 2001-02 season; Shrewsbury only July 2003.", "reviewer": "ai"}
+{"rid": "329deb87ecd7", "verdict": "MALFORMED", "reason": "Gold is the airline's own Czech name (circular); owners per text were Korean Air/Travel Service.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "1f45907a68a4", "verdict": "CORRECT", "reason": "Head coach of Estudiantes 18 May 2006 until after the 2007 Apertura.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "11bbc9bb5646", "verdict": "CORRECT", "reason": "Teachta Dala for Dun Laoghaire from 2002 to 2011; covers Jun 2002-Apr 2007.", "reviewer": "ai"}
+{"rid": "68be19d8d9e2", "verdict": "CORRECT", "reason": "PEC played at the Oosterenkstadion from 1934 to 1957; covers most of 1935-1960.", "reviewer": "ai"}
+{"rid": "a7e7b54877f1", "verdict": "CORRECT", "reason": "Gyor (Gyori ETO) from 2 Sep 2013 until Videoton in July 2015; covers most of window.", "reviewer": "ai"}
+{"rid": "31fe40155b21", "verdict": "CORRECT", "reason": "At Arsenal from 1997 as Seaman's understudy; no pre-2000 departure shown.", "reviewer": "ai"}
+{"rid": "6032cabc17fc", "verdict": "CORRECT", "reason": "Married Kang Keqing in 1929; she outlived him (died 1976); covers window.", "reviewer": "ai"}
+{"rid": "f839847aafa7", "verdict": "WRONG", "reason": "Calypso G was the ferry name for four months in 1950; from then to 1997 she was Cousteau's Calypso.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "ba01736af3f3", "verdict": "CORRECT", "reason": "Started managerial career in 2004 as manager of Aglianese; year precision covers into May 2004.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "3e5b30e9b4b6", "verdict": "CORRECT", "reason": "Rexel section: Chief Financial Director from 2013 to 2017; matches window.", "reviewer": "ai"}
+{"rid": "144afcbf3906", "verdict": "CORRECT", "reason": "Spartak Kostroma spell 1965-1967; covers Mar-Sep 1966.", "reviewer": "ai"}
+{"rid": "6a7793877eb9", "verdict": "CORRECT", "reason": "Retired and returned to the United States in 2007 as a museum ship; US registry through 2007-2008.", "reviewer": "ai"}
+{"rid": "50f0ebea873a", "verdict": "CORRECT", "reason": "Signed Mouscron-Peruwelz and US Boulogne within 12 months before the 2008 Cyprus move; Boulogma falls in 2007-2008.", "reviewer": "ai"}
+{"rid": "cef10fa5c5c1", "verdict": "CORRECT", "reason": "Joined SZDSZ in 1989, leaving only in summer 1994.", "reviewer": "ai"}
+{"rid": "bb14be609dbb", "verdict": "WRONG", "reason": "MP only 1988-2014; Dec 2018-Nov 2019 he was a Toronto City Councillor.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "397e722db3ed", "verdict": "MALFORMED", "reason": "Gold 'Liberal from Newry' is a party-place fragment; the position was Member of Parliament for Newry.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "35ca20727572", "verdict": "CORRECT", "reason": "Turned professional in 2010 with FC Tampa Bay; debut 16 April 2010.", "reviewer": "ai"}
+{"rid": "c046ddcf1817", "verdict": "CORRECT", "reason": "After 2007-08 at Logrones, the following (2008-09) season he scored 13 for Leonesa; covers Aug 2008.", "reviewer": "ai"}
+{"rid": "b342b26d1efc", "verdict": "MALFORMED", "reason": "First gold component 'LdB FC Malmo/FC' is truncated mid-name (LdB FC Malmo/FC Rosengard); pipe misplaced.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "1a774b42b7c6", "verdict": "CORRECT", "reason": "Signed with FCR 2001 Duisburg June 2012; left in Feb 2013 for the Washington Spirit.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "6077bcb00183", "verdict": "CORRECT", "reason": "Married Kelly Lange 7 Jun 1987; divorced in 1990.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "8c7770d37519", "verdict": "CORRECT", "reason": "Real Valladolid until January 2007, then UD Las Palmas five-month spell; both within 2005-2007.", "reviewer": "ai"}
+{"rid": "fb5176d587e0", "verdict": "CORRECT", "reason": "M.A. from Georgetown University received in 1958; covers the 1958 part of window.", "reviewer": "ai"}
+{"rid": "4bd4458956c3", "verdict": "CORRECT", "reason": "Signed for Tamworth in December 2013, final role through 2013-14; within window.", "reviewer": "ai"}
+{"rid": "5c2037163e7d", "verdict": "CORRECT", "reason": "FC Twente 2010-2013 and Belgian allegiance from 2011; both hold in Jun 2012.", "reviewer": "ai"}
+{"rid": "ac5c5990fb4f", "verdict": "CORRECT", "reason": "Joined Hayes in 2006, Corinthian-Casuals loan, Hayes & Yeading August 2007; both in window.", "reviewer": "ai"}
+{"rid": "c5cf4bd418ac", "verdict": "CORRECT", "reason": "Command list: Milch 12 Apr-9 May 1940; covers part of April 1940.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "46e343a87ede", "verdict": "CORRECT", "reason": "Prime Minister from 1995 until his death in 2012; covers Aug 1995-Jul 1996.", "reviewer": "ai"}
+{"rid": "a351b1b88716", "verdict": "WRONG", "reason": "Everton from March 1979 and Bolton May 1980; the Atlanta Chiefs loan came only in 1981.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "19089dac53f9", "verdict": "CORRECT", "reason": "Route extended to Villach; as of 2010 trains ran from Villach Hauptbahnhof to Hamburg-Altona.", "reviewer": "ai"}
+{"rid": "b5a5aa2a3405", "verdict": "CORRECT", "reason": "Headquartered in Stockholm from 1912 to 1946, London only from 1946.", "reviewer": "ai"}
+{"rid": "b69672f5836b", "verdict": "CORRECT", "reason": "Became the centre of Tambov Oblast, created 27 Sep 1937.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "b6335f46f0ed", "verdict": "CORRECT", "reason": "Became the second-youngest WGM in March 2012.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "e2a3aaacf5a0", "verdict": "CORRECT", "reason": "Rangers stint ended Apr 2005; the only club named between the 2002 debut and the 2005-06 South China move.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "d2039d7686cc", "verdict": "CORRECT", "reason": "Won the 1998 Kaohsiung City mayoral election; mayoralty spans Dec 1998-Jul 2002.", "reviewer": "ai"}
+{"rid": "5591723262a5", "verdict": "CORRECT", "reason": "Marbach commanded Jan-Feb 1942; Witzendorff May-Oct 1942; both in 1942.", "reviewer": "ai", "secondpass": "full-passage"}
+{"rid": "430939508f68", "verdict": "CORRECT", "reason": "Signed with New York Red Bulls 24 Jan 2007; covers Mar 2007.", "reviewer": "ai", "secondpass": "full-passage"}

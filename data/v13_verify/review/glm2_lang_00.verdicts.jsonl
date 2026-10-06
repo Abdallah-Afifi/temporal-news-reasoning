@@ -1,0 +1,125 @@
+{"rid": "4e1cad222137", "verdict": "CORRECT", "reason": "Passage states public nights began October 2, 2007, matching gold exactly."}
+{"rid": "1e282a6645ce", "verdict": "CORRECT", "reason": "Passage never mentions sirens; no option supported, matching gold."}
+{"rid": "f85e0f62ff60", "verdict": "CORRECT", "reason": "Passage states last homes reconnected November 9, 2018, matching gold."}
+{"rid": "e5895f795938", "verdict": "CORRECT", "reason": "Passage states meadows' first fete held May 29, 2000, matching gold."}
+{"rid": "b05f242f423f", "verdict": "CORRECT", "reason": "Storms in order: Ruthie, Vann, Corsa, Dengal; third is Corsa, matching gold."}
+{"rid": "76e7c3102ed6", "verdict": "CORRECT", "reason": "Passage states car park opened in 1964, matching gold."}
+{"rid": "4044155ba8bd", "verdict": "CORRECT", "reason": "Visitor centre remains unbuilt promise through all entries; no answer given, matching gold."}
+{"rid": "d1cb192b7b7b", "verdict": "CORRECT", "reason": "Passage gives no auction price comparison; hypothesis undetermined, neutral correct."}
+{"rid": "98549f736e6c", "verdict": "CORRECT", "reason": "Passage never states who paid for generator; neutral correct."}
+{"rid": "149849ef04c4", "verdict": "CORRECT", "reason": "Dialogue confirms wetland completed Nov 3, 2018 holding a thousand litres/sec, matching gold."}
+{"rid": "bcfad77ff7b7", "verdict": "CORRECT", "reason": "1891 to 1916 is 25 years, matching gold."}
+{"rid": "1ed7ffac9bf3", "verdict": "CORRECT", "reason": "Passage states flyby was cancelled, contradicting hypothesis it went ahead; contradiction correct."}
+{"rid": "73b999d76844", "verdict": "CORRECT", "reason": "Passage states county record fell during June 3, 2017 championships under lights, matching gold."}
+{"rid": "022f366842b6", "verdict": "CORRECT", "reason": "Droughts in order: Wells, Dust, Chalk, Cricket; second is Dust, matching gold."}
+{"rid": "92e6736febeb", "verdict": "CORRECT", "reason": "Register scanned in a week vs budgeted month, i.e. ahead of schedule; entailment correct."}
+{"rid": "78a486ca39f0", "verdict": "CORRECT", "reason": "Ada states maltings' extension finished January 19, 2016, matching gold."}
+{"rid": "e2ea742e5ba3", "verdict": "CORRECT", "reason": "Settlements in order: Summer, Foundry-side, Three-Shift, Works; second is foundry-side, matching gold."}
+{"rid": "59d21eeb55ef", "verdict": "CORRECT", "reason": "Storms in order: Ruthie (2015), Vann (2016), Corsa (2017), Dengal (2019); second is Vann."}
+{"rid": "2f6b635aa7c8", "verdict": "CORRECT", "reason": "Control tower commissioned September 2, 1997, matching gold exactly."}
+{"rid": "345182eef4b2", "verdict": "CORRECT", "reason": "Passage never mentions a sports club; none of the specific options supported."}
+{"rid": "084b4b40f6c0", "verdict": "CORRECT", "reason": "Owen states settlement signed 18 March, 2022, matching gold option C."}
+{"rid": "edf29a4c2a7a", "verdict": "CORRECT", "reason": "Sally states farm assurance inspection visited July 9, 2018, matching gold."}
+{"rid": "37c931f47cfb", "verdict": "CORRECT", "reason": "Wilf Draycott appointed manager on June 1, 1984, matching gold exactly."}
+{"rid": "4ad6ea8bc14c", "verdict": "CORRECT", "reason": "East chapel restoration (1937) precedes west (1946) and bell (1959); first is east."}
+{"rid": "57280360a6be", "verdict": "CORRECT", "reason": "March is spring in UK context; ceasing in March 2001 entails ending in spring 2001."}
+{"rid": "4b6da4bf5c80", "verdict": "CORRECT", "reason": "Passage only says window looked down the straight; doesn't settle finish-line specificity, so neutral holds."}
+{"rid": "4a3d5e63198b", "verdict": "CORRECT", "reason": "Passage never mentions founder's death; hypothesis unaddressed, neutral correct."}
+{"rid": "0ff2bad5dc08", "verdict": "CORRECT", "reason": "Stoppages in order: Toolroom (1951), Components (1957), Changeover (1962); second is Components."}
+{"rid": "1d9cedadba25", "verdict": "CORRECT", "reason": "Farms converted ground in the two winters before creamery's organic conversion; entailment correct."}
+{"rid": "5e6904c44920", "verdict": "CORRECT", "reason": "New filter house's actual facts (March 5 1952, every two hours) unaffected by counterfactual pre-war premise."}
+{"rid": "759d40a0a967", "verdict": "CORRECT", "reason": "First light Aug 18 2007 after 30 months is actual fact, unaffected by access-road hypothetical."}
+{"rid": "bf817cfed696", "verdict": "CORRECT", "reason": "Cuts in order: Frost (1996), Longley (1999), Solstice (2003); third is Solstice."}
+{"rid": "38bf2e124e79", "verdict": "CORRECT", "reason": "Systems in order: Messenger (2020), Aurora (2022), Orion (2024); second is Aurora."}
+{"rid": "6a82808233fe", "verdict": "CORRECT", "reason": "Pellow radio works founded February 2, 1946, matching gold exactly."}
+{"rid": "5eaa11eb3c36", "verdict": "CORRECT", "reason": "Actual launch date October 2, 2023 unaffected by day-shift counterfactual premise."}
+{"rid": "8f197d7ba269", "verdict": "CORRECT", "reason": "Re-roofing work finished August 14, 1982, matching gold exactly."}
+{"rid": "6aaa0efccd33", "verdict": "CORRECT", "reason": "Centres in order: Tollfree (1995), Nightline (1998), Home (2002), Broadband (2004); second is Nightline."}
+{"rid": "56ad89ed3c4a", "verdict": "CORRECT", "reason": "April 1913 remodelling falls between trams (1907) and war pooling end (1921); entailment holds."}
+{"rid": "d1667d1b06ed", "verdict": "CORRECT", "reason": "Land Army training course begun March 5, 1917, matching gold exactly."}
+{"rid": "1d61aa107d0f", "verdict": "CORRECT", "reason": "Passage states review was reported October 18, 2021, matching gold."}
+{"rid": "e805de803752", "verdict": "CORRECT", "reason": "1929 minus 1920 equals 9 years, matching gold."}
+{"rid": "ab078a488130", "verdict": "CORRECT", "reason": "Compensation scheme formally closed December 15, 1983, matching gold."}
+{"rid": "a996a7645803", "verdict": "CORRECT", "reason": "Actual ACAS talks began Jan 19 2022 after two walkouts, unaffected by conciliation-delay hypothetical."}
+{"rid": "742c63a1b6b0", "verdict": "CORRECT", "reason": "Governorships in order: Wray, Haldane, Selwyn, Marsh; fourth is Marsh."}
+{"rid": "2663fc9ccd89", "verdict": "CORRECT", "reason": "Actual opening date Oct 7 1966 unaffected by lord-chief-delay hypothetical."}
+{"rid": "4776225788fa", "verdict": "CORRECT", "reason": "January rota posted December 19, 2023, matching gold exactly."}
+{"rid": "395bcb1c7359", "verdict": "CORRECT", "reason": "Night school opened January 14, 1910, matching gold exactly."}
+{"rid": "3d975c372ab2", "verdict": "CORRECT", "reason": "Actual fares freeze fact (Jan 10 2000, pound held) unaffected by accountants'-advice hypothetical."}
+{"rid": "bb0fb553d314", "verdict": "CORRECT", "reason": "96,000 books/year directly contradicts hypothesis's 200,000 figure."}
+{"rid": "ed4b1ac1681b", "verdict": "CORRECT", "reason": "38,000 visits over the service's first years entails 'tens of thousands'."}
+{"rid": "30288a71a9eb", "verdict": "CORRECT", "reason": "Butter mark approved September 15, 1937 per passage, unaffected by London-trade hypothetical."}
+{"rid": "00bdde4cf62f", "verdict": "CORRECT", "reason": "Container berth opened Oct 3 1963 with two cranes, matching actual text exactly."}
+{"rid": "109f02854ddc", "verdict": "CORRECT", "reason": "Passage leaves successor instrument's switch-on date unstated; 'passage does not say' is correct."}
+{"rid": "e95dd7c9baed", "verdict": "CORRECT", "reason": "University joined scheme January 16, 2019 per passage, unaffected by registrar-leave hypothetical."}
+{"rid": "70a8e38ba240", "verdict": "CORRECT", "reason": "Run ended in fourth round proper, contradicting hypothesis of quarter-finals."}
+{"rid": "833fde5d5428", "verdict": "CORRECT", "reason": "First collective agreement signed June 30, 2020, matching gold exactly."}
+{"rid": "09a614e006fa", "verdict": "CORRECT", "reason": "Stoppage lasted three days (Jan 16-18), contradicting hypothesis of a single day."}
+{"rid": "1addd2e85084", "verdict": "CORRECT", "reason": "Only the gale mobilisation (Oct 14, 2005) falls in the given window; January surge is after Jan 5, 2006."}
+{"rid": "6f1ba6481986", "verdict": "CORRECT", "reason": "Trust's whole membership present entails every member attended."}
+{"rid": "81232ce5f338", "verdict": "CORRECT", "reason": "Building work resumed June 5, 1946, matching gold exactly."}
+{"rid": "e69dad7a011b", "verdict": "CORRECT", "reason": "Pay rounds in order: Wartime (1938), Reconstruction (1949), Unity (1958), Final (1964); second is Reconstruction."}
+{"rid": "70942f3ff1e6", "verdict": "CORRECT", "reason": "Children's wing opened August 20, 1923 per passage, unaffected by carnival rain-off hypothetical."}
+{"rid": "9f55e290bb8d", "verdict": "CORRECT", "reason": "Renewed pilot funding set to run eighteen months, matching gold exactly."}
+{"rid": "11d58b3f7d50", "verdict": "CORRECT", "reason": "Referendum figures certified tied to October 28, 1973 referendum date in passage."}
+{"rid": "3f4568d8839b", "verdict": "CORRECT", "reason": "Stroke unit opened its doors March 10, 2017, matching gold exactly."}
+{"rid": "b06453f87cde", "verdict": "CORRECT", "reason": "October 1 is autumn; entails zone began in autumn 1958."}
+{"rid": "f14a27197d00", "verdict": "CORRECT", "reason": "Night shift premium won November 14, 2023, matching gold exactly."}
+{"rid": "6edd182c1596", "verdict": "CORRECT", "reason": "Passage directly states every permanent vacancy filled for first time in nine years; entailment holds."}
+{"rid": "f446337431c0", "verdict": "CORRECT", "reason": "Only the prices commission sittings (Oct 9, 1973) fall within the given window; others are outside it."}
+{"rid": "38cda7adf274", "verdict": "CORRECT", "reason": "Library's first book borrowed October 11, 1993 per passage, unaffected by graduation hypothetical."}
+{"rid": "23f2f6a7979e", "verdict": "CORRECT", "reason": "Farid states renewal signed 30 April 2018 for three years' funding, matching gold option D."}
+{"rid": "d84ff828bdb6", "verdict": "CORRECT", "reason": "Strike ballot opened September 14, 2022 per passage, unaffected by diary-timing hypothetical."}
+{"rid": "c652794f4bae", "verdict": "CORRECT", "reason": "Audience rose each month of the season, entailing the last month had the largest audience."}
+{"rid": "c7f2a076b114", "verdict": "CORRECT", "reason": "Only the feasibility study (Sept 30, 2014) falls within the given window; other events are outside it."}
+{"rid": "376114e5ac3d", "verdict": "CORRECT", "reason": "Passage notes the oven failed but never states any repair date."}
+{"rid": "fbf7ea85f080", "verdict": "CORRECT", "reason": "Rulings in order: Brindle (1968), Quay (1974), Trespass (1981), Registry (1986); second is Quay."}
+{"rid": "e489571789ab", "verdict": "CORRECT", "reason": "Compulsory purchase confirmed November 30, 1936, matching gold exactly."}
+{"rid": "5856f6542b6c", "verdict": "CORRECT", "reason": "Alton states second gale's claims reached 2,300 by 5 November 1977, matching gold."}
+{"rid": "d472646e6424", "verdict": "CORRECT", "reason": "March 15, 1967 is before July 1967; entailment holds."}
+{"rid": "e6160fe53198", "verdict": "CORRECT", "reason": "Passage explicitly says wards drawn on streets rather than old parishes, contradicting hypothesis."}
+{"rid": "b480f0cfb79a", "verdict": "CORRECT", "reason": "Actual strike facts (March 4 1937, 480 men) unaffected by ballot-failure hypothetical."}
+{"rid": "ce16d9366f0b", "verdict": "WRONG", "reason": "Option B matches passage's centenary dinner exactly (week after merger vote, both chairmen one table); 'supper' is same event, not unsupported.", "verify": "confirmed"}
+{"rid": "6f8f2e5afa46", "verdict": "CORRECT", "reason": "1865 minus 1861 equals 4 years, matching gold."}
+{"rid": "57a801f85c5c", "verdict": "CORRECT", "reason": "Inaugural flight left Caldergate July 3, 1995, matching gold exactly."}
+{"rid": "f64678e55f91", "verdict": "CORRECT", "reason": "Campaigns in order: Deep Draught (2007), Channel (2010), Approach (2013); second is Channel."}
+{"rid": "7c2a64a5102d", "verdict": "CORRECT", "reason": "Passage never dates when glaziers first supplied the wording, only that they did; no answer is correct."}
+{"rid": "3d6898474755", "verdict": "CORRECT", "reason": "Passage never mentions a tennis lawn or private club; hypothesis unaddressed, neutral correct."}
+{"rid": "6effcaffdd44", "verdict": "CORRECT", "reason": "Referral pathway rewritten in March 2018, matching gold exactly."}
+{"rid": "3221e73a04b0", "verdict": "CORRECT", "reason": "Apology printed in the paper's next issue per passage, unaffected by advert-refusal hypothetical."}
+{"rid": "4aa80e12310c", "verdict": "CORRECT", "reason": "Scheme's review published in the spring of 1978, matching gold exactly."}
+{"rid": "7c5faefa3090", "verdict": "CORRECT", "reason": "Passage states Northland berth was the port's first new quay in a generation, matching gold."}
+{"rid": "4360ce925d0e", "verdict": "CORRECT", "reason": "Bureau closed February 26, before spring, contradicting hypothesis it stayed open into spring."}
+{"rid": "a2f6ec182a67", "verdict": "CORRECT", "reason": "Tramway built for holidaymakers to falls hotel, contradicting hypothesis of a lead mine origin."}
+{"rid": "6fd8b4d236de", "verdict": "CORRECT", "reason": "Site bought Jan 19 1951, architects appointed 'a month later' equals Feb 19, 1951, matching gold."}
+{"rid": "25a558d2b7a2", "verdict": "CORRECT", "reason": "Exercises in order: Tabletop (2016), Bracken (2018), Full-scale (2019); first is Tabletop."}
+{"rid": "fd34a6c97b15", "verdict": "CORRECT", "reason": "Passage only dates when deliveries stopped, not when the dispute itself began; cannot be determined."}
+{"rid": "35bc160afd1e", "verdict": "CORRECT", "reason": "Team formed April 13, 1913, before WWI (1914-1918), contradicting hypothesis of post-war formation."}
+{"rid": "dc3088074361", "verdict": "CORRECT", "reason": "Spacecraft ordered May 18, 2011, matching gold exactly."}
+{"rid": "794a241a2268", "verdict": "CORRECT", "reason": "Actual catalogued date and orbit precision (Sept 8 2013, nailed to metre) unaffected by yield-timing hypothetical."}
+{"rid": "b3ea82501c60", "verdict": "CORRECT", "reason": "Second photographed handshake given May 8, 1945, matching gold exactly."}
+{"rid": "8d7e6cd3f3fb", "verdict": "CORRECT", "reason": "Gasholder rebuild, gas show, and tar works all fall within the window; later/earlier events correctly excluded."}
+{"rid": "134ae5b70590", "verdict": "CORRECT", "reason": "Mail platforms in order: Relay (1997), Postroom (2000), Courier (2002), Quarantine (2004); first is Relay."}
+{"rid": "b969affd4db2", "verdict": "CORRECT", "reason": "Gales in order: Candlemas (1893), Harvest (1901), Fisherman's (1907), Lammas (1915); second is Harvest."}
+{"rid": "25cb056a3311", "verdict": "CORRECT", "reason": "Only the bulletin board launch (Nov 8, 1990) falls within the given window; LedgerLine release is after it."}
+{"rid": "f19c6982187a", "verdict": "CORRECT", "reason": "First subsidence at Ravenscrag reported March 11, 1967, matching gold exactly."}
+{"rid": "bbc0e60c34e9", "verdict": "CORRECT", "reason": "Clerk confirms stadium inquest held May 16, 1932 over three sittings, matching gold option C."}
+{"rid": "e0f585976c0a", "verdict": "CORRECT", "reason": "Passage never mentions a benefactor or benefaction registration; 'not given' is correct."}
+{"rid": "05432749c236", "verdict": "CORRECT", "reason": "Projects in order: annexe (1967), extension (1975), refurbishment (1983), archive room (1988); fourth is archive room."}
+{"rid": "7604c0e09cc0", "verdict": "CORRECT", "reason": "Scarlet fever ward opened May 17, 1899 per passage, unaffected by isolation-waiver hypothetical."}
+{"rid": "7378e4a98884", "verdict": "CORRECT", "reason": "Settlements in order: Summer (1939), Foundry-side (1950), Three-Shift (1960), Works (1965); fourth is Works."}
+{"rid": "6d7094ef8642", "verdict": "CORRECT", "reason": "Actual first full year count (310,000) matches passage, unaffected by forecast-accuracy hypothetical."}
+{"rid": "2a16d2498b44", "verdict": "CORRECT", "reason": "Passage never states the rebuild's cost; warehouse comparison unaddressed, neutral correct."}
+{"rid": "225baa5ab61f", "verdict": "CORRECT", "reason": "Only the flexibility auction (June 11, 2019) falls within the given window; other events are outside it."}
+{"rid": "9959eca5bb30", "verdict": "CORRECT", "reason": "Track was laid on the cricket field's corner, contradicting hypothesis it was laid on the fair field."}
+{"rid": "6947b88db35f", "verdict": "CORRECT", "reason": "1869 minus 1859 equals 10 years, matching gold."}
+{"rid": "fb482d0a61dc", "verdict": "CORRECT", "reason": "App failure and post-mortem both fall within the window; later rebuild/sensors correctly excluded."}
+{"rid": "f5b5706c6fd7", "verdict": "CORRECT", "reason": "Passage never states who presented the medal; royal family claim unaddressed, neutral correct."}
+{"rid": "10e710ac75bf", "verdict": "CORRECT", "reason": "Passage never mentions an infirmary endowment or its registration; 'not given' is correct."}
+{"rid": "6fa9c05eb6a6", "verdict": "CORRECT", "reason": "Charity status only registered in 2017, contradicting hypothesis of charity status since 2015 launch."}
+{"rid": "99d6609c2777", "verdict": "CORRECT", "reason": "Remote sentencing pilot and digital archive opening both fall within the window; other events excluded correctly."}
+{"rid": "9197e0afe0ee", "verdict": "CORRECT", "reason": "Passage says network consolidated south but never states remaining staff transferred there; neutral correct."}
+{"rid": "7df981678a30", "verdict": "CORRECT", "reason": "Passage never names the inspectors' origin or affiliation; central bank claim unaddressed, neutral correct."}
+{"rid": "3197a9a9a86c", "verdict": "CORRECT", "reason": "Task force's report published April 27, 1978 per passage, unaffected by letters-withheld hypothetical."}
+{"rid": "fd6632e31b04", "verdict": "CORRECT", "reason": "Civic awards won May 15, 2001, matching gold exactly."}
+{"rid": "96b8b4d710dc", "verdict": "CORRECT", "reason": "Appeal heard January 15, 1981, matching gold exactly."}

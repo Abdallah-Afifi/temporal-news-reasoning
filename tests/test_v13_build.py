@@ -88,7 +88,7 @@ def test_build_refuses_without_template_rows(tmp_path, monkeypatch):
 
 # --- template-source rule (researcher decision 2026-10-05) -------------------
 def test_non_math_template_rows_are_removed_math_kept():
-    rows = [{"category": c, "targets": ["x"], "question": f"q {c}"}
+    rows = [{"source_dataset": "AUG_TPL3", "category": c, "targets": ["x"], "question": f"q {c}"}
             for c in ("relation", "storytelling", "duration", "nli_saq", "extract",
                       "Computation", "Timeline", "Order_Compare")]
     c = Counter()
@@ -96,6 +96,12 @@ def test_non_math_template_rows_are_removed_math_kept():
     assert {r["category"] for r in kept} == {"Computation", "Timeline", "Order_Compare"}
     assert c["tpl_non_math_template_removed_relation"] == 1
     assert c["tpl_non_math_template_removed_storytelling"] == 1
+
+
+def test_glm_written_non_math_rows_are_kept():
+    rows = [{"source_dataset": "AUG_GLM3", "category": c, "targets": ["x"], "question": f"g {c}"}
+            for c in ("nli_saq", "storytelling", "extract")]
+    assert len(b.filter_template_rows(rows, Counter())) == 3
 
 
 def test_math_template_rows_failing_independent_verify_are_dropped():

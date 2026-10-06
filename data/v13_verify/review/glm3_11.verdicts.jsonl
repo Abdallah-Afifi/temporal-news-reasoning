@@ -1,0 +1,26 @@
+{"rid": "859a1c9b1574", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "956a13b508a0", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "40c2065d97d5", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "dcfbd6e12552", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "eaf71724c63e", "verdict": "CORRECT", "reason": "Both events stated to share the same date/hour; SIMULTANEOUS.", "reviewer": "ai"}
+{"rid": "280cbc3b8164", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "5ec22e7463fb", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "92afa61daef0", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "c3aea4dafc56", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "bd110292c3d8", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "ddabcf48fe4e", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "291afe46250f", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "cfbf62df9c8b", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "d0b48df9725c", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "8dce12ac169b", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "97c8452dabda", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "d4f63265e666", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "6b1789ca0691", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "28a801aebd1b", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "c009c07fb4c1", "verdict": "CORRECT", "reason": "Dates parsed from the question; relation recomputed and matches gold.", "reviewer": "ai"}
+{"rid": "6bc0c66f41be", "verdict": "CORRECT", "reason": "Rosa spends her Saturday fixing the leaflets; parliament is a fantasy.", "reviewer": "ai"}
+{"rid": "d7dc1405f083", "verdict": "CORRECT", "reason": "He sits down to a quiet chamber; a standing ovation contradicts the scene.", "reviewer": "ai"}
+{"rid": "5979ec5dce5c", "verdict": "CORRECT", "reason": "Lost deposit: resignation that night fits; acceptance speech does not.", "reviewer": "ai"}
+{"rid": "b0ddd03123df", "verdict": "CORRECT", "reason": "Page eleven with a correction; quiet phone fits; syndication does not.", "reviewer": "ai"}
+{"rid": "b6bdec99654f", "verdict": "CORRECT", "reason": "8 September 2019 confirmed in the reply.", "reviewer": "ai"}
+{"rid": "736bf589ea28", "verdict": "CORRECT", "reason": "Rector seminar move discussed in Session 1.", "reviewer": "ai"}

@@ -1,0 +1,125 @@
+{"rid": "500146ef37e2", "verdict": "CORRECT", "reason": "Rehab suite opened September 29, 2017; open day a fortnight later = October 13, 2017.", "reviewer": "ai"}
+{"rid": "888668afeb33", "verdict": "CORRECT", "reason": "Passage: deal settled November 24, 2023 with 4.5 percent pay rise; matches gold.", "reviewer": "ai"}
+{"rid": "9d7575f34d34", "verdict": "CORRECT", "reason": "Surveys in order: Approaches, Bar, Anchorage, Haven; fourth is the Haven survey.", "reviewer": "ai"}
+{"rid": "a7fa67e2d183", "verdict": "CORRECT", "reason": "Catalogue reached 1.1 million sources in 2010 per passage; release spring 2011 rushed a year early still 2010.", "reviewer": "ai"}
+{"rid": "52c3206865f6", "verdict": "AMBIGUOUS", "reason": "Blind re-verification rescued: Counterfactual ministry-written pack removes poets' commission; A depends on it, B/D unsupported.", "reviewer": "ai", "verify": "disagreed-kept"}
+{"rid": "8287a9500176", "verdict": "CORRECT", "reason": "Passage states institute's own building opened October 9, 1898.", "reviewer": "ai"}
+{"rid": "68c43898df5c", "verdict": "CORRECT", "reason": "1992 minus 1982 = 10 years; 'about 10 years' clearly most plausible.", "reviewer": "ai"}
+{"rid": "d3b953222f5d", "verdict": "CORRECT", "reason": "Premise: rail service from May 1999 cut business traffic by a third; entailment.", "reviewer": "ai"}
+{"rid": "246a13480528", "verdict": "CORRECT", "reason": "Run's receipts (1927 cup run) paid for Hollow's first concrete terrace; entailment.", "reviewer": "ai"}
+{"rid": "d225528915ea", "verdict": "CORRECT", "reason": "Matron gave the pocket to the archive at the December 15, 1930 closure; matches D.", "reviewer": "ai"}
+{"rid": "ee01ecbe6cd3", "verdict": "CORRECT", "reason": "No primary-wave start date or details recorded; none of A-C supported.", "reviewer": "ai"}
+{"rid": "fd1537658a28", "verdict": "CORRECT", "reason": "Premise never says why assistant opened it; holiday hypothesis unsettled; neutral.", "reviewer": "ai"}
+{"rid": "58dfa87f1aa5", "verdict": "CORRECT", "reason": "Galleries: Findspot 2007, Hoard 2010, Romans 2013, Forge 2014; second is Hoard.", "reviewer": "ai"}
+{"rid": "325c700e1e35", "verdict": "CORRECT", "reason": "Returning officer is 'now its chief executive'; previously served; entailment.", "reviewer": "ai"}
+{"rid": "13b56228d172", "verdict": "CORRECT", "reason": "Session 1 records lab confirmed seven cases as of 19 February 2016.", "reviewer": "ai"}
+{"rid": "31fea8c59217", "verdict": "CORRECT", "reason": "Session 4: medal ceremony set for 12 June 2018.", "reviewer": "ai"}
+{"rid": "2f6142251c48", "verdict": "CORRECT", "reason": "Session 4: sixth flight booked for 20 March 2014.", "reviewer": "ai"}
+{"rid": "3513af3df105", "verdict": "CORRECT", "reason": "Passage's account: recognised November 26, 2021 after night shift's campaign; gold C matches it.", "reviewer": "ai"}
+{"rid": "a617c05b92cf", "verdict": "CORRECT", "reason": "Renewals: Lloyd's-side 2006, Pool 2008, Catastrophe 2011, Treaty 2013; second is Pool.", "reviewer": "ai"}
+{"rid": "13662185f772", "verdict": "CORRECT", "reason": "Site, a field above the town, gifted on March 26, 1937.", "reviewer": "ai"}
+{"rid": "3bda37a8030b", "verdict": "CORRECT", "reason": "Hill water scheme actually completed August 16, 1951 per passage; matches B.", "reviewer": "ai"}
+{"rid": "2ab3ba33eada", "verdict": "CORRECT", "reason": "Park actually founded May 15, 1994 per passage; matches B.", "reviewer": "ai"}
+{"rid": "1a6a8bcd24de", "verdict": "CORRECT", "reason": "Coinage issues: Wartime 1940, Cupro-nickel 1947, Festival 1951, Valuation 1961; first is Wartime.", "reviewer": "ai"}
+{"rid": "7e98800ed225", "verdict": "CORRECT", "reason": "Nine in ten settled means a majority, not minority; contradiction.", "reviewer": "ai"}
+{"rid": "530e3f13f94b", "verdict": "CORRECT", "reason": "Passage never dates the 1986 poll or the fleet's return; abstain justified.", "reviewer": "ai"}
+{"rid": "78de6adb2383", "verdict": "CORRECT", "reason": "Nothing says bothy had signal before the fibre sweep; prior internet use unsettled; neutral.", "reviewer": "ai"}
+{"rid": "0cad55f1c3d6", "verdict": "CORRECT", "reason": "Trials: Millowners' 1969, Smuggling 1973, Arson 1979, Bribery 1985; first is Millowners'.", "reviewer": "ai"}
+{"rid": "316317b928e9", "verdict": "CORRECT", "reason": "Wray governorship began March 2, 1936, earliest of the four.", "reviewer": "ai"}
+{"rid": "3aff387183db", "verdict": "CORRECT", "reason": "First new tram actually ran March 15, 2016 per passage; matches A.", "reviewer": "ai"}
+{"rid": "81a0f99f4719", "verdict": "CORRECT", "reason": "Windows are 'the library's new windows'; rare books wing identification not stated; neutral.", "reviewer": "ai"}
+{"rid": "07db72e3f700", "verdict": "CORRECT", "reason": "Regent's owner endowed season with cinema's box-office surplus = ticket income; entailment.", "reviewer": "ai"}
+{"rid": "fa3d81ebc557", "verdict": "CORRECT", "reason": "Passage: ironworks founded on March 10, 1892.", "reviewer": "ai"}
+{"rid": "5ff9e445b7ac", "verdict": "CORRECT", "reason": "Passage: lighthouse rededicated on July 21, 2008.", "reviewer": "ai"}
+{"rid": "0dfcc3a6412f", "verdict": "CORRECT", "reason": "Marsh clinic, opened June 2, 2019, is the fourth clinic per passage.", "reviewer": "ai"}
+{"rid": "ea39b18aa7a0", "verdict": "CORRECT", "reason": "Passage: first permanent housing estate begun on September 13, 1949.", "reviewer": "ai"}
+{"rid": "60192e6bd55c", "verdict": "CORRECT", "reason": "Terminal 2 actually opened September 12, 1994 with nine gates; matches A.", "reviewer": "ai"}
+{"rid": "d7996166251e", "verdict": "CORRECT", "reason": "Passage: dairy school founded on February 8, 1904.", "reviewer": "ai"}
+{"rid": "ea38f432b443", "verdict": "CORRECT", "reason": "Appeals register opened August 25, 1933, the only activity in the window.", "reviewer": "ai"}
+{"rid": "aff19743a1ec", "verdict": "CORRECT", "reason": "Park founded May 15, 1994 with lease signed the same day; matches gold.", "reviewer": "ai"}
+{"rid": "a055ef187381", "verdict": "CORRECT", "reason": "Passage never dates the felling of the linden trees; abstain justified.", "reviewer": "ai"}
+{"rid": "8b0b02ff822c", "verdict": "CORRECT", "reason": "Passage: the scheme was commissioned on June 5, 2001.", "reviewer": "ai"}
+{"rid": "e3cd0f6807a8", "verdict": "CORRECT", "reason": "Passage: four hundred calls a month by autumn, doubled since spring; matches B.", "reviewer": "ai"}
+{"rid": "961810bad161", "verdict": "WRONG", "reason": "June 30, 2021 dates the report publishing the traced cause; the tracing itself is never dated.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "8a90a672f6bb", "verdict": "CORRECT", "reason": "Deep phase began September 19, 2013; lowering completed three weeks before = August 29, 2013.", "reviewer": "ai"}
+{"rid": "54dd2463f29b", "verdict": "CORRECT", "reason": "Only the heat network (signed December 5, 2019) falls in the window.", "reviewer": "ai"}
+{"rid": "5d9a635d7e8e", "verdict": "CORRECT", "reason": "Record attendance actually set on October 9, 2023 per passage.", "reviewer": "ai"}
+{"rid": "134deccfa8fd", "verdict": "CORRECT", "reason": "618 referred is not fewer than five hundred; contradiction.", "reviewer": "ai"}
+{"rid": "02dc698380f9", "verdict": "CORRECT", "reason": "Register (January 14, 2007) and video-link courtroom (September 9, 2008) are the only in-window events.", "reviewer": "ai"}
+{"rid": "8ecf40e071e4", "verdict": "CORRECT", "reason": "2021 edition actually held in person on September 17, 2021; matches D.", "reviewer": "ai"}
+{"rid": "e7ea3637821d", "verdict": "CORRECT", "reason": "Call centres: Tollfree, Nightline, Home, Broadband; third is the Home centre.", "reviewer": "ai"}
+{"rid": "184033c8258e", "verdict": "CORRECT", "reason": "Passage: farm leased from the county on May 1, 1896.", "reviewer": "ai"}
+{"rid": "cbf7926f475d", "verdict": "CORRECT", "reason": "Passage: the waters receded on February 14, 2016.", "reviewer": "ai"}
+{"rid": "72b9894c9f82", "verdict": "CORRECT", "reason": "1659 minus 1653 = 6 years; 'about 6 years' clearly right.", "reviewer": "ai"}
+{"rid": "8d1f4de9b1a3", "verdict": "CORRECT", "reason": "Grant was awarded and paid for apprentices/stones; refusal contradicted.", "reviewer": "ai"}
+{"rid": "4d8c22750aeb", "verdict": "CORRECT", "reason": "Passage never gives the architect's commissioning date; abstain justified.", "reviewer": "ai"}
+{"rid": "283c229f779b", "verdict": "CORRECT", "reason": "Premise never says every department joined at launch; neutral.", "reviewer": "ai"}
+{"rid": "580b1667f145", "verdict": "CORRECT", "reason": "Bequests: Halloran 1971, Priday 1980, Centenary 1989; first is Halloran.", "reviewer": "ai"}
+{"rid": "2c9b6094886c", "verdict": "CORRECT", "reason": "Panel (Feb 11, 2009), report (July 28, 2010), mediation (Jan 31, 2011) all in window; complete.", "reviewer": "ai"}
+{"rid": "99d4820a3ee5", "verdict": "CORRECT", "reason": "Session 3: telescope time for schools starts from 1 October, 2010.", "reviewer": "ai"}
+{"rid": "7e824b61ec4f", "verdict": "CORRECT", "reason": "Session 2 records ballot result: 81 per cent for action, 74 per cent turnout.", "reviewer": "ai"}
+{"rid": "ece489c32228", "verdict": "CORRECT", "reason": "No telegraph museum appears anywhere in the passage; abstain justified.", "reviewer": "ai"}
+{"rid": "f10fefc6353b", "verdict": "CORRECT", "reason": "Passage itself says floor-space doubling finished in the autumn of 1995.", "reviewer": "ai"}
+{"rid": "dde8aefd1f18", "verdict": "CORRECT", "reason": "Island drill (October 7, 2019) and heat network (December 5, 2019) are the in-window activities.", "reviewer": "ai"}
+{"rid": "416e4998e719", "verdict": "CORRECT", "reason": "Premise: 2003 report credits fastest settlements; hypothesis restates it; entailment.", "reviewer": "ai"}
+{"rid": "c019feec7ac5", "verdict": "CORRECT", "reason": "Premise says nothing of where Salim trained; neutral.", "reviewer": "ai"}
+{"rid": "f7fa5833bf3b", "verdict": "CORRECT", "reason": "No welfare fund appears anywhere in the passage; abstain justified.", "reviewer": "ai"}
+{"rid": "d985823c3b84", "verdict": "CORRECT", "reason": "1,400 tonnes is not less than a thousand; contradiction.", "reviewer": "ai"}
+{"rid": "174232ecc2c4", "verdict": "CORRECT", "reason": "Premise never says who would build the cranes; neutral.", "reviewer": "ai"}
+{"rid": "715b229da6f7", "verdict": "CORRECT", "reason": "Outages: Invoice 1992, Payroll 1995, Millennium 1999, Switch-over 2003; second is Payroll.", "reviewer": "ai"}
+{"rid": "0f8015a3c7c1", "verdict": "CORRECT", "reason": "No county-council buy-out mentioned; indentures kept throughout; neutral.", "reviewer": "ai"}
+{"rid": "17ff3b0412e3", "verdict": "CORRECT", "reason": "Premise never says when the customer relationship began; neutral.", "reviewer": "ai"}
+{"rid": "21ed3a0d3ab6", "verdict": "CORRECT", "reason": "Passage never mentions the 1902 company's archive or its deposit; abstain justified.", "reviewer": "ai"}
+{"rid": "d76c145899da", "verdict": "CORRECT", "reason": "Session 2: rents fixed at fourteen shillings from 1 June 1948.", "reviewer": "ai"}
+{"rid": "cb63f8b8c735", "verdict": "CORRECT", "reason": "Premise only mentions the county's objections; northern-shore landowner not settled; neutral.", "reviewer": "ai"}
+{"rid": "43240b528059", "verdict": "CORRECT", "reason": "Passage: twenty-five million was the town's largest single settlement in its history; entailment.", "reviewer": "ai"}
+{"rid": "1037abce2fcd", "verdict": "CORRECT", "reason": "Hotels went to the receiver after the 1973 crash, not sold at the boom's peak; contradiction.", "reviewer": "ai"}
+{"rid": "1ccb015b013b", "verdict": "CORRECT", "reason": "Passage: by June 1969 the office had settled 2,900 claims; matches C.", "reviewer": "ai"}
+{"rid": "54417d80ad80", "verdict": "CORRECT", "reason": "Passage: Marsett scheme's community share issue launched January 15, 2002.", "reviewer": "ai"}
+{"rid": "85d00d087a79", "verdict": "CORRECT", "reason": "Session 1: barley contract signed on February 2, 2016.", "reviewer": "ai"}
+{"rid": "6339fe59d993", "verdict": "CORRECT", "reason": "Merger actually took effect September 1, 2019 with nine-thousand list; matches D.", "reviewer": "ai"}
+{"rid": "7492827ed86b", "verdict": "CORRECT", "reason": "Premise never says who published the diary; neutral.", "reviewer": "ai"}
+{"rid": "502d30c06dbd", "verdict": "CORRECT", "reason": "Article dated July 5, 2003: fare revision comes into force today.", "reviewer": "ai"}
+{"rid": "73086f479bd0", "verdict": "CORRECT", "reason": "Only three of seven cars were original; 'most' originally ran in town is contradicted.", "reviewer": "ai"}
+{"rid": "85b3c343f715", "verdict": "CORRECT", "reason": "Rent tribunal merger (May 6, 1969) is the only activity in the window.", "reviewer": "ai"}
+{"rid": "229e951e89be", "verdict": "CORRECT", "reason": "Series order: square, station, unnamed third, college; college is the fourth.", "reviewer": "ai"}
+{"rid": "2831f6d2446c", "verdict": "CORRECT", "reason": "Session 3: second wave opened 9 January 2017 with the van on the road same morning.", "reviewer": "ai"}
+{"rid": "e2cc4900f6dc", "verdict": "CORRECT", "reason": "No private apology mentioned; premise only notes a follow-up piece; neutral.", "reviewer": "ai"}
+{"rid": "3f7241dbdac1", "verdict": "CORRECT", "reason": "Processions: opening 1938, span 1949, completion 1962; third is completion.", "reviewer": "ai"}
+{"rid": "cbf2123bc383", "verdict": "CORRECT", "reason": "Passage: Circe carries six instruments.", "reviewer": "ai"}
+{"rid": "7156574c1f21", "verdict": "CORRECT", "reason": "Premise never says where the apprentices were housed; neutral.", "reviewer": "ai"}
+{"rid": "8505d8cea6b3", "verdict": "CORRECT", "reason": "Farms 'the national networks had never reached' means no coverage; entailment.", "reviewer": "ai"}
+{"rid": "d68b5ce3913f", "verdict": "CORRECT", "reason": "Premise never states the buffer land's ownership; neutral.", "reviewer": "ai"}
+{"rid": "a6b1ede5680f", "verdict": "CORRECT", "reason": "Passage: county championships came to Marsh on July 22, 1972.", "reviewer": "ai"}
+{"rid": "e9fe0d50f6f9", "verdict": "CORRECT", "reason": "Campaigns: Deep Draught 2007, Channel 2010, Approach 2013; first is Deep Draught.", "reviewer": "ai"}
+{"rid": "d56634fb9b54", "verdict": "CORRECT", "reason": "Opening staff were 140, not forty; contradiction (forty was by closure).", "reviewer": "ai"}
+{"rid": "c14fccdd2fed", "verdict": "CORRECT", "reason": "Festival shared the Regent, little theatre and market square: three venues; entailment.", "reviewer": "ai"}
+{"rid": "01eaf25ca1f0", "verdict": "CORRECT", "reason": "Fleet actually completed on May 30, 2017 per passage; matches B.", "reviewer": "ai"}
+{"rid": "2c6ac2034158", "verdict": "CORRECT", "reason": "Passage: field adjusters deployed on February 26, 1974.", "reviewer": "ai"}
+{"rid": "f65500cc73ab", "verdict": "CORRECT", "reason": "Second brick phase actually completed September 9, 1953 per passage.", "reviewer": "ai"}
+{"rid": "4f1173c3b227", "verdict": "CORRECT", "reason": "Listing reform, remote sentencing pilot, digital archive are exactly the in-window events.", "reviewer": "ai"}
+{"rid": "4a0e81cb136e", "verdict": "CORRECT", "reason": "Stoppages: Toolroom 1951, Components 1957, Changeover 1962; first is Toolroom.", "reviewer": "ai"}
+{"rid": "fbd4168ccd54", "verdict": "CORRECT", "reason": "Tar works (1914), water gas plant (1923), price war (1924) are the in-window events; complete.", "reviewer": "ai"}
+{"rid": "e5685fd39686", "verdict": "CORRECT", "reason": "Passage: gardens restored and rededicated on June 7, 1948.", "reviewer": "ai"}
+{"rid": "7b7d8d99ebda", "verdict": "CORRECT", "reason": "Schemes: Toolmaking, Reconstruction, Export, Farm; fourth is Farm.", "reviewer": "ai"}
+{"rid": "0814c29b8ef4", "verdict": "WRONG", "reason": "Passage: corridor given the hospital's first handrails (1967); hospital had none before; entailment, not neutral.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "08a37ad3f057", "verdict": "CORRECT", "reason": "Parade's dates awaited from planners; no construction dates recorded; none of A-C supported.", "reviewer": "ai"}
+{"rid": "5fbe2432c68a", "verdict": "CORRECT", "reason": "Isolation hospital actually extended September 4, 1909 per passage; matches A.", "reviewer": "ai"}
+{"rid": "0d8a082325c2", "verdict": "CORRECT", "reason": "Premise and passage: 1977 dispute was about plates, never pay; contradiction.", "reviewer": "ai"}
+{"rid": "2cb6bda21dbb", "verdict": "CORRECT", "reason": "Park's second building actually opened April 22, 1996; matches B.", "reviewer": "ai"}
+{"rid": "7104f2cdb06b", "verdict": "CORRECT", "reason": "Dating programmes: Charcoal, Seed, Peat, Bone; third is Peat.", "reviewer": "ai"}
+{"rid": "e90a71f35d2a", "verdict": "CORRECT", "reason": "Protests: cyclists' 1992, residents' 1996, farmers' 2000; second is residents'.", "reviewer": "ai"}
+{"rid": "365011995af1", "verdict": "CORRECT", "reason": "Passage: second weekly sailing added on February 14, 2011.", "reviewer": "ai"}
+{"rid": "98eae5e47a4f", "verdict": "CORRECT", "reason": "Prefabs sited at Brickfield's northern edge = erected there; entailment.", "reviewer": "ai"}
+{"rid": "b6f4e81da8eb", "verdict": "CORRECT", "reason": "Amalgamation left eleven members where twenty sat; consolidation reduced to eleven; entailment.", "reviewer": "ai"}
+{"rid": "db48ed045d1c", "verdict": "CORRECT", "reason": "Passage: sick-pay deal signed today, February 15, 2024.", "reviewer": "ai"}
+{"rid": "3dab45778b74", "verdict": "CORRECT", "reason": "Settlement signed March 30, 2023; workers returned ten days later = April 9, 2023.", "reviewer": "ai"}
+{"rid": "c59af490c073", "verdict": "CORRECT", "reason": "Snow record actually set on January 21, 2019 per dialogue.", "reviewer": "ai"}
+{"rid": "e498d969e0d4", "verdict": "CORRECT", "reason": "Passage: joint council constituted on March 8, 2022.", "reviewer": "ai"}
+{"rid": "3c4048a033c2", "verdict": "CORRECT", "reason": "Dialogue: registry's second calendar issued on March 30, 1931.", "reviewer": "ai"}
+{"rid": "737867d341c6", "verdict": "CORRECT", "reason": "Bequest ruling actually came on October 27, 1911 per dialogue.", "reviewer": "ai"}
+{"rid": "142b72af569f", "verdict": "CORRECT", "reason": "First scientist chancellor installed March 14, 2017, after library opened Sept 2016; contradiction.", "reviewer": "ai"}
+{"rid": "8d5926043867", "verdict": "CORRECT", "reason": "Theatre actually closed for restoration on January 6, 2020; matches A.", "reviewer": "ai"}
+{"rid": "394792bdf7f2", "verdict": "CORRECT", "reason": "Passage: framework agreement signed on December 2, 2021.", "reviewer": "ai"}
+{"rid": "2d509f25d2da", "verdict": "CORRECT", "reason": "Handsets: Kestrel 1937, Wren 1949, Osprey 1962; third is Osprey.", "reviewer": "ai"}
+{"rid": "59006af99935", "verdict": "CORRECT", "reason": "Exchange opened and first entry logged at the March 21, 1938 ceremony.", "reviewer": "ai"}

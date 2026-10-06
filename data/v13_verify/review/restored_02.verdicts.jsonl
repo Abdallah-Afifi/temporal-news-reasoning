@@ -1,0 +1,125 @@
+{"rid": "f1aa69d1f717", "verdict": "CORRECT", "reason": "Drive-through site opened Nov 19, 2020, inside window; others outside.", "reviewer": "ai"}
+{"rid": "b9e7f8b9b8af", "verdict": "CORRECT", "reason": "Single sitting stated; duration unstated, so neutral.", "reviewer": "ai"}
+{"rid": "ab7ac0449a2b", "verdict": "CORRECT", "reason": "Strike fund raised Sep 30, 1892, only event in window.", "reviewer": "ai"}
+{"rid": "92e003e3e723", "verdict": "CORRECT", "reason": "Civic theatre opened April 21, 1984, inside window.", "reviewer": "ai"}
+{"rid": "8793e88b9c00", "verdict": "CORRECT", "reason": "Session 3 states card issued May 5, 2023.", "reviewer": "ai"}
+{"rid": "28968a112dff", "verdict": "CORRECT", "reason": "Tower blocks begun June 6, 1966, inside window.", "reviewer": "ai"}
+{"rid": "f83c50ed4f05", "verdict": "CORRECT", "reason": "Vote made binding, contradicts advisory-only.", "reviewer": "ai"}
+{"rid": "6188e51614cc", "verdict": "CORRECT", "reason": "Retirement announced August 22, 1964, only event in window.", "reviewer": "ai"}
+{"rid": "201ef8c88367", "verdict": "CORRECT", "reason": "August 8 is summer, so entailment.", "reviewer": "ai"}
+{"rid": "4fbb1e12ff28", "verdict": "CORRECT", "reason": "Quay extension March 19, 2015 is the only 2015 development.", "reviewer": "ai"}
+{"rid": "d7a22017848e", "verdict": "CORRECT", "reason": "Footfall returned to pedestrians implies it had been lost in trunk-road years.", "reviewer": "ai"}
+{"rid": "863c26721587", "verdict": "CORRECT", "reason": "Centre freed from lorries implies lorries previously passed through.", "reviewer": "ai"}
+{"rid": "01ac077719e0", "verdict": "CORRECT", "reason": "Precinct opened March 28, 1969, only event in window.", "reviewer": "ai"}
+{"rid": "32fe89fc0960", "verdict": "CORRECT", "reason": "Session 2 states first cruise call logged July 8, 1998.", "reviewer": "ai"}
+{"rid": "7c9efcc9e547", "verdict": "CORRECT", "reason": "Plans drawn round centre's eight years of data entails evidence-based planning.", "reviewer": "ai"}
+{"rid": "e8da2e8290e2", "verdict": "CORRECT", "reason": "Sunday service restored May 6, 2007, at window start; others later.", "reviewer": "ai"}
+{"rid": "4235678ed82c", "verdict": "CORRECT", "reason": "Boundary evidence given May 8, 1953, only event in window.", "reviewer": "ai"}
+{"rid": "59bb1c4ccc7e", "verdict": "CORRECT", "reason": "Trust founded and donors registered same day, April 4, 2005.", "reviewer": "ai"}
+{"rid": "c32dd9f0448a", "verdict": "WRONG", "reason": "Seven morning to ten night is 15 hours; fourteen hours is contradicted, not neutral.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "ddbc644a2943", "verdict": "CORRECT", "reason": "Stand opened Aug 27, 2022; statue unveiled June 3, 2023.", "reviewer": "ai"}
+{"rid": "53fca4273652", "verdict": "CORRECT", "reason": "ISO certification granted Nov 16, 2001 stated in Session 3.", "reviewer": "ai"}
+{"rid": "48f609abfc51", "verdict": "CORRECT", "reason": "First term enrolled a third, not most, of the workforce.", "reviewer": "ai"}
+{"rid": "e9d3e8da1b67", "verdict": "CORRECT", "reason": "Both 1961 appliance division and 1964 turbine contract fall in window.", "reviewer": "ai"}
+{"rid": "82cf6b8cbb94", "verdict": "CORRECT", "reason": "Session 3 states control room commissioned September 1, 1978.", "reviewer": "ai"}
+{"rid": "6e678f1a6c93", "verdict": "CORRECT", "reason": "Raised by public subscription equals paid by public donations.", "reviewer": "ai"}
+{"rid": "754fc4eea61f", "verdict": "CORRECT", "reason": "Relief scheme launched Feb 3, 1922, at window start.", "reviewer": "ai"}
+{"rid": "cf5e56f81980", "verdict": "CORRECT", "reason": "Cash deposit machines appear in Session 4.", "reviewer": "ai"}
+{"rid": "fca2d10a778b", "verdict": "CORRECT", "reason": "Drive-through site Nov 19, 2020 in window; vaccination Dec 8 outside.", "reviewer": "ai"}
+{"rid": "7a0b98b5b5a3", "verdict": "CORRECT", "reason": "Session 3 states universal dial completed May 30, 1930.", "reviewer": "ai"}
+{"rid": "2a72d303f563", "verdict": "CORRECT", "reason": "Centre 1996, comet mission 2001; centre opened first.", "reviewer": "ai"}
+{"rid": "8d36068633db", "verdict": "CORRECT", "reason": "Roll-on berth opening stated in Session 1.", "reviewer": "ai"}
+{"rid": "b17502260be0", "verdict": "CORRECT", "reason": "Second dry spell beginning stated in Session 3.", "reviewer": "ai"}
+{"rid": "4af8519113c4", "verdict": "CORRECT", "reason": "Wartime stores reinterred appears in Session 2.", "reviewer": "ai"}
+{"rid": "826badb36f82", "verdict": "CORRECT", "reason": "Ale first brewed Aug 30, 2013, only choice in window.", "reviewer": "ai"}
+{"rid": "6930c3a5101b", "verdict": "CORRECT", "reason": "Sunday service restored May 6, 2007, inside window.", "reviewer": "ai"}
+{"rid": "e48c33c52204", "verdict": "AMBIGUOUS", "reason": "Passage's 'the county's forty-two practices' suggests all joined (entailment), but loose phrasing leaves neutral defensible.", "reviewer": "ai", "verify": "leans-bad"}
+{"rid": "49d230c9e7d1", "verdict": "CORRECT", "reason": "Session 2 states thousandth subscriber connected March 8, 1903.", "reviewer": "ai"}
+{"rid": "d2503c0d995f", "verdict": "CORRECT", "reason": "Digital kiosks installation appears in Session 1.", "reviewer": "ai"}
+{"rid": "f6450956e206", "verdict": "CORRECT", "reason": "Panel's clerks hired appears in Session 2.", "reviewer": "ai"}
+{"rid": "f8708df5d837", "verdict": "CORRECT", "reason": "Tower 1907 precedes housing estate 1913.", "reviewer": "ai"}
+{"rid": "61fd08139eae", "verdict": "CORRECT", "reason": "Extended hours pilot appears in Session 1.", "reviewer": "ai"}
+{"rid": "35d5aa0f66f4", "verdict": "CORRECT", "reason": "Session 3 states rail spur built June 20, 2002.", "reviewer": "ai"}
+{"rid": "4d2889d7b333", "verdict": "CORRECT", "reason": "35.6 vs 33.3 years differ ~2.3 years, within 10% tolerance.", "reviewer": "ai"}
+{"rid": "80c7aafe109b", "verdict": "CORRECT", "reason": "First season's trench appears in Session 1.", "reviewer": "ai"}
+{"rid": "32219cbf7c8d", "verdict": "CORRECT", "reason": "All three dated works lie within the inclusive window.", "reviewer": "ai"}
+{"rid": "e47f63bb0f69", "verdict": "CORRECT", "reason": "Session 3 states 2006 dry spell began June 10, 2006.", "reviewer": "ai"}
+{"rid": "d339e2a50e37", "verdict": "CORRECT", "reason": "D1 about 7.5 months, D2 about 13 months; D2 longer.", "reviewer": "ai"}
+{"rid": "77d9a929ee83", "verdict": "CORRECT", "reason": "Money raised versus needed is not stated.", "reviewer": "ai"}
+{"rid": "9653b5fafcfc", "verdict": "CORRECT", "reason": "All four dated developments lie within the inclusive window.", "reviewer": "ai"}
+{"rid": "4806e7664fcc", "verdict": "CORRECT", "reason": "Passage never states platform adequacy for the 1985 sprinter fleet.", "reviewer": "ai"}
+{"rid": "af8e546478ed", "verdict": "CORRECT", "reason": "39.1 vs 38.1 years differ ~14 months, ~3%, within 10% tolerance.", "reviewer": "ai"}
+{"rid": "9230fe5107dc", "verdict": "CORRECT", "reason": "Relief scheme launched Feb 3, 1922, only choice in window.", "reviewer": "ai"}
+{"rid": "6751df9b8690", "verdict": "CORRECT", "reason": "Trench 1991 and hoard Aug 22, 1993 both within inclusive window.", "reviewer": "ai"}
+{"rid": "d37e8376dd42", "verdict": "CORRECT", "reason": "Inquiry's report published July 25, 2024, inside window.", "reviewer": "ai"}
+{"rid": "d22038aad3a0", "verdict": "CORRECT", "reason": "All three dated works lie within the inclusive window.", "reviewer": "ai"}
+{"rid": "f0bafe781079", "verdict": "CORRECT", "reason": "Retirement marked November 18, 1934, inside window.", "reviewer": "ai"}
+{"rid": "cc128b84d8d6", "verdict": "CORRECT", "reason": "Re-verification committed: Year book is borough's own record, not county historians': contradiction holds", "reviewer": "ai", "verify": "committed-correct"}
+{"rid": "4b4745162825", "verdict": "CORRECT", "reason": "Referendum on mayor's powers May 2022 followed unitary election May 2021.", "reviewer": "ai"}
+{"rid": "c9a6d73d48dd", "verdict": "CORRECT", "reason": "Session 3 states coast radio station opened September 1, 1913.", "reviewer": "ai"}
+{"rid": "8612ab1c8fed", "verdict": "CORRECT", "reason": "First directory printing appears in Session 1.", "reviewer": "ai"}
+{"rid": "dfdfef19b65b", "verdict": "CORRECT", "reason": "Session 2 states video links made permanent May 9, 2022.", "reviewer": "ai"}
+{"rid": "58846863c248", "verdict": "CORRECT", "reason": "Session 1 states mobile app launched June 12, 2020.", "reviewer": "ai"}
+{"rid": "bb008eeefa72", "verdict": "CORRECT", "reason": "Station adopters recruited July 2, 2005, only choice in window.", "reviewer": "ai"}
+{"rid": "c5353f22df90", "verdict": "WRONG", "reason": "Nov 1901 to May 1932 is 30 years 7 months, exceeding thirty years; contradiction, not entailment.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "dae16a7e7e5d", "verdict": "CORRECT", "reason": "Coast radio station opening appears in Session 3.", "reviewer": "ai"}
+{"rid": "ccfbd858534d", "verdict": "CORRECT", "reason": "First vaccination Dec 8, 2020 at window start; others outside.", "reviewer": "ai"}
+{"rid": "d28d508a7e8e", "verdict": "CORRECT", "reason": "Community banking hub opening appears in Session 3.", "reviewer": "ai"}
+{"rid": "927a6e329a63", "verdict": "CORRECT", "reason": "D1 ~13.5 months, D2 ~14.4 months; within two-month tolerance.", "reviewer": "ai"}
+{"rid": "348362ed7c7b", "verdict": "CORRECT", "reason": "Station's orchard planting appears in Session 2.", "reviewer": "ai"}
+{"rid": "d3a3cbbaedfb", "verdict": "CORRECT", "reason": "Miners' memorial dedication appears in Session 2.", "reviewer": "ai"}
+{"rid": "b9cfd868c0ee", "verdict": "CORRECT", "reason": "Free school meals extension passed April 30, 1958, in window.", "reviewer": "ai"}
+{"rid": "7e90943f22f4", "verdict": "CORRECT", "reason": "First gantry crane installation appears in Session 2.", "reviewer": "ai"}
+{"rid": "28f5963663f2", "verdict": "CORRECT", "reason": "Oldest ledger retired appears in Session 3.", "reviewer": "ai"}
+{"rid": "21d2a2d5e6c8", "verdict": "CORRECT", "reason": "Elective recovery plan launched Feb 7, 2022, in window; hub Sept 13 outside.", "reviewer": "ai"}
+{"rid": "f104543d9bcb", "verdict": "CORRECT", "reason": "War ministry post held from June 2, 1940, throughout the window.", "reviewer": "ai"}
+{"rid": "a81bee31eadf", "verdict": "CORRECT", "reason": "Session 2 states anniversary tea held May 12, 2021.", "reviewer": "ai"}
+{"rid": "6cbec20a44a9", "verdict": "CORRECT", "reason": "Session 2 states rate saver account launched Nov 21, 2022.", "reviewer": "ai"}
+{"rid": "ed70cca852fd", "verdict": "CORRECT", "reason": "Eleven schools from beyond the county contradict all-within-county claim.", "reviewer": "ai"}
+{"rid": "0b4c1ddb95bf", "verdict": "CORRECT", "reason": "Session 3 states second dry spell began May 6, 2010.", "reviewer": "ai"}
+{"rid": "d0dddad65396", "verdict": "CORRECT", "reason": "Ring road completed Nov 30, 1976, inside window.", "reviewer": "ai"}
+{"rid": "8f6d0600926b", "verdict": "CORRECT", "reason": "Session 2 states island ferry service launched April 11, 1998.", "reviewer": "ai"}
+{"rid": "13ed22406ca2", "verdict": "CORRECT", "reason": "Member first elected November 5, 1936, inside window.", "reviewer": "ai"}
+{"rid": "0cb846b1a57f", "verdict": "CORRECT", "reason": "Session 2 states orchard planted November 2, 1972.", "reviewer": "ai"}
+{"rid": "a1cebf7b4f8c", "verdict": "CORRECT", "reason": "Elective recovery plan launched Feb 7, 2022, at window start.", "reviewer": "ai"}
+{"rid": "9e7223f72669", "verdict": "CORRECT", "reason": "Drive-through site Nov 19, 2020 in window; vaccination Dec 8 outside.", "reviewer": "ai"}
+{"rid": "8b334a59757c", "verdict": "CORRECT", "reason": "Session 2 states scrubbers fitted March 27, 1972.", "reviewer": "ai"}
+{"rid": "8e5e3240e06d", "verdict": "CORRECT", "reason": "Station registered Oct 1, 1936; lamp lit the same evening.", "reviewer": "ai"}
+{"rid": "d29bfbb379b7", "verdict": "CORRECT", "reason": "Merger 1930 and exhibition 1934 are the only developments in window.", "reviewer": "ai"}
+{"rid": "582da8b6d829", "verdict": "CORRECT", "reason": "Order within water scheme unstated; 'crowning' does not settle first-work claim.", "reviewer": "ai"}
+{"rid": "fc11ecab942f", "verdict": "CORRECT", "reason": "Session 2 states lower river dredged October 19, 2007.", "reviewer": "ai"}
+{"rid": "bf5525d91797", "verdict": "CORRECT", "reason": "Housing act amendment carried Feb 13, 1947, in window.", "reviewer": "ai"}
+{"rid": "8562721b6de8", "verdict": "CORRECT", "reason": "War loan Nov 11, 1915 is the only 1915-16 development.", "reviewer": "ai"}
+{"rid": "d25ba1146309", "verdict": "CORRECT", "reason": "Target met does not entail every single patient within an hour.", "reviewer": "ai"}
+{"rid": "61f602be3219", "verdict": "CORRECT", "reason": "A fifth equals twenty per cent.", "reviewer": "ai"}
+{"rid": "f45508e943e9", "verdict": "CORRECT", "reason": "Costs of trams versus town hall extension are not stated.", "reviewer": "ai"}
+{"rid": "7f7be6f65fbe", "verdict": "CORRECT", "reason": "Missing not one pass entails a perfect first-year record.", "reviewer": "ai"}
+{"rid": "509122bf0040", "verdict": "CORRECT", "reason": "Passage states all three works' representatives attended under one roof.", "reviewer": "ai"}
+{"rid": "4b55e9a3b318", "verdict": "CORRECT", "reason": "Fraud block system installation appears in Session 2.", "reviewer": "ai"}
+{"rid": "6d8421780037", "verdict": "CORRECT", "reason": "War ministry post held June 1940-1945, spanning the window.", "reviewer": "ai"}
+{"rid": "be907b20f42c", "verdict": "CORRECT", "reason": "Centenary gala held May 17, 2014, at window end; others outside.", "reviewer": "ai"}
+{"rid": "4f04b13871de", "verdict": "CORRECT", "reason": "Session 1 states first directory printed December 12, 1892.", "reviewer": "ai"}
+{"rid": "491ef26497af", "verdict": "CORRECT", "reason": "Same pen as four years before contradicts newly purchased pen.", "reviewer": "ai"}
+{"rid": "2c5fb51ecda7", "verdict": "CORRECT", "reason": "Session 1 states January storm logged January 12, 2006.", "reviewer": "ai"}
+{"rid": "cd1a6b96f08e", "verdict": "CORRECT", "reason": "Three to two is sixty per cent support.", "reviewer": "ai"}
+{"rid": "b50db63f0e8c", "verdict": "CORRECT", "reason": "Second turbine commissioning appears in Session 1.", "reviewer": "ai"}
+{"rid": "e4e47036bb4e", "verdict": "CORRECT", "reason": "Indenture reform agreed March 15, 1904, in window.", "reviewer": "ai"}
+{"rid": "343ba292dab1", "verdict": "CORRECT", "reason": "October 14 is autumn, so entailment.", "reviewer": "ai"}
+{"rid": "1ce8a98cd71d", "verdict": "CORRECT", "reason": "Languages of the summary are not stated.", "reviewer": "ai"}
+{"rid": "d7a0a36e45d4", "verdict": "CORRECT", "reason": "July 1 is summer, so entailment.", "reviewer": "ai"}
+{"rid": "b80537b81f23", "verdict": "CORRECT", "reason": "Hoard 1993, centre 1996, bid 1998 all within inclusive window.", "reviewer": "ai"}
+{"rid": "e068050396c7", "verdict": "CORRECT", "reason": "Session 3 states efficiency record set February 23, 1983.", "reviewer": "ai"}
+{"rid": "0e0a15005753", "verdict": "CORRECT", "reason": "Ring road completed Nov 30, 1976, at window start.", "reviewer": "ai"}
+{"rid": "83c6ed07ddcf", "verdict": "CORRECT", "reason": "February 8 is winter, so entailment.", "reviewer": "ai"}
+{"rid": "61e93a1b8072", "verdict": "CORRECT", "reason": "D1 ~6.6 months, D2 ~7.8 months; within two-month tolerance.", "reviewer": "ai"}
+{"rid": "b6811b2f9948", "verdict": "CORRECT", "reason": "Four pages of signatures does not settle four signers.", "reviewer": "ai"}
+{"rid": "f2b1e49a1cd9", "verdict": "CORRECT", "reason": "Drawn by lot entails selected at random.", "reviewer": "ai"}
+{"rid": "7016d9d041a8", "verdict": "CORRECT", "reason": "Hoard 1993 and centre 1996 both at window boundaries; others outside.", "reviewer": "ai"}
+{"rid": "690eb0631a4c", "verdict": "CORRECT", "reason": "All five dated works lie within the inclusive window.", "reviewer": "ai"}
+{"rid": "008f9570fe64", "verdict": "CORRECT", "reason": "Centenary exhibition April 27, 1934 is the only 1934 development.", "reviewer": "ai"}
+{"rid": "ca9ecb3ee049", "verdict": "CORRECT", "reason": "Port's new seal adoption appears in Session 4.", "reviewer": "ai"}
+{"rid": "d84bc9535ecf", "verdict": "CORRECT", "reason": "Ale first brewed August 30, 2013, only choice in window.", "reviewer": "ai"}
+{"rid": "a4bc80db9452", "verdict": "CORRECT", "reason": "Strike fund raised September 30, 1892, inside window.", "reviewer": "ai"}
+{"rid": "621a9d768743", "verdict": "CORRECT", "reason": "Civic theatre opened April 21, 1984, at window start.", "reviewer": "ai"}
+{"rid": "4d91212776ce", "verdict": "CORRECT", "reason": "Re-verification committed: Timetables recut to fleet's turn of speed, frequency doubled: faster, so contradiction holds", "reviewer": "ai", "verify": "committed-correct"}
+{"rid": "4e958a0cab1e", "verdict": "CORRECT", "reason": "Museum accreditation Nov 17, 2004 is the only dated 2004 development.", "reviewer": "ai"}

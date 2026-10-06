@@ -1,0 +1,72 @@
+{"rid": "aeab8d5f9c1e", "verdict": "CORRECT", "reason": "Array commissioned 1993, mission launched 2001; both 20th century, so entailment.", "reviewer": "ai"}
+{"rid": "bdd574185433", "verdict": "CORRECT", "reason": "Session 3 states rail spur was built on June 20, 2002.", "reviewer": "ai"}
+{"rid": "7781115283a7", "verdict": "CORRECT", "reason": "Market charter renewed June 9, 1986, only option inside May 1986-May 1987 window.", "reviewer": "ai"}
+{"rid": "1222446b34b3", "verdict": "CORRECT", "reason": "Only 2017 developments are cold-chain terminal May 23 and shore power October 3.", "reviewer": "ai"}
+{"rid": "11f2ea0f7117", "verdict": "CORRECT", "reason": "Merger completed February 9, 1930, the only dated event in the 1929-1930 window.", "reviewer": "ai"}
+{"rid": "cec424a5b17a", "verdict": "CORRECT", "reason": "Seven works stated, but staff numbers never given, so neutral.", "reviewer": "ai"}
+{"rid": "a15afd4c24ef", "verdict": "CORRECT", "reason": "Trench April 15, 1991, hoard 1993, visitor centre June 6, 1996 all within inclusive window.", "reviewer": "ai"}
+{"rid": "2d50ce9d17e9", "verdict": "CORRECT", "reason": "Terminal May 23, 2017, shore power October 3, 2017, cruise season September 14, 2018 all inside window.", "reviewer": "ai"}
+{"rid": "42ec97a39700", "verdict": "CORRECT", "reason": "Centenary kept May 12, 1965 implies founding 1865, before 1870.", "reviewer": "ai"}
+{"rid": "7e04da8edbf7", "verdict": "CORRECT", "reason": "Turbine contract won September 16, 1964, the only 1964 development.", "reviewer": "ai"}
+{"rid": "37779c17c8cd", "verdict": "CORRECT", "reason": "Export drive April 30, 1949, plc listing 1953, headquarters October 5, 1957 within inclusive boundaries.", "reviewer": "ai"}
+{"rid": "889ae42c1054", "verdict": "CORRECT", "reason": "Digital first programme began May 30, 2023, only option in April-July 2023 window.", "reviewer": "ai"}
+{"rid": "288e8c8d3fe1", "verdict": "CORRECT", "reason": "Session 2 states island ferry service launched April 11, 1998.", "reviewer": "ai"}
+{"rid": "bc784ada0406", "verdict": "CORRECT", "reason": "Session 3 states museum's foundation was laid on June 18, 1962.", "reviewer": "ai"}
+{"rid": "fcd3e384d280", "verdict": "CORRECT", "reason": "Trophy won May 29, 2021; statue unveiled June 3, 2023. Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "ce68a67494c6", "verdict": "CORRECT", "reason": "Passing loop reinstated September 18, 2010, only option inside the window.", "reviewer": "ai"}
+{"rid": "3f07cd65db9b", "verdict": "CORRECT", "reason": "Sixth form named the array's first observation target; sixth formers are school pupils.", "reviewer": "ai"}
+{"rid": "f3a1bdbc02fb", "verdict": "CORRECT", "reason": "Budget agreed February 13, 2024, after cabinet adoption May 24, 2023; 'before' is contradicted.", "reviewer": "ai"}
+{"rid": "5b84260d74da", "verdict": "CORRECT", "reason": "Five events from hoard August 22, 1993 to museum accreditation November 17, 2004 within inclusive window.", "reviewer": "ai"}
+{"rid": "2a4063703173", "verdict": "CORRECT", "reason": "Session 2 states river gauge was commissioned on February 2, 2008.", "reviewer": "ai"}
+{"rid": "2acc0e43aaac", "verdict": "CORRECT", "reason": "Estate laid out September 20, 1913, before memorial unveiled August 8, 1921.", "reviewer": "ai"}
+{"rid": "b8ad9153952b", "verdict": "CORRECT", "reason": "Session 2 states rate saver account was launched on November 21, 2022.", "reviewer": "ai"}
+{"rid": "1cc860acb10c", "verdict": "AMBIGUOUS", "reason": "Blind re-verification rescued: about 92 vs 130 days; within two-month tolerance", "reviewer": "ai", "verify": "disagreed-kept"}
+{"rid": "667bdd1b4ba9", "verdict": "CORRECT", "reason": "All six dated works from quay extension March 19, 2015 to freight village June 11, 2019 within window.", "reviewer": "ai"}
+{"rid": "1fb5dbf76469", "verdict": "CORRECT", "reason": "Session 2 states the cables were laid on June 14, 1901.", "reviewer": "ai"}
+{"rid": "d4a745305ec6", "verdict": "CORRECT", "reason": "Session 1 states the station's hedge was planted on April 3, 2006.", "reviewer": "ai"}
+{"rid": "ffd6e4ef1856", "verdict": "CORRECT", "reason": "First incident command stood up March 12, 2020, only option in February-May 2020 window.", "reviewer": "ai"}
+{"rid": "a18e531781d2", "verdict": "CORRECT", "reason": "Railway ale first brewed August 30, 2013, only option inside July 2013-July 2014 window.", "reviewer": "ai"}
+{"rid": "4adb9b20e8df", "verdict": "CORRECT", "reason": "War loan November 11, 1915, branch doubling 1920, gold standard May 3, 1926 within inclusive boundaries.", "reviewer": "ai"}
+{"rid": "031cd3473606", "verdict": "CORRECT", "reason": "Youth council founded September 8, 2021, before report published January 20, 2023.", "reviewer": "ai"}
+{"rid": "8229b731f074", "verdict": "CORRECT", "reason": "Session 2 states automatic exchange was cut over on April 28, 1912.", "reviewer": "ai"}
+{"rid": "e9aea6a3b47f", "verdict": "CORRECT", "reason": "Session 4 states first almanac was published on December 5, 2013.", "reviewer": "ai"}
+{"rid": "ad447bb34094", "verdict": "CORRECT", "reason": "Trench April 15, 1991, hoard 1993, visitor centre 1996, UNESCO bid January 30, 1998 within inclusive boundaries.", "reviewer": "ai"}
+{"rid": "d2d106e65930", "verdict": "CORRECT", "reason": "Session 1 states first exchange opened on March 3, 1892.", "reviewer": "ai"}
+{"rid": "e46f1aa1d128", "verdict": "CORRECT", "reason": "Welfare society founded October 9, 1910, only option in October 1910-October 1911 window.", "reviewer": "ai"}
+{"rid": "74b79c8b6ad2", "verdict": "CORRECT", "reason": "Boundary commission evidence given May 8, 1953, only option in the window.", "reviewer": "ai"}
+{"rid": "6fcdb6eba0c2", "verdict": "CORRECT", "reason": "Pilot boat July 7, 2016, terminal and shore power 2017, cruise season September 14, 2018 within boundaries.", "reviewer": "ai"}
+{"rid": "a246e19d2bc5", "verdict": "CORRECT", "reason": "Session 1 states outer channel was dredged on March 19, 1994.", "reviewer": "ai"}
+{"rid": "12576b40f2be", "verdict": "CORRECT", "reason": "War loan November 11, 1915 and branch network doubled July 8, 1920, only events in window.", "reviewer": "ai"}
+{"rid": "217f1b52c838", "verdict": "CORRECT", "reason": "Steel works March 8, 1937, airframe shop 1940, reconversion 1946, export drive April 30, 1949 within boundaries.", "reviewer": "ai"}
+{"rid": "5e47e0e95ced", "verdict": "CORRECT", "reason": "A third of the town watched, not most, so hypothesis is contradicted.", "reviewer": "ai"}
+{"rid": "32a0434513d6", "verdict": "CORRECT", "reason": "Branch doubling July 8, 1920, gold standard 1926, merger February 9, 1930 within inclusive boundaries.", "reviewer": "ai"}
+{"rid": "abb9099a0ab9", "verdict": "CORRECT", "reason": "Strike fund raised September 30, 1892, at window start; other options outside.", "reviewer": "ai"}
+{"rid": "d8563a8b5a6d", "verdict": "CORRECT", "reason": "Session 4 states the met mast went up on October 8, 2012.", "reviewer": "ai"}
+{"rid": "1a93350a930f", "verdict": "CORRECT", "reason": "Rooms drawn to mothers' specifications at forty public meetings entails consultation shaped design.", "reviewer": "ai"}
+{"rid": "b102ddf136b6", "verdict": "CORRECT", "reason": "Session 2 states panel's first sitting was on October 12, 2021.", "reviewer": "ai"}
+{"rid": "262d03d9d5bf", "verdict": "CORRECT", "reason": "Appliance division founded February 27, 1961, the only 1961 development.", "reviewer": "ai"}
+{"rid": "c43ebb5352ca", "verdict": "CORRECT", "reason": "Session 3 states the full report came on September 6, 2022.", "reviewer": "ai"}
+{"rid": "422663f1c733", "verdict": "CORRECT", "reason": "Visitor centre June 6, 1996, UNESCO bid 1998, excavations ended 2001, accreditation November 17, 2004.", "reviewer": "ai"}
+{"rid": "b31ab966abac", "verdict": "CORRECT", "reason": "Water warmed by the station's own waste entails heat that would otherwise be discarded.", "reviewer": "ai"}
+{"rid": "56690b3d971c", "verdict": "CORRECT", "reason": "All eight dated works from March 8, 1937 to September 16, 1964 within inclusive boundaries.", "reviewer": "ai"}
+{"rid": "6c4d5216311b", "verdict": "CORRECT", "reason": "Branch network doubled 1920 and gold standard resumed May 3, 1926, only events in 1920-1926.", "reviewer": "ai"}
+{"rid": "58783de98115", "verdict": "CORRECT", "reason": "Drafted jointly by union and employers contradicts the union writing it alone.", "reviewer": "ai"}
+{"rid": "013b14b77c8a", "verdict": "CORRECT", "reason": "Works council established June 27, 1919, at window start; other options outside.", "reviewer": "ai"}
+{"rid": "8eb55575bd96", "verdict": "CORRECT", "reason": "Session 3 states first schools open day was held on September 14, 2011.", "reviewer": "ai"}
+{"rid": "b09cd581af0d", "verdict": "CORRECT", "reason": "Station adopters recruited July 2, 2005, only option in June 2005-June 2006 window.", "reviewer": "ai"}
+{"rid": "be1138eee465", "verdict": "CORRECT", "reason": "Passage never says the baths were first in the county to use waste heat; neutral.", "reviewer": "ai"}
+{"rid": "67bc19224b18", "verdict": "CORRECT", "reason": "Plc listing July 12, 1953 and headquarters October 5, 1957, only events in 1953-1957.", "reviewer": "ai"}
+{"rid": "3d3fbd9ae7fa", "verdict": "CORRECT", "reason": "Reconversion November 19, 1946 through appliance division February 27, 1961, all five within boundaries.", "reviewer": "ai"}
+{"rid": "a5c7be049189", "verdict": "CORRECT", "reason": "Session 3 states the 2006 dry spell began on June 10, 2006.", "reviewer": "ai"}
+{"rid": "83b87c39bbf6", "verdict": "CORRECT", "reason": "County's strongest deal contradicts every other warehouse getting a stronger deal.", "reviewer": "ai"}
+{"rid": "5059e669e1eb", "verdict": "CORRECT", "reason": "Session 1 states video adviser service started January 25, 2021.", "reviewer": "ai"}
+{"rid": "2334110fe637", "verdict": "CORRECT", "reason": "Passage never dates any demolition of the yards; neutral.", "reviewer": "ai"}
+{"rid": "1a26f8edb084", "verdict": "CORRECT", "reason": "County's first walk-in centre entails none existed in the county before June 2006.", "reviewer": "ai"}
+{"rid": "1a54b26939b0", "verdict": "CORRECT", "reason": "Station built October 20, 2002 and ran through 2003; second dish added February 15, 2004.", "reviewer": "ai"}
+{"rid": "73bda2b12ea1", "verdict": "CORRECT", "reason": "Session 1 states first exchange opened on March 3, 1892.", "reviewer": "ai"}
+{"rid": "0f76443e5e50", "verdict": "CORRECT", "reason": "Housing act amendment carried February 13, 1947, only option in the window.", "reviewer": "ai"}
+{"rid": "a0535645396c", "verdict": "CORRECT", "reason": "Four thousand attendances does not entail four thousand distinct patients; neutral.", "reviewer": "ai"}
+{"rid": "d8e215e29597", "verdict": "CORRECT", "reason": "Ballot electorate not stated to be the whole workforce, so minority claim is unsettled; neutral.", "reviewer": "ai"}
+{"rid": "a875df8bc94f", "verdict": "CORRECT", "reason": "Branch founded February 21, 1891, at window end; other options outside.", "reviewer": "ai"}
+{"rid": "c3b7c47b1ee5", "verdict": "CORRECT", "reason": "Session 1 states the overhaul was completed on June 30, 1970.", "reviewer": "ai"}
+{"rid": "5bb3852a742b", "verdict": "CORRECT", "reason": "Free school meals extension passed April 30, 1958, only option in the window.", "reviewer": "ai"}

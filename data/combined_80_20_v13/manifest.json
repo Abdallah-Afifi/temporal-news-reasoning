@@ -1,7 +1,9 @@
 {
-  "source": "data/combined_80_20_v12 (minus CoT-flagged wrong TimeQA golds) + data/manual_aug_glm_v13 relabelled AUG_TPL3 (agent-written Python templates, NOT GLM chat) + data/prog_aug_v13 (AUG_PROG, programmatic)",
-  "template_rows_in": 4519,
-  "template_rows": 1549,
+  "source": "data/combined_80_20_v12 (minus CoT-flagged wrong TimeQA golds, minus the template-generated non-math rows of glm_raw 296/297/309) + data/manual_aug_glm_v13 split by authorship: AUG_GLM3 (written row by row by the GLM model via the opencode agent) and AUG_TPL3 (random slot-filling generators; math only) + data/prog_aug_v13 (AUG_PROG)",
+  "v13_wave_rows_in": 4519,
+  "glm3_rows": 1523,
+  "template_rows": 1427,
+  "review_removed_questions": 0,
   "prog_rows_in": 13200,
   "prog_rows": 12258,
   "cot_skip_ids_used": 233,
@@ -12,30 +14,29 @@
     "prog_failed_independent_verify_prog_relation": 251,
     "prog_failed_independent_verify_prog_timeline": 227,
     "timeqa_cot_skip_wrong_gold_train": 233,
+    "tpl_duration_broken_template": 102,
     "tpl_math_failed_independent_verify_Relative_Reasoning": 1,
-    "tpl_non_math_template_removed_duration": 250,
-    "tpl_non_math_template_removed_extract": 317,
-    "tpl_non_math_template_removed_nli_mcq": 250,
-    "tpl_non_math_template_removed_nli_saq": 401,
     "tpl_non_math_template_removed_ordering": 250,
-    "tpl_non_math_template_removed_relation": 700,
-    "tpl_non_math_template_removed_storytelling": 401,
-    "tpl_non_math_template_removed_temporal_dialogue": 400,
+    "tpl_non_math_template_removed_relation": 450,
+    "tpl_non_math_template_removed_storytelling": 375,
+    "tpl_non_math_template_removed_temporal_dialogue": 375,
+    "tpl_relation_label_disagrees_with_dates": 16,
     "tpl_storytelling_gold_longer_dropped_for_50pct_balance": 0,
     "v12_failed_verify_or_review_AUG_GLM2_train": 12,
     "v12_failed_verify_or_review_AUG_GLM2_val": 3,
-    "v12_script_built_non_math_removed_train": 452,
-    "v12_script_built_non_math_removed_val": 111
+    "v12_script_built_non_math_removed_train": 115,
+    "v12_script_built_non_math_removed_val": 23
   },
   "provisional": false,
   "splits": {
     "train": {
       "from_v12": 11804,
-      "v12_kept": 11107,
-      "added": 10986,
-      "out": 22093,
+      "v12_kept": 11444,
+      "added": 12115,
+      "out": 23559,
       "added_by_source": {
-        "AUG_TPL3": 1238,
+        "AUG_GLM3": 1231,
+        "AUG_TPL3": 1136,
         "AUG_PROG": 9748
       },
       "added_by_category": {
@@ -44,6 +45,10 @@
         "Order_Compare": 153,
         "Relative_Reasoning": 279,
         "Timeline": 312,
+        "duration": 118,
+        "extract": 245,
+        "nli_mcq": 208,
+        "nli_saq": 323,
         "prog_arith_clock": 1191,
         "prog_arith_month": 1181,
         "prog_computation": 1182,
@@ -53,25 +58,30 @@
         "prog_ordering_seq": 623,
         "prog_ordering_tf": 643,
         "prog_relation": 1401,
-        "prog_timeline": 1415
+        "prog_timeline": 1415,
+        "relation": 190,
+        "storytelling": 22,
+        "temporal_dialogue": 23
       },
       "out_by_source": {
         "TimeQA": 4271,
-        "AUG_GLM2": 4560,
+        "AUG_GLM2": 4897,
         "TLQA": 855,
         "AUG_SEQ": 1019,
         "AUG_GLM": 402,
-        "AUG_TPL3": 1238,
+        "AUG_GLM3": 1231,
+        "AUG_TPL3": 1136,
         "AUG_PROG": 9748
       }
     },
     "val": {
       "from_v12": 2971,
-      "v12_kept": 2857,
-      "added": 2821,
-      "out": 5678,
+      "v12_kept": 2945,
+      "added": 3093,
+      "out": 6038,
       "added_by_source": {
-        "AUG_TPL3": 311,
+        "AUG_GLM3": 292,
+        "AUG_TPL3": 291,
         "AUG_PROG": 2510
       },
       "added_by_category": {
@@ -80,6 +90,10 @@
         "Order_Compare": 47,
         "Relative_Reasoning": 70,
         "Timeline": 88,
+        "duration": 30,
+        "extract": 72,
+        "nli_mcq": 42,
+        "nli_saq": 78,
         "prog_arith_clock": 308,
         "prog_arith_month": 319,
         "prog_computation": 318,
@@ -89,19 +103,22 @@
         "prog_ordering_seq": 177,
         "prog_ordering_tf": 157,
         "prog_relation": 348,
-        "prog_timeline": 358
+        "prog_timeline": 358,
+        "relation": 44,
+        "storytelling": 4,
+        "temporal_dialogue": 2
       },
       "out_by_source": {
-        "AUG_GLM2": 1152,
+        "AUG_GLM2": 1240,
         "TimeQA": 1138,
         "AUG_SEQ": 254,
         "TLQA": 213,
         "AUG_GLM": 100,
-        "AUG_TPL3": 311,
+        "AUG_GLM3": 292,
+        "AUG_TPL3": 291,
         "AUG_PROG": 2510
       }
     }
   },
-  "glm_rows": 1549,
-  "glm_rows_note": "backward-compatible alias of template_rows for run_schedule_v13.sh; these rows are NOT GLM-authored"
+  "glm_rows": 1523
 }

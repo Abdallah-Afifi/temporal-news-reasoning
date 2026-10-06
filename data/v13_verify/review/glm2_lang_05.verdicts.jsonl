@@ -1,0 +1,125 @@
+{"rid": "71c8e2516325", "verdict": "CORRECT", "reason": "Passage: one-million-passenger milestone passed October 30, 1993.", "reviewer": "ai"}
+{"rid": "f30826edb71f", "verdict": "CORRECT", "reason": "Passage: building resumed May 10, 1948.", "reviewer": "ai"}
+{"rid": "7bde7e4ba84c", "verdict": "CORRECT", "reason": "Move to Hollow dated 1911, before the first war; hypothesis contradicted.", "reviewer": "ai"}
+{"rid": "58be26e07439", "verdict": "CORRECT", "reason": "Comet confirmed March 3, 2009, stated in passage.", "reviewer": "ai"}
+{"rid": "e1d7f6a5d133", "verdict": "CORRECT", "reason": "Cranes in order: North, West, East, Cold-weather; second is West.", "reviewer": "ai"}
+{"rid": "1ce7f3404dff", "verdict": "CORRECT", "reason": "Passage: settlement reached August 3, 2022.", "reviewer": "ai"}
+{"rid": "bb6bafaafa9c", "verdict": "CORRECT", "reason": "Coaching scheme begun September 1980 after retirement.", "reviewer": "ai"}
+{"rid": "8855a2b41a9c", "verdict": "CORRECT", "reason": "Merger agreed May 14, 2014; counterfactual does not change the ratified date.", "reviewer": "ai"}
+{"rid": "9630609dbce2", "verdict": "CORRECT", "reason": "1998-1968 = 30 years; about 30 years correct.", "reviewer": "ai"}
+{"rid": "903d39c32f0a", "verdict": "CORRECT", "reason": "Premise says 5,600 claims, not three thousand; contradiction.", "reviewer": "ai"}
+{"rid": "70270158fed2", "verdict": "CORRECT", "reason": "Passage: first core December 20, 2022 at two metres; option D matches.", "reviewer": "ai"}
+{"rid": "ca7f6eb5cedf", "verdict": "CORRECT", "reason": "Centenary marked May 8, 2023, a spring date.", "reviewer": "ai"}
+{"rid": "a75226d82763", "verdict": "CORRECT", "reason": "Preparedness scheme launched September 19, 1984.", "reviewer": "ai"}
+{"rid": "77d566449e36", "verdict": "WRONG", "reason": "Announced July 2, 1973 \u2014 second half of the year, not first; label should be contradiction.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "d07a303e6ea9", "verdict": "CORRECT", "reason": "Session 1 states pay claim went in on 14 May 2021.", "reviewer": "ai"}
+{"rid": "84a56f343beb", "verdict": "CORRECT", "reason": "Note series order: Waterman (2021), Hallowes (2022), Tessier (2024); first is Waterman.", "reviewer": "ai"}
+{"rid": "f4866daca453", "verdict": "CORRECT", "reason": "Schemes in order: Toolmaking, Reconstruction, Export, Farm; second is Reconstruction.", "reviewer": "ai"}
+{"rid": "3cd7cdc405ce", "verdict": "CORRECT", "reason": "Pipelines: East Ride (1992), Keld spur (1998), City Gate (2001); third is City Gate.", "reviewer": "ai"}
+{"rid": "f4f5c0c8677a", "verdict": "CORRECT", "reason": "Scanners sold to consortium; only records went to Redwell archive; donation claim contradicted.", "reviewer": "ai"}
+{"rid": "0ae42d89102e", "verdict": "CORRECT", "reason": "Passage never mentions a tram link; none of A-C supported.", "reviewer": "ai"}
+{"rid": "e5fd458232b3", "verdict": "CORRECT", "reason": "Releases: Ledger (1993), Counter (1996), Portal (2001), Wireless (2004); second is Counter.", "reviewer": "ai"}
+{"rid": "f31f8be22862", "verdict": "CORRECT", "reason": "Catastrophe reinsurance renewed October 15, 2008; option A matches passage.", "reviewer": "ai"}
+{"rid": "22129e77e6d9", "verdict": "CORRECT", "reason": "Stone bridge reopened May 28, 2016.", "reviewer": "ai"}
+{"rid": "eba0e175f999", "verdict": "CORRECT", "reason": "Transmitters: Moors (1939), City (1955), Beacon (1964); second is City.", "reviewer": "ai"}
+{"rid": "002370556a35", "verdict": "CORRECT", "reason": "First credit scheme is Toolmaking, launched October 5, 1939.", "reviewer": "ai"}
+{"rid": "8c43979b94e5", "verdict": "CORRECT", "reason": "Upgrade passage: correlator was replaced; dishes only repainted in weather windows.", "reviewer": "ai"}
+{"rid": "423efa96f28b", "verdict": "CORRECT", "reason": "Call centres: Tollfree (1995), Nightline (1998), Home (2002), Broadband (2004); second is Nightline.", "reviewer": "ai"}
+{"rid": "e8eda88b86f7", "verdict": "CORRECT", "reason": "Fare reviews: spring (1994), autumn (1998), holiday (2001); first is spring review.", "reviewer": "ai"}
+{"rid": "a7ea4de6e233", "verdict": "CORRECT", "reason": "Passage: launched November 23, 2022 on county's second rocket; option B matches.", "reviewer": "ai"}
+{"rid": "c20c4ab6937c", "verdict": "CORRECT", "reason": "First interim payments made June 29, 2007; option D matches.", "reviewer": "ai"}
+{"rid": "94e9153336ba", "verdict": "CORRECT", "reason": "Passage identifies headquarters as Duke Street; paper signed at its table.", "reviewer": "ai"}
+{"rid": "1de2d58daa33", "verdict": "CORRECT", "reason": "Only gauge network (certified April 19, 1892) falls within 1891-1895 window.", "reviewer": "ai"}
+{"rid": "fc4724d8f599", "verdict": "CORRECT", "reason": "Session 2: drying contractor engaged 21 October 1977.", "reviewer": "ai"}
+{"rid": "716e06f33732", "verdict": "CORRECT", "reason": "Session 3 states insulation scheme launched 20 October 2000.", "reviewer": "ai"}
+{"rid": "d88a74701767", "verdict": "CORRECT", "reason": "Bridge reopened to traffic December 1, 2018; option C matches.", "reviewer": "ai"}
+{"rid": "157e2bb0bf17", "verdict": "CORRECT", "reason": "Youth trophy first contested August 17, 2019 per passage.", "reviewer": "ai"}
+{"rid": "348be9c19951", "verdict": "CORRECT", "reason": "Market opened its gates September 13, 1952.", "reviewer": "ai"}
+{"rid": "a4f0ebf8df28", "verdict": "CORRECT", "reason": "Runway opened May 28, 2001 at 2,100 metres; option D matches.", "reviewer": "ai"}
+{"rid": "b8c0d4185fe6", "verdict": "CORRECT", "reason": "Branches: Millgate, Docks, Market, University; fourth is University office.", "reviewer": "ai"}
+{"rid": "ce28f66971db", "verdict": "CORRECT", "reason": "Minister arrived late and spoke four minutes; 'at length after arriving early' contradicted.", "reviewer": "ai"}
+{"rid": "2a2ed0e7f49c", "verdict": "CORRECT", "reason": "Pool's first review concluded June 2, 1988.", "reviewer": "ai"}
+{"rid": "03ae8cc4333c", "verdict": "CORRECT", "reason": "Pedestrianisation completed October 19, 1998; option B matches.", "reviewer": "ai"}
+{"rid": "24f6e54e2329", "verdict": "CORRECT", "reason": "Solvency review reported July 9, 2014.", "reviewer": "ai"}
+{"rid": "777200cd87bc", "verdict": "CORRECT", "reason": "Ledger release (May 4, 1993) was the first software release.", "reviewer": "ai"}
+{"rid": "80eaf6d5dfde", "verdict": "CORRECT", "reason": "Tribunal sat for the first time October 17, 1967.", "reviewer": "ai"}
+{"rid": "1e405218a5c3", "verdict": "WRONG", "reason": "Passage says steamer retired with farewell season, bell to museum; scrapping never stated, so neutral not contradiction.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "5bacdbfe59ce", "verdict": "CORRECT", "reason": "Only the first restaurant's opening is given; no second restaurant dated.", "reviewer": "ai"}
+{"rid": "a57fa2d86b20", "verdict": "CORRECT", "reason": "Session 4: headcount stands at 52 by December 2021.", "reviewer": "ai"}
+{"rid": "38bfc5c4d77f", "verdict": "CORRECT", "reason": "417 silver denarii from cookhouse drain; over four hundred coins entailed.", "reviewer": "ai"}
+{"rid": "c55c59ead960", "verdict": "CORRECT", "reason": "Referendum March 7, 2008; mayor took office May 15, 2008 \u2014 same year.", "reviewer": "ai"}
+{"rid": "6bc2073c30c7", "verdict": "CORRECT", "reason": "Appointments: Carrow (1966), Meldon (1972), Roke (1980), Fayne (1987); second is Meldon.", "reviewer": "ai"}
+{"rid": "6fe7dc968220", "verdict": "CORRECT", "reason": "Tariff reforms: Standing (2016), Daylight (2017), Off-Peak (2018), Smart (2019); first is Standing.", "reviewer": "ai"}
+{"rid": "e0229ec07574", "verdict": "CORRECT", "reason": "Ballots: recognition (1936), pension (1946), merger (1957), redundancy (1962); first is recognition.", "reviewer": "ai"}
+{"rid": "10b1f1755f88", "verdict": "CORRECT", "reason": "Thousandth observation logged March 19, 2012.", "reviewer": "ai"}
+{"rid": "a759ec9e709c", "verdict": "CORRECT", "reason": "Passage never says who laid the 1952 foundation stone; neutral.", "reviewer": "ai"}
+{"rid": "a8b138fbc272", "verdict": "CORRECT", "reason": "Turbine raised February 17, 2016; digital library opened September 20, 2016.", "reviewer": "ai"}
+{"rid": "637e3789229e", "verdict": "CORRECT", "reason": "Heritage plaque unveiled March 14, 2022; option D matches.", "reviewer": "ai"}
+{"rid": "fb616daa72ec", "verdict": "CORRECT", "reason": "New constitution ratified February 9, 1974; option B matches.", "reviewer": "ai"}
+{"rid": "f58225e0ede1", "verdict": "CORRECT", "reason": "Only solar meadow (June 9, 2015) falls in the Feb 2015 - Feb 2016 window.", "reviewer": "ai"}
+{"rid": "562f44ad0638", "verdict": "CORRECT", "reason": "Passage never states where Barrett trained; neutral.", "reviewer": "ai"}
+{"rid": "4881a1c9dbaa", "verdict": "CORRECT", "reason": "Cable links: Shore (2015), Island (2017), Estuary (2018), Backup (2019); third is Estuary.", "reviewer": "ai"}
+{"rid": "49da6e9edaed", "verdict": "CORRECT", "reason": "Passage says company's own iron, not that iron came from its own works; neutral.", "reviewer": "ai"}
+{"rid": "36699a212635", "verdict": "CORRECT", "reason": "Hundredth researcher hired October 30, 1997; option D matches.", "reviewer": "ai"}
+{"rid": "34263605ab67", "verdict": "CORRECT", "reason": "Relief fund launched June 20, 2007; option C matches.", "reviewer": "ai"}
+{"rid": "7bf5d1e09667", "verdict": "CORRECT", "reason": "Passage says nothing about clerk's pay relative to others; neutral.", "reviewer": "ai"}
+{"rid": "c6244dd68cda", "verdict": "CORRECT", "reason": "Flood guarantee launched May 6, 2010; option C matches.", "reviewer": "ai"}
+{"rid": "39ec75384437", "verdict": "CORRECT", "reason": "Branch closed after traffic lost to roads in three seasons, roughly three years.", "reviewer": "ai"}
+{"rid": "b6937b14fd92", "verdict": "CORRECT", "reason": "Premise says 1982 grant brought funds and optics; refusal contradicted.", "reviewer": "ai"}
+{"rid": "4c21f21e9286", "verdict": "CORRECT", "reason": "Campaign launched September 28, 2018 with sixth form's message; option B matches.", "reviewer": "ai"}
+{"rid": "8279f818ca8a", "verdict": "CORRECT", "reason": "Visitor centre opened June 12, 1999.", "reviewer": "ai"}
+{"rid": "d1cc9ca51292", "verdict": "CORRECT", "reason": "Only hail census (June 9, 1925) falls within April 1923 - August 1927.", "reviewer": "ai"}
+{"rid": "58117dae96d4", "verdict": "CORRECT", "reason": "Surveys: Ridge (2006), Wetlands (2009), Downs (2012), Town (2014); second is Wetlands.", "reviewer": "ai"}
+{"rid": "8b5edbcc5781", "verdict": "CORRECT", "reason": "Vessel ordered from the estuary's yard, not a Polish shipyard; contradiction.", "reviewer": "ai"}
+{"rid": "13227253458d", "verdict": "CORRECT", "reason": "Projects: annexe (1967), extension (1975), refurbishment (1983), archive room (1988); second is extension.", "reviewer": "ai"}
+{"rid": "1ec352bb250d", "verdict": "CORRECT", "reason": "Wind farms: Rigging Hill (1994), Scar (1998), Point (2003); first is Rigging Hill.", "reviewer": "ai"}
+{"rid": "2cd170706ccc", "verdict": "CORRECT", "reason": "Most stolen thing in the building within a year; heaviest losses entailed.", "reviewer": "ai"}
+{"rid": "cc3930a55020", "verdict": "CORRECT", "reason": "Storm produced 22,000 claims across the region; option C matches.", "reviewer": "ai"}
+{"rid": "b811d94e9783", "verdict": "CORRECT", "reason": "Exercises: Tabletop (2016), Bracken (2018), Full-scale (2019); second is Bracken.", "reviewer": "ai"}
+{"rid": "0ac30178c6f6", "verdict": "CORRECT", "reason": "Third barge joined in 1998; two-barges-for-whole-trial claim contradicted.", "reviewer": "ai"}
+{"rid": "3f48e32d826f", "verdict": "CORRECT", "reason": "Rises in 2022: March, May, August, November; second is the May rise.", "reviewer": "ai"}
+{"rid": "ba2edd7fc43b", "verdict": "CORRECT", "reason": "Chairs from Rotary, carpets from suppliers; no public appeal mentioned or excluded; neutral.", "reviewer": "ai"}
+{"rid": "e40bdb00e61c", "verdict": "CORRECT", "reason": "Exhibitions: Triumph (1970), Empire (1977), Homecoming (1985); third is Homecoming.", "reviewer": "ai"}
+{"rid": "8bd59804a5cc", "verdict": "CORRECT", "reason": "First strawberry charter flown June 9, 2000.", "reviewer": "ai"}
+{"rid": "d9b434606014", "verdict": "CORRECT", "reason": "Reviews: design-stage (2020), mid-programme (2022), flight-readiness (2023), heritage (2024); first is design-stage.", "reviewer": "ai"}
+{"rid": "51f375564bec", "verdict": "CORRECT", "reason": "Passage says nothing about the door previously leading to a weighbridge room; neutral.", "reviewer": "ai"}
+{"rid": "57ccc12335be", "verdict": "CORRECT", "reason": "No mention of compensation to the baker; trade continued; neutral.", "reviewer": "ai"}
+{"rid": "9372220f42bd", "verdict": "CORRECT", "reason": "Emergency repairs completed May 21, 1974.", "reviewer": "ai"}
+{"rid": "14ecd582b6d3", "verdict": "CORRECT", "reason": "Flights: maiden (2008), high-altitude (2010), third (2012), endurance (2014); first is maiden flight.", "reviewer": "ai"}
+{"rid": "98082f132b15", "verdict": "CORRECT", "reason": "Snow record January 21, 2019, ninety centimetres; option A matches dialogue.", "reviewer": "ai"}
+{"rid": "49bde4060b39", "verdict": "CORRECT", "reason": "Dig filmed over twelve days, not a full summer; contradiction.", "reviewer": "ai"}
+{"rid": "290823adb14c", "verdict": "CORRECT", "reason": "Five hundredth voyage completed June 5, 2009.", "reviewer": "ai"}
+{"rid": "36d267c12464", "verdict": "CORRECT", "reason": "Session 1: schools programme launches 12 September 2006.", "reviewer": "ai"}
+{"rid": "be03901c7e8c", "verdict": "CORRECT", "reason": "Vessels: Skimmer, Daunter, third (1999), Fulmar (2002); fourth is Fulmar.", "reviewer": "ai"}
+{"rid": "9cd7601e69e4", "verdict": "CORRECT", "reason": "Only the January 2006 surge (winter flood surge) falls in the Dec 2005 - June 2006 window.", "reviewer": "ai"}
+{"rid": "00a97304aeba", "verdict": "CORRECT", "reason": "First strike November 30, 2022, schools closed entire; option B matches.", "reviewer": "ai"}
+{"rid": "54e793b4e52b", "verdict": "CORRECT", "reason": "Strike weeks: March 2021, October 2021, 2022, summer 2023; first is March week.", "reviewer": "ai"}
+{"rid": "6c8ede4f5837", "verdict": "CORRECT", "reason": "Strike stopped the ferry service entirely; reduced-timetable claim contradicted.", "reviewer": "ai"}
+{"rid": "0527ca1f7f6c", "verdict": "CORRECT", "reason": "Coins: Harvest (2021), Founders (2023), Centenary (2024); first is Harvest.", "reviewer": "ai"}
+{"rid": "4676381b5b14", "verdict": "CORRECT", "reason": "Floodlights first lit September 21, 2016; option A matches.", "reviewer": "ai"}
+{"rid": "9a7f48234699", "verdict": "CORRECT", "reason": "April 28, 2022 settlement, five percent, backdated to December 1, 2021; option D matches.", "reviewer": "ai"}
+{"rid": "5790b796a23c", "verdict": "CORRECT", "reason": "Grants paid to nine hundred homes inside the contour.", "reviewer": "ai"}
+{"rid": "ae5e32a3e98c", "verdict": "CORRECT", "reason": "Demand for a ballot was filed July 8, 2022.", "reviewer": "ai"}
+{"rid": "f317535c2a47", "verdict": "CORRECT", "reason": "First lottery bid failed by one criterion in 1996; approval claim contradicted.", "reviewer": "ai"}
+{"rid": "4e3ce9a5e0bf", "verdict": "CORRECT", "reason": "Registry's first calendar printed April 1911.", "reviewer": "ai"}
+{"rid": "1c866e0b6ec5", "verdict": "CORRECT", "reason": "Only quake retro renewal (November 27, 2009) falls in the 2009-10 window.", "reviewer": "ai"}
+{"rid": "f6faff81d288", "verdict": "CORRECT", "reason": "Founding firm's centenary celebrated September 12, 1924, per passage.", "reviewer": "ai"}
+{"rid": "7744ee7f2e3d", "verdict": "CORRECT", "reason": "Session 2: maiden flew 14 July 2009 after slip from 30 June.", "reviewer": "ai"}
+{"rid": "aee8905921d5", "verdict": "CORRECT", "reason": "Library wing was added to the square in 1962.", "reviewer": "ai"}
+{"rid": "8aa97e937a40", "verdict": "CORRECT", "reason": "Campaign launched February 2, 2016 by eleven families; option C matches.", "reviewer": "ai"}
+{"rid": "21cc4d824816", "verdict": "CORRECT", "reason": "Seasons: Foundation (1967), Bathhouse (1971), Mosaic (1974), Flood (1982); first is Foundation.", "reviewer": "ai"}
+{"rid": "826070f498ab", "verdict": "CORRECT", "reason": "Settlement created a joint automation review; joint body to examine automation entailed.", "reviewer": "ai"}
+{"rid": "6fc715cbd3c9", "verdict": "CORRECT", "reason": "Contingency rota published February 18, 2022.", "reviewer": "ai"}
+{"rid": "db023b1292a1", "verdict": "CORRECT", "reason": "Surveys: Approaches (2020), Bar (2021), Anchorage (2023), Haven (2024); first is Approaches.", "reviewer": "ai"}
+{"rid": "561a4ceb35f0", "verdict": "CORRECT", "reason": "Marsett hydro scheme licensed March 9, 1998.", "reviewer": "ai"}
+{"rid": "08b3a3a8bc18", "verdict": "CORRECT", "reason": "Passage never says how joint banks were compensated; neutral.", "reviewer": "ai"}
+{"rid": "3b6f0e5afb79", "verdict": "CORRECT", "reason": "Pact signed November 17, 2023, second half of the year.", "reviewer": "ai"}
+{"rid": "264248dc74c7", "verdict": "CORRECT", "reason": "Acceptance test February 8, 2013, about a month before March 7 switch-on; option C.", "reviewer": "ai"}
+{"rid": "16b560b7c4ec", "verdict": "CORRECT", "reason": "Service restored March 15, 2021.", "reviewer": "ai"}
+{"rid": "49f055e5f2c0", "verdict": "CORRECT", "reason": "Inspections: February 2021 then June 2023; second is June inspection.", "reviewer": "ai"}
+{"rid": "0e0cf2d256e1", "verdict": "CORRECT", "reason": "Interim payments made April 29, 1974.", "reviewer": "ai"}
+{"rid": "eff0c906efd9", "verdict": "CORRECT", "reason": "Outages: October 2021 then June 2022; first is the October outage.", "reviewer": "ai"}
+{"rid": "0a7446a02d83", "verdict": "WRONG", "reason": "Passage states hut bought at auction in 1966 for forty pounds; abstain gold contradicts stated date.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "c1ef6a8f16dd", "verdict": "CORRECT", "reason": "Record cruise call made August 30, 2012, a summer date.", "reviewer": "ai"}
+{"rid": "9c9c144427aa", "verdict": "CORRECT", "reason": "Projects: annexe, extension, refurbishment, archive room; fourth is archive room.", "reviewer": "ai"}
+{"rid": "b160b6d57669", "verdict": "CORRECT", "reason": "Interconnectors: Caldervale (1992), Thornwood (1995), Skerr (1999), Marshes (2002); first is Caldervale.", "reviewer": "ai"}

@@ -1,0 +1,125 @@
+{"rid": "7345e4a12add", "verdict": "CORRECT", "reason": "Next agent appointment after Apr 1975 drive is second agent's arrival Aug 21, 1979.", "reviewer": "ai"}
+{"rid": "d08b2a8e9edf", "verdict": "CORRECT", "reason": "Caddock chaired Mar 2015-Feb 2019, overlapping Prosser's herd managership Apr 2015-Nov 2019.", "reviewer": "ai"}
+{"rid": "cdbf153d4bbc", "verdict": "CORRECT", "reason": "Mar 29 to Jun 7, 1937 = 2 months 9 days, matches gold.", "reviewer": "ai"}
+{"rid": "b4b5914af0b8", "verdict": "CORRECT", "reason": "Relaying May 9 1994, viaduct repair Jan 25 1995, station Oct 12 1995, steam Apr 6 1996 -> C,A,B,D.", "reviewer": "ai"}
+{"rid": "553f9353d48a", "verdict": "CORRECT", "reason": "8 months before Mar 22, 1983 = July 22, 1982.", "reviewer": "ai"}
+{"rid": "1c5a442a3726", "verdict": "CORRECT", "reason": "Refuse walkout Aug 8 to lorries' return Sep 5, 2022 = 28 days.", "reviewer": "ai"}
+{"rid": "7448303ff35f", "verdict": "CORRECT", "reason": "Hall-tour ~6 months; tour-academy ~16.5 months; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "c59088ae54fb", "verdict": "CORRECT", "reason": "Re-verification committed: Only event that can follow the (undated) memorial unveiling is the final account's closing (Mar 1, 1949).", "reviewer": "ai", "verify": "committed-correct"}
+{"rid": "8650a255341e", "verdict": "CORRECT", "reason": "Kelso dome engineer since 2007, Steele resident astronomer 2005-2010; overlap 2007-2010.", "reviewer": "ai"}
+{"rid": "b7873d5de6f3", "verdict": "CORRECT", "reason": "Deal accepted Jan 11 2022, re-election Feb 8, back pay Mar 3 -> B,A,C.", "reviewer": "ai"}
+{"rid": "aee51c7da52b", "verdict": "CORRECT", "reason": "Elstow led health visitor scheme 1969-1975, within Aldous's senior partnership 1966-1975.", "reviewer": "ai"}
+{"rid": "9919519c5b56", "verdict": "CORRECT", "reason": "Third batch Aug 31, 2011; next station opening after it is island station May 8, 2014.", "reviewer": "ai"}
+{"rid": "2dce475cc634", "verdict": "CORRECT", "reason": "First route Mar 9, 1997 to second route Jan 29, 1998 = 10 months 20 days.", "reviewer": "ai"}
+{"rid": "1ac390f00fb5", "verdict": "CORRECT", "reason": "Ansari convened stewards since 2021, overlapping Ives's mediation since spring 2022.", "reviewer": "ai"}
+{"rid": "7c563cf78c00", "verdict": "CORRECT", "reason": "Strike days Feb 3, Mar 15, Jun 7 2021; first after the first is the second.", "reviewer": "ai"}
+{"rid": "bc52113fb4e3", "verdict": "CORRECT", "reason": "No farewell dinner mentioned; abstain is genuine.", "reviewer": "ai"}
+{"rid": "dcb95519ca56", "verdict": "CORRECT", "reason": "Outbreak Nov 1895; next ward opening is diphtheria ward Sep 24, 1901.", "reviewer": "ai"}
+{"rid": "18946f52e040", "verdict": "CORRECT", "reason": "Franchise Feb 6, 1996; next event is first timetable May 12, 1996.", "reviewer": "ai"}
+{"rid": "ee9dbd89cc94", "verdict": "CORRECT", "reason": "Observatory events after Sep 14 2006 installation: programme 2008, find 2008, visitor centre 2011, second decade Nov 16 2014 \u2014 announcement latest.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "f1b4a1aad0de", "verdict": "CORRECT", "reason": "9 months before Dec 1, 2018 = March 1, 2018.", "reviewer": "ai"}
+{"rid": "8003f4fb75e6", "verdict": "CORRECT", "reason": "Sewage 1950, library 1954, baths 1958, extension 1963 -> B,D,A,C.", "reviewer": "ai"}
+{"rid": "c4a3ee28ece0", "verdict": "CORRECT", "reason": "D1 ~26.2 years vs D2 ~24.3 years; difference ~7.7%, within 10%.", "reviewer": "ai"}
+{"rid": "96e89e054d68", "verdict": "CORRECT", "reason": "Report says ministry funding decision still pending; no date given, abstain genuine.", "reviewer": "ai"}
+{"rid": "db8b3f48fbb6", "verdict": "CORRECT", "reason": "Aldwin site photographer Mar 2022-Sep 2023, inside Rask's directorship 2020-2023.", "reviewer": "ai"}
+{"rid": "4dd73c3aae04", "verdict": "CORRECT", "reason": "Court seated Oct 9, 1892; first case heard Oct 12, 1892.", "reviewer": "ai"}
+{"rid": "236d468a2532", "verdict": "CORRECT", "reason": "D1 Jun 1998-Dec 2004 ~6.5yr; D2 Aug 1992-May 1996 ~3.8yr; Duration 1 longer.", "reviewer": "ai"}
+{"rid": "6c23096e689c", "verdict": "CORRECT", "reason": "No 'Farebox Ball' mentioned; abstain genuine.", "reviewer": "ai"}
+{"rid": "1d28177289d1", "verdict": "CORRECT", "reason": "Campaign opened Oct 3, 2017 to second clinic Nov 7, 2017 = 1 month 4 days.", "reviewer": "ai"}
+{"rid": "eaa46895b25b", "verdict": "CORRECT", "reason": "Subsidence wave Sep 30, 1970; next milestone is reinsurance signed Nov 13, 1972.", "reviewer": "ai"}
+{"rid": "cc9be9531e2a", "verdict": "CORRECT", "reason": "D1 Nov 1993-Dec 1995 ~2y21d; D2 Apr 1999-Jun 2001 ~2y1.5m; approximately same.", "reviewer": "ai"}
+{"rid": "1674e42deee7", "verdict": "CORRECT", "reason": "Scanner Feb 6 2018, hub opened May 15 2018, home visits Sep 30 2018 -> C,B,A.", "reviewer": "ai"}
+{"rid": "046dfe889a17", "verdict": "CORRECT", "reason": "No repainting of the station mentioned anywhere; abstain genuine.", "reviewer": "ai"}
+{"rid": "7b376d760b37", "verdict": "CORRECT", "reason": "Foundations Feb 26 1961, cranes May 15 1961, topping-out Aug 17 1962 -> C,A,B.", "reviewer": "ai"}
+{"rid": "1b565fd8f4c7", "verdict": "CORRECT", "reason": "Residents Nov 1950 to town centre Sep 1960 ~9.9yr vs designation to plan ~2.4yr; Duration 1 longer.", "reviewer": "ai"}
+{"rid": "0ddf955746ee", "verdict": "CORRECT", "reason": "Contract Sep 2006, design frozen Mar 2008, launch Nov 2008, ground station Apr 2009 -> C,A,D,B.", "reviewer": "ai"}
+{"rid": "2365db3893f5", "verdict": "CORRECT", "reason": "Pritchard internal auditor Aug 2009-Jul 2013, inside Osei's secretaryship Feb 2006-Nov 2014.", "reviewer": "ai"}
+{"rid": "36b227875197", "verdict": "CORRECT", "reason": "Claim filed Mar 17, ballot opened Jun 6, result Jul 1, 2022 -> A,B,C.", "reviewer": "ai"}
+{"rid": "fb6d26f5afec", "verdict": "CORRECT", "reason": "Portal live Feb 19, 2016; next event is second surgery rebuild completed Sep 8, 2017.", "reviewer": "ai"}
+{"rid": "1a3996b1ea67", "verdict": "CORRECT", "reason": "Test case listed with no date fixed; decision date absent, abstain genuine.", "reviewer": "ai"}
+{"rid": "82a4a6eb1f26", "verdict": "CORRECT", "reason": "Registry 1907, courts merged 1913, sessions moved 1916, restored 1919 -> B,D,A,C.", "reviewer": "ai"}
+{"rid": "92b1497e28ba", "verdict": "CORRECT", "reason": "Wheldon led regeneration team 2006-2011, within Vickers's chief executiveship 2005-2012.", "reviewer": "ai"}
+{"rid": "8f46e85024e4", "verdict": "CORRECT", "reason": "Cranes May 1961, topping-out Aug 1962, tenants Mar 9 1963, lifts certified May 28 1963 -> B,A,D,C.", "reviewer": "ai"}
+{"rid": "e5640d12e3b4", "verdict": "CORRECT", "reason": "Banks gap ~15.5 months vs April 2015-Sep 2018 ~41 months; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "65ca05774d1b", "verdict": "CORRECT", "reason": "Rail-consultation ~21.7 months vs inquiry-terminal ~40.5 months; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "d55e70318cbb", "verdict": "CORRECT", "reason": "No night security contractor mentioned in passage; abstain option correct.", "reviewer": "ai"}
+{"rid": "26717f41fc6d", "verdict": "CORRECT", "reason": "Dome finished Jun 11, 2006; next event is spectrograph's installation Sep 14, 2006.", "reviewer": "ai"}
+{"rid": "105da8c26dd9", "verdict": "CORRECT", "reason": "Jan 28, 1969 to Feb 11, 1972 = 3 years 14 days, matches gold.", "reviewer": "ai"}
+{"rid": "877712b1723b", "verdict": "CORRECT", "reason": "Storm-resumption 16 days vs hard winter 103 days; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "b59fec9552ab", "verdict": "CORRECT", "reason": "Keel Jan 1972 to thousandth crane Jun 1984 ~12.4yr vs merger-meeting ~10.5mo; Duration 1 longer.", "reviewer": "ai"}
+{"rid": "50bf6c047f27", "verdict": "CORRECT", "reason": "Intakes after May 21 1946 ballot: 1948 intake Sep 6 1948, 1959 intake Sep 14 1959 \u2014 1959 latest; 1937 intake precedes anchor.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "962fcddb1000", "verdict": "CORRECT", "reason": "Designation-town centre ~14.6yr vs plan-residents ~2.3yr; Duration 1 longer.", "reviewer": "ai"}
+{"rid": "6b1c7d3d22f3", "verdict": "CORRECT", "reason": "Second clinic Apr 16, 2016; next confirmed case after it is the third (May 30).", "reviewer": "ai"}
+{"rid": "f21f0e8770c0", "verdict": "CORRECT", "reason": "Latest event before centenary (Aug 2003) is second franchise win (Apr 2000).", "reviewer": "ai"}
+{"rid": "d0a320114fe2", "verdict": "CORRECT", "reason": "First press arrival after May 1946 ballot is rotary press (Jul 19, 1949).", "reviewer": "ai"}
+{"rid": "6bdfbff159ec", "verdict": "CORRECT", "reason": "First dated offer milestone after Apr 2022 strike wave is rejection on Jun 14, 2022.", "reviewer": "ai"}
+{"rid": "3a7c82da50c1", "verdict": "CORRECT", "reason": "Tramways municipalized Oct 13, 1927; almshouses finished Apr 5, 1931; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "79042c575832", "verdict": "CORRECT", "reason": "Service changes after Oct 19 1992 footbridge: Sunday service May 23 1993, through service Mar 30 1997, half-hourly May 26 2002 \u2014 half-hourly latest.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "cfc7f7fd2ebb", "verdict": "CORRECT", "reason": "First woman mayor May 9, 1949; next market event is first farmers' market Jun 3, 1952.", "reviewer": "ai"}
+{"rid": "591195c29b0c", "verdict": "CORRECT", "reason": "Molnar kept programme finances through the four years, overlapping Vane's senate chairmanship.", "reviewer": "ai"}
+{"rid": "a2e6a5689347", "verdict": "AMBIGUOUS", "reason": "Cruise terminal's first ship never mentioned; Duration 2 not derivable from passage.", "reviewer": "ai", "verify": "leans-bad"}
+{"rid": "c9a8c6944849", "verdict": "CORRECT", "reason": "Route launches after Jun 20 2017 consultation: Berlin Oct 12 2017, northern (Icelandic/Reykjavik) route May 18 2019 \u2014 latter latest; Lisbon 2016 precedes.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "928be54d6ce8", "verdict": "CORRECT", "reason": "D1 Jan 2017-Feb 2019 ~25.1mo; D2 Jun 2016-Sep 2018 ~27mo; within ~2 months, approximately same.", "reviewer": "ai"}
+{"rid": "fb9023b74299", "verdict": "CORRECT", "reason": "Flood end to drought start ~16yr vs 22-day heatwave; Duration 1 longer.", "reviewer": "ai"}
+{"rid": "66d11cfbb2b7", "verdict": "CORRECT", "reason": "No premier's diary secretary post in passage; none of options supported.", "reviewer": "ai"}
+{"rid": "e534cab158df", "verdict": "CORRECT", "reason": "Trench regional secretary 2020-2023, overlapping Ansari's stewardship from 2021.", "reviewer": "ai"}
+{"rid": "6da0728dcdb3", "verdict": "CORRECT", "reason": "Work Sep 1936, storm Jan 1937, railings Mar 1937, wall completed Oct 1937 -> B,C,A,D.", "reviewer": "ai"}
+{"rid": "db900bb4e5ae", "verdict": "CORRECT", "reason": "No calf birth mentioned in passage; abstain genuine.", "reviewer": "ai"}
+{"rid": "fd32cc548503", "verdict": "CORRECT", "reason": "Market events after May 1 1937 election: Wednesday revival 1947, farmers\u2019 market 1952, Christmas market Dec 11 1953 \u2014Christmas latest (extension is a hall event).", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "2358d7135a7e", "verdict": "CORRECT", "reason": "Fleet delivery Nov 28, 2015; next extension opening is harbour spur Jul 14, 2016.", "reviewer": "ai"}
+{"rid": "76364e206246", "verdict": "CORRECT", "reason": "D1 ~1yr4mo, D2 ~1yr5mo; within ~2 months, approximately same.", "reviewer": "ai"}
+{"rid": "c2dda2f352a3", "verdict": "CORRECT", "reason": "D1 ~2.6 years vs reopening-listing ~16.4 years; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "60deeaf1ed33", "verdict": "CORRECT", "reason": "Rating Feb 18 2019, pool Jun 3 2019, award Aug 25 2019 -> B,A,C.", "reviewer": "ai"}
+{"rid": "643c4f637d67", "verdict": "CORRECT", "reason": "Reopening Jul 15, 1946 to comet photographs Feb 27, 1962 = 15 years 7 months 12 days.", "reviewer": "ai"}
+{"rid": "8e8880a8a81f", "verdict": "CORRECT", "reason": "Rebuilding-night settlement ~9.5yr vs machine-book launch ~1yr; Duration 1 longer.", "reviewer": "ai"}
+{"rid": "77fa37d33581", "verdict": "CORRECT", "reason": "Lease Feb 1993, relaying May 1994, station Oct 1995, steam Apr 1996, extension Sep 1997 -> C,A,E,B,D.", "reviewer": "ai"}
+{"rid": "5b0a425e3aa3", "verdict": "CORRECT", "reason": "Campaign events after Jun 30 1947 first houses: tenants meeting Jul 28 1947, association Feb 14 1948, play area victory Apr 16 1953 \u2014victory latest.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "621c0dff00be", "verdict": "CORRECT", "reason": "Frayne managing director 1995-2001, overlapping Wideen's safety case managership from 1996.", "reviewer": "ai"}
+{"rid": "c38563153469", "verdict": "CORRECT", "reason": "Prosser herd manager Apr 2015-Nov 2019, overlapping Vaugirard's creamery tenure Jun 2015-Sep 2019.", "reviewer": "ai"}
+{"rid": "4dfe325fd267", "verdict": "CORRECT", "reason": "Storm Jan 1937, railings Mar 1937, wall Oct 1937, promenade opened May 1938 -> A,C,D,B.", "reviewer": "ai"}
+{"rid": "d307ebee7a4c", "verdict": "CORRECT", "reason": "Camera installed Nov 17, 2008; first honour after is medal Jul 9, 2010.", "reviewer": "ai"}
+{"rid": "81a42a01f960", "verdict": "CORRECT", "reason": "Fund distribution 'fixed in the spring though no date yet set'; never dated, abstain genuine.", "reviewer": "ai"}
+{"rid": "34fcfcf608eb", "verdict": "CORRECT", "reason": "Admissions 'resumed in stages', no date given; abstain genuine.", "reviewer": "ai"}
+{"rid": "d0bb3589cecc", "verdict": "CORRECT", "reason": "Veal master 1892-1910, overlapping Marsh's mathematics chair 1904-1931.", "reviewer": "ai"}
+{"rid": "e1db7c5c054c", "verdict": "CORRECT", "reason": "Designation-residents ~4.7yr vs residents-reservoir ~4.6yr; approximately same.", "reviewer": "ai"}
+{"rid": "ee0e8e5c8404", "verdict": "CORRECT", "reason": "Lambarde bursar 1897-1919, overlapping Norah Veal's tutorship 1912-1930.", "reviewer": "ai"}
+{"rid": "256bde152d6f", "verdict": "CORRECT", "reason": "Service milestones after Mar 25 2011 northern station: global coverage Apr 20 2012, broadband Oct 7 2013 \u2014 broadband latest; gold right.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "cba523d0f0f5", "verdict": "CORRECT", "reason": "Exhibit opened Sep 12, 1925; event just before is charter centenary Jun 7, 1925.", "reviewer": "ai"}
+{"rid": "a8c4334157c8", "verdict": "CORRECT", "reason": "Station openings after Dec 1 2008 service opening: northern Mar 25 2011, island May 8 2014 \u2014 island latest; first station 2007 precedes anchor.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "8972f03fd459", "verdict": "CORRECT", "reason": "Video adviser Jan 25, 2021; directly before is contactless limit raised Sep 30, 2020.", "reviewer": "ai"}
+{"rid": "094fdf291f16", "verdict": "CORRECT", "reason": "Milestones after Sep 30 2006 naming: camera Nov 17 2008, public archive release Oct 30 2013 \u2014 release latest; survey start 2006 precedes anchor.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "498ba85a4a64", "verdict": "CORRECT", "reason": "Refill Apr 17 2019, watch May 20, record temp Jul 25, burst main Aug 3 -> B,A,D,C.", "reviewer": "ai"}
+{"rid": "c924f184fb35", "verdict": "CORRECT", "reason": "Railings Mar 1937, wall Oct 1937, promenade May 1938, bandstand Jul 1938 -> B,D,C,A.", "reviewer": "ai"}
+{"rid": "d485469d771c", "verdict": "CORRECT", "reason": "Premium rebates 'remain unresolved and undated'; abstain genuine.", "reviewer": "ai"}
+{"rid": "901d78bd2a6d", "verdict": "CORRECT", "reason": "Cranmore supervisor of operators from Apr 1952, within Voss's chief clerkship 1936-1958.", "reviewer": "ai"}
+{"rid": "5e029c0010cb", "verdict": "AMBIGUOUS", "reason": "Hub's board approval never dated in passage; cannot derive pharmacy clinic as immediately preceding.", "reviewer": "ai", "verify": "stays-ambiguous"}
+{"rid": "032d027e74bb", "verdict": "CORRECT", "reason": "Delivery Nov 2, 2001 to first public showing Nov 24, 2001 = 22 days.", "reviewer": "ai"}
+{"rid": "708c915f5461", "verdict": "CORRECT", "reason": "Outage Nov 9, 2015 to API launch Oct 6, 2017 = 1 year 10 months 27 days.", "reviewer": "ai"}
+{"rid": "78a71d94fd30", "verdict": "CORRECT", "reason": "Opening-withdrawal 2 days vs survey-work start ~26 months; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "0fe48c80bffb", "verdict": "CORRECT", "reason": "Caddock chair Mar 2015-Feb 2019, overlapping Tregear's field officership Aug 2015-May 2018.", "reviewer": "ai"}
+{"rid": "af243fd87e3c", "verdict": "CORRECT", "reason": "Civic occasions after Sep 26 1938 hall opening: woman mayor May 9 1949, Freedom award Mar 22 1956 \u2014 Freedom latest; Perrin election 1937 precedes.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "b25fa7e96425", "verdict": "CORRECT", "reason": "Hopkin archivist Apr 1999-Oct 2003, inside Auld's chief technicianship Jul 1990-Feb 2003.", "reviewer": "ai"}
+{"rid": "957802661662", "verdict": "CORRECT", "reason": "Launch-deorbit ~7.2 years vs polar campaign-deorbit ~2.5 years; Duration 1 longer.", "reviewer": "ai"}
+{"rid": "f68fecf6e75c", "verdict": "CORRECT", "reason": "Founding-500th policy ~2.7 years vs treaty-gale batch ~7.6 years; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "6272adf183ce", "verdict": "CORRECT", "reason": "Re-verification committed: Pellham reopened June 12, 2000; Carrow opened autumn 2000 (~October) \u2014 about four months.", "reviewer": "ai", "verify": "committed-correct"}
+{"rid": "ba027c538263", "verdict": "CORRECT", "reason": "Only event after official opening (May 21, 2018) is first year report (Apr 15, 2019).", "reviewer": "ai"}
+{"rid": "e6b5288c9227", "verdict": "CORRECT", "reason": "Caching rebuild Sep 30, 2016 to drone trial May 16, 2017 = 7 months 16 days.", "reviewer": "ai"}
+{"rid": "5297d1367da6", "verdict": "CORRECT", "reason": "Mirror Jun 2007, orbit Jan 2010, handover Oct 2012, archive sealed Sep 2014 -> A,B,D,C.", "reviewer": "ai"}
+{"rid": "97d165a7b1e1", "verdict": "CORRECT", "reason": "Inquiry Jun 2001, approval Nov 2001, construction Mar 2002, roof Feb 2003, opening Jun 2004.", "reviewer": "ai"}
+{"rid": "b2db6c899814", "verdict": "CORRECT", "reason": "Storm-cold store ~3.9 years vs storm-spray renewal ~7.7 years; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "e0ade62ff2a2", "verdict": "CORRECT", "reason": "Gaskell works manager 1993-2003, overlapping Jesson's signalling instructorship 1996-2004.", "reviewer": "ai"}
+{"rid": "162641191ad4", "verdict": "CORRECT", "reason": "Naming Sep 30, 2006; next comet discovery is the first (Mar 8, 2007).", "reviewer": "ai"}
+{"rid": "8c6499d286d5", "verdict": "WRONG", "reason": "Third round ~2 months 24 days vs erection-first full month ~1 month; Duration 1 is longer.", "reviewer": "ai", "verify": "confirmed"}
+{"rid": "5a8a5d1d82d0", "verdict": "CORRECT", "reason": "Takeover-approval ~5.8 months vs takeover-sod ~15.3 months; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "718dfd2f42f1", "verdict": "CORRECT", "reason": "Norah Veal tutor 1912-1930, within Hare's college office tenure 1893-1921.", "reviewer": "ai"}
+{"rid": "7dcf8ca398cf", "verdict": "CORRECT", "reason": "Ansari convened stewards from 2021, within Trench's regional secretaryship 2020-2023.", "reviewer": "ai"}
+{"rid": "6ed9524c5fd0", "verdict": "CORRECT", "reason": "Strike began Jan 17, 2022; immediately before is second ballot's close Nov 18, 2021.", "reviewer": "ai"}
+{"rid": "1747467274b2", "verdict": "CORRECT", "reason": "Heatwave break-third ninety ~2 years vs rebuilding-third ninety ~4.2 years; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "2078fb7a07a4", "verdict": "CORRECT", "reason": "Tarrant treasurer 1990-1995, overlapping Aldridge's festival board chairmanship 1992-1997.", "reviewer": "ai"}
+{"rid": "6ce248117d71", "verdict": "CORRECT", "reason": "Visitor centre repeatedly 'in pencil', no opening date; abstain genuine.", "reviewer": "ai"}
+{"rid": "1b30060014f5", "verdict": "CORRECT", "reason": "Latest dated event in the account is the court's exhibit, opened Sep 12, 1925.", "reviewer": "ai"}
+{"rid": "e3c01cf716f8", "verdict": "CORRECT", "reason": "Hall doubled Jul 9, 1957; next event is subscriber trunk dialling Apr 22, 1960.", "reviewer": "ai"}
+{"rid": "77514a7c63ae", "verdict": "CORRECT", "reason": "Launch Apr 30 2016, peak Aug 22 2016, clinics Nov 5 2016, 60% Jan 16 2017 -> D,A,C,B.", "reviewer": "ai"}
+{"rid": "1e92aeccd3b5", "verdict": "CORRECT", "reason": "Wheldon led regeneration 2006-2011, within Kelsall's markets service run 2008-2013.", "reviewer": "ai"}
+{"rid": "19721f8bf905", "verdict": "CORRECT", "reason": "Weather events after Nov 5 1973 claims office: second storm Jan 11 1974, February floods Feb 9 1974 \u2014floods latest; Maren Oct 1973 precedes anchor.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "7a27e5487257", "verdict": "CORRECT", "reason": "First full month-roof year close ~19 months vs dismissal-erection ~2 months; Duration 1 longer.", "reviewer": "ai"}

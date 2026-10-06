@@ -1,0 +1,125 @@
+{"rid": "cdc9d82b0daf", "verdict": "CORRECT", "reason": "Latest amenity opening after Jul 28 1947 meeting is the clinic (Jul 19 1954); school 1949, shops 1950, hall 1952 precede.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "335ebdcbc1ce", "verdict": "CORRECT", "reason": "Jan2021-May2023 (~28mo) exceeds May2023-Sep2024 (~16mo); Duration 1 is longer."}
+{"rid": "3dd793cd4d1c", "verdict": "CORRECT", "reason": "Rhys's field-officer span (2015-2018) falls within Dai Prosser's herd-manager tenure (2015-2019)."}
+{"rid": "002b1f0929e1", "verdict": "CORRECT", "reason": "Oct 10, 1967 to Mar 28, 1969 = exactly 1 year 5 months 18 days."}
+{"rid": "4a7d18cafa1b", "verdict": "CORRECT", "reason": "Incorporation(1895)-merger(1904) is ~9yrs, far longer than incorporation-profit(1897) ~2.7yrs."}
+{"rid": "a9aec238920d", "verdict": "CORRECT", "reason": "Temporary ward opened Feb 1917, the first ward-related change after the Sept 2016 march."}
+{"rid": "a50bfbcb3684", "verdict": "CORRECT", "reason": "Dialogue never mentions Marie retiring; absence of info correctly stated."}
+{"rid": "f6f7e655f0d4", "verdict": "CORRECT", "reason": "Home-dialysis training has no scheduled date in text, only 'will begin once certified'."}
+{"rid": "4d51b5fe0515", "verdict": "CORRECT", "reason": "Latest report after uptake report (Jul 8 2016) is the follow-up survey (Oct 4 2017); county audit was Jan 19 2017.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "fe0d4104691b", "verdict": "CORRECT", "reason": "Design competition 1959, CPO confirmed Mar 1960, construction began Nov 1960: A,B,C."}
+{"rid": "4b3730ebc228", "verdict": "CORRECT", "reason": "Mar 17, 1987 minus 10 months = May 17, 1986."}
+{"rid": "c53a9202bda3", "verdict": "CORRECT", "reason": "May 26, 2020 minus 8 months = September 26, 2019."}
+{"rid": "7ece899c6cef", "verdict": "CORRECT", "reason": "June2001-Apr2002 (~10.5mo) is longer than Oct2001-Apr2002 (~7mo)."}
+{"rid": "f7bd8387024e", "verdict": "CORRECT", "reason": "Only bridge completed after the 1998 glasshouse opening is the tide-rising estuary crossing (2003)."}
+{"rid": "b7707d0c9790", "verdict": "CORRECT", "reason": "After the 2nd comet (Sep 2009), the medal (Jul 2010) precedes the exhibition (May 2011); no fellowship mentioned."}
+{"rid": "81208a135c37", "verdict": "CORRECT", "reason": "Dunmore's volunteers-lead tenure (2021-2023) falls within Rask's site-director span (2020-2023)."}
+{"rid": "82c3b88d73ee", "verdict": "WRONG", "reason": "Dates: record temp Jul25,2019 < burst main Aug3,2019 < grant Sep12,2019, so order is B,C,A not C,B,A.", "verify": "confirmed"}
+{"rid": "e9d121e99ffa", "verdict": "CORRECT", "reason": "Regrading review was sent to committee but text states no date given for its report."}
+{"rid": "26bbeaf3d4a1", "verdict": "CORRECT", "reason": "Calverton airfield inspection Nov 4, 1996 to report Dec 2, 1996 = 28 days."}
+{"rid": "d854b2ac1b22", "verdict": "CORRECT", "reason": "Mar 5, 2017 relaunch to Dec 1, 2018 20,000th screening = 1 year 8 months 26 days."}
+{"rid": "f1a35e1e6255", "verdict": "CORRECT", "reason": "Merger(1967)-to-crane-order(1971) span (~4.3yr) is far longer than crane-order-to-delivery (~10.5mo)."}
+{"rid": "4acc32e4c3d4", "verdict": "CORRECT", "reason": "Only dated event after the 1939 hall opening among options is the 1949 final account closing."}
+{"rid": "ab4919707105", "verdict": "CORRECT", "reason": "Feb 2, 2016 merger to Dec 19, 2017 campaign close = 1 year 10 months 17 days."}
+{"rid": "f7a62a8f69ec", "verdict": "CORRECT", "reason": "Reports after third case (May 30 2016): uptake Jul 8 2016, audit Jan 19 2017, survey Oct 4 2017 \u2014 survey is latest; gold right.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "d03737020dc2", "verdict": "CORRECT", "reason": "Osei's company-secretary tenure (2006-2014) covers Wrack's chair tenure (2005-2013)."}
+{"rid": "55855d9c9815", "verdict": "CORRECT", "reason": "Leak drive Jan2019 < refill Apr2019 < watch May2019 < record temp Jul2019: C,A,B,D matches."}
+{"rid": "3f22d58256f5", "verdict": "AMBIGUOUS", "reason": "Durations are 62 vs 117 days (~55-day/1.8mo gap) - borderline between 'same' and 'Duration 2 longer'.", "verify": "leans-bad"}
+{"rid": "efce53305130", "verdict": "CORRECT", "reason": "Durations are 246 vs 238 days, within ~3%, genuinely approximately the same."}
+{"rid": "7b0d8a0f9236", "verdict": "CORRECT", "reason": "Mar 17, 2023 result to Apr 3, 2023 action start = 17 days."}
+{"rid": "45ab988a6a04", "verdict": "CORRECT", "reason": "Sandhu's conservator tenure (2020-2022) falls fully within Mere's finds-officer tenure (2020-2024)."}
+{"rid": "d50c5bc88fa3", "verdict": "CORRECT", "reason": "Retrial (Feb 15, 1894) is the event immediately before the registry's establishment (Jun 11, 1894)."}
+{"rid": "9b59b27cef2f", "verdict": "CORRECT", "reason": "Foundations Feb1961 < cranes May1961 < topping-out Aug1962 < tenants move in Mar1963: D,C,B,A."}
+{"rid": "8b65b0c5ab2a", "verdict": "CORRECT", "reason": "Quashed Apr1924 < Divisional Court Oct1924 < judgment Feb1925 < costs order Nov1925: C,B,A,D."}
+{"rid": "79e851ce342d", "verdict": "CORRECT", "reason": "Reading room extension's works/opening are placed in early summer 1957, ~7 years after the 1950 library opening."}
+{"rid": "9cfb0de1ee99", "verdict": "CORRECT", "reason": "Only station work dated after the 1997 through service is the 1998 lift installation."}
+{"rid": "d11c8a1e1caf", "verdict": "CORRECT", "reason": "The second-decade announcement (Nov 16, 2014) is the last-dated event in the passage."}
+{"rid": "7f61a00378c0", "verdict": "CORRECT", "reason": "Aug 20, 2019 website launch to Dec 13, 2019 week closing = 3 months 23 days."}
+{"rid": "eb57301edd89", "verdict": "CORRECT", "reason": "Cuts Oct2022 < talks resumed Jan2023 < pay deal May2023 < roster deal Feb2024: A,D,B,C."}
+{"rid": "33d156224eaf", "verdict": "CORRECT", "reason": "Pritchard's auditor tenure (2009-2013) overlaps Winterbourne's finance-director tenure (2006-2012)."}
+{"rid": "2a41d159682e", "verdict": "CORRECT", "reason": "First sod cut 1966 precedes grid synchronisation 1968."}
+{"rid": "dad6fada28e4", "verdict": "CORRECT", "reason": "Both spans are ~9 years (9y3m26d vs 9y11d), within 10% relative tolerance despite ~3.5mo absolute gap."}
+{"rid": "0015a23b0bcd", "verdict": "CORRECT", "reason": "Runway extension finished Oct 1997; the first airshow after it is the millennium airshow (Aug 2000)."}
+{"rid": "56ba7592825a", "verdict": "CORRECT", "reason": "Borthwick's chief-engineer tenure (1940-1958) overlaps Quill's pilot-service-master tenure (1946-1962)."}
+{"rid": "b9d161dbf8fb", "verdict": "CORRECT", "reason": "Building began Oct2017 < topping-out Apr2018 < centre opened Nov2018 < outstanding rating Feb2019: D,B,A,C."}
+{"rid": "d4ceab68b159", "verdict": "CORRECT", "reason": "Walkout Sep2021 < offer tabled Nov7 < offer rejected Nov20 < deal accepted Jan2022 < back pay Mar2022: E,B,C,A,D."}
+{"rid": "cccbf4f869ab", "verdict": "CORRECT", "reason": "Ifans's machinery-ring tenure (2016-2019) falls within Prosser's herd-manager tenure (2015-2019)."}
+{"rid": "4cc29b49b082", "verdict": "CORRECT", "reason": "Flu ward span (~78 days) is far shorter than report-to-first-class span (~19 months); Duration 2 is longer."}
+{"rid": "1cb7158ed280", "verdict": "WRONG", "reason": "Text dates the completed ring only to 'the summer' of the Oct1960 article (~1yr10mo after Sep1958), not 2yr10mo.", "verify": "confirmed"}
+{"rid": "e7b262566d03", "verdict": "CORRECT", "reason": "The 1965 survey's author/post is never identified in the passage."}
+{"rid": "0314a9b24d70", "verdict": "CORRECT", "reason": "No fourth agent appears in the text; the third agent (1988) is the only appointment after the 1981 conference."}
+{"rid": "1b860105495c", "verdict": "CORRECT", "reason": "Nye's club-secretary tenure (1972-1988) overlaps Sant's captaincy (1971-1978)."}
+{"rid": "0428078efe11", "verdict": "CORRECT", "reason": "Jun 8, 2007 video link to Feb 21, 2008 night sittings = 8 months 13 days."}
+{"rid": "bc0802cf74d6", "verdict": "CORRECT", "reason": "The merger (Apr 2015) is immediately followed in the text by the first flu campaign (Oct 2015)."}
+{"rid": "cd5fe446e3b8", "verdict": "CORRECT", "reason": "Third satellite launched Oct2010 < handover Nov2010 < coverage declared complete Dec2010: C,B,A."}
+{"rid": "e5b95b8a95fa", "verdict": "CORRECT", "reason": "The ironmonger's retirement itself is never mentioned, only his later role as the exchange's founding anecdote and his son's."}
+{"rid": "e1c944f01fd7", "verdict": "CORRECT", "reason": "No 1949 ballot exists in text; next ballot after the 1948 intake is the 1955 ballot."}
+{"rid": "9588409701ca", "verdict": "CORRECT", "reason": "Claims office opened Nov 5, 1973, the earliest milestone after the Oct 28, 1973 storm; no hardship fund is mentioned."}
+{"rid": "649cc574068b", "verdict": "CORRECT", "reason": "Braithwaite's general-manager tenure (1936-1946) overlaps Camm's chief-engineer tenure (1937-1948)."}
+{"rid": "e25e2e0b62d6", "verdict": "CORRECT", "reason": "Opening-to-reopening span (~9.3 years) is far longer than foundation-stone-to-opening span (~1.1 years)."}
+{"rid": "5b409c0ede13", "verdict": "CORRECT", "reason": "Ravel's chairmanship (1967-1972) falls within Thornton's medical-superintendent tenure (1966-1974)."}
+{"rid": "d4cf8e54d657", "verdict": "CORRECT", "reason": "Takeover-to-sod (~467 days) and sod-to-last-game (~453 days) differ by only ~14 days, approximately the same."}
+{"rid": "4d4fd66fd33a", "verdict": "CORRECT", "reason": "First case Feb2016 < peak Aug2016 < declared over May2017 < review announced Sep2017 < report Feb2018: C,A,E,B,D."}
+{"rid": "336f10dbeae6", "verdict": "CORRECT", "reason": "First water analysis 1892; earliest baths opening after it is the tepid baths (1894), before drinking hall/inhalation rooms."}
+{"rid": "383ca0ea7cf8", "verdict": "CORRECT", "reason": "Lease signed Feb1993 < relaying began May1994 < viaduct repair completed Jan1995: A,C,B."}
+{"rid": "ab9502768539", "verdict": "CORRECT", "reason": "Brott's night-assistant tenure (2006-2013) overlaps Kelso's dome-engineer tenure (2007-ongoing)."}
+{"rid": "6c9212388165", "verdict": "CORRECT", "reason": "Synchronisation (Oct4,1968) and opening ceremony (Oct5,1968) are one day apart, essentially simultaneous."}
+{"rid": "c1024d52b3a4", "verdict": "CORRECT", "reason": "Next event after the Sept 2023 anniversary is the fiftieth member's signing (June 2024)."}
+{"rid": "4b938bc71e96", "verdict": "CORRECT", "reason": "Repanelling 1991 < partnership nominated 1996 < two-hourly service 1998 < Wealdstone bridge 2001 < second bridge 2001: D,E,B,A,C."}
+{"rid": "092ec8ffeb4d", "verdict": "CORRECT", "reason": "Text explicitly states no date has been set for the arcade rebuild to start."}
+{"rid": "ecc737221fa8", "verdict": "CORRECT", "reason": "Telex introduction (Oct 1953) is the event closest before the hall's doubling (July 1957)."}
+{"rid": "e8e76236b1aa", "verdict": "CORRECT", "reason": "Dam work began 1938 < topped out 1949 < complaints peaked 1958 < reservoir extended 1964: D,C,B,A."}
+{"rid": "40229fd03a9e", "verdict": "CORRECT", "reason": "Claims desk opened Oct 14, 1974, immediately before the adjusters' deployment on Oct 22, 1974."}
+{"rid": "0328701d3fbe", "verdict": "CORRECT", "reason": "Station works after May 23 1993 Sunday service: platforms 1994, booking hall 1996, lifts Sep 8 1998 \u2014 lifts latest; gold right.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "dd9c65c66daf", "verdict": "CORRECT", "reason": "May 16, 2012 merger to July 30, 2014 closure = 2 years 2 months 14 days."}
+{"rid": "2445dabdfe44", "verdict": "CORRECT", "reason": "Herrick's booking-office tenure (1992-2000) overlaps Gaskell's works-manager tenure (1993-2003)."}
+{"rid": "962076795b2f", "verdict": "CORRECT", "reason": "No ice-house strike exists in text; the first strike after the Mar 1938 agreement is the 1951 cold store dispute."}
+{"rid": "6d879a70b9a3", "verdict": "CORRECT", "reason": "No 'airfield groundsman' role is mentioned anywhere in the dialogue."}
+{"rid": "811d7b28b552", "verdict": "CORRECT", "reason": "Divisional Court Oct1924 < judgment Feb1925 < costs order Nov1925: C,B,A."}
+{"rid": "dba686ca175b", "verdict": "CORRECT", "reason": "May 22, 1998 final shift to Aug 25, 2003 reunion = 5 years 3 months 3 days."}
+{"rid": "40acdea821c7", "verdict": "CORRECT", "reason": "Dividend-to-crane-order span (~3.2yr) is much longer than keel-to-delivery span (~8.7mo)."}
+{"rid": "a45449b199b2", "verdict": "CORRECT", "reason": "Sellars's engineer tenure (1935-1952) spans Emmott's 1937-38 mayoralty."}
+{"rid": "2d6180472268", "verdict": "CORRECT", "reason": "Campaign events after Mar 9 2016 inspection: petition Jun 2016, march Sep 2016, debate Jan 2017, funding Aug 30 2017 \u2014 funding latest.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "288735096a31", "verdict": "CORRECT", "reason": "Hopkin's archivist tenure (1999-2003) overlaps Oduya's house-manager tenure (1990-2002)."}
+{"rid": "a817eabe97b9", "verdict": "CORRECT", "reason": "Pilot-start-to-award span (~2.95yr) exceeds report-to-400th-patient span (~2.24yr) by well over 10%."}
+{"rid": "a9faf1aa3c93", "verdict": "CORRECT", "reason": "Next hall event after Perrin's May1937 election is the new market hall's opening (Sept 1938)."}
+{"rid": "7477cdbe3415", "verdict": "CORRECT", "reason": "No staff Christmas party is mentioned anywhere in the passage."}
+{"rid": "91613448e869", "verdict": "CORRECT", "reason": "Prosser's herd-manager tenure (2015-2019) falls within Caddock's chair tenure (2015-2019)."}
+{"rid": "ad6bd1e29db5", "verdict": "CORRECT", "reason": "Church hall construction date is explicitly unset ('when funds allow', no date fixed)."}
+{"rid": "193f60e403d5", "verdict": "CORRECT", "reason": "Second tram fleet order has explicitly no date set in the text."}
+{"rid": "6785c6c9d9b4", "verdict": "CORRECT", "reason": "The centenary celebration (June 7, 1925) is the event immediately preceding the exhibit's opening (Sept 12, 1925)."}
+{"rid": "f8efe34482e5", "verdict": "CORRECT", "reason": "Latest campaign event after Feb 8 2017 temporary ward is funding confirmation (Aug 30 2017); closure May 2017 and debate precede.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "78802566c138", "verdict": "CORRECT", "reason": "No 1965 intake exists; first intake after the May1946 ballot is the 1948 intake, before the 1959 intake."}
+{"rid": "b9f9fa095e0f", "verdict": "CORRECT", "reason": "Scheme opened Sept 15, 1981; payments began Oct 6, 1981 = 21 days."}
+{"rid": "de8eb586c911", "verdict": "CORRECT", "reason": "The newsletter's first edition is never dated in the passage, so no event can be placed relative to it."}
+{"rid": "c722dcf10970", "verdict": "CORRECT", "reason": "Mere's finds-officer tenure (2020-2024) spans Brackley's surveyor tenure (2021-2024)."}
+{"rid": "88850b5a9dd3", "verdict": "CORRECT", "reason": "Only the nurses' home (1927) opens after the 1918 influenza epidemic among the ward options."}
+{"rid": "b8463267ed20", "verdict": "CORRECT", "reason": "Fiftieth member's signing (June 2024) is the last branch event before the banner's retirement (Aug 2024)."}
+{"rid": "65be595635ed", "verdict": "CORRECT", "reason": "Events after Jun 4 1903 first case: wing 1904, shorthand room 1906, centenary Jun 7 1925 \u2014 centenary latest; reading room 1901 precedes.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "f6160d646c8b", "verdict": "WRONG", "reason": "Duration 1 (Feb2-Apr6,1895 = 63 days) is about 4x Duration 2 (Feb14-Mar1,1912 = 16 days), not approximately equal.", "verify": "confirmed"}
+{"rid": "5f67fc68794d", "verdict": "CORRECT", "reason": "No 'surgery's own generator' event is mentioned anywhere in the passage."}
+{"rid": "887cfce8fd5a", "verdict": "CORRECT", "reason": "No 'spectrograph shed' construction is mentioned anywhere in the passage."}
+{"rid": "6633d317af07", "verdict": "CORRECT", "reason": "April 5, 2001 test run to April 29, 2001 preview = 24 days."}
+{"rid": "6c54abe68e4e", "verdict": "CORRECT", "reason": "Export-to-millionth-handset span (~3.3yr) exceeds millionth-handset-to-text-launch span (~1.9yr)."}
+{"rid": "d69263609831", "verdict": "CORRECT", "reason": "Creamery-to-wing span (~11.4yr) and wing-to-tankers span (~10.9yr) differ by only ~4.6%."}
+{"rid": "489635ab88e8", "verdict": "CORRECT", "reason": "Deal accepted Jan2022 < re-election Feb2022 < back pay settled Mar2022: C,B,A."}
+{"rid": "6ce0293e68d1", "verdict": "CORRECT", "reason": "Creamery-to-wartime-control-end span (~7.1yr) is far shorter than creamery-to-tanker-fleet span (~22.3yr)."}
+{"rid": "282df5433403", "verdict": "CORRECT", "reason": "Next station work after the Nov1991 group formation is the footbridge replacement (completed 1992)."}
+{"rid": "5669d90b4d7f", "verdict": "CORRECT", "reason": "Pro-to-jersey span (~2y3m) and jersey-to-worlds span (~2y3m) differ by only about 9 days."}
+{"rid": "04395aba302b", "verdict": "CORRECT", "reason": "Rota's county-wide adoption (Sept 2022) is the event closest before the apprenticeship scheme's March 2023 launch."}
+{"rid": "246fc6fd0831", "verdict": "CORRECT", "reason": "Library 1954 < baths 1958 < civic centre extension 1963: C,B,A."}
+{"rid": "12afb2e964d4", "verdict": "CORRECT", "reason": "Open season record (Aug 2013) is the event closest before the Nov 2014 second-decade announcement."}
+{"rid": "959e8060cd88", "verdict": "CORRECT", "reason": "Munro's chief-engineer tenure (1938-1953) overlaps Skelton's chairmanship (1937-1949)."}
+{"rid": "83b62689bec0", "verdict": "CORRECT", "reason": "Next subsidence event after the pool's April1968 founding is the mining subsidence wave of Sept 1970."}
+{"rid": "d56cd9e836f5", "verdict": "CORRECT", "reason": "No Palma route exists in text; first route launch after the Dec2015 pier opening is the Lisbon route (Apr 2016)."}
+{"rid": "f600911465d9", "verdict": "CORRECT", "reason": "Text explicitly states the inspectorate's reorganisation was 'postponed without term', no date given."}
+{"rid": "73d2ff0c2c7b", "verdict": "CORRECT", "reason": "Exchange hall's doubling (July 1957) is the event closest before trunk dialling's 1960 introduction."}
+{"rid": "b1bd253f72ee", "verdict": "CORRECT", "reason": "Dunmore's practice-manager tenure (1970-1979) spans Fenby's dispensary tenure (1971-1978)."}
+{"rid": "c637a34db835", "verdict": "CORRECT", "reason": "Next bridge completion after the July1993 water festival is the spinnaker footbridge (1997)."}
+{"rid": "86288b29d5b9", "verdict": "CORRECT", "reason": "Blythe's accounts-keeper tenure (2017-2019) falls within Prosser's herd-manager tenure (2015-2019)."}
+{"rid": "263c05b782bd", "verdict": "CORRECT", "reason": "Clinic-opening-to-wind-down span (~2.95yr) is far longer than rule-in-force-to-wind-down span (~8.5mo)."}
+{"rid": "180622f723c0", "verdict": "CORRECT", "reason": "Pyott's music-director tenure (1994-2001) overlaps Quennell's chorus-master tenure (1995-2002)."}
+{"rid": "12e185b19ebe", "verdict": "CORRECT", "reason": "Berth-to-relaunch span (~10.8mo) is much shorter than manifest-to-corridor-certification span (~22.4mo)."}
+{"rid": "b87b0281e7ed", "verdict": "CORRECT", "reason": "Text explicitly states no hearing date has been given for the rehearing petition."}
+{"rid": "aa70824bc14d", "verdict": "CORRECT", "reason": "Service changes after Jan 15 1996 rebuild: through service Mar 30 1997, half-hourly timetable May 26 2002 \u2014 half-hourly latest; gold right.", "reviewer": "ai", "reaudit": "literal-semantics"}
+{"rid": "a858a8e05e1f", "verdict": "CORRECT", "reason": "Automation programme completion (Jan 18, 1965) is the latest dated event in the passage."}

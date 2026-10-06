@@ -1,0 +1,400 @@
+{"rid": "14cc26fad046", "verdict": "CORRECT", "reason": "3h+4h=7h, matches gold"}
+{"rid": "39b889b555bc", "verdict": "CORRECT", "reason": "05:55 to 18:20 = 12h25m"}
+{"rid": "a7df8b680107", "verdict": "CORRECT", "reason": "co-response after opening, so FALSE is right"}
+{"rid": "5d8932765f89", "verdict": "CORRECT", "reason": "9 years=108 months > 100 months"}
+{"rid": "42c3187e93c2", "verdict": "CORRECT", "reason": "procedure after unveiling, TRUE correct"}
+{"rid": "faf95d2cc01f", "verdict": "CORRECT", "reason": "1 March +30 days = 31 March"}
+{"rid": "5e99c6dfec21", "verdict": "CORRECT", "reason": "30 days later, Tue+2=Thursday"}
+{"rid": "a68836e353dc", "verdict": "CORRECT", "reason": "1618-1648 = 30 years"}
+{"rid": "4d01365f0309", "verdict": "CORRECT", "reason": "1975 event before 1977 event = BEFORE"}
+{"rid": "d4caad3e60a4", "verdict": "CORRECT", "reason": "45min*4=180min=3 hours"}
+{"rid": "d577a24842ba", "verdict": "CORRECT", "reason": "week 12 (~day78-84) earliest of the three"}
+{"rid": "74c563b5d6aa", "verdict": "CORRECT", "reason": "sum of days to Aug31 leap year = 244"}
+{"rid": "2fdf2bdc2c49", "verdict": "CORRECT", "reason": "1969 event before 1971 event = BEFORE"}
+{"rid": "ebf1197595f3", "verdict": "CORRECT", "reason": "94min play+15min half=109min, 20:00+1:49=21:49"}
+{"rid": "ab1f1554d940", "verdict": "CORRECT", "reason": "365/14=26 complete fortnights"}
+{"rid": "61a3480040dc", "verdict": "CORRECT", "reason": "6 closed years (1940-45)+1977 demolished=7"}
+{"rid": "ea0db1390498", "verdict": "CORRECT", "reason": "31+28+31=90, day-of-year for 31 March"}
+{"rid": "5bc9eefbc592", "verdict": "CORRECT", "reason": "drain week Sept5-11, Sept4 not included, No correct"}
+{"rid": "27842cd6b585", "verdict": "CORRECT", "reason": "leap second inserted in June 30, day still ends 30 June"}
+{"rid": "f8a6e1ab64a3", "verdict": "CORRECT", "reason": "matinee days Wed/Sat also have evening shows"}
+{"rid": "32cb865a7b4e", "verdict": "CORRECT", "reason": "21:30+10h=07:30, +12h=09:30"}
+{"rid": "60e15d4c9dc1", "verdict": "CORRECT", "reason": "hub opened after cold-chain validated, FALSE correct"}
+{"rid": "476d4b6e8676", "verdict": "CORRECT", "reason": "3.5 hours elapsed = 3.5 circles"}
+{"rid": "a51787a848a2", "verdict": "CORRECT", "reason": "founded 1997, +5=2002"}
+{"rid": "3ff891df5a36", "verdict": "CORRECT", "reason": "2001 is in 21st century"}
+{"rid": "ca2bd7d60cc1", "verdict": "CORRECT", "reason": "7 days * 3min lost =21min, midnight-21min=23:39"}
+{"rid": "04eecc6f377c", "verdict": "CORRECT", "reason": "19:30+1.5h=21:00"}
+{"rid": "364377e9b06d", "verdict": "CORRECT", "reason": "90min/day*5=450min=7.5h"}
+{"rid": "7a9a449b993a", "verdict": "CORRECT", "reason": "360/15=24 days, day24 from Mar1 = Mar24"}
+{"rid": "2f1cb2dce481", "verdict": "CORRECT", "reason": "08:05-07:52=13 minutes"}
+{"rid": "08706b684c3b", "verdict": "CORRECT", "reason": "today=Monday, 3 days ago=Friday"}
+{"rid": "ed6517febec3", "verdict": "CORRECT", "reason": "14:05-20min=13:45"}
+{"rid": "35837f422260", "verdict": "CORRECT", "reason": "1900-1999: 25 leap candidates minus 1900 = 24"}
+{"rid": "445945a9809f", "verdict": "CORRECT", "reason": "09:45 to 12:10 = 145 minutes"}
+{"rid": "ff643b2455c6", "verdict": "CORRECT", "reason": "120 regular + 2 anniversary issues =122"}
+{"rid": "04ebe506e3c6", "verdict": "CORRECT", "reason": "1001+11=1012 for December"}
+{"rid": "5f6f6e93321e", "verdict": "CORRECT", "reason": "2021-21*10=1811"}
+{"rid": "a50b6829a261", "verdict": "CORRECT", "reason": "day45-31(Jan)=14, Feb 14"}
+{"rid": "74531bdc7b36", "verdict": "WRONG", "reason": "month starts Thursday: first Monday is 5th not 4th, meeting Thursday 8th not 7th", "verify": "confirmed"}
+{"rid": "d664302c4293", "verdict": "CORRECT", "reason": "20-4=16 December latest ship date"}
+{"rid": "6c9bbd39eab9", "verdict": "CORRECT", "reason": "day200-182(to Jun30)=18, July 18"}
+{"rid": "531b51b5b5b3", "verdict": "CORRECT", "reason": "harvest entirely in Sept, tours run through Sept, all 16 days covered"}
+{"rid": "2d91b07efa1a", "verdict": "CORRECT", "reason": "train1 arrives 13:15, train2 arrives 14:15, second later"}
+{"rid": "a68b9fc8ab57", "verdict": "CORRECT", "reason": "golden=50yrs, 2024-50=1974"}
+{"rid": "a0bd8a92746e", "verdict": "CORRECT", "reason": "14:45 to 18:30 = 3h45m"}
+{"rid": "3f97dd9e4b20", "verdict": "CORRECT", "reason": "20:15-90min=18:45"}
+{"rid": "a46606bb0365", "verdict": "CORRECT", "reason": "75%% of 120min=90min sport"}
+{"rid": "618dbc820f9f", "verdict": "CORRECT", "reason": "only 1900 qualifies (div100 not div400) in 1801-1900"}
+{"rid": "7fd28c85c54f", "verdict": "CORRECT", "reason": "15 Oct 2018 already Monday, no shift needed"}
+{"rid": "7bf898abc224", "verdict": "CORRECT", "reason": "10 occupied days of 30 = one third"}
+{"rid": "581b0f772be5", "verdict": "CORRECT", "reason": "business-day parcel: Thu+3bdays=Tue; calendar parcel: Thu+5=Tue; both Tuesday"}
+{"rid": "eacb4975a0c6", "verdict": "CORRECT", "reason": "regatta 10-12 Apr within repair 3 Mar-18 Apr"}
+{"rid": "3b5321d8acd2", "verdict": "CORRECT", "reason": "every 8h over 48h inclusive = 7 doses"}
+{"rid": "69357f6be15c", "verdict": "CORRECT", "reason": "Aug31 also Tuesday, so last Monday is Aug30"}
+{"rid": "375c070db91e", "verdict": "CORRECT", "reason": "bridge completed 1953+6=1959"}
+{"rid": "cc613f04fd89", "verdict": "CORRECT", "reason": "08:57 to 17:03 = 8h6m"}
+{"rid": "6355932fd73f", "verdict": "CORRECT", "reason": "tours 1989 (12th yr), audio guides 1989+9=1998"}
+{"rid": "8bfb5493b559", "verdict": "CORRECT", "reason": "training (Oct1) after install (Sep9), TRUE correct"}
+{"rid": "a7d3674bec95", "verdict": "CORRECT", "reason": "midpoint of 1891 and 1971 = 1931"}
+{"rid": "e87bf5e73ff0", "verdict": "CORRECT", "reason": "1962-24=1938, winter 1938-1939"}
+{"rid": "7f84026d8305", "verdict": "CORRECT", "reason": "1988-1944=44 years"}
+{"rid": "80c92480a06a", "verdict": "CORRECT", "reason": "1968 order before 1969 clinic, BEFORE"}
+{"rid": "e081114b4edb", "verdict": "CORRECT", "reason": "55min total, 16:15-0:55=15:20"}
+{"rid": "da61128b5ef1", "verdict": "CORRECT", "reason": "Aug14-31=18 days + Sep1-5=5 days = 23"}
+{"rid": "34fed943fa18", "verdict": "CORRECT", "reason": "2004-40=1964"}
+{"rid": "bc957740d46f", "verdict": "CORRECT", "reason": "2100 divisible by 100 not 400, not leap"}
+{"rid": "2d9328b5812b", "verdict": "CORRECT", "reason": "18 months before March2017 = September 2015"}
+{"rid": "eb623b6b3123", "verdict": "WRONG", "reason": "Nov30 2019 +100 days = 9 March 2020 (2020 leap), not 8 March", "verify": "confirmed"}
+{"rid": "7e0fad12d505", "verdict": "CORRECT", "reason": "7 days later, same weekday, Sunday"}
+{"rid": "26f894b191b9", "verdict": "CORRECT", "reason": "1967+28=1995, +28=2023 most recent"}
+{"rid": "c3f6e085b9f2", "verdict": "CORRECT", "reason": "12*3*3=108 two generations later"}
+{"rid": "ed5efc35f01c", "verdict": "CORRECT", "reason": "111 days Sept1-Dec20, 111/7=15 complete weeks"}
+{"rid": "8e787dbc944e", "verdict": "CORRECT", "reason": "11:30-12:45 and 13:00-14:15 overlap lunch 12:15-13:30"}
+{"rid": "6224bab0d45d", "verdict": "CORRECT", "reason": "six months after October = April"}
+{"rid": "bd90ed049a6a", "verdict": "CORRECT", "reason": "Feb3 to May3 = 3 complete months"}
+{"rid": "3090161f1471", "verdict": "CORRECT", "reason": "Friday+5days=Wednesday, 25+5=30 March"}
+{"rid": "de09d178623e", "verdict": "CORRECT", "reason": "daily show airs 365 times in 365-day year"}
+{"rid": "7e179279e2c8", "verdict": "CORRECT", "reason": "first session (Jan16,2017) after bike delivery (Dec19,2016), FALSE correct"}
+{"rid": "edcbb4aa1f95", "verdict": "CORRECT", "reason": "fortnight=14 days, July8+14=July22"}
+{"rid": "7e68b3c02bb0", "verdict": "CORRECT", "reason": "enrolled 1971 before graduated 1972, BEFORE"}
+{"rid": "12dc9104c44e", "verdict": "CORRECT", "reason": "Halloween is Oct31, last day of October"}
+{"rid": "8c3142644d75", "verdict": "CORRECT", "reason": "Feb,Apr,Jun,Aug,Oct issues =5, Dec paused"}
+{"rid": "1ad40f595ec3", "verdict": "CORRECT", "reason": "renews end of month, Feb 2021 ends 28th (non-leap)"}
+{"rid": "f975ec944489", "verdict": "CORRECT", "reason": "05:30 to 23:30 every 30min (midnight excluded as next day) = 37 departures"}
+{"rid": "af6a2ac42769", "verdict": "CORRECT", "reason": "two estates in 1908 vs one in 1909, implies more items in 1908"}
+{"rid": "a99fa02a33e7", "verdict": "CORRECT", "reason": "last 100 days of 1912 begin ~Sept 23, novel begins September"}
+{"rid": "7910f0f64499", "verdict": "CORRECT", "reason": "home-visit (Mar3) after first patient (Feb9), FALSE correct"}
+{"rid": "c8acad65b6bf", "verdict": "CORRECT", "reason": "19:48-2:36=17:12"}
+{"rid": "c7a590b6f1e9", "verdict": "CORRECT", "reason": "gaps 11 and 11, average 11"}
+{"rid": "6503d7b2baec", "verdict": "CORRECT", "reason": "Oct1 Sun, first Fri=Oct6, second Fri=Oct13"}
+{"rid": "45da5bfdb6f2", "verdict": "CORRECT", "reason": "19:30+30min=20:00"}
+{"rid": "738a41cafa4b", "verdict": "CORRECT", "reason": "9 months with classes, 3 without (Jan, Jul, Aug)"}
+{"rid": "26035f9d4eec", "verdict": "CORRECT", "reason": "Aug11-14 inclusive = 4 days"}
+{"rid": "19662455f7a2", "verdict": "CORRECT", "reason": "Oct27-21days=Oct6"}
+{"rid": "064c2cfcf853", "verdict": "CORRECT", "reason": "last 7 days of Sept = 24-30"}
+{"rid": "5c95a2c680ef", "verdict": "CORRECT", "reason": "-12C on Jan9 is earlier than -9C on Jan23"}
+{"rid": "dc263bfd74b7", "verdict": "CORRECT", "reason": "2010-2003=7 years out of print"}
+{"rid": "a2ab50a671ad", "verdict": "CORRECT", "reason": "eve of Sept29 = Sept28 1347"}
+{"rid": "dd2c8fa3c5ab", "verdict": "CORRECT", "reason": "Aug4-17 inclusive = 14 issues"}
+{"rid": "b0fcc8756eb5", "verdict": "CORRECT", "reason": "day100=Apr10, day160=June9"}
+{"rid": "1b1b2fc35f2f", "verdict": "CORRECT", "reason": "45 days=6 weeks+3, guaranteed min Tuesdays=6"}
+{"rid": "945b032a1203", "verdict": "CORRECT", "reason": "2000,04,08,12,16,20,24 = 7 leap years"}
+{"rid": "9d947e8543f2", "verdict": "CORRECT", "reason": "first-footing occurs just after New Year midnight"}
+{"rid": "f1fea191a9e6", "verdict": "CORRECT", "reason": "Mar12-31=20 days + Apr1-4=4 days = 24"}
+{"rid": "c87972f73737", "verdict": "CORRECT", "reason": "1945,1969,1989 is chronological, option B"}
+{"rid": "71b31300417e", "verdict": "CORRECT", "reason": "weekdays only, Aug15 2021 was Sunday, not open"}
+{"rid": "f5afa97a4a44", "verdict": "CORRECT", "reason": "9(June)+31+31+23(Sept)=94 days"}
+{"rid": "325ef9ee1e8f", "verdict": "CORRECT", "reason": "50 years / 10 = 5 decades"}
+{"rid": "d9d768725791", "verdict": "CORRECT", "reason": "22:30 to 06:45 = 8h15m"}
+{"rid": "8402985b2812", "verdict": "CORRECT", "reason": "45*2=90 minutes"}
+{"rid": "2f76d9780810", "verdict": "CORRECT", "reason": "July22-30 inclusive = 9 days"}
+{"rid": "8ace4422c818", "verdict": "CORRECT", "reason": "June1 Wed, first Monday = June6"}
+{"rid": "cf49cbd8d302", "verdict": "CORRECT", "reason": "1600+12=1612"}
+{"rid": "af126612d296", "verdict": "CORRECT", "reason": "late May2010+26 months=July2012"}
+{"rid": "f4d3a5dfaa36", "verdict": "CORRECT", "reason": "800->400(2000)->200(2010)"}
+{"rid": "bcf694ddd4ae", "verdict": "CORRECT", "reason": "days 1,3,...,29 = 15 bankings"}
+{"rid": "32ff93c38e35", "verdict": "CORRECT", "reason": "1903-1925=23 yrs minus 4 skipped = 19th edition"}
+{"rid": "e76029cfd148", "verdict": "CORRECT", "reason": "two complete calendar months after mid-May = ends 31 July"}
+{"rid": "a17da7f2d251", "verdict": "CORRECT", "reason": "gap 1914-1920 covers WWI, not in Paris then"}
+{"rid": "1bbce4f8c872", "verdict": "CORRECT", "reason": "19th century starts 1801"}
+{"rid": "117e223a5a01", "verdict": "CORRECT", "reason": "launch Oct3 before first clinic Oct5, TRUE"}
+{"rid": "a91c534de3e5", "verdict": "CORRECT", "reason": "daughter born 2000, turns 40 in 2040"}
+{"rid": "9f92cf374ca7", "verdict": "CORRECT", "reason": "retroactive to start of 1996"}
+{"rid": "d211677e6023", "verdict": "CORRECT", "reason": "early closing only last Wed, never on Monday, Yes consistent"}
+{"rid": "6b58881e92d1", "verdict": "CORRECT", "reason": "100 mod 7=2, Wed+2=Friday"}
+{"rid": "ac613c612887", "verdict": "CORRECT", "reason": "June 30 days, odd days 1-29=15 sailings"}
+{"rid": "577cbc263cc4", "verdict": "CORRECT", "reason": "May not restricted to weekends, Tuesday visit possible"}
+{"rid": "3c0fa0838424", "verdict": "CORRECT", "reason": "2000 leap(366 days), 366mod7=2, Sat+2=Monday"}
+{"rid": "b7824e499066", "verdict": "CORRECT", "reason": "1945+50=1995, 1945+100=2045"}
+{"rid": "6590df0dae9c", "verdict": "CORRECT", "reason": "1843-9=1834"}
+{"rid": "179f67d0baf5", "verdict": "CORRECT", "reason": "1986+76=2062"}
+{"rid": "7c1a343974ea", "verdict": "CORRECT", "reason": "July and August both 31 days, consecutive"}
+{"rid": "54019175a3aa", "verdict": "CORRECT", "reason": "Aldric 18 yrs vs Bryn 17 yrs, Aldric longer"}
+{"rid": "7fe95f8a8536", "verdict": "CORRECT", "reason": "stated range ends 28 Feb, 29 Feb literally excluded, not winter rate"}
+{"rid": "ccdef2a8bc9a", "verdict": "CORRECT", "reason": "autumnal equinox (Sept) later than vernal (March)"}
+{"rid": "3e1dd9101158", "verdict": "CORRECT", "reason": "only 5 months validity remain (Mar-Aug), need 6, not valid"}
+{"rid": "b0eef281936f", "verdict": "CORRECT", "reason": "30-8=22 weekdays +1 Saturday = 23"}
+{"rid": "ab9197f74967", "verdict": "CORRECT", "reason": "1978 to 2019 is over 41 years, more than 40"}
+{"rid": "c725dbfb19c3", "verdict": "CORRECT", "reason": "10 working days always spans 14 calendar days regardless of start weekday"}
+{"rid": "37ea8e443f4d", "verdict": "CORRECT", "reason": "06:00 to 22:00 hourly inclusive = 17 departures"}
+{"rid": "31c2c5256e32", "verdict": "CORRECT", "reason": "final year of 1980s = 1989"}
+{"rid": "ee994f5ecfee", "verdict": "CORRECT", "reason": "1972 and 1976 are leap years in range = 2"}
+{"rid": "71aa684fa9d0", "verdict": "CORRECT", "reason": "25 years*2 + 2 extra in 1726 = 52"}
+{"rid": "a14c36f4c822", "verdict": "CORRECT", "reason": "2001-1901=100 complete years"}
+{"rid": "1394ff05fa8e", "verdict": "CORRECT", "reason": "notes archived (Mar21) after records live (Mar3), FALSE correct"}
+{"rid": "7b0e605484dc", "verdict": "CORRECT", "reason": "3*4min+2*2min pauses=16 minutes"}
+{"rid": "a531a084815d", "verdict": "CORRECT", "reason": "1966 founding before 1969 fete, BEFORE"}
+{"rid": "d647acc076a8", "verdict": "CORRECT", "reason": "25+70+20=115min, 16:05+1:55=18:00"}
+{"rid": "19c93599a92a", "verdict": "CORRECT", "reason": "1795-1800 missing = 6 years"}
+{"rid": "3fe0f9b651f4", "verdict": "CORRECT", "reason": "3 fortnights=42 days > June's 30 days"}
+{"rid": "a312d8dc06b7", "verdict": "CORRECT", "reason": "1918+100=2018 centenary"}
+{"rid": "165ab82ce22e", "verdict": "CORRECT", "reason": "Oct1 2021 Friday is a business day, payment same day"}
+{"rid": "0ae2ca02d1c0", "verdict": "CORRECT", "reason": "update (Nov6) after commissioning (Oct2), FALSE correct"}
+{"rid": "3ff60e1e6d17", "verdict": "CORRECT", "reason": "400/30.44=13.14, 13 complete months"}
+{"rid": "83c39018bfff", "verdict": "CORRECT", "reason": "2h35m total, 19:30+2:35=22:05"}
+{"rid": "075d9dc8c6a9", "verdict": "CORRECT", "reason": "1216+700=1916, 2026-1916=110"}
+{"rid": "82f7aaeb777d", "verdict": "CORRECT", "reason": "granddaughter turns5 in 2021, grandmother born 2021-75=1946"}
+{"rid": "b47cd018d245", "verdict": "CORRECT", "reason": "second election 2009, inauguration March2010"}
+{"rid": "471c4989cc32", "verdict": "CORRECT", "reason": "score=20 years, 1804+20=1824"}
+{"rid": "47a4a329ae1d", "verdict": "CORRECT", "reason": "congress 1778, treaty 1778+5=1783"}
+{"rid": "431b6d89e1af", "verdict": "CORRECT", "reason": "2006 missing from 2004,05,07,08"}
+{"rid": "a5c85e138aa0", "verdict": "CORRECT", "reason": "figures published (Jul30) after screening began (Apr14), TRUE"}
+{"rid": "73570ba7db1d", "verdict": "CORRECT", "reason": "400->800->1600, 1917 cost 1600"}
+{"rid": "14a11382eff4", "verdict": "CORRECT", "reason": "referrals (Sep5) after repaint (Aug22), FALSE correct"}
+{"rid": "59d28db3eaba", "verdict": "CORRECT", "reason": "11:15 to 12:05 = 50 minutes"}
+{"rid": "d82e6886abea", "verdict": "CORRECT", "reason": "13 April minus 7 days = 6 April"}
+{"rid": "399a0f8bb0ce", "verdict": "CORRECT", "reason": "6 calendar months from Jan1 = July1 2010"}
+{"rid": "c0e4b717824b", "verdict": "CORRECT", "reason": "wing opened 1998, renovation ended 1998+5=2003"}
+{"rid": "eb46dcba7f6f", "verdict": "CORRECT", "reason": "overlap Oct19-20 = 2 days"}
+{"rid": "3c10c35d2d1e", "verdict": "CORRECT", "reason": "22:40+6h=04:40 next day"}
+{"rid": "2b967d2bd89e", "verdict": "CORRECT", "reason": "log entry made during/after staffing start that night, TRUE"}
+{"rid": "083e752b7385", "verdict": "CORRECT", "reason": "fete (Jun23) after boiler replacement (May28), TRUE"}
+{"rid": "9a99db7f4442", "verdict": "CORRECT", "reason": "14:27-12min=14:15"}
+{"rid": "05651915f843", "verdict": "CORRECT", "reason": "1897+40=1937, the 1930s"}
+{"rid": "cac9e3258fcd", "verdict": "CORRECT", "reason": "Oct2 2021 Saturday implies Oct1 was Friday"}
+{"rid": "c50f3bb5bb8c", "verdict": "CORRECT", "reason": "48h from Tue 15:00 = Thu 15:00"}
+{"rid": "152919845965", "verdict": "CORRECT", "reason": "1951-1980=30 years*4=120 payments"}
+{"rid": "96aecec03742", "verdict": "CORRECT", "reason": "day after 31 Jan is 1 Feb"}
+{"rid": "faf1ab4853be", "verdict": "CORRECT", "reason": "call June29, letter 2 days after = July1 1912"}
+{"rid": "01487ca3dbac", "verdict": "CORRECT", "reason": "11 days later, Thu+4(mod7)=Monday"}
+{"rid": "2054fca16839", "verdict": "CORRECT", "reason": "9th year of reign means reign began 1385-8=1377"}
+{"rid": "56b96d8d08ee", "verdict": "CORRECT", "reason": "day202=21 July, day210=29 July (non-leap)"}
+{"rid": "27c76d753e35", "verdict": "CORRECT", "reason": "8 intervals*6h=48h later, Mon08:00+48h=Wed08:00"}
+{"rid": "e6cb07f87592", "verdict": "CORRECT", "reason": "inspection (Jul8) after serving began (Jun10), FALSE correct"}
+{"rid": "0ca6324a6fe1", "verdict": "CORRECT", "reason": "Aug1 day213, +90=day303=30 October (non-leap)"}
+{"rid": "f7adfc2a08c8", "verdict": "CORRECT", "reason": "5+4=9 meetings"}
+{"rid": "fb52134d888a", "verdict": "CORRECT", "reason": "1917+100=2017"}
+{"rid": "8638407bdf22", "verdict": "CORRECT", "reason": "session ends 00:00, 23:12 to 00:00 = 48 minutes"}
+{"rid": "df448bf9172a", "verdict": "CORRECT", "reason": "Feb29 birthday only occurs in leap years: 2012"}
+{"rid": "da1be848160c", "verdict": "CORRECT", "reason": "Feb28+6 months=Aug28 2019"}
+{"rid": "6f5e29aa546b", "verdict": "CORRECT", "reason": "4 score=80, +7=87"}
+{"rid": "dac7ba77f7f4", "verdict": "CORRECT", "reason": "90 days/7=~12.9, about 13 weeks"}
+{"rid": "e6a807d6773b", "verdict": "CORRECT", "reason": "Dec25 before Jan6 window, not sold, No"}
+{"rid": "99afdb3aa39a", "verdict": "CORRECT", "reason": "29 days season, 5 Mondays off, 24 performance evenings"}
+{"rid": "7bc5f187e76b", "verdict": "CORRECT", "reason": "17:40+2:50=20:30"}
+{"rid": "c1f99387bbbf", "verdict": "CORRECT", "reason": "June is last month of first half of year"}
+{"rid": "9235f055d1f4", "verdict": "WRONG", "reason": "second Monday=June11, +6 weeks(42 days)=23 July 2018 by direct addition, not 22 July", "verify": "confirmed"}
+{"rid": "2d2a60d74dd2", "verdict": "CORRECT", "reason": "Nov1 2021 already Monday, sales begin same day"}
+{"rid": "e85395757779", "verdict": "CORRECT", "reason": "1532+24=1556, 16th century"}
+{"rid": "81fa1b0e7c5c", "verdict": "CORRECT", "reason": "2001, 2004, 2014 chronological order"}
+{"rid": "1054db107ec6", "verdict": "CORRECT", "reason": "12:30 through 23:30 = 12 occurrences of :30"}
+{"rid": "7df5d866284e", "verdict": "CORRECT", "reason": "Feb2019 minus 9 months = May 2018 (dataset's subtraction convention)"}
+{"rid": "ff7d3c9b607f", "verdict": "CORRECT", "reason": "May20 1994 +2y2d = 22 May 1996"}
+{"rid": "e61cc7e523a9", "verdict": "CORRECT", "reason": "1995-2010=16 years minus 1 skipped(2008)=15"}
+{"rid": "0b49b9a7a97e", "verdict": "CORRECT", "reason": "11:40 to 13:15 = 1h35m"}
+{"rid": "b4662ad7da4b", "verdict": "CORRECT", "reason": "noon falls within 09:00-17:00 shift"}
+{"rid": "880a94889d85", "verdict": "CORRECT", "reason": "2016 and 2020 fall in 2013-2023 range = 2"}
+{"rid": "e6082384357e", "verdict": "CORRECT", "reason": "surgery (Jan22) after admissions (Jan19), TRUE"}
+{"rid": "5ef0109055f5", "verdict": "CORRECT", "reason": "12-hr convention: 12+1+2+3=18 strikes"}
+{"rid": "75d016d2dbe2", "verdict": "CORRECT", "reason": "Tue,Wed,Thu = 3 days"}
+{"rid": "2805d58e427e", "verdict": "CORRECT", "reason": "day60 in leap year is Feb29, before March1(day61)"}
+{"rid": "a703042fb4cf", "verdict": "CORRECT", "reason": "day after tomorrow=16 Aug, minus3=13 Aug"}
+{"rid": "31cac50aed98", "verdict": "CORRECT", "reason": "on at 18:22, off 23:00 = 4h38m"}
+{"rid": "55b65c265433", "verdict": "CORRECT", "reason": "every 3rd year from 1905: 1905,08,11,14,17"}
+{"rid": "03f87ed4f4e9", "verdict": "CORRECT", "reason": "non-leap Feb = 28 days"}
+{"rid": "1f396a7be0f0", "verdict": "CORRECT", "reason": "52 minus 1 cancelled = 51"}
+{"rid": "6ddf28a5e2d3", "verdict": "CORRECT", "reason": "1859+110=1969, same date"}
+{"rid": "86ef3d8ee9ec", "verdict": "CORRECT", "reason": "1966 cornerstone before 1968 delivery, BEFORE"}
+{"rid": "6eee79cd5863", "verdict": "CORRECT", "reason": "1734-1759 inclusive = 26 entries"}
+{"rid": "6b30ee0007aa", "verdict": "CORRECT", "reason": "1967 opening before 1968 filter install, BEFORE"}
+{"rid": "56ab8de78fc2", "verdict": "CORRECT", "reason": "165 minutes /25 = 6 complete scenes"}
+{"rid": "a8b4a1d721e8", "verdict": "CORRECT", "reason": "renovation=4yrs, 1994+4=1998"}
+{"rid": "68dd3263f9ce", "verdict": "CORRECT", "reason": "middle value of 14:20,14:55,15:10 is 14:55"}
+{"rid": "2c319324c232", "verdict": "CORRECT", "reason": "leap Feb=29 days=29 puns"}
+{"rid": "99b67699a05d", "verdict": "CORRECT", "reason": "Sept15 minus 21 days = Aug25"}
+{"rid": "12973d3175c4", "verdict": "CORRECT", "reason": "skip last Monday(28th), collections on 7,14,21=3"}
+{"rid": "34fb3532d2f2", "verdict": "CORRECT", "reason": "Re-verification committed: A three-year gap ending in 1961 started in 1958.", "verify": "committed-correct"}
+{"rid": "cf5143796243", "verdict": "CORRECT", "reason": "2029 is in the 2020s"}
+{"rid": "767750d75714", "verdict": "CORRECT", "reason": "1925+100=2025"}
+{"rid": "27600ed53453", "verdict": "CORRECT", "reason": "113 total years minus 4(WWI) minus 6(WWII)=103"}
+{"rid": "dc9bc5dff052", "verdict": "CORRECT", "reason": "30 days*24h=720h"}
+{"rid": "c4a32e99a9b6", "verdict": "CORRECT", "reason": "1153+400=1553"}
+{"rid": "d99d964bafb8", "verdict": "CORRECT", "reason": "day182 non-leap year = 1 July"}
+{"rid": "2b3da59aa991", "verdict": "CORRECT", "reason": "Aug2 minus 14 days = 19 July"}
+{"rid": "c82a42d3e2a1", "verdict": "CORRECT", "reason": "March 31 days starting Tuesday: 1,8,15,22,29=5 Tuesdays"}
+{"rid": "fb9e4dffe41d", "verdict": "CORRECT", "reason": "reopened May6 before portal live May19, TRUE"}
+{"rid": "57e6790c2587", "verdict": "CORRECT", "reason": "8h/day*5=40h"}
+{"rid": "d6f3e7a093b6", "verdict": "CORRECT", "reason": "boiler serviced Jan8 before forum Jan22, FALSE correct"}
+{"rid": "18bab01cfb11", "verdict": "CORRECT", "reason": "March1 Friday, second Sunday=March10"}
+{"rid": "ec49df2f0ff3", "verdict": "CORRECT", "reason": "1971-1907=64"}
+{"rid": "c316a68de3e0", "verdict": "CORRECT", "reason": "years ending 2 or7 after 2019: 2022"}
+{"rid": "c50ad1fcc209", "verdict": "CORRECT", "reason": "overlap 1938-1949 inclusive=12 years"}
+{"rid": "87f5b8fcd852", "verdict": "CORRECT", "reason": "December and January both 31 days, consecutive pair=2"}
+{"rid": "27e24b0d9d41", "verdict": "CORRECT", "reason": "1000min=16h40m"}
+{"rid": "1a9ba182c671", "verdict": "CORRECT", "reason": "first three weekends' Saturdays = 3 shows"}
+{"rid": "ebfcf6fb9859", "verdict": "CORRECT", "reason": "3*14=42 months, Oct2020+42mo=Apr15 2024"}
+{"rid": "190c52078674", "verdict": "CORRECT", "reason": "(1912+1938)/2=1925"}
+{"rid": "734b000cf70a", "verdict": "CORRECT", "reason": "day79(Mar20) to day355(Dec21)=276 days"}
+{"rid": "0710055cdbf9", "verdict": "CORRECT", "reason": "7,14,21,28 = 4 days"}
+{"rid": "7f4dea3ffd00", "verdict": "CORRECT", "reason": "Jan31+Feb28+Mar31=90"}
+{"rid": "485fa2ad2960", "verdict": "CORRECT", "reason": "4th new moon ~day89.5 = late March"}
+{"rid": "c5a9893e8b85", "verdict": "CORRECT", "reason": "Sept30 2019 is a Monday, the last Monday"}
+{"rid": "237b34fc18a4", "verdict": "CORRECT", "reason": "July31days starting Thu: 1,8,15,22,29=5 Thursdays"}
+{"rid": "751ac50c2cc5", "verdict": "CORRECT", "reason": "Jan26-31 inclusive=6 days"}
+{"rid": "d8b4f0ff722d", "verdict": "CORRECT", "reason": "1912-1920=9 years minus 1917 suspension=8"}
+{"rid": "f997418df182", "verdict": "CORRECT", "reason": "April+5 months=September"}
+{"rid": "c4e94a0f7644", "verdict": "CORRECT", "reason": "20th century=1901-2000 strict convention"}
+{"rid": "043adaf1bc17", "verdict": "CORRECT", "reason": "Mon09:00 minus 3d14h = Thu19:00"}
+{"rid": "f9b5dedc0dce", "verdict": "CORRECT", "reason": "last rehearsal before July break plausibly late June"}
+{"rid": "2272ada9bbf2", "verdict": "CORRECT", "reason": "Apr2-30=28 days=4 weeks"}
+{"rid": "2a874637d044", "verdict": "CORRECT", "reason": "June15 Saturday, shifts to preceding Friday June14"}
+{"rid": "2c859f3ce6ec", "verdict": "CORRECT", "reason": "22:40 minus 30min=22:10"}
+{"rid": "f33a0933d66e", "verdict": "CORRECT", "reason": "1h40m*3=5h per stated linear assumption"}
+{"rid": "c6f68b175eb1", "verdict": "CORRECT", "reason": "8 specified months listed = 8 times"}
+{"rid": "2352ad2d3c07", "verdict": "CORRECT", "reason": "1698 is earliest of the four years"}
+{"rid": "62b36eb01a39", "verdict": "CORRECT", "reason": "06:45+50min=07:35, earliest arrival"}
+{"rid": "3f08ffbf3cbc", "verdict": "CORRECT", "reason": "May12 2016+10 years=May12 2026"}
+{"rid": "5ae58955174f", "verdict": "CORRECT", "reason": "13min to midnight+372min to 06:12=385min"}
+{"rid": "21be47ae23ff", "verdict": "CORRECT", "reason": "3:20+0:55+2:05=6h20m total"}
+{"rid": "4707bf0caf9f", "verdict": "CORRECT", "reason": "1974+20=1994, +9=2003"}
+{"rid": "96c10bddd4b3", "verdict": "CORRECT", "reason": "overlap 08:30-09:00=30min"}
+{"rid": "64fa1471e3f6", "verdict": "CORRECT", "reason": "66/3=22 years"}
+{"rid": "bf935eee95db", "verdict": "CORRECT", "reason": "10:00+45+20+90min=12:35"}
+{"rid": "dc4341c56f03", "verdict": "CORRECT", "reason": "only 4 Tuesdays in Oct2021, no 5th, event not held"}
+{"rid": "40259023c5a4", "verdict": "CORRECT", "reason": "night of 30-31 Oct ends on 31 Oct"}
+{"rid": "1f81aae15dff", "verdict": "CORRECT", "reason": "Dec20-31=12 days+Jan1-6=6 days=18"}
+{"rid": "d6f401fbde06", "verdict": "CORRECT", "reason": "training Nov2 before switch-on Nov5, TRUE"}
+{"rid": "47efb43a86a0", "verdict": "CORRECT", "reason": "1888+47=1935 electrified/ferry opened"}
+{"rid": "5bb453b9a702", "verdict": "CORRECT", "reason": "third quarter begins 1 July"}
+{"rid": "3033c1007efd", "verdict": "CORRECT", "reason": "Mon-Tue,Tue-Wed,Wed-Thu midnights=3"}
+{"rid": "fbaae0aee239", "verdict": "CORRECT", "reason": "second quarter begins 1 April 2018"}
+{"rid": "9434d163efc4", "verdict": "CORRECT", "reason": "09:50+6:40=16:30"}
+{"rid": "a94c1c76808b", "verdict": "CORRECT", "reason": "2008,2010,2012,2014=4 editions"}
+{"rid": "612aaa5e9b2e", "verdict": "CORRECT", "reason": "1967 is in the 1960s"}
+{"rid": "53ffb9aa27e2", "verdict": "CORRECT", "reason": "Nov30+6 months=30 May"}
+{"rid": "aca6acc8f2e2", "verdict": "CORRECT", "reason": "May31 2021 is the Monday given, begins that day"}
+{"rid": "3274df4e09ce", "verdict": "CORRECT", "reason": "day46 in leap year = 15 February, same day"}
+{"rid": "0ba27895c56f", "verdict": "CORRECT", "reason": "June1 Tuesday, following Monday=June7"}
+{"rid": "3290d8f91ee4", "verdict": "CORRECT", "reason": "leap Feb29+Mar31=60"}
+{"rid": "c6f330596b04", "verdict": "CORRECT", "reason": "Sept1 Tuesday, second Monday=Sept14"}
+{"rid": "d9a8157bb32d", "verdict": "CORRECT", "reason": "day175(June23 leap)+100=day275=1 October"}
+{"rid": "efaf70d425e2", "verdict": "CORRECT", "reason": "Emil born 1996, Tomas turns15 in2014, Emil=18"}
+{"rid": "f8d3133ed236", "verdict": "CORRECT", "reason": "23:00-05:00=6h"}
+{"rid": "c3f9ecf3119e", "verdict": "CORRECT", "reason": "14th-20th inclusive=7 days"}
+{"rid": "15f80a90e9f4", "verdict": "CORRECT", "reason": "Dec25 Thu +6 days=Dec31 Wednesday"}
+{"rid": "9908fd07d75f", "verdict": "CORRECT", "reason": "1988 opened before 1989 fitout, BEFORE"}
+{"rid": "3c72dd257d1b", "verdict": "CORRECT", "reason": "outbound arrives10:55,return departs11:10,+2:40=13:50"}
+{"rid": "5a8450c3e002", "verdict": "CORRECT", "reason": "evaluation(May2018) after launch(Nov2017), FALSE correct"}
+{"rid": "aa4ff6e4ec49", "verdict": "CORRECT", "reason": "Sept1 Saturday, second weekend=8-9 September"}
+{"rid": "79ca8fc2a61e", "verdict": "CORRECT", "reason": "Mon08:00+72h=Thu08:00"}
+{"rid": "87b2ae927c39", "verdict": "CORRECT", "reason": "45 days back from Dec31 inclusive = 17 November 2019"}
+{"rid": "654bb6e07148", "verdict": "CORRECT", "reason": "10:30-18:10=7h40m total, minus 40min lunch=7h playing"}
+{"rid": "66fcee23fe26", "verdict": "CORRECT", "reason": "2012-100=1912"}
+{"rid": "960da83ddf5b", "verdict": "CORRECT", "reason": "1972 accredited before 1974 suite opened, BEFORE"}
+{"rid": "e39a31370b88", "verdict": "CORRECT", "reason": "day62 non-leap year = 3 March, same day"}
+{"rid": "c78ff621fcb6", "verdict": "CORRECT", "reason": "2000 is last year of 20th century (1901-2000)"}
+{"rid": "8fdbffa07cc9", "verdict": "CORRECT", "reason": "two months before December = October"}
+{"rid": "3a8092db5925", "verdict": "CORRECT", "reason": "after 15:00 cutoff, two-day delivery from Monday = Wednesday"}
+{"rid": "a3f0caee72b0", "verdict": "CORRECT", "reason": "2018+13=2031"}
+{"rid": "0b32a2421dc4", "verdict": "CORRECT", "reason": "Re-verification committed: Ten working days from Nov 4, skipping weekends and observing the Nov 10 holiday, lands on Nov 19.", "verify": "committed-correct"}
+{"rid": "0065c89981f7", "verdict": "CORRECT", "reason": "June1 day152 minus120=day32=1 February 2018"}
+{"rid": "6be2c18e22e6", "verdict": "CORRECT", "reason": "March1904 to June1911 = 7 complete years"}
+{"rid": "1c71dc2aaeb4", "verdict": "CORRECT", "reason": "June5,July5,Aug5 = 3 anniversaries (May5 excluded)"}
+{"rid": "ac5eb0157339", "verdict": "CORRECT", "reason": "median of 2005,2005,2011 is 2005"}
+{"rid": "aa5466aad15c", "verdict": "CORRECT", "reason": "6 days/week*10 weeks=60"}
+{"rid": "66c4177cf234", "verdict": "CORRECT", "reason": "2020-2001=19 complete years"}
+{"rid": "1e03abc15645", "verdict": "CORRECT", "reason": "first Tuesday Aug6, second Tuesday=Aug13"}
+{"rid": "1b87fe9f48a2", "verdict": "CORRECT", "reason": "09:59 to 10:41 = 42 minutes"}
+{"rid": "107ba93fc303", "verdict": "CORRECT", "reason": "September outside June-August window, not open"}
+{"rid": "6afe73f91261", "verdict": "CORRECT", "reason": "10 years; 1992,1996 leap=2"}
+{"rid": "54971c283441", "verdict": "CORRECT", "reason": "Dec19-31=13+Jan31+Feb28+Mar18=90 days"}
+{"rid": "47bb78a1e050", "verdict": "CORRECT", "reason": "2012 and 2016 are leap years in the 2010s"}
+{"rid": "d85b9d251568", "verdict": "CORRECT", "reason": "Sept-June = 10 months"}
+{"rid": "ae68c594a290", "verdict": "CORRECT", "reason": "Remembrance Day is 11 November"}
+{"rid": "bfa0ac1075cf", "verdict": "CORRECT", "reason": "screening (Feb12) after camera arrival (Jan15), FALSE correct"}
+{"rid": "adebb97887ae", "verdict": "CORRECT", "reason": "100-94=6 weeks earlier, July6 minus42 days=May25"}
+{"rid": "f9d6630f3827", "verdict": "CORRECT", "reason": "booth certified May24 before fittings June6, TRUE"}
+{"rid": "0b0bdc9d0dfa", "verdict": "CORRECT", "reason": "61 days later, Tue+5(mod7)=Sunday"}
+{"rid": "b0f74b1e8eaa", "verdict": "CORRECT", "reason": "4*45min=180min=3h, 05:15+3:00=08:15"}
+{"rid": "55f8bf86360c", "verdict": "CORRECT", "reason": "1810-1815(6)+1830-1845(16)=22"}
+{"rid": "150956a2accd", "verdict": "CORRECT", "reason": "needs 5th Saturday(day29)+Sunday(day30) to exist, so 30/31 days starting Saturday"}
+{"rid": "3e280c52f966", "verdict": "CORRECT", "reason": "1st,3rd,5th Fridays = 3 max meetings"}
+{"rid": "4037f8362df7", "verdict": "CORRECT", "reason": "last full week ended Aug28(Sun), Aug31 is after it, archive open"}
+{"rid": "85f583ee60e1", "verdict": "CORRECT", "reason": "5 Mondays listed = 5 issues"}
+{"rid": "c0875bdede6b", "verdict": "CORRECT", "reason": "07:50,08:15,09:05 chronological order matches gold"}
+{"rid": "5118f26e8523", "verdict": "CORRECT", "reason": "market doesn't open at all Monday, so not open afternoons, No"}
+{"rid": "890346bc5449", "verdict": "CORRECT", "reason": "1966 X-ray before 1969 ultrasound, BEFORE"}
+{"rid": "56524ac44a40", "verdict": "CORRECT", "reason": "1227+200=1427, matches bicentennial fair"}
+{"rid": "62d476d121bd", "verdict": "CORRECT", "reason": "1969 unit before 1970 hotline, BEFORE"}
+{"rid": "be06547fcc11", "verdict": "CORRECT", "reason": "first Monday Feb3, 14-day period ending inclusively on Feb16 (Sunday)"}
+{"rid": "2bd04c0e04ed", "verdict": "CORRECT", "reason": "born Oct1990, March2022 before Oct birthday, 31 completed years"}
+{"rid": "f16ce43f84d1", "verdict": "CORRECT", "reason": "1967 day room before 1968 garden, BEFORE"}
+{"rid": "618a74b0f9b0", "verdict": "CORRECT", "reason": "first Friday exists every month, so Yes"}
+{"rid": "a89a6de829f3", "verdict": "CORRECT", "reason": "Dec1 2020 day336(leap)+90=day426->day60 of 2021=1 March"}
+{"rid": "3f6f08a505d0", "verdict": "CORRECT", "reason": "Sept2015+6 months=March2016"}
+{"rid": "b6b77644a41b", "verdict": "CORRECT", "reason": "first birth June17 after reconfiguration June16, TRUE"}
+{"rid": "b6eee5282958", "verdict": "CORRECT", "reason": "A=53 years, B=319 years, B ruled longer"}
+{"rid": "61af09f3bc04", "verdict": "CORRECT", "reason": "May9+14 days=May23"}
+{"rid": "d66ecb6a5d79", "verdict": "CORRECT", "reason": "rota (June2) after network formed (April7), FALSE correct"}
+{"rid": "86dc79e46e2d", "verdict": "WRONG", "reason": "4th class itself ends at 11:50 (3 full cycles=3h + 50min); 12:00 wrongly includes trailing break", "verify": "confirmed"}
+{"rid": "503ca65bc994", "verdict": "CORRECT", "reason": "1978 unit opened before 1979 extension, BEFORE"}
+{"rid": "f4657fd25b41", "verdict": "CORRECT", "reason": "Oct3-9 inclusive = 7 days"}
+{"rid": "9258649f28ac", "verdict": "CORRECT", "reason": "2025-90=1935, the 1930s"}
+{"rid": "d6e27f2a5a12", "verdict": "CORRECT", "reason": "2026-2=2024"}
+{"rid": "54a502db9399", "verdict": "CORRECT", "reason": "March,June,October - June is second"}
+{"rid": "99f28e953a91", "verdict": "CORRECT", "reason": "16:53+7min=17:00,+4min=17:04"}
+{"rid": "9dcf39b2818a", "verdict": "CORRECT", "reason": "1985 appears 3 times, most frequent"}
+{"rid": "7227f041ac0a", "verdict": "CORRECT", "reason": "23:40 to 06:20 = 6h40m"}
+{"rid": "935b44a58c61", "verdict": "CORRECT", "reason": "1879 before 1884"}
+{"rid": "8fa250cf6efb", "verdict": "CORRECT", "reason": "October falls within Sept-winter-holidays closure, not open"}
+{"rid": "d2c6f70f6a64", "verdict": "CORRECT", "reason": "audit Aug14 before stock arrival Sept2, TRUE"}
+{"rid": "2083db367567", "verdict": "CORRECT", "reason": "Aug15 falls in Q3 (Jul-Sep)"}
+{"rid": "c7e402013040", "verdict": "CORRECT", "reason": "every 4 years from 1961: 1973,77,81,85,89 in range"}
+{"rid": "f7a071f2649b", "verdict": "CORRECT", "reason": "05:30 within locked 23:00-06:00 window, needs bell"}
+{"rid": "f1b4d7dd4d0d", "verdict": "CORRECT", "reason": "Jan2020+18mo=July2021"}
+{"rid": "07715b5384ff", "verdict": "CORRECT", "reason": "2000-1990=10, vol42+10=52"}
+{"rid": "d06b23024e75", "verdict": "CORRECT", "reason": "weekdays before noon, Saturdays after noon, so Yes varies"}
+{"rid": "653be39f2928", "verdict": "CORRECT", "reason": "8h total minus 30min breaks=7.5h"}
+{"rid": "992f022b2204", "verdict": "CORRECT", "reason": "loan (Sept19) after desk opened (Aug8), FALSE correct"}
+{"rid": "9b25d6b6ed2c", "verdict": "CORRECT", "reason": "40*7=280 days"}
+{"rid": "04ebfa7f3557", "verdict": "CORRECT", "reason": "training (Apr27) after opening (Apr4), FALSE correct"}
+{"rid": "7e71cda01bd2", "verdict": "CORRECT", "reason": "Aug8 is within excluded August, not rehearsed, No"}
+{"rid": "a6a9163d016a", "verdict": "CORRECT", "reason": "14:15 to 16:10 = 115 minutes"}
+{"rid": "ab411af9fe2b", "verdict": "CORRECT", "reason": "1910+72=1982"}
+{"rid": "5616948287ad", "verdict": "CORRECT", "reason": "1967 unit before 1968 campaign close, BEFORE"}
+{"rid": "a7fc084e7614", "verdict": "CORRECT", "reason": "Fri18:00 to Mon18:00=72h, minus 12h=60h to Mon06:00"}
+{"rid": "64621f940601", "verdict": "CORRECT", "reason": "1902+65=1967, renovation ended 1964<1967, Yes"}
+{"rid": "5baf52115106", "verdict": "CORRECT", "reason": "6h*2min gain=12min, shows 12:12"}
+{"rid": "bf06dd23df8d", "verdict": "CORRECT", "reason": "1966 founded before 1967 TV presented, BEFORE"}
+{"rid": "6d3032f077f9", "verdict": "CORRECT", "reason": "08:53+7min=09:00"}
+{"rid": "f604b012e2f5", "verdict": "CORRECT", "reason": "100th visitor Nov30 after opening Oct12, TRUE"}
+{"rid": "ebf911730c28", "verdict": "CORRECT", "reason": "October has 31 days, Oct15-Nov15=31 days"}
+{"rid": "817b6912d930", "verdict": "CORRECT", "reason": "Sept2013+4y8m=May2018"}
+{"rid": "f2d5fda61e49", "verdict": "CORRECT", "reason": "Aug2019 minus 3y4m=April2016"}
+{"rid": "f13d798bfcda", "verdict": "CORRECT", "reason": "1240-25=1215"}
+{"rid": "a8d40f34dfc2", "verdict": "CORRECT", "reason": "fare paid (July31) after fund set up (July13), FALSE correct"}
+{"rid": "a5c302bcab97", "verdict": "CORRECT", "reason": "22:10 minus 25min=21:45"}
+{"rid": "b41395523462", "verdict": "CORRECT", "reason": "1804-1789=15"}
+{"rid": "f03248bb1d64", "verdict": "CORRECT", "reason": "leap years 1984-2019: 9 occurrences"}
+{"rid": "6409acb0d8af", "verdict": "CORRECT", "reason": "03:12 to 04:48 = 96 minutes"}
+{"rid": "c96f32c83816", "verdict": "CORRECT", "reason": "Feb lacks 31st, bills last day=28 Feb non-leap"}
+{"rid": "d72c34c41721", "verdict": "CORRECT", "reason": "1989+50=2039, same date"}
+{"rid": "cbd3c50ffb87", "verdict": "CORRECT", "reason": "12+24+0=36"}
+{"rid": "df5271df06b0", "verdict": "CORRECT", "reason": "Feb20+8=Feb28,+3 more=March3 (non-leap)"}
+{"rid": "a62db497d8cf", "verdict": "CORRECT", "reason": "8(Sept)+31+30+21(Dec)=90"}
+{"rid": "7f489d5ac02c", "verdict": "CORRECT", "reason": "Jan,Mar,May,Jul,Aug,Oct,Dec=7 months with 31 days"}
+{"rid": "50595da0a51c", "verdict": "CORRECT", "reason": "autumn1422,winter1422-23,spring1423 in order"}
+{"rid": "3ef65f5effc3", "verdict": "CORRECT", "reason": "1897-1913=17 years minus 2 destroyed=15"}
+{"rid": "4d50b5adc56b", "verdict": "CORRECT", "reason": "2.5*24=60h"}
+{"rid": "1c4f2a4b1c82", "verdict": "CORRECT", "reason": "midpoint of 1980-1989 conventionally 1985"}

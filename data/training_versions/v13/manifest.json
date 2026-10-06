@@ -1,15 +1,16 @@
 {
  "version": "v13",
  "dir": "data/combined_80_20_v13",
- "train_rows": 22093,
- "val_rows": 5678,
- "synthetic_pct": 76.8,
+ "train_rows": 23559,
+ "val_rows": 6038,
+ "synthetic_pct": 78.2,
  "general_rehearsal_pct": 0.0,
  "composition": {
   "AUG_PROG": 9748,
-  "AUG_GLM2": 4560,
+  "AUG_GLM2": 4897,
   "TimeQA": 4271,
-  "AUG_TPL3": 1238,
+  "AUG_GLM3": 1231,
+  "AUG_TPL3": 1136,
   "AUG_SEQ": 1019,
   "TLQA": 855,
   "AUG_GLM": 402
@@ -17,10 +18,10 @@
  "story": "v12 (minus 207 TimeQA rows whose gold the CoT pass found contradicted or unsupported by the passage, and minus the non-math rows that came from the agent's script-built glm_raw files 271-313) + AUG_TPL3 MATH ONLY: agent-written Python template rows (scripts/glm_v13_build/; NOT GLM-5.2 chat -- audit_2026_10_04 \u00a71.1) for Computation, Timeline, Relative_Reasoning, Duration_Compare, Order_Compare; every non-math template row removed by researcher decision + AUG_PROG programmatic math/temporal data (deliberately non-LLM, kept). Every kept math row passed an independent re-verification (scripts/verify_v13_math.py); filter counts in data/manifest.json.",
  "results": "pending",
  "results_dir": null,
- "size_mb": 94.1,
+ "size_mb": 99.1,
  "sha256": {
-  "train.jsonl": "1ba4f8798927d9f17192aafeb29025d998a19ca26b6e211c467422932c2876e7",
-  "val.jsonl": "bdc9fd79ec3a88303ae45794e8b227bfeefc171af3e43b60ab71c24e2f663b0a",
-  "manifest.json": "90ac8845271962ed0596ee6e4c5ccb3662e263c567ef1fd341e3ad327ee7447d"
+  "train.jsonl": "181745bad264ec1cad34dda0c10d40eb08ad1120a768efd86883168cdcbca8d7",
+  "val.jsonl": "69af818c8b0686696badfc5ff0f582b73d4c1290a6f95beabd7463434add81a8",
+  "manifest.json": "6bfc139977e30e5440fc1d4307ddc0ac8c0472a3bc90637e20abd5f4ccbf7dde"
  }
 }

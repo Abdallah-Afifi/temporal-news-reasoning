@@ -1,0 +1,76 @@
+{"rid": "1299f63e181b", "verdict": "CORRECT", "reason": "D1 campaign-decision 9.5 months; D2 site Oct15 1985-opening Jul3 1987 ~20 months; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "3782b89a1010", "verdict": "CORRECT", "reason": "D1 drawings Mar6-site start ~7m9d; D2 appointment-contract ~8m16d; gap ~37 days, within ~2 months.", "reviewer": "ai"}
+{"rid": "647a9a5374da", "verdict": "CORRECT", "reason": "D1 opening Jul3-gala Sep19 1987 ~2m16d; D2 sauna ext ~3m27d; gap ~39 days, within ~2 months.", "reviewer": "ai"}
+{"rid": "388d6d24d615", "verdict": "CORRECT", "reason": "D1 sauna extension ~4 months; D2 appointment Jan8-contract Sep24 1984 ~8.5 months; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "273838f0252a", "verdict": "CORRECT", "reason": "D1 site Oct15 1985-opening Jul3 1987 ~20 months vs D2 opening-gala ~2.5 months; Duration 1 longer.", "reviewer": "ai"}
+{"rid": "efb000e8cff1", "verdict": "CORRECT", "reason": "D1 opening-gala ~2.5 months vs D2 site-opening ~20 months; Duration 2 longer.", "reviewer": "ai"}
+{"rid": "da9c2104bd58", "verdict": "CORRECT", "reason": "Cup tie won Jan 9 2021; parade fixed May 10 2021; Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "1305f61ad3e5", "verdict": "CORRECT", "reason": "Signing Sep 14 2022; first race gulf tour Jan 2023; Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "d95b69c20356", "verdict": "CORRECT", "reason": "Fracture Mar 18 2023; extension announced Oct 6 2023; Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "88be0c97fd5f", "verdict": "CORRECT", "reason": "Plans published Mar 3 2021; ground broken Jun 7 2022; Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "36528136f3a5", "verdict": "CORRECT", "reason": "Season resumed Aug 12 2020; cup tie won Jan 9 2021; Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "13372239ef81", "verdict": "CORRECT", "reason": "First race gulf tour Jan 22 2023; return to competition Apr 15 2023; Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "ce8c21f26205", "verdict": "CORRECT", "reason": "Ground broken Jun 7 2022; championships opened Aug 12 2023; Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "2744442ea18c", "verdict": "CORRECT", "reason": "Caretaker appointed Nov 24 2020; record fee paid Feb 1 2021; Fact 1 earlier.", "reviewer": "ai"}
+{"rid": "5460c96a1fb1", "verdict": "CORRECT", "reason": "Cup tie won Jan 9 2021; parade fixed May 10 2021; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "8434d496537e", "verdict": "CORRECT", "reason": "Weill sacked Nov 23 2020; promotion sealed May 8 2021; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "54bca524dc04", "verdict": "CORRECT", "reason": "Fracture Mar 18 2023; extension announced Oct 6 2023; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "f929035968ba", "verdict": "CORRECT", "reason": "Signed Sep 14 2022; returned Apr 15 2023; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "40a390081539", "verdict": "CORRECT", "reason": "Ground broken Jun 7 2022; championships opened Aug 12 2023; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "41c26926f14b", "verdict": "CORRECT", "reason": "Closing ceremony Aug 20 2023; community meet May 4 2024; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "b628e002bf4d", "verdict": "CORRECT", "reason": "Record fee paid Feb 1 2021; season resumed Aug 12 2020; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "5f209f2d7629", "verdict": "CORRECT", "reason": "Return Apr 15 2023; first race Jan 22 2023; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "d1b0321e071d", "verdict": "CORRECT", "reason": "Record fell Aug 15 2023; plans published Mar 3 2021; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "a4beedaa75d8", "verdict": "CORRECT", "reason": "Caretaker appointed Nov 24 2020; season resumed Aug 12 2020; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "7eab94a99877", "verdict": "CORRECT", "reason": "Extension announced Oct 6 2023; signing Sep 14 2022; Fact 2 earlier.", "reviewer": "ai"}
+{"rid": "61a4e1c9145e", "verdict": "CORRECT", "reason": "Championships opened Aug 12, record fell Aug 15 2023; three days apart, almost same time.", "reviewer": "ai"}
+{"rid": "05e692782dd6", "verdict": "CORRECT", "reason": "Record fell Aug 15, closing ceremony Aug 20 2023; five days apart, almost same time.", "reviewer": "ai"}
+{"rid": "991baf823f8c", "verdict": "CORRECT", "reason": "Promotion sealed May 8, parade May 10 2021; two days apart, almost same time.", "reviewer": "ai"}
+{"rid": "c610069df3c3", "verdict": "CORRECT", "reason": "Fracture Mar 18, hospital release Mar 21 2023; three days apart, almost same time.", "reviewer": "ai"}
+{"rid": "4ad2b83db822", "verdict": "CORRECT", "reason": "Tunnel breakthrough Jun 22 1970; next milestone among options: first turbine Nov 17 1971.", "reviewer": "ai"}
+{"rid": "69183aa58d0c", "verdict": "CORRECT", "reason": "First turbine Nov 17 1971; next milestone: full commissioning Feb 28 1972.", "reviewer": "ai"}
+{"rid": "fe60906b1d54", "verdict": "CORRECT", "reason": "Chimney rebuilt Mar 12 1978; next event: interconnector survey dispatched Sep 7 1978.", "reviewer": "ai"}
+{"rid": "133ae5630467", "verdict": "CORRECT", "reason": "Blackout Dec 11 1984; earliest option after is inquiry opening Jan 22 1985.", "reviewer": "ai"}
+{"rid": "4619f17ec877", "verdict": "CORRECT", "reason": "Report Jul 9 1985; implementation Mar 3 1986 sooner than grid feed Feb 1987; blackout/inquiry precede.", "reviewer": "ai"}
+{"rid": "33b03322e3cf", "verdict": "CORRECT", "reason": "Erection Sep 19 1986; only later option is first grid feed Feb 2 1987.", "reviewer": "ai"}
+{"rid": "c7e3cbb95026", "verdict": "CORRECT", "reason": "Dam work Apr 9 1968; tunnel breakthrough Jun 22 1970 earliest after; assent precedes.", "reviewer": "ai"}
+{"rid": "59b2eda27e50", "verdict": "CORRECT", "reason": "Assent Aug 3 1967; dam work Apr 9 1968 earliest after; survey precedes.", "reviewer": "ai"}
+{"rid": "8ee4045d9666", "verdict": "CORRECT", "reason": "Survey Sep 7 1978; energisation May 26 1981 precedes recertification Aug 1981; chimney/scrubbers before.", "reviewer": "ai"}
+{"rid": "813fac7ff8d0", "verdict": "CORRECT", "reason": "Restoration Dec 14 1984; earliest option after is inquiry opening Jan 22 1985.", "reviewer": "ai"}
+{"rid": "ac401ea6d514", "verdict": "CORRECT", "reason": "Grid feed Feb 2 1987; expansion study Oct 30 1987 only later option.", "reviewer": "ai"}
+{"rid": "1c278025f31c", "verdict": "CORRECT", "reason": "Announcement Jan 20 1974; scrubbers Oct 5 1976 earliest after (chimney 1978, survey 1978, recert 1981).", "reviewer": "ai"}
+{"rid": "5ce89295a64a", "verdict": "CORRECT", "reason": "Inquiry opened Jan 22 1985; report published Jul 9 1985 earliest after; blackout/restoration precede.", "reviewer": "ai"}
+{"rid": "a309ee411d26", "verdict": "CORRECT", "reason": "Passage: commissioning Feb 28 1972, official opening follows technical completion four months later (Jun 30 1972).", "reviewer": "ai"}
+{"rid": "32cfc4c89b3a", "verdict": "CORRECT", "reason": "Next dated Blackmuir development after Jan 20 1974 announcement is scrubbers fitted Oct 5 1976; paraphrase fine.", "reviewer": "ai"}
+{"rid": "b7b726d3edcd", "verdict": "CORRECT", "reason": "Inquiry opened Jan 22 1985; next dated milestone is report published Jul 9 1985.", "reviewer": "ai"}
+{"rid": "c9b344b1b5bb", "verdict": "CORRECT", "reason": "Implementation Mar 3 1986; first later event is wind pilot erection Sep 19 1986.", "reviewer": "ai"}
+{"rid": "b954695ee8ea", "verdict": "CORRECT", "reason": "Recertification Aug 14 1981 is last dated event; nothing recorded after; abstain genuine.", "reviewer": "ai"}
+{"rid": "9a8a54ed96fd", "verdict": "CORRECT", "reason": "Opening Jun 30 1972 last milestone; passage states programme beyond opening unstated; abstain genuine.", "reviewer": "ai"}
+{"rid": "3c2466116a45", "verdict": "CORRECT", "reason": "Survey published May 14 1966; next programme milestone enabling act assent Aug 3 1967.", "reviewer": "ai"}
+{"rid": "96cbe0803ba9", "verdict": "CORRECT", "reason": "Dam work Apr 9 1968; next milestone tunnel breakthrough Jun 22 1970.", "reviewer": "ai"}
+{"rid": "87230ebb451a", "verdict": "CORRECT", "reason": "Drive Apr 12 1967, reward Oct 15 1967, final case Mar 9 1972 -> B,C,A.", "reviewer": "ai"}
+{"rid": "4a18dacc5c0c", "verdict": "CORRECT", "reason": "Unit Jun 30 1967, containment team Feb 28 1972, commission Oct 5 1977 -> A,C,B.", "reviewer": "ai"}
+{"rid": "f215766d5132", "verdict": "CORRECT", "reason": "Drive 1967, team 1972, declaration Nov 21 1977, stood down Nov 30 1979 -> B,D,A,C.", "reviewer": "ai"}
+{"rid": "b91b6f1908c7", "verdict": "CORRECT", "reason": "Reward Oct 15 1967, commission Oct 5 1977, declaration Nov 21 1977 -> A,B,C.", "reviewer": "ai"}
+{"rid": "87c088b50cbb", "verdict": "CORRECT", "reason": "Unit Jun 30 1967, final case Mar 9 1972, declaration Nov 21 1977 -> C,A,B.", "reviewer": "ai"}
+{"rid": "a3743db5e0d5", "verdict": "CORRECT", "reason": "Drive Apr 12 1967, unit Jun 30 1967, reward Oct 15 1967, team Feb 28 1972 -> D,C,A,B.", "reviewer": "ai"}
+{"rid": "4cc6a5831e58", "verdict": "CORRECT", "reason": "Drive 1967, reward Oct 1967, final case 1972, commission 1977, stood down 1979 -> B,E,D,A,C.", "reviewer": "ai"}
+{"rid": "6baee5d32b9e", "verdict": "CORRECT", "reason": "Team Feb 28 1972, final case Mar 9 1972, commission 1977 -> C,A,B.", "reviewer": "ai"}
+{"rid": "09f49570d29c", "verdict": "CORRECT", "reason": "Approval Apr 2 1968, foundation stone May 18 1969, handover Jun 30 1972 -> B,C,A.", "reviewer": "ai"}
+{"rid": "e575e10b15b5", "verdict": "CORRECT", "reason": "Stone May 18 1969, first patients Aug 14 1972, cardiac unit Jan 9 1973 -> A,B,C.", "reviewer": "ai"}
+{"rid": "644f0a775ca4", "verdict": "CORRECT", "reason": "Cleared Oct 14 1968, handover Jun 30 1972, go-ahead Mar 20 1974, births Sep 25 1975 -> C,D,A,B.", "reviewer": "ai"}
+{"rid": "a92bacb0ee48", "verdict": "CORRECT", "reason": "Handover Jun 30 1972, patients Aug 14 1972, cardiac unit Jan 9 1973 -> B,C,A.", "reviewer": "ai"}
+{"rid": "c9bce6123e29", "verdict": "CORRECT", "reason": "Approval Apr 2 1968, clearing Oct 14 1968, stone May 18 1969 -> C,A,B.", "reviewer": "ai"}
+{"rid": "b2b30ea62487", "verdict": "CORRECT", "reason": "Stone 1969, cardiac Jan 1973, go-ahead Mar 1974, births Sep 1975 -> B,D,C,A.", "reviewer": "ai"}
+{"rid": "c9ea57ab5be9", "verdict": "CORRECT", "reason": "Approval 1968, stone 1969, handover 1972, cardiac 1973, births 1975 -> C,E,D,A,B.", "reviewer": "ai"}
+{"rid": "1d0e6596c5c9", "verdict": "CORRECT", "reason": "Patients Aug 14 1972, go-ahead Mar 20 1974, births Sep 25 1975 -> C,A,B.", "reviewer": "ai"}
+{"rid": "0a31dac01536", "verdict": "CORRECT", "reason": "Cases Feb 7 1983, vaccine Mar 30 1983, declared over Sep 30 1983 -> B,C,A.", "reviewer": "ai"}
+{"rid": "ee8ff8388fed", "verdict": "CORRECT", "reason": "Schools closed Feb 21 1983, clinics May 15 1983, follow-up Mar 12 1984 -> C,A,B.", "reviewer": "ai"}
+{"rid": "ec66d2e19d9a", "verdict": "CORRECT", "reason": "Cases Feb 7, schools Feb 21, clinics May 15, over Sep 30 1983 -> C,D,A,B.", "reviewer": "ai"}
+{"rid": "1821cd3fda08", "verdict": "CORRECT", "reason": "Vaccine Mar 30 1983, clinics May 15 1983, declared over Sep 30 1983 -> A,B,C.", "reviewer": "ai"}
+{"rid": "61dec4419571", "verdict": "CORRECT", "reason": "Cases Feb 7 1983, follow-up Mar 12 1984, review report Jun 30 1985 -> B,C,A.", "reviewer": "ai"}
+{"rid": "77c8cbf7afa9", "verdict": "CORRECT", "reason": "Schools Feb 21, vaccine Mar 30, over Sep 30 1983, report Jun 30 1985 -> C,D,A,B.", "reviewer": "ai"}
+{"rid": "303b873738a0", "verdict": "CORRECT", "reason": "Clinics May 15 1983, over Sep 30 1983, follow-up Mar 12 1984 -> B,C,A.", "reviewer": "ai"}
+{"rid": "0ab0e4786f6e", "verdict": "CORRECT", "reason": "Cases Feb 7 1983, clinics May 15 1983, follow-up Mar 1984, report Jun 1985 -> C,D,A,B.", "reviewer": "ai"}
+{"rid": "86bf85d8e007", "verdict": "CORRECT", "reason": "Avenue Mar 10 2015, water committee survey Oct 25 2015, promenade lit Sep 2 2017 -> C,B,A.", "reviewer": "ai"}
+{"rid": "d7660a468b59", "verdict": "CORRECT", "reason": "Water survey Oct 25 2015, tram shelters Feb 5 2016, estate opened May 25 2017 -> C,A,B.", "reviewer": "ai"}

@@ -12,7 +12,9 @@ import sys
 
 
 def build_status(manifest: dict) -> str:
-    if "template_rows" in manifest:
+    if "glm3_rows" in manifest:
+        rows = int(manifest["glm3_rows"] or 0) + int(manifest.get("template_rows", 0) or 0)
+    elif "template_rows" in manifest:
         rows = int(manifest["template_rows"] or 0)
     else:
         rows = int(manifest.get("glm_rows", 0) or 0) + int(manifest.get("tpl_rows", 0) or 0)

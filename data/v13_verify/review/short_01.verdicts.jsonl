@@ -1,0 +1,385 @@
+{"rid": "fe1f7b8f9a57", "verdict": "CORRECT", "reason": "13mo~390d<400d assuming 30-day months"}
+{"rid": "2f3656784d9e", "verdict": "CORRECT", "reason": "Consistent: ran Apr-Oct 2019, suspended only 2020"}
+{"rid": "3738c819d15c", "verdict": "CORRECT", "reason": "Jan6+21=Jan27 (session2), +21=Feb17 (session3)"}
+{"rid": "9133406f87ae", "verdict": "CORRECT", "reason": "Nov 1976 before Mar 1978"}
+{"rid": "2c91ecbc2d88", "verdict": "CORRECT", "reason": "8:30 span minus 45min lunch = 7:45"}
+{"rid": "39599827ad4a", "verdict": "CORRECT", "reason": "Oct 1983 before Jan 1984"}
+{"rid": "3037c1dcfe4f", "verdict": "CORRECT", "reason": "Oct11+14 days = Oct25 2020"}
+{"rid": "cfdca13f8590", "verdict": "CORRECT", "reason": "3x8=24 hours"}
+{"rid": "2d5079ecb9e2", "verdict": "CORRECT", "reason": "Oct27-Oct12=15 days"}
+{"rid": "ed8017283484", "verdict": "CORRECT", "reason": "06:38-25min=06:13"}
+{"rid": "8d94403ff15b", "verdict": "CORRECT", "reason": "Midpoint of Mar3-Sep3 is Jun3 2018"}
+{"rid": "b4f72d320f73", "verdict": "CORRECT", "reason": "Nov4 1901 to Mar3 1902 = 119 days"}
+{"rid": "83cf3d4f8890", "verdict": "CORRECT", "reason": "17 years x 52 Sundays = 884"}
+{"rid": "9751ba6030ef", "verdict": "CORRECT", "reason": "3f+2(8-f)=19 solves f=3"}
+{"rid": "333d20c8a0d6", "verdict": "CORRECT", "reason": "5000*1.4=7000"}
+{"rid": "6449877a5324", "verdict": "CORRECT", "reason": "6 listed months"}
+{"rid": "0ecc4fd5dd4c", "verdict": "CORRECT", "reason": "1403+14=1417 (15th year)"}
+{"rid": "27ab2a57eb7b", "verdict": "CORRECT", "reason": "17:23-06:42=10h41m"}
+{"rid": "b3d5cd715172", "verdict": "CORRECT", "reason": "10:00 start +8h = 18:00, satisfies 'at least'"}
+{"rid": "6ae21c72955b", "verdict": "CORRECT", "reason": "(6+7)/2=6.5 avg gap"}
+{"rid": "53a6bfb07cfa", "verdict": "CORRECT", "reason": "1998-(25-10)=1983"}
+{"rid": "2f8e695ecd53", "verdict": "CORRECT", "reason": "Overnight crossing implies waking in new country"}
+{"rid": "a7f70ec07d53", "verdict": "CORRECT", "reason": "17 years total minus 5 gap years (1914-1918) = 12"}
+{"rid": "7a75455eeec9", "verdict": "CORRECT", "reason": "21:30-95min=19:55"}
+{"rid": "3fc408ea6336", "verdict": "CORRECT", "reason": "Feb29 1988 to Apr1 1988 = 32 days"}
+{"rid": "2a779e4b5092", "verdict": "CORRECT", "reason": "2017-200=1817"}
+{"rid": "5b30b8087b14", "verdict": "CORRECT", "reason": "12 months = 12 first-of-month dates"}
+{"rid": "66b14ec356c8", "verdict": "CORRECT", "reason": "06:40+4*20min=08:00"}
+{"rid": "fa5831c4ed3e", "verdict": "CORRECT", "reason": "22:05 Feb28 2021 +11h = 09:05 Mar1 2021"}
+{"rid": "2ce772506ddc", "verdict": "CORRECT", "reason": "2019-1661=358 years = 3 complete centuries"}
+{"rid": "18f01f6e6d92", "verdict": "CORRECT", "reason": "Olympic years 1996,2000,2004,2008,2012 = 5"}
+{"rid": "6a3d40cea9d3", "verdict": "CORRECT", "reason": "3+(2019-2012)=10"}
+{"rid": "dc3c70641b37", "verdict": "CORRECT", "reason": "13:40-09:15=4h25m"}
+{"rid": "3753d25de7db", "verdict": "CORRECT", "reason": "Dec15+100 days = 25 March non-leap year"}
+{"rid": "bb4d225950eb", "verdict": "CORRECT", "reason": "07:33-05:48=1h45m"}
+{"rid": "c6933a52d5ba", "verdict": "CORRECT", "reason": "1 Nov is in Q4 (Oct-Dec)"}
+{"rid": "f9f8d0fc164d", "verdict": "CORRECT", "reason": "Sept16 follows Sept14 intro"}
+{"rid": "f685f274b302", "verdict": "CORRECT", "reason": "5 weekdays x5 units=25"}
+{"rid": "0030eb0bc013", "verdict": "CORRECT", "reason": "2021-1996=25th anniversary"}
+{"rid": "52a3f38c426b", "verdict": "CORRECT", "reason": "8h open minus 2.5h closed = 5.5h"}
+{"rid": "a607e283d582", "verdict": "CORRECT", "reason": "2nd Sat Dec to 2nd Sun Jan spans Christmas"}
+{"rid": "a0f19947bd50", "verdict": "CORRECT", "reason": "4 years (1876-79) + 6 years (1885-90) = 10"}
+{"rid": "79b18f8057c5", "verdict": "CORRECT", "reason": "Feb2021 falls in Jul2020-Jun2021 fiscal year"}
+{"rid": "b3f7c65c2718", "verdict": "CORRECT", "reason": "Jun5+10=Jun15, +3=Jun18"}
+{"rid": "7bfa0d03b98f", "verdict": "CORRECT", "reason": "Vol1=25yrs > Vol2=14yrs"}
+{"rid": "bb4ccedba85b", "verdict": "CORRECT", "reason": "Half of 40min elapsed, 20min remain"}
+{"rid": "faa46f536130", "verdict": "CORRECT", "reason": "Oct1985 before May1987"}
+{"rid": "a953f4c68ee3", "verdict": "CORRECT", "reason": "Nov3-Dec27=54 days=7 complete weeks"}
+{"rid": "f90e04acd27f", "verdict": "CORRECT", "reason": "One year later from Mar20 2013 is Mar20 2014"}
+{"rid": "6e6abf3b9177", "verdict": "CORRECT", "reason": "Aug2016, Nov2 2017, Nov21 2017 in order"}
+{"rid": "1a1351300373", "verdict": "CORRECT", "reason": "Feb2018,May2018,Sep2018 order matches (3)(1)(2)"}
+{"rid": "82bd85699560", "verdict": "CORRECT", "reason": "Oct2016,Jan2017,Mar2017 order matches (2)(3)(1)"}
+{"rid": "7b5b11d519c2", "verdict": "CORRECT", "reason": "Apr,Jun,Sep 2018 in order 1,2,3"}
+{"rid": "cf9ac52bb45d", "verdict": "CORRECT", "reason": "Jan,Jun,Nov 2019 order (3)(2)(1)"}
+{"rid": "fc8565360b20", "verdict": "CORRECT", "reason": "Feb2015,Aug2017,Oct2019,Dec2019 order (2)(4)(1)(3)"}
+{"rid": "586689f1bc1f", "verdict": "CORRECT", "reason": "Mar,Nov2018,Apr2019 order 1,2,3"}
+{"rid": "48430606266f", "verdict": "CORRECT", "reason": "1968 depot before 1970 subsidy, TRUE"}
+{"rid": "67b8c6408f80", "verdict": "CORRECT", "reason": "Quota 1973 preceded floor price rise 1974, claim FALSE"}
+{"rid": "f8d91b960c39", "verdict": "CORRECT", "reason": "1971 demo before 1972 purchase, TRUE"}
+{"rid": "fd528bd0da69", "verdict": "CORRECT", "reason": "Privatised 1979 before fleet disbanded 1981, claim FALSE"}
+{"rid": "74ecafb37740", "verdict": "CORRECT", "reason": "Aug22 before Sep15 1983, TRUE"}
+{"rid": "29ef6135ec48", "verdict": "CORRECT", "reason": "Rationing lifted May9 before repair Jun20, claim FALSE"}
+{"rid": "d5d28c19ca30", "verdict": "CORRECT", "reason": "Nov14 licence before Dec2 crossing, TRUE"}
+{"rid": "cc915f4701b9", "verdict": "CORRECT", "reason": "May1988 register close before Jan1989 deeds, TRUE"}
+{"rid": "fad6208e7dcb", "verdict": "CORRECT", "reason": "Shortage Dec1971 before reopening Mar1972, claim FALSE"}
+{"rid": "f6361c9e6baa", "verdict": "CORRECT", "reason": "Oct16,19,31 1990 order 1,2,3"}
+{"rid": "73d1eb14fe37", "verdict": "CORRECT", "reason": "Jun1995,Jul1995,Apr1996 order (2)(1)(3)"}
+{"rid": "7a53984c3557", "verdict": "CORRECT", "reason": "Mar,Jul,Sep 1999 order (3)(1)(2)"}
+{"rid": "03ba1b53ef5c", "verdict": "CORRECT", "reason": "Feb2,6,14 2002 order (1)(3)(2)"}
+{"rid": "a125cf59ae1d", "verdict": "CORRECT", "reason": "Sep27,28,Oct2 1999 order 1,2,3"}
+{"rid": "355fe2ea8bdf", "verdict": "CORRECT", "reason": "Jun,Oct,Nov 2004 order (3)(2)(1)"}
+{"rid": "52cb52bc6acb", "verdict": "CORRECT", "reason": "Jan1991,Sep1991,May1993 order (2)(1)(3)"}
+{"rid": "15ac8b07566c", "verdict": "CORRECT", "reason": "Mar2000,Aug2000,Dec2001,Jun2002 order (2)(4)(1)(3)"}
+{"rid": "2c5743a677de", "verdict": "CORRECT", "reason": "Oct1938 generator before Feb1939 line, TRUE"}
+{"rid": "65d60f211790", "verdict": "CORRECT", "reason": "Aug1954 towers before Dec1954 output, TRUE"}
+{"rid": "71f70cf6feb6", "verdict": "CORRECT", "reason": "Ovens mothballed Jun1962 before switch Sep1963, claim FALSE"}
+{"rid": "b9c1799b7579", "verdict": "CORRECT", "reason": "Defences upgraded Mar1941 before flood Nov1941, claim FALSE"}
+{"rid": "d95f85ed55cc", "verdict": "CORRECT", "reason": "May12 switch before May13 current, TRUE"}
+{"rid": "9c6009e8e343", "verdict": "CORRECT", "reason": "Mine closed Apr1959 before station opened Jun1960, claim FALSE"}
+{"rid": "491b3513b1d0", "verdict": "CORRECT", "reason": "Jul1962 sync before Apr1963 visitor centre, TRUE"}
+{"rid": "f4ac0bcd3f2b", "verdict": "CORRECT", "reason": "Surveys 1936 before route completed 1937, claim FALSE"}
+{"rid": "650357267b9c", "verdict": "CORRECT", "reason": "Mar2020,Oct2020,May2021 order 1,2,3"}
+{"rid": "53a36c2564f5", "verdict": "CORRECT", "reason": "Dec2020,Jun2021,Apr2022 order (2)(1)(3)"}
+{"rid": "2fc085f32813", "verdict": "CORRECT", "reason": "Feb2022,Oct2022,Jan2023 order (3)(1)(2)"}
+{"rid": "12766dc97d87", "verdict": "CORRECT", "reason": "Jun2020,Mar2021,Sep2021 order (1)(3)(2)"}
+{"rid": "1a0be07de2b1", "verdict": "CORRECT", "reason": "Feb,May,Sep 2023 order 1,2,3"}
+{"rid": "1f72cd0e4c53", "verdict": "CORRECT", "reason": "Jan2023,Oct2023,Jun2024 order (3)(2)(1)"}
+{"rid": "fa2a6dbc66c2", "verdict": "CORRECT", "reason": "Jan2021,Sep2021,Dec2021,Feb2022 order (2)(4)(1)(3)"}
+{"rid": "f9f8003818e3", "verdict": "CORRECT", "reason": "Mar,Jun,Oct 2024 order 1,2,3"}
+{"rid": "94946a933cdc", "verdict": "CORRECT", "reason": "2006 reopening before 2007 digitisation, TRUE"}
+{"rid": "3812a4815811", "verdict": "CORRECT", "reason": "2008 founding before 2009 season, TRUE"}
+{"rid": "5112ac766183", "verdict": "CORRECT", "reason": "Contract signed 2010 before students arrived 2011, claim FALSE"}
+{"rid": "c55c2ba1d17d", "verdict": "CORRECT", "reason": "Jul9 congress before Jul11 volume 2013, TRUE"}
+{"rid": "a03ee9b59775", "verdict": "CORRECT", "reason": "Ballot closed Nov18 before announcement Dec7 2005, claim FALSE"}
+{"rid": "ededb8a6a231", "verdict": "CORRECT", "reason": "Jun2006 dedication before Jul2006 first light, TRUE"}
+{"rid": "ae532f34b352", "verdict": "CORRECT", "reason": "Gift announced 2009 before cohort 2010, claim FALSE"}
+{"rid": "6bf92047e790", "verdict": "CORRECT", "reason": "Mar2 catalogue before Mar15 weekend hours 2014, TRUE"}
+{"rid": "296488e08e8b", "verdict": "CORRECT", "reason": "Jan9,16,Feb2 1893 order 1,2,3"}
+{"rid": "a1cb81c789f0", "verdict": "CORRECT", "reason": "Nov24,26,28 1901 order (2)(1)(3)"}
+{"rid": "b17b39b29478", "verdict": "CORRECT", "reason": "May,Jul,Aug 1921 order (3)(1)(2)"}
+{"rid": "c9f2c75f0c84", "verdict": "CORRECT", "reason": "Feb8,11,16 1895 order (1)(3)(2)"}
+{"rid": "919b041e679f", "verdict": "CORRECT", "reason": "Oct1911,Nov1911,Mar1912 order (2)(3)(1)"}
+{"rid": "333b23e65a00", "verdict": "CORRECT", "reason": "Jul18,20,24 1911 order 1,2,3"}
+{"rid": "3cb1d23c9c3c", "verdict": "CORRECT", "reason": "Oct12,13,15 1927 order (2)(1)(3)"}
+{"rid": "170675566fd1", "verdict": "CORRECT", "reason": "May14,Jun1,Jun30,Dec20 1900 order (2)(4)(1)(3)"}
+{"rid": "f5a40b7c33af", "verdict": "CORRECT", "reason": "Jun7,9,15 1897 order 1,2,3"}
+{"rid": "122357a009e4", "verdict": "CORRECT", "reason": "Transfer Aug2016 before goal Sep2016, TRUE"}
+{"rid": "6b28934dc7ef", "verdict": "CORRECT", "reason": "Title sealed Apr before cup final May 2018, claim FALSE"}
+{"rid": "0aa39f1eee18", "verdict": "CORRECT", "reason": "Meeting opened Aug9 before relay Aug12 2017, TRUE"}
+{"rid": "984e6e22b455", "verdict": "CORRECT", "reason": "Sent off Sep before ban ended Oct 2015, claim FALSE"}
+{"rid": "d0cab287c973", "verdict": "CORRECT", "reason": "Groundbreaking Mar before first match Aug 2019, TRUE"}
+{"rid": "50374a2a05f6", "verdict": "CORRECT", "reason": "Medical Jul9 before announcement Jul10 2017, claim FALSE"}
+{"rid": "92a008d1528a", "verdict": "CORRECT", "reason": "Heats Jul14 before final Jul16 2018, TRUE"}
+{"rid": "c1b272d1ca0e", "verdict": "CORRECT", "reason": "Appointment Nov4 before defeat Nov21 2015, claim FALSE"}
+{"rid": "01c90d71eef5", "verdict": "CORRECT", "reason": "Collection Jun2 before report Jun15 2016, TRUE"}
+{"rid": "d0628f688f33", "verdict": "CORRECT", "reason": "May1,8,22 1966 order 1,2,3"}
+{"rid": "d7a95d88afe0", "verdict": "CORRECT", "reason": "May1970,Oct1970,Apr1973 order (2)(1)(3)"}
+{"rid": "2fbfb5b8f3fc", "verdict": "CORRECT", "reason": "Nov1974,Mar1975,Sep1975 order (1)(3)(2)"}
+{"rid": "122c83d34c45", "verdict": "CORRECT", "reason": "Jun1980,Nov1981,Jan1982 order (2)(3)(1)"}
+{"rid": "2d935619b272", "verdict": "CORRECT", "reason": "Apr,May,Jun 1976 order 1,2,3"}
+{"rid": "ba54c7a667dc", "verdict": "CORRECT", "reason": "Jan1986,Oct1986,Mar1987 order (2)(1)(3)"}
+{"rid": "85f89089457b", "verdict": "CORRECT", "reason": "Feb1967,Mar1968,Sep1969,Jan1970 order (2)(4)(1)(3)"}
+{"rid": "7e4d3199e1a9", "verdict": "CORRECT", "reason": "Jan3,15,Jun5 1971 order 1,2,3"}
+{"rid": "dd138e665c41", "verdict": "CORRECT", "reason": "Clearance Sep1998 before results Mar1999, TRUE"}
+{"rid": "2c7218ffd911", "verdict": "CORRECT", "reason": "Announcement May before last shift Jul 2001, claim FALSE"}
+{"rid": "ca118425ce33", "verdict": "CORRECT", "reason": "Rights issue Jun30 before funding Jul8 1994, TRUE"}
+{"rid": "a4612f7943b1", "verdict": "CORRECT", "reason": "Bid Jan17 before rejection Jan21 2000, TRUE"}
+{"rid": "cd77ed1457a7", "verdict": "CORRECT", "reason": "Restructuring Dec2003 before dividend Apr2004, claim FALSE"}
+{"rid": "d1d7c0497041", "verdict": "CORRECT", "reason": "Profit Jul26 before accounts Aug30 1996, TRUE"}
+{"rid": "5efdd6b1d96c", "verdict": "CORRECT", "reason": "Collapse reported Apr before cuts Jun 1993, claim FALSE"}
+{"rid": "7ca5e88155fd", "verdict": "CORRECT", "reason": "Registration May7 before flotation Jun2 1999, claim FALSE"}
+{"rid": "70facf3171b8", "verdict": "CORRECT", "reason": "Apr1997 extension before Nov1998 fire, BEFORE"}
+{"rid": "f3bbd9309d48", "verdict": "CORRECT", "reason": "Bus contract 1994 after ferry withdrawal 1991, AFTER"}
+{"rid": "9d2c3261545b", "verdict": "CORRECT", "reason": "Same date Jun22 2003, SIMULTANEOUS"}
+{"rid": "cb9e05783a16", "verdict": "CORRECT", "reason": "Strike Mar9-15 falls within contract Jan-Jun 1992, INCLUDES"}
+{"rid": "d1788f0b43d8", "verdict": "CORRECT", "reason": "May2002 certification before Aug2002 trial, BEFORE"}
+{"rid": "45be46f35837", "verdict": "CORRECT", "reason": "Same date Oct11 1995, SIMULTANEOUS"}
+{"rid": "486fa7dd3700", "verdict": "CORRECT", "reason": "Gala Jul12-13 falls within season May-Sep 1997, INCLUDES"}
+{"rid": "5c7313d5ad7a", "verdict": "CORRECT", "reason": "1948 dividend before 1951 mill approval, BEFORE"}
+{"rid": "b20325a7567d", "verdict": "CORRECT", "reason": "1959 absorption after 1953 sale, AFTER"}
+{"rid": "195c2a3b7368", "verdict": "CORRECT", "reason": "1965 wind-up after 1964 final cargo, AFTER"}
+{"rid": "4a55e47f38d4", "verdict": "CORRECT", "reason": "May10 1949 falls within Feb-Sep winding-up, IS_INCLUDED"}
+{"rid": "63d8a3e12fd8", "verdict": "CORRECT", "reason": "Same date Aug17 1936, SIMULTANEOUS"}
+{"rid": "999059852fa5", "verdict": "CORRECT", "reason": "Fair Sep1949 falls within control period 1937-1954, INCLUDES"}
+{"rid": "908f26efbc66", "verdict": "CORRECT", "reason": "Jan2021 lane before Sep2021 booster, BEFORE"}
+{"rid": "65d475c1e827", "verdict": "CORRECT", "reason": "Jun23 2020 falls within evaluation Jun-Aug 2020, IS_INCLUDED"}
+{"rid": "2eaf04d3a1e7", "verdict": "CORRECT", "reason": "Ward closure Jan10-23 falls within winter plan Oct-Mar, INCLUDES"}
+{"rid": "176da620fa5a", "verdict": "CORRECT", "reason": "Feb2021 validation before Mar2021 reports, BEFORE"}
+{"rid": "0503289c1a4e", "verdict": "CORRECT", "reason": "Timer off Feb24 after duty lapsed Feb16 2022, AFTER"}
+{"rid": "19b0768030dc", "verdict": "CORRECT", "reason": "Oct8 2020 falls within cycle Sep2020-Feb2021, IS_INCLUDED"}
+{"rid": "383a0373e208", "verdict": "CORRECT", "reason": "Same date Jun3 2023, SIMULTANEOUS"}
+{"rid": "ad2142d756c7", "verdict": "CORRECT", "reason": "Hearing Sep13 within evidence window Jun-Oct 2021, INCLUDES"}
+{"rid": "bba5e4079cc7", "verdict": "CORRECT", "reason": "2007 appraisal before 2009 enforcement, BEFORE"}
+{"rid": "f5f6f83accd8", "verdict": "CORRECT", "reason": "2009 budget after 2008 county budget, AFTER"}
+{"rid": "cac6341590fd", "verdict": "CORRECT", "reason": "Survey closed Apr30 within planning exercise Jan-Sep 2006, IS_INCLUDED"}
+{"rid": "6ae762f172b8", "verdict": "CORRECT", "reason": "Same date Oct6 2011, SIMULTANEOUS"}
+{"rid": "1363e44da222", "verdict": "CORRECT", "reason": "Referendum Nov2013 within designation Mar2012-Mar2014, INCLUDES"}
+{"rid": "5a567b87cc21", "verdict": "CORRECT", "reason": "Report Dec2010 before meeting Jan2011, BEFORE"}
+{"rid": "bb962458053a", "verdict": "CORRECT", "reason": "Letter May2013 after inquiry closed Mar2013, AFTER"}
+{"rid": "4b53e37c7967", "verdict": "CORRECT", "reason": "Poll May5 within election period Mar29-May6 2010, IS_INCLUDED"}
+{"rid": "4e69263145c7", "verdict": "CORRECT", "reason": "Same date Nov11 2008, SIMULTANEOUS"}
+{"rid": "1d6503b79dce", "verdict": "CORRECT", "reason": "Grant scheme 2009-2011 within board period 2005-2012, INCLUDES"}
+{"rid": "804c85a0bc98", "verdict": "CORRECT", "reason": "Barrow opened Jun before exhibit Oct 1893, BEFORE"}
+{"rid": "781df8b4dc4a", "verdict": "CORRECT", "reason": "Wing dedicated 1926 after hoard unearthed 1924, AFTER"}
+{"rid": "be7bc270ee07", "verdict": "CORRECT", "reason": "Same date Nov15 1912, SIMULTANEOUS"}
+{"rid": "d5d8372414e0", "verdict": "CORRECT", "reason": "Filming 1907 within custodianship 1899-1921, INCLUDES"}
+{"rid": "533673f47473", "verdict": "CORRECT", "reason": "Peat cutting Mar28 before inspection Apr11 1931, BEFORE"}
+{"rid": "c421928d3776", "verdict": "CORRECT", "reason": "Stone moved May30 after field ploughed Apr17 1934, AFTER"}
+{"rid": "6ee9de93fbc4", "verdict": "CORRECT", "reason": "Photo Feb8 within exhibition Jan10-Mar2 1928, IS_INCLUDED"}
+{"rid": "636dc6f85ae2", "verdict": "CORRECT", "reason": "Same date Jun7 1898, SIMULTANEOUS"}
+{"rid": "051253948343", "verdict": "CORRECT", "reason": "Camp Jul1925 within schedule 1920-1930, INCLUDES"}
+{"rid": "f33e5f6b3d53", "verdict": "CORRECT", "reason": "Recall Sep2016 before batteries Nov2016, BEFORE"}
+{"rid": "e9febee01399", "verdict": "CORRECT", "reason": "Firmware Dec2018 after complaints Oct2018, AFTER"}
+{"rid": "05312626e7b9", "verdict": "CORRECT", "reason": "Same date Apr5 2017, SIMULTANEOUS"}
+{"rid": "2948e1c0259a", "verdict": "CORRECT", "reason": "Statement Mar19 within suspension Mar14-27 2018, INCLUDES"}
+{"rid": "683ac6929ee6", "verdict": "CORRECT", "reason": "Failure reports Jun2015 before repair program Oct2015, BEFORE"}
+{"rid": "e9a8132ef04d", "verdict": "CORRECT", "reason": "Offline mode Sep2017 after outage Aug2017, AFTER"}
+{"rid": "aab066713649", "verdict": "CORRECT", "reason": "Patch Nov21 within disclosure window Oct1-Dec15 2016, IS_INCLUDED"}
+{"rid": "cb080a6e5d50", "verdict": "CORRECT", "reason": "Same date Feb28 2019, SIMULTANEOUS"}
+{"rid": "6b838cadd150", "verdict": "CORRECT", "reason": "Stoppage Oct1971 before conciliation Nov1971, BEFORE"}
+{"rid": "0d1c2d53dce9", "verdict": "CORRECT", "reason": "Shift return Feb1979 after pickets Jan1979, AFTER"}
+{"rid": "ba4f22e92718", "verdict": "CORRECT", "reason": "Same date Aug17 1984, SIMULTANEOUS"}
+{"rid": "90a40310f43b", "verdict": "CORRECT", "reason": "Ballot Apr30 within overtime ban Mar-Jun 1975, INCLUDES"}
+{"rid": "a35d5482d217", "verdict": "CORRECT", "reason": "Demand Sep1967 before claim Nov1967, BEFORE"}
+{"rid": "7ed4d8788e23", "verdict": "CORRECT", "reason": "Stoppage week May15-21 within pattern Jan-Dec 1972, INCLUDES"}
+{"rid": "bc4ab6b433b0", "verdict": "CORRECT", "reason": "Award Oct1988 within review cycle Apr1988-Mar1989, IS_INCLUDED"}
+{"rid": "2cd98c9a4092", "verdict": "CORRECT", "reason": "Perihelion Feb before tail visible Mar 1996, BEFORE"}
+{"rid": "f492370b96eb", "verdict": "CORRECT", "reason": "Mapping Apr2000 after aerobraking Jan2000, AFTER"}
+{"rid": "d50aad47832d", "verdict": "CORRECT", "reason": "Storm peak Nov18 within watch Nov12-30 1998, IS_INCLUDED"}
+{"rid": "5e530f622ef6", "verdict": "CORRECT", "reason": "Same date Dec25 2003, SIMULTANEOUS"}
+{"rid": "e5e758760f0f", "verdict": "CORRECT", "reason": "Second campaign 1992 after first campaign 1990, AFTER"}
+{"rid": "3f89c9c8f5a4", "verdict": "CORRECT", "reason": "Telemetry failed Jun before payload shipped Jul 1997, BEFORE"}
+{"rid": "e31b55ae5033", "verdict": "CORRECT", "reason": "Burn Dec1998 within cruise phase Oct1997-Jun1999, INCLUDES"}
+{"rid": "c250a72f4e72", "verdict": "CORRECT", "reason": "Exchange 1938 before trial 1946, BEFORE"}
+{"rid": "bce68386c640", "verdict": "CORRECT", "reason": "Mast 1955 after site levelled 1952, AFTER"}
+{"rid": "0d4a5d0bda14", "verdict": "CORRECT", "reason": "Ship arrived Jul22 within season May1-Sep30 1961, IS_INCLUDED"}
+{"rid": "0a79f61f1185", "verdict": "CORRECT", "reason": "Same date Nov9 1958, SIMULTANEOUS"}
+{"rid": "8d457876e328", "verdict": "CORRECT", "reason": "Strike Jun1953 within link operation 1947-1958, INCLUDES"}
+{"rid": "b3d2925c22bb", "verdict": "CORRECT", "reason": "Route 1963 after lease expired 1960, AFTER"}
+{"rid": "b3d59d53c987", "verdict": "CORRECT", "reason": "Same date May5 1937, SIMULTANEOUS"}
+{"rid": "d105e3c8f3fe", "verdict": "CORRECT", "reason": "Feeder Feb2021 before rail link Sep2021, BEFORE"}
+{"rid": "5893eeeaf5b1", "verdict": "CORRECT", "reason": "Berths Oct2023 after levy approved Apr2022, AFTER"}
+{"rid": "31bde236d507", "verdict": "CORRECT", "reason": "Busiest day Nov21 within surge Oct2-Dec20 2022, IS_INCLUDED"}
+{"rid": "d17f5191befe", "verdict": "CORRECT", "reason": "Barge trial 2022 within pilot zone 2021-2023, INCLUDES"}
+{"rid": "a2eb990de3c1", "verdict": "CORRECT", "reason": "Scheme Mar2024 after regulation Dec2023, AFTER"}
+{"rid": "2991e49735af", "verdict": "CORRECT", "reason": "Lull week Jan31 within suspension Jan10-Feb14 2022, INCLUDES"}
+{"rid": "53167bee6749", "verdict": "CORRECT", "reason": "Recommendations 2007 before election 2010, BEFORE"}
+{"rid": "94fc210893cf", "verdict": "CORRECT", "reason": "Speech May25 after agreement May11 2010, AFTER"}
+{"rid": "e85e7f220cce", "verdict": "CORRECT", "reason": "Same date May8 2014, SIMULTANEOUS"}
+{"rid": "ec059ed59563", "verdict": "CORRECT", "reason": "Deadlock Nov13 within spending round Sep15-Dec20 2013, INCLUDES"}
+{"rid": "1de79a6cf901", "verdict": "CORRECT", "reason": "Referendum 2011 after act 2009, AFTER"}
+{"rid": "bf7b69949aea", "verdict": "CORRECT", "reason": "Report Jul19 within scrutiny program Feb-Oct 2007, IS_INCLUDED"}
+{"rid": "4fd8c872612d", "verdict": "CORRECT", "reason": "Same date Mar24 2011, SIMULTANEOUS"}
+{"rid": "f324f874365b", "verdict": "CORRECT", "reason": "Assizes Jul1902 before appeal Nov1902, BEFORE"}
+{"rid": "e1261fe5c9c0", "verdict": "CORRECT", "reason": "Appeal 1928 after decree 1926, AFTER"}
+{"rid": "9fc26b136c47", "verdict": "CORRECT", "reason": "Caveat Mar11 within probate action Jan-Sep 1905, IS_INCLUDED"}
+{"rid": "83cde4b5d952", "verdict": "CORRECT", "reason": "Same date Oct1 1931, SIMULTANEOUS"}
+{"rid": "6e6cd71d390c", "verdict": "CORRECT", "reason": "Auction Jun1896 within receivership 1893-1899, INCLUDES"}
+{"rid": "c4db5c5f5fdc", "verdict": "CORRECT", "reason": "Inspection Aug1913 within suit 1911-1915, INCLUDES"}
+{"rid": "b5b015a4e6ec", "verdict": "CORRECT", "reason": "Assize Oct14 within circuit Oct6-24 1924, IS_INCLUDED"}
+{"rid": "5a8e733b3162", "verdict": "CORRECT", "reason": "Same date Jun5 1930, SIMULTANEOUS"}
+{"rid": "eaad9d54558b", "verdict": "CORRECT", "reason": "Jan-Mar is the first quarter"}
+{"rid": "e50d704cf614", "verdict": "CORRECT", "reason": "Tuesday Mar8 minus 4 days = Friday Mar4 2022"}
+{"rid": "6eaf68077e92", "verdict": "CORRECT", "reason": "1992+5*5=2017 for 6th election"}
+{"rid": "2303aeaf5917", "verdict": "CORRECT", "reason": "2000-1989=11 < 2000-1969=31, Berlin Wall closer"}
+{"rid": "77612fcf3410", "verdict": "CORRECT", "reason": "12 Dec days + 15 Jan days = 27 inclusive"}
+{"rid": "5a8bf0082362", "verdict": "CORRECT", "reason": "9 weeks=63 days > 2 months~60 days"}
+{"rid": "aea7bdf978e2", "verdict": "CORRECT", "reason": "Born 1979, retires at 65 in 2044"}
+{"rid": "1b38502c58dc", "verdict": "CORRECT", "reason": "Overlap 11:00-12:00, latest 45min start is 11:15"}
+{"rid": "843427101e10", "verdict": "CORRECT", "reason": "12 parts from Mar1904, final is Feb1905"}
+{"rid": "fc7b16b85054", "verdict": "CORRECT", "reason": "Services at 40k,60k,80k,100k,120k = 5 by 135k km"}
+{"rid": "afcbf2f2ec8d", "verdict": "CORRECT", "reason": "1968 to 1989 inclusive = 22 summers"}
+{"rid": "a9cb938d5525", "verdict": "CORRECT", "reason": "1910s through 1990s = 9 decades"}
+{"rid": "7b3c9a0fbb39", "verdict": "CORRECT", "reason": "07:00-17:30 = 10.5 hours"}
+{"rid": "60177338a1ca", "verdict": "CORRECT", "reason": "1457 falls in 15th century (1401-1500)"}
+{"rid": "f05baed502f5", "verdict": "CORRECT", "reason": "23:10 Dec31 1999 +1h = 00:10 Jan1 2000"}
+{"rid": "9c2dc1fd5e19", "verdict": "CORRECT", "reason": "8th leap birthday after 1996 falls in 2028"}
+{"rid": "983061f0f3ab", "verdict": "CORRECT", "reason": "Ana=30 in 2010, +6 years = 36 in 2016"}
+{"rid": "f18ecb0d2ca2", "verdict": "CORRECT", "reason": "3 weeks=21 days > 20 days > fortnight=14 days"}
+{"rid": "e1c225b3ca49", "verdict": "CORRECT", "reason": "10:00,15,30,45,11:00 = 5 chimes inclusive"}
+{"rid": "81ceb535d00b", "verdict": "CORRECT", "reason": "6 days/week x 6 weeks = 36 crossings"}
+{"rid": "4b98c4252800", "verdict": "CORRECT", "reason": "95 BCE to 83 BCE = 12 years"}
+{"rid": "e1c01070de3b", "verdict": "CORRECT", "reason": "Wed Jan1, first Saturday is Jan4 2025"}
+{"rid": "b6bc49196448", "verdict": "CORRECT", "reason": "3+1.5+1=5.5 days total"}
+{"rid": "c570d7ed9e24", "verdict": "CORRECT", "reason": "14:33:05-14:32:11=54 seconds"}
+{"rid": "a0254648c385", "verdict": "CORRECT", "reason": "30-x=2(20-x) solves x=10 years ago"}
+{"rid": "a1cf2bc146ac", "verdict": "CORRECT", "reason": "Aug29 2019 +18mo = Feb2021 (non-leap), expires Feb28 2021"}
+{"rid": "4b09ceca1aaf", "verdict": "CORRECT", "reason": "Standard 4-year leap cycle, first to third = 8 years"}
+{"rid": "6994e13bcc24", "verdict": "CORRECT", "reason": "Only Jan/Jul accepted, October deposit not accepted that year, No"}
+{"rid": "f9fc11dca16d", "verdict": "CORRECT", "reason": "Jul15 2020 + 2 years = Jul15 2022"}
+{"rid": "f6d9f5bd663f", "verdict": "CORRECT", "reason": "5th actual Feb29 after 2016 is 2036 (2020,24,28,32,36)"}
+{"rid": "e512c862e8f4", "verdict": "CORRECT", "reason": "100th delivery Feb14 after start Jan8 2019, claim FALSE"}
+{"rid": "a0df13551e54", "verdict": "CORRECT", "reason": "April 2021 starts Thu, Thursdays 1,8,15,22,29 = 5"}
+{"rid": "547c9aab7199", "verdict": "CORRECT", "reason": "31-day month can have 5 of a given weekday"}
+{"rid": "f232c491b6cf", "verdict": "CORRECT", "reason": "Jan-Jun=181 days < Jul-Dec=184 days non-leap"}
+{"rid": "56e0d72d00af", "verdict": "CORRECT", "reason": "Q1 report precedes Q2 report chronologically"}
+{"rid": "f4798d664e3f", "verdict": "CORRECT", "reason": "Born 1983, 18 in 2001, first election year 2004"}
+{"rid": "6487b4067c84", "verdict": "CORRECT", "reason": "Leap year has Feb29, so all 4 dates occur"}
+{"rid": "fcd9f04f1a63", "verdict": "CORRECT", "reason": "45min hold delays launch to 18:45"}
+{"rid": "c25d98a17894", "verdict": "CORRECT", "reason": "1.5h x 20 days = 30 hours"}
+{"rid": "729778eacda9", "verdict": "CORRECT", "reason": "+14min offset: 15:00+14min=15:14"}
+{"rid": "3856055f5162", "verdict": "CORRECT", "reason": "Session Apr30 after planting Mar21, TRUE"}
+{"rid": "5f73e24f4f38", "verdict": "CORRECT", "reason": "Jan1 is 7 days after Dec25, same weekday Saturday"}
+{"rid": "12c929d59ab9", "verdict": "CORRECT", "reason": "16:20+35min delay=16:55, +1h50m=18:45"}
+{"rid": "fc643deef1bd", "verdict": "CORRECT", "reason": ":15/:45 rings 10:15-13:45 = 8 rings"}
+{"rid": "273a2b6c530f", "verdict": "CORRECT", "reason": "1743+11=1754, coronation is later"}
+{"rid": "56566b9992b0", "verdict": "CORRECT", "reason": "Jul1969 before Mar1971, BEFORE"}
+{"rid": "1a2a77d783c2", "verdict": "CORRECT", "reason": "6 months before Sep30 is Mar30"}
+{"rid": "d6c41a5b06df", "verdict": "CORRECT", "reason": "Only Mondays affected, Wednesdays always open, Yes"}
+{"rid": "abe9ce7b6a89", "verdict": "CORRECT", "reason": "Jan1-Mar31 2024 (leap) has 13 Tuesdays starting Jan1 Tue"}
+{"rid": "f3b69ec65ace", "verdict": "CORRECT", "reason": "April always has 30 days, ends 30 April"}
+{"rid": "f2518cfe7cee", "verdict": "CORRECT", "reason": "2009,11,13,15 then annual 16,17,18,19 = 8th in 2019"}
+{"rid": "9d0d1583327f", "verdict": "CORRECT", "reason": "4h+6h=10h total open, Yes"}
+{"rid": "b6c2811b0863", "verdict": "CORRECT", "reason": "Bus visit Sep8 after campaign start Aug11, claim FALSE"}
+{"rid": "e18cb8f5d739", "verdict": "CORRECT", "reason": "100 years after Jun15 1924 is Jun15 2024"}
+{"rid": "e49351a65d4e", "verdict": "CORRECT", "reason": "Hospital closed 1977 before trees felled 1979, BEFORE"}
+{"rid": "e9a199a4d049", "verdict": "CORRECT", "reason": "120min/20min = 6 slots"}
+{"rid": "0e70592f3b8e", "verdict": "CORRECT", "reason": "Y=X-6h offset: 23:40-6:00=17:40"}
+{"rid": "50d74149871f", "verdict": "CORRECT", "reason": "Every day except Monday = 6 days/week"}
+{"rid": "fe1d59be1c53", "verdict": "CORRECT", "reason": "Order 1875,1888,1901,1923; third is 1901"}
+{"rid": "139ae8785a12", "verdict": "CORRECT", "reason": "Jun1975 before Feb1977, BEFORE"}
+{"rid": "28ae505100b3", "verdict": "CORRECT", "reason": "16:30-45min=15:45, +20min=16:05"}
+{"rid": "421c32d54931", "verdict": "CORRECT", "reason": "Session Jul4 after rota agreed Jun22, claim FALSE"}
+{"rid": "3e9cc43593bb", "verdict": "CORRECT", "reason": "Advent Sunday is by definition a Sunday"}
+{"rid": "46c8124f6ce9", "verdict": "CORRECT", "reason": "2000+50=2050"}
+{"rid": "344d75401f5f", "verdict": "CORRECT", "reason": "21+(2008-1995)=34"}
+{"rid": "f44d2e71dac4", "verdict": "CORRECT", "reason": "Oct7+Nov14+Dec28=49"}
+{"rid": "efc96994729a", "verdict": "CORRECT", "reason": "Consistent 14-minute gaps between departures"}
+{"rid": "3df70b26bb59", "verdict": "CORRECT", "reason": "304 days through Oct31 non-leap, Nov1 is day 305"}
+{"rid": "814e26a6a923", "verdict": "CORRECT", "reason": "March 3 precedes November 3 in calendar year"}
+{"rid": "694e7275c007", "verdict": "CORRECT", "reason": "3 weeks x 6 school days/week = 18"}
+{"rid": "24b47b3775eb", "verdict": "CORRECT", "reason": "1900 has no election (not div 400), 1896 does; hypothesis reversed, No"}
+{"rid": "3a245017aaf5", "verdict": "CORRECT", "reason": "No admission after 16:30, so latest is 16:30"}
+{"rid": "ac1213a53a60", "verdict": "CORRECT", "reason": "Apr1 2024 Monday, first Sunday is Apr7"}
+{"rid": "a7f800e65d40", "verdict": "CORRECT", "reason": "Starts 15:30, 90min length, ends 17:00"}
+{"rid": "1c40e9776722", "verdict": "CORRECT", "reason": "2 issues/month x 12 = 24"}
+{"rid": "a18ccf40ca32", "verdict": "CORRECT", "reason": "48/12=4 lectures per week"}
+{"rid": "8974b5ff8611", "verdict": "CORRECT", "reason": "Report Mar1 after visit Feb28 2018, TRUE"}
+{"rid": "631f3d4fc219", "verdict": "CORRECT", "reason": "Bicycle donated Jun5 after hire May20 2017, claim FALSE"}
+{"rid": "14c74826d184", "verdict": "CORRECT", "reason": "Jul1 2010 to Mar31 2011 = 9 complete months"}
+{"rid": "c15a41d20e07", "verdict": "CORRECT", "reason": "Dates 4, 15, 27 June; median is 15 June.", "reviewer": "ai"}
+{"rid": "830af9264d5a", "verdict": "CORRECT", "reason": "Quarter-end dates in a non-leap year are 31 Mar, 30 Jun, 30 Sep, 31 Dec.", "reviewer": "ai"}
+{"rid": "9fd2f5d3fc04", "verdict": "CORRECT", "reason": "1955 + 60 = 2015.", "reviewer": "ai"}
+{"rid": "61df329bfc8e", "verdict": "CORRECT", "reason": "6h + 6h = 12 hours.", "reviewer": "ai"}
+{"rid": "5e92637f0068", "verdict": "CORRECT", "reason": "Thursdays 1, 8, 15 Dec; third is 15 December 2022.", "reviewer": "ai"}
+{"rid": "25a45654b77c", "verdict": "CORRECT", "reason": "18 April minus 12 days = 6 April 2017.", "reviewer": "ai"}
+{"rid": "9b05f31247c5", "verdict": "CORRECT", "reason": "Service began May 1982, delivery Jan 1983: BEFORE.", "reviewer": "ai"}
+{"rid": "079d8e55c797", "verdict": "CORRECT", "reason": "Dawn services only May-August; 30 April outside.", "reviewer": "ai"}
+{"rid": "f2986200efa8", "verdict": "CORRECT", "reason": "05:00 + 3x6h = 23:00.", "reviewer": "ai"}
+{"rid": "f707718cb640", "verdict": "CORRECT", "reason": "Mar 20 to Sep 22 2019 = 186 days.", "reviewer": "ai"}
+{"rid": "456984877613", "verdict": "CORRECT", "reason": "Posted Apr 3, after completion Apr 2: TRUE.", "reviewer": "ai"}
+{"rid": "51550b096a8a", "verdict": "CORRECT", "reason": "Results Mar 2016 after trial began Oct 2015: claim FALSE.", "reviewer": "ai"}
+{"rid": "8c4cfcd70525", "verdict": "CORRECT", "reason": "Gym opened Jun 1981, bikes Feb 1982: BEFORE.", "reviewer": "ai"}
+{"rid": "d54a80331ddc", "verdict": "CORRECT", "reason": "Lisbon 2h behind Cairo: 18:30 -> 16:30.", "reviewer": "ai"}
+{"rid": "d8e3f8643485", "verdict": "CORRECT", "reason": "21 days x 10 cents = 2.10 dollars.", "reviewer": "ai"}
+{"rid": "46eff7f6d964", "verdict": "CORRECT", "reason": "Membership required only in July, not August.", "reviewer": "ai"}
+{"rid": "c4416d745387", "verdict": "CORRECT", "reason": "2014 - 1918 = 96 years minimum.", "reviewer": "ai"}
+{"rid": "9af9fbea1575", "verdict": "CORRECT", "reason": "Clinic opened Jul 1966, unit added May 1969: BEFORE.", "reviewer": "ai"}
+{"rid": "861c84c526bf", "verdict": "CORRECT", "reason": "4 Jan + 21 days = 25 January 2021.", "reviewer": "ai"}
+{"rid": "6297150f883b", "verdict": "CORRECT", "reason": "10h + 24h + 20h = 54 hours.", "reviewer": "ai"}
+{"rid": "4d6217ed15ad", "verdict": "CORRECT", "reason": "15 July and 15 October only.", "reviewer": "ai"}
+{"rid": "6a32455d4bc3", "verdict": "CORRECT", "reason": "First Friday Oct 2; third Friday is 16 October 2020.", "reviewer": "ai"}
+{"rid": "d81e4d4ef56a", "verdict": "CORRECT", "reason": "Sunday run Feb 5 followed expansion Feb 1: TRUE.", "reviewer": "ai"}
+{"rid": "9ea41f96d5b5", "verdict": "CORRECT", "reason": "1987 + 38 = 2025.", "reviewer": "ai"}
+{"rid": "50066f2f9fff", "verdict": "CORRECT", "reason": "23:50 + 95 min = 01:25 on 1 January.", "reviewer": "ai"}
+{"rid": "297f36262982", "verdict": "CORRECT", "reason": "31 Dec 2019 minus 35 years = 1 January 1985.", "reviewer": "ai"}
+{"rid": "9700914e0a69", "verdict": "CORRECT", "reason": "Cleanings 5, 8, 11, 14 May; first after the 12th is 14 May.", "reviewer": "ai"}
+{"rid": "09adc9785f51", "verdict": "CORRECT", "reason": "Day 200 of a non-leap year is 19 July.", "reviewer": "ai"}
+{"rid": "38b16a626719", "verdict": "CORRECT", "reason": "Next 29 February after 1996 is 2000.", "reviewer": "ai"}
+{"rid": "812c61d3cbc5", "verdict": "CORRECT", "reason": "1750 - 1685 = 65 years.", "reviewer": "ai"}
+{"rid": "02847be8edb7", "verdict": "CORRECT", "reason": "Silver jubilee 25 years: 1998 - 25 = 1973.", "reviewer": "ai"}
+{"rid": "c1a32c8d7da2", "verdict": "CORRECT", "reason": "Centre opened Mar 1968, mobile units Aug 1969: BEFORE.", "reviewer": "ai"}
+{"rid": "a4f360e0ba34", "verdict": "CORRECT", "reason": "2013 + 10 = 2023.", "reviewer": "ai"}
+{"rid": "a3394eafbb28", "verdict": "CORRECT", "reason": "Jan, Feb, Mar, Apr, Sep, Oct, Nov, Dec = 8.", "reviewer": "ai"}
+{"rid": "ec67613cc443", "verdict": "CORRECT", "reason": "1836 + 30 = 1866.", "reviewer": "ai"}
+{"rid": "ace5e333e5c5", "verdict": "CORRECT", "reason": "255 min = 4 h 15 min.", "reviewer": "ai"}
+{"rid": "921370b874d5", "verdict": "CORRECT", "reason": "2009-2019 is 11 years minus 2 skipped = 9.", "reviewer": "ai"}
+{"rid": "5b55b4f8cf2c", "verdict": "CORRECT", "reason": "2016 five, 2017 ten, 2019 twenty: (2),(1),(3).", "reviewer": "ai"}
+{"rid": "1765f8e61785", "verdict": "CORRECT", "reason": "Jan 2016, Jun 2016, Dec 2016: (1),(3),(2).", "reviewer": "ai"}
+{"rid": "a8dc2b7c26e7", "verdict": "CORRECT", "reason": "Oct 2014, Jul 2015, Mar 2016: (2),(1),(3).", "reviewer": "ai"}
+{"rid": "036974cdcaf5", "verdict": "CORRECT", "reason": "Frost Oct 30 came after harvest began Sep 18: FALSE.", "reviewer": "ai"}
+{"rid": "c971ccfacfdd", "verdict": "CORRECT", "reason": "Oct 1994, Jun 1996, May 1997: (2),(3),(1).", "reviewer": "ai"}
+{"rid": "a5397e28283b", "verdict": "CORRECT", "reason": "Aug 25, Aug 26, Sep 15 1998 in order: (1),(2),(3).", "reviewer": "ai"}
+{"rid": "66dcb1e951d5", "verdict": "CORRECT", "reason": "Ration Jun 1947 after winter began Jan 1947: FALSE.", "reviewer": "ai"}
+{"rid": "3b33ac8882d9", "verdict": "CORRECT", "reason": "Scheme reached Apr 24 before dance May 4: TRUE.", "reviewer": "ai"}
+{"rid": "3e6175788ebd", "verdict": "CORRECT", "reason": "Jul 2021, Nov 2022, Sep 2023: (2),(3),(1).", "reviewer": "ai"}
+{"rid": "216a304beeb3", "verdict": "CORRECT", "reason": "Jul 2020, Sep 2020, Jun 2023: (2),(1),(3).", "reviewer": "ai"}
+{"rid": "b92d78508cc6", "verdict": "CORRECT", "reason": "Move online Oct 15 after registers retired Jul 6: FALSE.", "reviewer": "ai"}
+{"rid": "eda4a3d56136", "verdict": "CORRECT", "reason": "Approval Jun 2013 after pilots Jan 2013: FALSE.", "reviewer": "ai"}
+{"rid": "d01577e3457d", "verdict": "CORRECT", "reason": "Jul 2, Aug 19, Aug 30 1930: (3),(2),(1).", "reviewer": "ai"}
+{"rid": "c0fb232b7b45", "verdict": "CORRECT", "reason": "Kickoff Aug 11 after fixtures Jun 14: FALSE.", "reviewer": "ai"}
+{"rid": "2569266f59fa", "verdict": "CORRECT", "reason": "Mar 15, Jun 1, Jul 20 1980: (3),(1),(2).", "reviewer": "ai"}
+{"rid": "b554cbc5c9c0", "verdict": "CORRECT", "reason": "1968, 1985, 1989: (3),(2),(1).", "reviewer": "ai"}
+{"rid": "94582764d0a3", "verdict": "CORRECT", "reason": "Resignation Oct 3 after warning Sep 12: FALSE.", "reviewer": "ai"}
+{"rid": "1de9cd6c98c4", "verdict": "CORRECT", "reason": "Agreement Nov 19 before bond issue Dec 5: TRUE.", "reviewer": "ai"}
+{"rid": "13b7a282b5d8", "verdict": "CORRECT", "reason": "Completion Oct 18 1999 inside renewal span: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "a9b040f69066", "verdict": "CORRECT", "reason": "Base opened 1996, pistons left 1990: AFTER.", "reviewer": "ai"}
+{"rid": "e8685d0df236", "verdict": "CORRECT", "reason": "Service entry Feb 1993 inside timetable period: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "92d76e0fee1c", "verdict": "CORRECT", "reason": "Sitting Feb 28 1957 inside liquidation window: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "db9d0f2e4bf7", "verdict": "CORRECT", "reason": "Both events 30 November 1962: SIMULTANEOUS.", "reviewer": "ai"}
+{"rid": "5d230bacdb2d", "verdict": "CORRECT", "reason": "Agreement span contains the Nov 1948 vote: INCLUDES.", "reviewer": "ai"}
+{"rid": "a6de471487c0", "verdict": "CORRECT", "reason": "Profits Feb 28 1937 before fire report Apr 11: BEFORE.", "reviewer": "ai"}
+{"rid": "9b823a0c27e8", "verdict": "CORRECT", "reason": "Reversion Nov 2021 after delay announced Dec 2020: AFTER.", "reviewer": "ai"}
+{"rid": "3bc7cd287bcb", "verdict": "CORRECT", "reason": "Both events 12 April 2022: SIMULTANEOUS.", "reviewer": "ai"}
+{"rid": "9eea9ec256b1", "verdict": "CORRECT", "reason": "Hypocaust find Jul 25 inside excavation span: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "c2eb6a522f8b", "verdict": "CORRECT", "reason": "Outage 09:42-09:53 inside 08:00-12:00 window: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "962bba418b41", "verdict": "CORRECT", "reason": "Panel span contains claims deadline: INCLUDES.", "reviewer": "ai"}
+{"rid": "020422aa9c82", "verdict": "CORRECT", "reason": "Count Jun 9 1968 inside conference span: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "e0effe21cdf7", "verdict": "CORRECT", "reason": "Payment Dec 1986 after strike ended Mar 1985: AFTER.", "reviewer": "ai"}
+{"rid": "ca365333e802", "verdict": "CORRECT", "reason": "Both events 6 June 1977: SIMULTANEOUS.", "reviewer": "ai"}
+{"rid": "9dcab61a1320", "verdict": "CORRECT", "reason": "Dark-sky season contains the Jan 2002 catch: INCLUDES.", "reviewer": "ai"}
+{"rid": "8247bc4bea8a", "verdict": "CORRECT", "reason": "Eclipse Aug 11 inside summer programme: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "8151cf4dc4cb", "verdict": "CORRECT", "reason": "Both arrays logged 03:17 on 29 March 2003: SIMULTANEOUS.", "reviewer": "ai"}
+{"rid": "2d14b7356efb", "verdict": "CORRECT", "reason": "Repair Dec 1941 before revision May 1942: BEFORE.", "reviewer": "ai"}
+{"rid": "ad57abe824d1", "verdict": "CORRECT", "reason": "Programme span contains the Jun 1954 conversion: INCLUDES.", "reviewer": "ai"}
+{"rid": "78089e72fc8d", "verdict": "CORRECT", "reason": "Test Aug 19 inside commissioning trials: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "40bfcaf1d2e3", "verdict": "CORRECT", "reason": "Both ceremonies 7 June 2021: SIMULTANEOUS.", "reviewer": "ai"}
+{"rid": "472c656969f8", "verdict": "CORRECT", "reason": "Load test May 19 before first use Jun 29: BEFORE.", "reviewer": "ai"}
+{"rid": "a03276ec322f", "verdict": "CORRECT", "reason": "Outage Aug 23 inside the Aug 21-25 freeze: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "2a3ac19108de", "verdict": "CORRECT", "reason": "Both events 4 April 2022: SIMULTANEOUS.", "reviewer": "ai"}
+{"rid": "43f0f9addbf1", "verdict": "CORRECT", "reason": "Writ Feb 8 inside the Jan 9 - Mar 30 session: IS_INCLUDED.", "reviewer": "ai"}
+{"rid": "9cc734023583", "verdict": "CORRECT", "reason": "Leak Mar 22 before launch Apr 13: BEFORE.", "reviewer": "ai"}
+{"rid": "b412fc1d8335", "verdict": "CORRECT", "reason": "Term span contains the May 2009 report: INCLUDES.", "reviewer": "ai"}
+{"rid": "df1d8d1b40c2", "verdict": "CORRECT", "reason": "Court opened 1921 after committee reported 1919: AFTER.", "reviewer": "ai"}
+{"rid": "19fec579b2b5", "verdict": "CORRECT", "reason": "Speech ended Oct 27 before jury retired Oct 28: BEFORE.", "reviewer": "ai"}
